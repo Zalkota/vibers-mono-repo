@@ -1,22 +1,23 @@
 <template>
   <div data-collapse="small" data-animation="default" data-duration="400" class="navbar w-nav">
     <div class=" bg-transparent">
-    <div class="container w-container">
+    <div class=" mx-auto">
       <div class="w-full flex flex-row">
 
-        <div class="mt-6 mx-2 flex-grow"> 
+        <div class="mt-6 mx-2 flex-grow">
         <div class=" inline-block mx-2 ">
-        <img class="inline-block mb-1 " width="24" height="24" src="/images/banana.jpg" />
+        <img class="inline-block mb-1 " width="100" height="100" src="/images/logo.png" />
         </div>
-        <router-link to="/" class='no-underline flex-grow inline text-xl text-gray-900 font-bold'>Banana Smasher</router-link>
+        <router-link to="/" class='no-underline flex-grow inline text-5xl text-gray-900 font-bold pl-6'>Cosmic Labs</router-link>
        </div>
- 
- 
+
+
+
        <div class="hidden lg:inline-block text-black  " >
-          
+
          <UpperNav
           v-bind:web3Plug="web3Plug"
-      
+
           />
        </div>
 
@@ -29,9 +30,9 @@
 
         <div v-if="showResponsiveMenu" class="w-full absolute left-0 block flex-grow lg:flex lg:items-center lg:w-auto bg-gray-200">
           <div class="text-sm lg:flex-grow">
-             <AccordionNav 
+             <AccordionNav
              v-bind:web3Plug="web3Plug"
-             
+
              />
 
           </div>

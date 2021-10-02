@@ -32,7 +32,7 @@
         <a
         :href="row.url"
         v-for="row in item.rows"
-       
+
         :key="row.title"
         class="block w-full px-4 py-2 no-underline text-black leading-5 hover:bg-gray-600 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
         role="menuitem"
@@ -52,19 +52,27 @@
 
 
       <div class="inline-block">
-        <div v-if="web3Plug.connectedToWeb3() == false" @click="connectToWeb3" class="button bg-blue-500 hover:bg-blue-700 text-sm text-black font-bold my-2 py-1 px-2 rounded cursor-pointer">Login with Web3</div>
+
+        <div v-if="web3Plug.connectedToWeb3() == false" @click="connectToWeb3" class="button bg-yellow-400 hover:bg-yellow-300 text-2xl text-black font-bold my-2 py-3 px-6 rounded cursor-pointer shadow-md hover:shadow-sm rounded-xl">Connect Wallet</div>
+        <div class="">
+            <img class="inline-block mb-1 " width="48" height="48" src="/images/Discord-Logo-Color.png" />
+        </div>
 
         <div v-if="web3Plug.connectedToWeb3() "   class="truncate  text-gray-800 p-2" style="max-width:250px;  ">
 
+
         <Web3NetButton
            v-bind:providerNetworkID="activeNetworkId"
-           v-bind:web3Plug='web3Plug' 
+           v-bind:web3Plug='web3Plug'
          />
 
           <span class="  " style="max-width:120px">
           <a   v-bind:href="getEtherscanBaseURL()+'/address/'+web3Plug.getActiveAccountAddress()" class="text-gray-800  "   target="_blank">  {{web3Plug.getActiveAccountAddress()}} </a>
          </span>
          </div>
+
+
+
       </div>
 
 </nav>
@@ -82,7 +90,7 @@ export default {
     return {
       activeAccountAddress:null,
       activeNetworkId: null,
-      navConfig: null 
+      navConfig: null
     }
   },
   created(){
@@ -94,10 +102,10 @@ export default {
            this.$forceUpdate();
         }.bind(this));
 
-   
+
   },
   methods: {
-        
+
           connectToWeb3(){
             this.web3Plug.connectWeb3( )
           },

@@ -6,10 +6,10 @@
 
       <div v-if="web3Plug.connectedToWeb3() "   class="truncate text-center text-gray-800 p-2" style="   ">
 
-      
+
         <Web3NetButton
            v-bind:providerNetworkID="activeNetworkId"
-           v-bind:web3Plug='web3Plug' 
+           v-bind:web3Plug='web3Plug'
          />
 
 
@@ -134,7 +134,7 @@ export default {
         }.bind(this));
   },
   methods: {
-   
+
     connectToWeb3(){
       this.web3Plug.connectWeb3( )
     },
