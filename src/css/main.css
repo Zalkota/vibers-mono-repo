@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
- 
+
 
 [v-cloak] { display:none; }
 
@@ -29,26 +29,26 @@ a {
 /* Rainbow  */
 
 .rainbow-hover:hover {
-  
+
   /* Font options */
- 
+
  text-shadow: 1px 1px   #000000;
- 
- 
+
+
   /* Chrome, Safari, Opera */
- -webkit-animation: rainbow 5s infinite; 
- 
+ -webkit-animation: rainbow 5s infinite;
+
  /* Internet Explorer */
  -ms-animation: rainbow 5s infinite;
- 
+
  /* Standar Syntax */
- animation: rainbow 5s infinite; 
+ animation: rainbow 5s infinite;
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes rainbow{
- 0%{color: orange;}	
- 10%{color: purple;}	
+ 0%{color: orange;}
+ 10%{color: purple;}
  20%{color: red;}
  30%{color: CadetBlue;}
  40%{color: yellow;}
@@ -62,8 +62,8 @@ a {
 
 /* Internet Explorer */
 @-ms-keyframes rainbow{
-  0%{color: orange;}	
- 10%{color: purple;}	
+  0%{color: orange;}
+ 10%{color: purple;}
  20%{color: red;}
  30%{color: CadetBlue;}
  40%{color: yellow;}
@@ -77,8 +77,8 @@ a {
 
 /* Standar Syntax */
 @keyframes rainbow{
-   0%{color: orange;}	
- 10%{color: purple;}	
+   0%{color: orange;}
+ 10%{color: purple;}
  20%{color: red;}
  30%{color: CadetBlue;}
  40%{color: yellow;}
@@ -181,4 +181,16 @@ SVG Icons - svgicons.sparkk.fr
 }
 .scale-100 {
   transform: scale(1);
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url(/assets/images/Logo.png);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    position: relative;
 }

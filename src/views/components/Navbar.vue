@@ -6,9 +6,9 @@
 
         <div class="mt-6 mx-2 flex-grow">
         <div class=" inline-block mx-2 ">
-        <img class="inline-block mb-1 " width="100" height="100" src="/images/logo.png" />
+        <img class="inline-block mb-1 " width="75" height="75" src="/images/logo.png" />
         </div>
-        <router-link to="/" class='no-underline flex-grow inline text-5xl text-gray-900 font-bold pl-6'>Cosmic Labs</router-link>
+        <router-link to="/" class='no-underline flex-grow inline text-5xl text-gray-900 font-bold pl-6 invisible md:visible'>Cosmic Labs</router-link>
        </div>
 
 
