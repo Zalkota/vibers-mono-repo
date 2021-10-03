@@ -17,19 +17,16 @@
 
 
    <div class="section  border-b-2 border-blue-800">
-       <div class="w-full text-center relative bg-center bg-cover h-full">
-
-           <img src="" class="" style="margin:0 auto; width:100%;  " />
-test
+       <div class="w-full h-screen hero text-center relative bg-center bg-cover h-full">
            <div class="absolute mx-auto left-0 right-0 max-w-xs" style="bottom: 19rem;">
-               <div class="button bg-yellow-400 hover:bg-yellow-300 text-4xl text-black font-bold my-2 py-3 px-2 rounded cursor-pointer shadow-lg hover:shadow-sm rounded-xl  w-sm">Mint 0.06 <span style="font-family: sans-serif;">Ξ</span></div>
+               <div class="button bg-yellow-400 hover:bg-yellow-300 text-4xl text-black font-bold my-2 py-3 px-2 rounded cursor-pointer shadow-lg hover:shadow-sm rounded-xl  w-sm" style="">Mint 0.06 <span style="font-family: sans-serif;">Ξ</span></div>
            </div>
 
        </div>
    </div>
 
     <div class="section mt-16">
-        <div class="container px-4 pb-10 mx-auto text-blue-900">
+        <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <h1 class="text-4xl font-bold text-blue-700 mb-3">Welcome to Cosmic Caps</h1>
@@ -53,7 +50,7 @@ test
         </div>
 
 
-        <div class="container px-4 pb-20 mx-auto">
+        <div class="container px-12 sm:px-4 pb-20 mx-auto">
                 <h2 class="text-3xl font-bold text-blue-700 mb-3">Price</h2>
 
                 <p>To Mint a Cosmic Cap, the cost is 0.06 Ether.</p>
@@ -63,7 +60,7 @@ test
                 </div>
         </div>
 
-    <div class="container px-4 pb-20 mx-auto">
+    <div class="container px-12 sm:px-4 pb-20 mx-auto">
         <div class="">
             <h2 class="text-3xl font-bold text-blue-700 mb-3">Rarity</h2>
 
@@ -117,7 +114,7 @@ test
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
                         <img class="w-full" src="@/assets/images/cosmic_cap_4.png" alt="Sunset in the mountains">
                         <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#3249</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#2241</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 215 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g clip-path="url(#clip0)">
@@ -149,7 +146,7 @@ test
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
                       <img class="w-full" src="@/assets/images/cosmic_cap_2.png" alt="Sunset in the mountains">
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#3249</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#1279</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 215 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g clip-path="url(#clip0)">
@@ -181,7 +178,7 @@ test
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
                       <img class="w-full" src="@/assets/images/cosmic_cap_3.png" alt="Sunset in the mountains">
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#3249</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#7289</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 215 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g clip-path="url(#clip0)">
@@ -217,7 +214,7 @@ test
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
                       <img class="w-full" src="@/assets/images/cosmic_cap_11.png" alt="Sunset in the mountains">
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#3249</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#324</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 215 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g clip-path="url(#clip0)">
@@ -249,7 +246,7 @@ test
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
                       <img class="w-full" src="@/assets/images/cosmic_cap_5.png" alt="Sunset in the mountains">
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#3249</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#993</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 215 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g clip-path="url(#clip0)">
@@ -282,7 +279,7 @@ test
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
                       <img class="w-full" src="@/assets/images/cosmic_cap_9.png" alt="Sunset in the mountains">
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#3249</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#4366</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 215 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g clip-path="url(#clip0)">
@@ -314,7 +311,7 @@ test
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
                       <img class="w-full" src="@/assets/images/cosmic_cap_12.png" alt="Sunset in the mountains">
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#3249</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#6283</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 215 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g clip-path="url(#clip0)">
@@ -348,7 +345,7 @@ test
 </div>
 
 <div class="section bg-gray-300">
-   <div class="container px-4 py-20 mx-auto">
+   <div class="container px-12 sm:px-4 py-20 mx-auto">
            <div class="">
                    <h2 class="text-3xl font-bold text-blue-700 mb-12">FAQ</h2>
 
@@ -375,7 +372,7 @@ test
 
 
 <div class="section bg-blue-900 text-gray-300">
-    <div class="container px-4 py-20 mx-auto">
+    <div class="container px-12 sm:px-4 py-20 mx-auto">
         <div class="">
                 <h2 class="text-4xl font-bold text-blue-100 mb-12">Roadmap</h2>
 
@@ -422,14 +419,14 @@ test
 
 
 <div class="section bg-gray-300">
-    <div class="container px-4 py-20 mx-auto flex">
-            <div class="md:flex-1/4 md:w-1/4 w-1 px-4 invisible md:visible">
+    <div class="container py-20 mx-auto flex">
+            <div class="md:flex-1/6 md:w-1/6 w-1 px-4 invisible md:visible">
                     <img
                     src="@/assets/images/Logo.png"
                     alt="gold shroom, pink makeup"
                     class="logo"/>
             </div>
-            <div class="md:flex-3/4 flex-1 flex-1 px-6">
+            <div class="md:flex-4/6 flex-1 flex-1 px-6">
                     <h2 class="text-3xl font-bold text-blue-700 mb-6">Donating to Science and Medicine!</h2>
                     <p>We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a portion of the proceeds to the Multidisciplinary Association For Psychedelic Studies (MAPS). https://maps.org/about/mission </p>
             </div>
