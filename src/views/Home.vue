@@ -48,18 +48,15 @@
                         </div>
                 </div>
                 <br />
-
         </div>
 
-        <div class="container px-12 sm:px-4 pb-20 mx-auto">
+        <div class="container px-12 sm:px-4 pb-10 mx-auto">
                 <div class="lg:flex">
                     <div class="lg:flex-1">
-                        <h2 class="text-3xl font-bold text-blue-700 mb-3">Animated Short Film Series
-                        </h2>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-3">Animated Short Film Series</h2>
                         <p>Tune In! Become one with the fungi and join us for the first release of Episode 1 of Cosmic Caps.</p>
                         <br>
-
-                            <a href="#" class="button bg-blue-800 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">View Film Trailer </a>
+                        <a href="#" class="button bg-blue-800 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">View Film Trailer </a>
                     </div>
                     <div class="lg:flex-1 container ">
                         <img
@@ -596,57 +593,15 @@
 
 
 
-    <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;">
-     <div class="w-container  ">
-          <div class=" w-2/3  mt-8 py-8" style="margin: 0 auto;">
-                <div class="text-2xl text-center"> You will earn up to: {{  parseFloat( balances['WETH'] ) }} WETH </div>
-
-                  <div class="flex flex-col my-8">
-                    <label> Banana Token Id </label>
-                     <input type="numeric" v-model="tokenId" class="text-black p-2 my-2" style="width:200px"/>
-                  </div>
-
-                 <div class="mt-8 bg-red-600 select-none hover:bg-red-500 cursor-pointer rounded p-4 text-white border-2 border-black inline-block" @click="smash()"> Smash my Banana! </div>
-         </div>
-     </div>
-   </div>
-
 
 
 
 <div class="section  border-b-2 border-black">
-  <div class=" ">
-    <div class=" ">
-
-    </div>
-    <div class="    w-full text-center ">
-
-        <img src="@/assets/images/space_background_4k.jpg" class="" style="margin:0 auto; width:100%;  " />
-
-    </div>
-  </div>
+    
 </div>
 
      <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;">
-     <div class="w-container  ">
 
-          <div class=" w-2/3  mt-8 py-8" style="margin: 0 auto;">
-
-                <div class="text-2xl text-center"> Donate to teh Banana Smashers!! </div>
-
-                <p class="text-sm text-center ">  (This will increase the amount of WETH that the next banana smasher will get -- duh!) </p>
-
-                  <div class="flex flex-col my-8">
-                    <label> WETH donation amount </label>
-                     <input type="numeric" v-model="donationAmount" class="text-black p-2 my-2" style="width:200px"/>
-                  </div>
-
-                 <div class="mt-8 bg-yellow-500 select-none hover:bg-yellow-300 cursor-pointer rounded p-4 text-black border-2 border-black inline-block" @click="donate()"> Donate WETH! </div>
-         </div>
-
-
-
-     </div>
    </div>
 
 
