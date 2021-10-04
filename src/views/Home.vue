@@ -508,7 +508,7 @@
                    <p class="mb-8">Cosmic Caps make great profile pictures so you can easily spot fellow community members! Follow the official Twitter account and come and say hi in the community Discord server.</p>
                    <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >Are Cosmic Caps supporting charities?</h3>
-                   <p class="mb-8">We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/">https://maps.org/about/">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
+                   <p class="mb-8">We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
                    mission.
                    </p>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >What are NFTs?</h3>
@@ -586,19 +586,12 @@
             </div>
             <div class="md:flex-4/6 flex-1 flex-1 px-6">
                     <h2 class="text-3xl font-bold text-blue-700 mb-6">Donating to Science and Medicine!</h2>
-                    <p>We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a portion of the proceeds to the <a href="https://maps.org/about/">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.</p>
+                    <p>We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a portion of the proceeds to the  <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.</p>
             </div>
     </div>
 </div>
 
 
-
-
-
-
-<div class="section  border-b-2 border-black">
-    
-</div>
 
      <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;">
 

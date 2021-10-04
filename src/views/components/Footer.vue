@@ -1,8 +1,8 @@
 <template>
-  <div class="section  text-white h-full bg-gray-100 " style=" min-height: 100px;">
+  <div class="section  text-white h-full bg-gray-300 " style=" min-height: 100px;">
       <div class="w-full text-center relative">
 
-          <img src="@/assets/images/space_background_4k.jpg" class="" style="margin:0 auto; width:100%;  " />
+          <img src="@/assets/images/space_background_4k.jpg" class="invisible md:visible" style="margin:0 auto; width:100%;  " />
           <div class="container mx-auto absolute bottom-0 left-0 right-0 flex lg:flex-row">
                      <div class='flex-1 p-4'>
                          <a
