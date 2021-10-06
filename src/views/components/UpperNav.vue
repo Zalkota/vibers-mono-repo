@@ -5,7 +5,7 @@
                     <div class="flex-auto px-2 mt-1 lg:mt-0 text-center">
                         <div v-if="web3Plug.connectedToWeb3() == false" @click="connectToWeb3" class="button bg-yellow-400 hover:bg-yellow-300 lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-md hover:shadow-sm rounded-xl max-w-xs">Connect</div>
                     </div>
-                        <div class="flex-1 px-2 mt-3 mx-auto">
+                        <div class="flex-1 px-2 mt-3 mx-auto ">
                             <a href="https://discord.com/invite/rVXUVBcqJV" target="_blank">
                                 <svg class="block mx-auto mb-1 pt-1" width="48" height="48" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0)">
@@ -19,7 +19,7 @@
                                 </svg>
                             </a>
                         </div>
-                        <div class="flex-1 px-2 mt-3 mx-auto">
+                        <div class="flex-1 px-2 mt-3 mx-auto hide">
                             <a href="https://opensea.io/collection/cosmic-caps/" target="_blank">
                                 <svg class="block mx-auto mb-1 pt-1" width="48" height="48" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M90 45C90 69.8514 69.8514 90 45 90C20.1486 90 0 69.8514 0 45C0 20.1486 20.1486 0 45 0C69.8566 0 90 20.1486 90 45Z" fill="#2081E2"/>

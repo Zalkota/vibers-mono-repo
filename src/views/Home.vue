@@ -26,7 +26,7 @@
    </div>
 
     <div class="section mt-16">
-        <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
+        <div class="container px-12 sm:px-4 pb-16 mx-auto text-blue-900">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <h1 class="text-4xl font-bold text-blue-700 mb-3">Welcome to Cosmic Caps</h1>
@@ -50,7 +50,7 @@
                 <br />
         </div>
 
-        <div class="container px-12 sm:px-4 pb-10 mx-auto">
+        <div class="container px-12 sm:px-4 pb-24 mx-auto">
                 <div class="lg:flex">
                     <div class="lg:flex-1">
                         <h2 class="text-3xl font-bold text-blue-700 mb-3">Animated Short Film Series</h2>
@@ -62,13 +62,13 @@
                         <img
                         src="@/assets/images/TV_Image.png"
                         alt="Cosmic Cap Television Ad"
-                        class="w-64 mx-auto"/>
+                        class="w-64 mx-auto md:pt-0 pt-12"/>
                     </div>
                 </div>
         </div>
 
 
-        <div class="container px-12 sm:px-4 pb-20 mx-auto">
+        <div class="container px-12 sm:px-4 pb-24 mx-auto">
                 <h2 class="text-3xl font-bold text-blue-700 mb-3">Price</h2>
 
                 <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32.</p>
@@ -501,22 +501,24 @@
            <div class="">
                    <h2 class="text-3xl font-bold text-blue-700 mb-12">FAQ</h2>
 
+                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >What are NFTs?</h3>
+                   <p class="mb-8">NFTs are <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 Non-Fungible Tokens</a>. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
+                   </p>
+                   <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3">How do I adopt a Cosmic Cap?</h3>
-                   <p class="mb-8">Once minting is live, you can connect your Metamask wallet and adopt up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
+                   <p class="mb-8">Connect your Metamask wallet and mint up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
                    <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >How do I join the community?</h3>
-                   <p class="mb-8">Cosmic Caps make great profile pictures so you can easily spot fellow community members! Follow the official Twitter account and come and say hi in the community Discord server.</p>
+                   <p class="mb-8">Cosmic Caps make great profile pictures, so you can easily spot fellow community members! Follow the official Twitter account and come and say hi in the community Discord server.</p>
                    <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >Are Cosmic Caps supporting charities?</h3>
-                   <p class="mb-8">We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
+                   <p class="mb-8">Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
                    mission.
                    </p>
-                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >What are NFTs?</h3>
-                   <p class="mb-8">NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
-                   </p>
                    <br>
+
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >What inpsired Cosmic Caps?</h3>
-                   <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.
+                   <p class="mb-8">Cosmic Caps was created by a team of Ethereum developers and 3D Blender artists who've been intertwined with the Ethereum community since 2016.
                    </p>
            </div>
    </div>
@@ -537,7 +539,12 @@
                 <br />
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">ARKIT & Animations</h3>
-                <p class="mb-8">Cosmic Caps owners will be able to stake their Cosmic Cap NFT to obtain a new animated 3D Cosmic Caps NFT (.GLB format) and ARKIT integration files. These can be imported into any metaverse or game engine that supports .GLB format.</p>
+                <p class="mb-8">Cosmic Caps owners will soon be able to stake their Cosmic Cap NFT to obtain an animated 3D Cosmic Caps NFT (.GLB) and ARKIT integration files. These can be imported into any metaverse or game engine.</p>
+
+                <br />
+
+                <h3 class="text-2xl text-gray-100 font-bold mb-3">Holders will be airdropped future Cosmic NFTs from each Episode</h3>
+                <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.</p>
 
                 <br />
 
@@ -548,16 +555,19 @@
 
                 <br />
 
+                <h3 class="text-2xl text-gray-100 font-bold mb-3">Ownership rights</h3>
+                <p class="mb-8">CC0, As long as you own the Cosmic Cap NFT, you’ll have exclusive rights to your Cosmic Cap.
+                </p>
+
+                <br>
+
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Web Store & Cosmic Cap Merchandise</h3>
                 <p class="mb-8">NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
                 </p>
 
                 <br />
 
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Holders will be airdropped future Cosmic NFTs from each Episode</h3>
-                <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.</p>
 
-                <br />
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Giving Back To Our Community</h3>
                 <p class="mb-8">Once all Cosmic Caps have been minted, the real story begins. We will donate $100,000 to Multidisciplinary Association For Psychedelic Studies (MAPS).
@@ -566,11 +576,6 @@
                     <!-- Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with. -->
                 </p>
 
-                <br />
-
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Ownership rights</h3>
-                <p class="mb-8">As long as you own the Cosmic Cap NFT, you’ll have exclusive rights to your Cosmic Cap.
-                </p>
         </div>
     </div>
 </div>
@@ -705,25 +710,6 @@ export default {
           },
 
 
-         donate( ){
-
-
-              let donationAmount = this.web3Plug.formattedAmountToRaw( this.donationAmount, 18 )
-
-
-
-              let userAddress = this.web3Plug.getActiveAccountAddress()
-
-
-              const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9
-
-              const smasherAddress = '0xbf3122b2aa3102693e3194df7870e1a7ae146b50'
-
-              const wethContract = this.web3Plug.getTokenContract(   currencyAddress  )
-
-
-              wethContract.methods.transfer( smasherAddress, donationAmount ).send({from: userAddress })
-          },
 
 
   }
