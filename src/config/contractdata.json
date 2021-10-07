@@ -3,12 +3,7 @@
     
 
     "contracts":{
-      "0xbitcoin":{"name":"0xBTC","address":"0xb6ed7644c69416d67b522e20bc294a9a9b405b31","decimals":8 },
-      "guildreserve":{"name":"GuildReserve","address":"0x657223e3fdf539d92c40664db340097d5d6bd9f5","decimals":8 },
- 
-      
-      "minersguild":{"address":"0x167152a46e8616d4a6892a6afd8e52f060151c70"} 
- 
+      "cosmicCaps":{"name":"COSMIC","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" } 
    
    
    

@@ -73,9 +73,9 @@
 
                 <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32.</p>
                 <br />
-                <div class="button bg-yellow-400 text-2xl text-black font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center">
+                <!-- <div class="button bg-yellow-400 text-2xl text-black font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center">
                     Price 0.06 <span style="font-family: sans-serif;">Ξ</span>
-                </div>
+                </div> -->
         </div>
 
     <div class="container px-12 sm:px-4 pb-20 mx-auto">
