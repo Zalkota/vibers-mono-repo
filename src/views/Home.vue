@@ -555,7 +555,20 @@
 
                 <br />
 
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Ownership rights</h3>
+                <h3 class="text-2xl text-gray-100 font-bold mb-3">Cosmic DAO</h3>
+                <p class="mb-8">
+
+                </p>
+
+                <br />
+
+                <h3 class="text-2xl text-gray-100 font-bold mb-3">Portaits</h3>
+                <p class="mb-8">All Cosmic Caps will be airdropped a burnable NFT called "The Portait", When burned you will receive a phyiscal 20" x 20" portrait of your Cosmic Cap NFT shipped to your home.
+                </p>
+
+                <br />
+
+                <h3 class="text-2xl text-gray-100 font-bold mb-3">CC0 Ownership rights</h3>
                 <p class="mb-8">CC0, As long as you own the Cosmic Cap NFT, you’ll have exclusive rights to your Cosmic Cap.
                 </p>
 
@@ -611,20 +624,12 @@
 
 <script>
 
-
-
 import Web3Plug from '../js/web3-plug.js'
-
-
 import Navbar from './components/Navbar.vue';
-
 import Footer from './components/Footer.vue';
 import TabsBar from './components/TabsBar.vue';
-
 import FrontendHelper from '../js/frontend-helper.js';
-
 const ERC721ABI = require('../contracts/ERC721ABI.json')
-
 
 export default {
   name: 'Home',
