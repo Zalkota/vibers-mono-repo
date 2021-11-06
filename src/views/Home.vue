@@ -7,7 +7,6 @@
      <div class=" ">
         <Navbar
         v-bind:web3Plug="web3Plug"
-
        />
      </div>
 
@@ -17,12 +16,82 @@
 
 
    <div class="section  ">
+     <div class="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
        <div class="w-full h-screen hero text-center relative bg-center bg-cover h-full">
-           <div class="absolute mx-auto left-0 right-0 max-w-xs" style="bottom: 19rem;">
-               <div class="button bg-yellow-400 hover:bg-yellow-300 text-4xl text-black font-bold my-2 py-3 px-2 rounded cursor-pointer shadow-lg hover:shadow-sm rounded-xl  w-sm" style="">Mint 0.06 <span style="font-family: sans-serif;">Ξ</span></div>
-           </div>
+      
+           <div class=" mx-auto left-0 right-0 max-w-xs" style="bottom: 19rem;">
+               <!-- <div class="button bg-yellow-400 hover:bg-yellow-300 text-4xl text-black font-bold my-2 py-3 px-2 rounded cursor-pointer shadow-lg hover:shadow-sm rounded-xl  w-sm" style="">Mint 0.06 <span style="font-family: sans-serif;">Ξ</span></div> -->
+           
+      <div class="text-white lg:flex lg:flex-row-reverse">
+        <div class="w-full lg:w-1/2 text-center p-8" v-if="canMint">
 
+          <div class="my-16 text-center">
+            <div class="flex flex-row">
+              <div class="flex-grow"></div>
+              <input
+                type="number"
+                min="1"
+                max="16"
+                v-model="mintAmount"
+                class="text-black border-black border-2 p-4 mx-4"
+              />
+              <div
+                class="
+                  select-none
+                  bg-green-900
+                  hover:bg-green-500                  
+                  p-4
+                  px-12
+                  rounded
+                  border-gray border-2
+                  cursor-pointer
+                "
+                @click="mint"
+              >
+            <div class="text-white text-s">
+
+                Mint 0.06 Ξ
+</div>
+              </div>
+              <div class="flex-grow"></div>
+            </div>
+            <br />
+          </div>
+
+          <div>
+            <div class="text-white text-xs">
+              {{ errorMessage }}
+            </div>
+
+          </div>
+        </div>
+
+        <div class="w-full lg:w-1/2 text-center p-8" v-if="!canMint">
+          <div>
+            <div class="text-white text-xl">
+              This collection has been completely minted!
+            </div>
+          </div>
+        </div>
+      </div>
+
+           
+           </div>
        </div>
+
+  <video
+    autoplay
+    loop
+    muted
+    class="absolute z-10 w-auto min-w-full min-h-full max-w-none"
+  >
+    <source
+      src="https://cdn.discordapp.com/attachments/639207337017606218/898406499443949589/0001-0480.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
+</div>
    </div>
 
     <div class="section mt-16">
@@ -37,7 +106,6 @@
                                 <br>
                                 <p>Cosmic Caps are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
-                                    </p>
 
                         </div>
                         <div class="lg:flex-1">
@@ -73,9 +141,9 @@
 
                 <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32.</p>
                 <br />
-                <div class="button bg-yellow-400 text-2xl text-black font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center">
+                <!-- <div class="button bg-yellow-400 text-2xl text-black font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center">
                     Price 0.06 <span style="font-family: sans-serif;">Ξ</span>
-                </div>
+                </div> -->
         </div>
 
     <div class="container px-12 sm:px-4 pb-20 mx-auto">
@@ -621,9 +689,10 @@
 </div>
 </template>
 
-
 <script>
+import Web3Plug from "../js/web3-plug.js";
 
+<<<<<<< HEAD
 import Web3Plug from '../js/web3-plug.js'
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
@@ -631,57 +700,109 @@ import TabsBar from './components/TabsBar.vue';
 import FrontendHelper from '../js/frontend-helper.js';
 const ERC721ABI = require('../contracts/ERC721ABI.json')
 
+=======
+import Navbar from "./components/Navbar.vue";
+
+import Footer from "./components/Footer.vue";
+import TabsBar from "./components/TabsBar.vue";
+
+import FrontendHelper from "../js/frontend-helper.js";
+
+const ERC721ABI = require("../contracts/ERC721ABI.json");
+// const StatsNFTABI = require('../contracts/StatsNFTABI.json')
+
+// 842026846969861567
+// 600000120000000000
+
+// export default {
+//   name: "Mint",
+//   props: [],
+//   components: { Navbar, Footer },
+//   data() {
+//     return {
+//       web3Plug: new Web3Plug(),
+//       signedInToWeb3: false,
+//       balances: {},
+//       totalSupply: 0,
+//       mintAmount: 1,
+//       errorMessage: null,
+
+//       encodedMetadata:
+//         "data:application/json;base64,eyJuYW1lIjogIjB4QlRDIFN0YXRzICMwIiwgImRlc2NyaXB0aW9uIjogIk1pbmVhYmxlIHRva2VuIHN0YXRpc3RpY3MuIiwgImltYWdlIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIQnlaWE5sY25abFFYTndaV04wVW1GMGFXODlJbmhOYVc1WlRXbHVJRzFsWlhRaUlIWnBaWGRDYjNnOUlqQWdNQ0F6TlRBZ016VXdJajQ4YzNSNWJHVStMbUpoYzJVZ2V5Qm1hV3hzT2lCM2FHbDBaVHNnWm05dWRDMW1ZVzFwYkhrNklITmxjbWxtT3lCbWIyNTBMWE5wZW1VNklERTJjSGc3SUgwOEwzTjBlV3hsUGp4eVpXTjBJSGRwWkhSb1BTSXhNREFsSWlCb1pXbG5hSFE5SWpFd01DVWlJR1pwYkd3OUltSnNZV05ySWlBdlBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeU1DSWdZMnhoYzNNOUltSmhjMlVpUGkwdExTQXdlRUpVUXlCVGRHRjBjeUF0TFMwOEwzUmxlSFErUEhSbGVIUWdlRDBpTVRBaUlIazlJalF3SWlCamJHRnpjejBpWW1GelpTSStUV2x1WldRZ1UzVndjR3g1T2lBMU1EQXdQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJMk1DSWdZMnhoYzNNOUltSmhjMlVpUGsxcGJtbHVaeUJFYVdabWFXTjFiSFI1T2lBeFBDOTBaWGgwUGp4MFpYaDBJSGc5SWpFd0lpQjVQU0k0TUNJZ1kyeGhjM005SW1KaGMyVWlQazFwYm1sdVp5QlNaWGRoY21RNklEVXdQQzkwWlhoMFBqd3ZjM1puUGc9PSJ9",
+//       encodedImageSVG: null,
+//     };
+//   },
+
+>>>>>>> cdc4f727995206d45727229371081537f3ab80cd
 export default {
-  name: 'Home',
+  name: "Home",
   props: [],
-  components: {Navbar, Footer },
+  components: { Navbar, Footer },
   data() {
     return {
-      web3Plug: new Web3Plug() ,
+      web3Plug: new Web3Plug(),
       signedInToWeb3: false,
-      balances: {} ,
+      balances: {},
       tokenId: 0,
-      donationAmount: 0
-
-    }
+      donationAmount: 0,
+      totalSupply: 0,
+      mintAmount: 1,
+      errorMessage: null,
+    };
   },
 
-  created(){
+  created() {
+    this.web3Plug.getPlugEventEmitter().on(
+      "stateChanged",
+      async function (connectionState) {
+        console.log("stateChanged", connectionState);
 
+        this.activeAccountAddress = connectionState.activeAccountAddress;
+        this.activeNetworkId = connectionState.activeNetworkId;
 
-    this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
-        console.log('stateChanged',connectionState);
+        this.signedInToWeb3 = this.activeAccountAddress != null;
 
-        this.activeAccountAddress = connectionState.activeAccountAddress
-        this.activeNetworkId = connectionState.activeNetworkId
+        // await this.fetchTokenURI();
 
-        this.signedInToWeb3 =  (this.activeAccountAddress != null)
+        // let result = this.parseMetadata(this.encodedMetadata);
 
-      }.bind(this));
-   this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
-        console.error('error',errormessage);
+        // this.encodedImageSVG = result.image;
 
-        this.web3error = errormessage
+        this.getTotalSupply();
+      }.bind(this)
+    );
+    this.web3Plug.getPlugEventEmitter().on(
+      "error",
+      function (errormessage) {
+        console.error("error", errormessage);
 
-      }.bind(this));
+        this.web3error = errormessage;
+      }.bind(this)
+    );
 
-      this.web3Plug.reconnectWeb()
+    this.web3Plug.reconnectWeb();
 
+    // let result = this.parseMetadata(this.encodedMetadata);
 
-
+    // this.encodedImageSVG = result.image;
   },
   mounted: function () {
-    this.getBalances()
+    this.getBalances();
 
-    setInterval(  this.getBalances.bind(this), 5000  )
+    this.getTotalSupply();
+
+    setInterval(this.getBalances.bind(this), 5000);
   },
   methods: {
+    canMint() {
+      return this.totalSupply >= 9999;
+    },
 
-          async getBalances(){
-
+    async getBalances() {
+      /*
             const smasherAddress = '0xbf3122b2aa3102693e3194df7870e1a7ae146b50'
-
-            const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9
+            
+            const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9  
 
             const currencyContract = this.web3Plug.getTokenContract( currencyAddress )
 
@@ -692,31 +813,111 @@ export default {
             console.log(' this.balances',  this.balances)
 
             this.$forceUpdate()
+*/
+    },
 
-          },
+    // async fetchTokenURI() {
+    //   let contractData = await this.web3Plug.getContractDataForActiveNetwork();
+    //   const nftContract = this.web3Plug.getCustomContract(
+    //     ERC721ABI,
+    //     contractData.cosmicCaps.address
+    //   );
 
+    //   let result = await nftContract.methods.tokenURI(1234).call();
 
-          smash( ){
+    //   console.log("fetchj", result);
+    //   if (result) {
+    //     this.encodedMetadata = result;
+    //   }
+    // },
 
+    async getTotalSupply() {
+      let contractData = await this.web3Plug.getContractDataForActiveNetwork();
 
-              let tokenId = parseInt( this.tokenId )
+      const nftContract = this.web3Plug.getCustomContract(
+        ERC721ABI,
+        contractData.cosmicCaps.address
+      );
 
-                console.log('smash! ',tokenId)
+      this.totalSupply = await nftContract.methods.totalSupply().call();
 
-              let userAddress = this.web3Plug.getActiveAccountAddress()
+      this.$forceUpdate();
+    },
 
-              const bananaContract = this.web3Plug.getCustomContract(  ERC721ABI , '0xb9ab19454ccb145f9643214616c5571b8a4ef4f2' )
+    // parseMetadata(tokenURI) {
+    //   // let tokenURI = this.encodedMetadata
 
-              const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9
+    //   const split = tokenURI.split("base64,")[1];
+    //   let base64data = split ? split : tokenURI;
 
-              const smasherAddress = '0xbf3122b2aa3102693e3194df7870e1a7ae146b50'
+    //   const output = Buffer.from(base64data, "base64").toString("utf-8");
 
-              bananaContract.methods.safeTransferFrom( userAddress, smasherAddress, tokenId , currencyAddress ).send({from: userAddress })
-          },
+    //   console.log(output);
 
+<<<<<<< HEAD
+=======
+    //   // this.encodedImageSVG = JSON.parse(output) .image
 
+    //   //console.log( this.encodedImageSVG)
 
+    //   return JSON.parse(output);
+    // },
 
-  }
-}
+    async mint() {
+      console.log("calling mint");
+
+      if (!this.signedInToWeb3) {
+        this.web3Plug.connectWeb3();
+        return;
+      }
+
+      let userAddress = this.web3Plug.getActiveAccountAddress();
+      console.log("userAddress:" + userAddress);
+
+      let amt = this.mintAmount.toString();
+      console.log("mintAmount:" + this.mintAmount);
+
+      if (parseInt(amt) > 16) {
+        this.errorMessage = "You may only mint up to 16 at once. ";
+        return;
+      }
+      this.errorMessage = null;
+
+      // let ethValue = parseInt(amt) * 6 * 10000002000000000;
+      // console.log("ethvalue:" + ethValue);
+
+      let contractData = await this.web3Plug.getContractDataForActiveNetwork();
+      const price = 0.06;
+      const overrides = {
+        value: (price * Math.pow(10, 18) * amt).toString(),
+        gasLimit: Math.floor(
+          200000 * amt - ((200000 * amt) / 100) * (amt - amt * 0.2)
+        ).toString(),
+      };
+
+      let ethBalance = await this.web3Plug.getETHBalance(userAddress);
+      console.log("ethBalance: " + ethBalance);
+
+      // const nftContract = this.web3Plug.getCustomContract(
+      //   ERC721ABI,
+      //   contractData.cosmicCaps.address
+      // );
+>>>>>>> cdc4f727995206d45727229371081537f3ab80cd
+
+      const nftContract = this.web3Plug.getCustomContract(
+        ERC721ABI,
+        contractData.cosmicCaps.address
+      );
+
+      console.log("calling mint");
+      this.totalSupply = await nftContract.methods.mint(userAddress, amt).send({
+        from: userAddress,
+        value: overrides.value,
+        gasLimit: overrides.gasLimit,
+      });
+      // await nftContract.methods.mint(userAddress, amt).send({from: userAddress, value: ethValue});
+      // this.totalSupply = this.getTotalSupply();
+    },
+  },
+};
 </script>

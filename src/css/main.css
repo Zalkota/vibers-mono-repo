@@ -188,7 +188,8 @@ SVG Icons - svgicons.sparkk.fr
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: url("/images/cosmic_cap_hero_4k.jpg");
+    /* background: url(""); */
+    /* background: url("/images/cosmic_cap_hero_4k.jpg"); */
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
