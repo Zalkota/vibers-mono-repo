@@ -66,15 +66,11 @@ export default class Web3Plug {
 
     if (window.ethereum) {
 
-
-
          window.web3 = new Web3(window.ethereum);
 
          web3Instance = window.web3
 
-
-
-         window.ethereum.request({ method: 'eth_requestAccounts' });  //Replaced .enable
+         window.ethereum.enable();
          console.log('meep', window.web3.currentProvider.host )
 
          window.ethereum.on('accountsChanged', (accounts) => {
@@ -120,7 +116,7 @@ export default class Web3Plug {
 
 
 
-    return await web3Instance.eth.personal.sign(dataToSign, address )
+    return await web3Instance.eth.personal.sign(dataToSign, address)
 
 
   }

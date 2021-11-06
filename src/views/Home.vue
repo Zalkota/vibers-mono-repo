@@ -65,9 +65,8 @@
                 @click="mint"
               >
             <div class="text-white text-xs">
-
                 Mint 0.06 Ξ
-</div>
+            </div>
               </div>
               <div class="flex-grow"></div>
             </div>
@@ -639,16 +638,16 @@
                 </p>
 
                 <br />
-
+<!--
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Cosmic DAO</h3>
                 <p class="mb-8">
 
-                </p>
+                </p> -->
 
                 <br />
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Portaits</h3>
-                <p class="mb-8">All Cosmic Caps will be airdropped a burnable NFT called "The Portait", When burned you will receive a phyiscal 20" x 20" portrait of your Cosmic Cap NFT shipped to your home.
+                <p class="mb-8">All Cosmic Caps will be airdropped a burnable NFT called "The Portait", When burned you will receive a phyiscal 12" x 12" portrait of your Cosmic Cap NFT shipped to your home.
                 </p>
 
                 <br />
