@@ -7,7 +7,6 @@
      <div class=" ">
         <Navbar
         v-bind:web3Plug="web3Plug"
-
        />
      </div>
 
@@ -17,29 +16,14 @@
 
 
    <div class="section  ">
-     
+     <div class="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
        <div class="w-full h-screen hero text-center relative bg-center bg-cover h-full">
-        
+      
            <div class=" mx-auto left-0 right-0 max-w-xs" style="bottom: 19rem;">
                <!-- <div class="button bg-yellow-400 hover:bg-yellow-300 text-4xl text-black font-bold my-2 py-3 px-2 rounded cursor-pointer shadow-lg hover:shadow-sm rounded-xl  w-sm" style="">Mint 0.06 <span style="font-family: sans-serif;">Ξ</span></div> -->
            
-               <div class="section border-b-2 border-black" style="background: #575757">
       <div class="text-white lg:flex lg:flex-row-reverse">
-        <div class="w-full lg:w-1/2 p-8">
-          <!-- <img v-bind:src="encodedImageSVG" class=" py-8" style="margin:0 auto; width:40%;    " /> -->
-        </div>
         <div class="w-full lg:w-1/2 text-center p-8" v-if="canMint">
-
-
-          <!-- <div>
-               <div class="text-white text-xl">
-                    Mint your on-chain 0xBTC stats NFT
-              </div>
-                <div class="text-white text-xs">
-                   Updates in realtime to show current supply, difficulty, and reward. 
-              </div>
-
-            </div> -->
 
           <div class="my-16 text-center">
             <div class="flex flex-row">
@@ -64,7 +48,7 @@
                 "
                 @click="mint"
               >
-            <div class="text-white text-xs">
+            <div class="text-white text-s">
 
                 Mint 0.06 Ξ
 </div>
@@ -90,25 +74,25 @@
           </div>
         </div>
       </div>
-    </div>
 
            
            </div>
-
        </div>
+
+  <video
+    autoplay
+    loop
+    muted
+    class="absolute z-10 w-auto min-w-full min-h-full max-w-none"
+  >
+    <source
+      src="https://cdn.discordapp.com/attachments/639207337017606218/898406499443949589/0001-0480.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
+</div>
    </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <div class="section mt-16">
         <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
@@ -122,7 +106,6 @@
                                 <br>
                                 <p>Cosmic Caps are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
-                                    </p>
 
                         </div>
                         <div class="lg:flex-1">
@@ -896,13 +879,11 @@ export default {
       );
 
       console.log("calling mint");
-      this.totalSupply = await nftContract.methods
-        .mint(userAddress, amt)
-        .send({
-          from: userAddress,
-          value: overrides.value,
-          gasLimit: overrides.gasLimit,
-        });
+      this.totalSupply = await nftContract.methods.mint(userAddress, amt).send({
+        from: userAddress,
+        value: overrides.value,
+        gasLimit: overrides.gasLimit,
+      });
       // await nftContract.methods.mint(userAddress, amt).send({from: userAddress, value: ethValue});
       // this.totalSupply = this.getTotalSupply();
     },
