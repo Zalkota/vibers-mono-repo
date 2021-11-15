@@ -7,7 +7,6 @@
      <div class=" ">
         <Navbar
         v-bind:web3Plug="web3Plug"
-
        />
      </div>
 
@@ -17,29 +16,14 @@
 
 
    <div class="section  ">
-
+     <div class="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
        <div class="w-full h-screen hero text-center relative bg-center bg-cover h-full">
-
+      
            <div class=" mx-auto left-0 right-0 max-w-xs" style="bottom: 19rem;">
                <!-- <div class="button bg-yellow-400 hover:bg-yellow-300 text-4xl text-black font-bold my-2 py-3 px-2 rounded cursor-pointer shadow-lg hover:shadow-sm rounded-xl  w-sm" style="">Mint 0.06 <span style="font-family: sans-serif;">Ξ</span></div> -->
-
-               <div class="section border-b-2 border-black" style="background: #575757">
+           
       <div class="text-white lg:flex lg:flex-row-reverse">
-        <div class="w-full lg:w-1/2 p-8">
-          <!-- <img v-bind:src="encodedImageSVG" class=" py-8" style="margin:0 auto; width:40%;    " /> -->
-        </div>
         <div class="w-full lg:w-1/2 text-center p-8" v-if="canMint">
-
-
-          <!-- <div>
-               <div class="text-white text-xl">
-                    Mint your on-chain 0xBTC stats NFT
-              </div>
-                <div class="text-white text-xs">
-                   Updates in realtime to show current supply, difficulty, and reward.
-              </div>
-
-            </div> -->
 
           <div class="my-16 text-center">
             <div class="flex flex-row">
@@ -55,7 +39,7 @@
                 class="
                   select-none
                   bg-green-900
-                  hover:bg-green-500
+                  hover:bg-green-500                  
                   p-4
                   px-12
                   rounded
@@ -64,9 +48,10 @@
                 "
                 @click="mint"
               >
-            <div class="text-white text-xs">
+            <div class="text-white text-s">
+
                 Mint 0.06 Ξ
-            </div>
+</div>
               </div>
               <div class="flex-grow"></div>
             </div>
@@ -89,28 +74,28 @@
           </div>
         </div>
       </div>
-    </div>
 
-
+           
            </div>
-
        </div>
+
+  <video
+    autoplay
+    loop
+    muted
+    class="absolute z-10 w-auto min-w-full min-h-full max-w-none"
+  >
+    <source
+      src="https://cdn.discordapp.com/attachments/639207337017606218/898406499443949589/0001-0480.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
+</div>
    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="section mt-16">
-        <div class="container px-12 sm:px-4 pb-16 mx-auto text-blue-900">
+        <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <h1 class="text-4xl font-bold text-blue-700 mb-3">Welcome to Cosmic Caps</h1>
@@ -121,7 +106,6 @@
                                 <br>
                                 <p>Cosmic Caps are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
-                                    </p>
 
                         </div>
                         <div class="lg:flex-1">
@@ -134,7 +118,7 @@
                 <br />
         </div>
 
-        <div class="container px-12 sm:px-4 pb-24 mx-auto">
+        <div class="container px-12 sm:px-4 pb-10 mx-auto">
                 <div class="lg:flex">
                     <div class="lg:flex-1">
                         <h2 class="text-3xl font-bold text-blue-700 mb-3">Animated Short Film Series</h2>
@@ -146,13 +130,13 @@
                         <img
                         src="@/assets/images/TV_Image.png"
                         alt="Cosmic Cap Television Ad"
-                        class="w-64 mx-auto md:pt-0 pt-12"/>
+                        class="w-64 mx-auto"/>
                     </div>
                 </div>
         </div>
 
 
-        <div class="container px-12 sm:px-4 pb-24 mx-auto">
+        <div class="container px-12 sm:px-4 pb-20 mx-auto">
                 <h2 class="text-3xl font-bold text-blue-700 mb-3">Price</h2>
 
                 <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32.</p>
@@ -585,24 +569,22 @@
            <div class="">
                    <h2 class="text-3xl font-bold text-blue-700 mb-12">FAQ</h2>
 
-                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >What are NFTs?</h3>
-                   <p class="mb-8">NFTs are <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 Non-Fungible Tokens</a>. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
-                   </p>
-                   <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3">How do I adopt a Cosmic Cap?</h3>
-                   <p class="mb-8">Connect your Metamask wallet and mint up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
+                   <p class="mb-8">Once minting is live, you can connect your Metamask wallet and adopt up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
                    <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >How do I join the community?</h3>
-                   <p class="mb-8">Cosmic Caps make great profile pictures, so you can easily spot fellow community members! Follow the official Twitter account and come and say hi in the community Discord server.</p>
+                   <p class="mb-8">Cosmic Caps make great profile pictures so you can easily spot fellow community members! Follow the official Twitter account and come and say hi in the community Discord server.</p>
                    <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >Are Cosmic Caps supporting charities?</h3>
-                   <p class="mb-8">Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
+                   <p class="mb-8">We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
                    mission.
                    </p>
+                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >What are NFTs?</h3>
+                   <p class="mb-8">NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
+                   </p>
                    <br>
-
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >What inpsired Cosmic Caps?</h3>
-                   <p class="mb-8">Cosmic Caps was created by a team of Ethereum developers and 3D Blender artists who've been intertwined with the Ethereum community since 2016.
+                   <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.
                    </p>
            </div>
    </div>
@@ -623,12 +605,7 @@
                 <br />
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">ARKIT & Animations</h3>
-                <p class="mb-8">Cosmic Caps owners will soon be able to stake their Cosmic Cap NFT to obtain an animated 3D Cosmic Caps NFT (.GLB) and ARKIT integration files. These can be imported into any metaverse or game engine.</p>
-
-                <br />
-
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Holders will be airdropped future Cosmic NFTs from each Episode</h3>
-                <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.</p>
+                <p class="mb-8">Cosmic Caps owners will be able to stake their Cosmic Cap NFT to obtain a new animated 3D Cosmic Caps NFT (.GLB format) and ARKIT integration files. These can be imported into any metaverse or game engine that supports .GLB format.</p>
 
                 <br />
 
@@ -638,25 +615,6 @@
                 </p>
 
                 <br />
-<!--
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Cosmic DAO</h3>
-                <p class="mb-8">
-
-                </p> -->
-
-                <br />
-
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Portaits</h3>
-                <p class="mb-8">All Cosmic Caps will be airdropped a burnable NFT called "The Portait", When burned you will receive a phyiscal 12" x 12" portrait of your Cosmic Cap NFT shipped to your home.
-                </p>
-
-                <br />
-
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">CC0 Ownership rights</h3>
-                <p class="mb-8">CC0, As long as you own the Cosmic Cap NFT, you’ll have exclusive rights to your Cosmic Cap.
-                </p>
-
-                <br>
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Web Store & Cosmic Cap Merchandise</h3>
                 <p class="mb-8">NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
@@ -664,7 +622,10 @@
 
                 <br />
 
+                <h3 class="text-2xl text-gray-100 font-bold mb-3">Holders will be airdropped future Cosmic NFTs from each Episode</h3>
+                <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.</p>
 
+                <br />
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Giving Back To Our Community</h3>
                 <p class="mb-8">Once all Cosmic Caps have been minted, the real story begins. We will donate $100,000 to Multidisciplinary Association For Psychedelic Studies (MAPS).
@@ -673,6 +634,11 @@
                     <!-- Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with. -->
                 </p>
 
+                <br />
+
+                <h3 class="text-2xl text-gray-100 font-bold mb-3">Ownership rights</h3>
+                <p class="mb-8">As long as you own the Cosmic Cap NFT, you’ll have exclusive rights to your Cosmic Cap.
+                </p>
         </div>
     </div>
 </div>
@@ -807,8 +773,8 @@ export default {
     async getBalances() {
       /*
             const smasherAddress = '0xbf3122b2aa3102693e3194df7870e1a7ae146b50'
-
-            const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9
+            
+            const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9  
 
             const currencyContract = this.web3Plug.getTokenContract( currencyAddress )
 
@@ -913,13 +879,11 @@ export default {
       );
 
       console.log("calling mint");
-      this.totalSupply = await nftContract.methods
-        .mint(userAddress, amt)
-        .send({
-          from: userAddress,
-          value: overrides.value,
-          gasLimit: overrides.gasLimit,
-        });
+      this.totalSupply = await nftContract.methods.mint(userAddress, amt).send({
+        from: userAddress,
+        value: overrides.value,
+        gasLimit: overrides.gasLimit,
+      });
       // await nftContract.methods.mint(userAddress, amt).send({from: userAddress, value: ethValue});
       // this.totalSupply = this.getTotalSupply();
     },
