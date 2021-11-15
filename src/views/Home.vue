@@ -8,55 +8,38 @@
      </div>
    </div>
 
-   <div class="section  ">
-     <div class="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
-       <div class="w-full h-screen hero text-center relative bg-center bg-cover h-full">
-      
-           <div class=" mx-auto left-0 right-0 max-w-xs" style="bottom: 19rem;">
-               <!-- <div class="button bg-yellow-400 hover:bg-yellow-300 text-4xl text-black font-bold my-2 py-3 px-2 rounded cursor-pointer shadow-lg hover:shadow-sm rounded-xl  w-sm" style="">Mint 0.06 <span style="font-family: sans-serif;">Ξ</span></div> -->
-           
-      <div class="text-white lg:flex lg:flex-row-reverse">
-        <div class="w-full lg:w-1/2 text-center p-8" v-if="canMint">
+<div class="section">
+    <div class="video-container pb-0">
+        <div class="title-container" v-if="canMint">
+            <input
+              type="number"
+              min="1"
+              max="16"
+              v-model="mintAmount"
+              class="text-black border-black border-2 p-4 mx-4"
+            />
+            <div
+              class="
+                select-none
+                bg-green-900
+                hover:bg-green-500
+                p-4
+                px-12
+                rounded
+                border-gray border-2
+                cursor-pointer
+              "
+              @click="mint"
+            >
+          <div class="text-white text-s">
 
-          <div class="my-16 text-center">
-            <div class="flex flex-row">
-              <div class="flex-grow"></div>
-              <input
-                type="number"
-                min="1"
-                max="16"
-                v-model="mintAmount"
-                class="text-black border-black border-2 p-4 mx-4"
-              />
-              <div
-                class="
-                  select-none
-                  bg-green-900
-                  hover:bg-green-500                  
-                  p-4
-                  px-12
-                  rounded
-                  border-gray border-2
-                  cursor-pointer
-                "
-                @click="mint"
-              >
-            <div class="text-white text-s">
-
-                Mint 0.06 Ξ
-</div>
-              </div>
-              <div class="flex-grow"></div>
-            </div>
-            <br />
+              Mint 0.06 Ξ
           </div>
-
-          <div>
-            <div class="text-white text-xs">
-              {{ errorMessage }}
             </div>
+        </div>
 
-          </div>
+        <div class="text-white text-xs">
+          {{ errorMessage }}
         </div>
 
         <div class="w-full lg:w-1/2 text-center p-8" v-if="!canMint">
@@ -66,26 +49,16 @@
             </div>
           </div>
         </div>
-      </div>
 
-           
-           </div>
-       </div>
-
-  <video
-    autoplay
-    loop
-    muted
-    class="absolute z-10 w-auto min-w-full min-h-full max-w-none"
-  >
-    <source
-      src="https://cosmic-caps.s3.amazonaws.com/0001-0480.mp4"
-      type="video/mp4"
-    />
-    Your browser does not support the video tag.
-  </video>
+        <video autoplay loop muted id="video">
+            <source src="https://cosmic-caps.s3.amazonaws.com/0001-0480.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
+            Your browser does not support the video tag. Try Upgrading your browser.
+        </video>
+    </div>
 </div>
-   </div>
+
+
+
 
     <div class="section mt-16">
         <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
@@ -766,8 +739,8 @@ export default {
     async getBalances() {
       /*
             const smasherAddress = '0xbf3122b2aa3102693e3194df7870e1a7ae146b50'
-            
-            const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9  
+
+            const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9
 
             const currencyContract = this.web3Plug.getTokenContract( currencyAddress )
 
