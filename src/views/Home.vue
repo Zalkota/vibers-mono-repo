@@ -1,19 +1,12 @@
 <template>
-
 <div>
-
    <div class="section bg-gray-100 px-0 lg:px-1">
-
      <div class=" ">
         <Navbar
         v-bind:web3Plug="web3Plug"
        />
      </div>
-
-
    </div>
-
-
 
    <div class="section  ">
      <div class="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
@@ -86,7 +79,7 @@
     class="absolute z-10 w-auto min-w-full min-h-full max-w-none"
   >
     <source
-      src="https://cdn.discordapp.com/attachments/639207337017606218/898406499443949589/0001-0480.mp4"
+      src="https://cosmic-caps.s3.amazonaws.com/0001-0480.mp4"
       type="video/mp4"
     />
     Your browser does not support the video tag.
@@ -150,7 +143,7 @@
         <div class="">
             <h2 class="text-3xl font-bold text-blue-700 mb-3">Rarity</h2>
 
-            <p>Each Cosmic Cap is unqie! Some are more rare than others.</p>
+            <p>Each Cosmic Cap is unique! Some are more rare than others.</p>
 
             <p>Cosmic Caps are a Non-Fungible species of 10,000 unique fungi making their way from the shroomiverse to the metaverse!</p>
 
