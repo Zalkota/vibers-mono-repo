@@ -10,7 +10,9 @@
 
 <div class="section">
     <div class="video-container pb-0">
+
         <div class="title-container" v-if="canMint">
+
             <input
               type="number"
               min="1"
@@ -18,6 +20,7 @@
               v-model="mintAmount"
               class="text-black border-black border-2 p-4 mx-4"
             />
+ 
             <div
               class="
                 select-none
@@ -31,12 +34,12 @@
               "
               @click="mint"
             >
-          <div class="text-white text-s">
-
+          <div class="text-white text-s font-bold">
               Mint 0.06 Ξ
           </div>
             </div>
         </div>
+
 
         <div class="text-white text-xs">
           {{ errorMessage }}
@@ -51,7 +54,7 @@
         </div>
 
         <video autoplay loop muted id="video">
-            <source src="https://cosmic-caps.s3.amazonaws.com/0001-0480.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
+            <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
             Your browser does not support the video tag. Try Upgrading your browser.
         </video>
     </div>
@@ -66,9 +69,9 @@
                         <div class="lg:flex-1">
                                 <h1 class="text-4xl font-bold text-blue-700 mb-3">Welcome to Cosmic Caps</h1>
 
-                                <p>Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are exploring their way from the shroomiverse to the metaverse!</p>
+                                <p>Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
                                 <br>
-                                <p>10,000 computer generated psychedelic mushrooms with 120 traits across 6 categories (cap, stem, eyes, mouth, background, and body props).</p>
+                                <p>10,000 randomly-generated psychedelic mushrooms with over 120 traits across 6 different categories (cap, stem, eyes, mouth, background, and body props).</p>
                                 <br>
                                 <p>Cosmic Caps are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
@@ -83,6 +86,7 @@
                 </div>
                 <br />
         </div>
+
 
         <div class="container px-12 sm:px-4 pb-10 mx-auto">
                 <div class="lg:flex">
@@ -101,16 +105,6 @@
                 </div>
         </div>
 
-
-        <div class="container px-12 sm:px-4 pb-20 mx-auto">
-                <h2 class="text-3xl font-bold text-blue-700 mb-3">Price</h2>
-
-                <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32.</p>
-                <br />
-                <!-- <div class="button bg-yellow-400 text-2xl text-black font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center">
-                    Price 0.06 <span style="font-family: sans-serif;">Ξ</span>
-                </div> -->
-        </div>
 
     <div class="container px-12 sm:px-4 pb-20 mx-auto">
         <div class="">
@@ -648,29 +642,6 @@ import TabsBar from "./components/TabsBar.vue";
 import FrontendHelper from "../js/frontend-helper.js";
 
 const ERC721ABI = require("../contracts/ERC721ABI.json");
-// const StatsNFTABI = require('../contracts/StatsNFTABI.json')
-
-// 842026846969861567
-// 600000120000000000
-
-// export default {
-//   name: "Mint",
-//   props: [],
-//   components: { Navbar, Footer },
-//   data() {
-//     return {
-//       web3Plug: new Web3Plug(),
-//       signedInToWeb3: false,
-//       balances: {},
-//       totalSupply: 0,
-//       mintAmount: 1,
-//       errorMessage: null,
-
-//       encodedMetadata:
-//         "data:application/json;base64,eyJuYW1lIjogIjB4QlRDIFN0YXRzICMwIiwgImRlc2NyaXB0aW9uIjogIk1pbmVhYmxlIHRva2VuIHN0YXRpc3RpY3MuIiwgImltYWdlIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIQnlaWE5sY25abFFYTndaV04wVW1GMGFXODlJbmhOYVc1WlRXbHVJRzFsWlhRaUlIWnBaWGRDYjNnOUlqQWdNQ0F6TlRBZ016VXdJajQ4YzNSNWJHVStMbUpoYzJVZ2V5Qm1hV3hzT2lCM2FHbDBaVHNnWm05dWRDMW1ZVzFwYkhrNklITmxjbWxtT3lCbWIyNTBMWE5wZW1VNklERTJjSGc3SUgwOEwzTjBlV3hsUGp4eVpXTjBJSGRwWkhSb1BTSXhNREFsSWlCb1pXbG5hSFE5SWpFd01DVWlJR1pwYkd3OUltSnNZV05ySWlBdlBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeU1DSWdZMnhoYzNNOUltSmhjMlVpUGkwdExTQXdlRUpVUXlCVGRHRjBjeUF0TFMwOEwzUmxlSFErUEhSbGVIUWdlRDBpTVRBaUlIazlJalF3SWlCamJHRnpjejBpWW1GelpTSStUV2x1WldRZ1UzVndjR3g1T2lBMU1EQXdQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJMk1DSWdZMnhoYzNNOUltSmhjMlVpUGsxcGJtbHVaeUJFYVdabWFXTjFiSFI1T2lBeFBDOTBaWGgwUGp4MFpYaDBJSGc5SWpFd0lpQjVQU0k0TUNJZ1kyeGhjM005SW1KaGMyVWlQazFwYm1sdVp5QlNaWGRoY21RNklEVXdQQzkwWlhoMFBqd3ZjM1puUGc9PSJ9",
-//       encodedImageSVG: null,
-//     };
-//   },
 
 export default {
   name: "Home",
@@ -700,12 +671,6 @@ export default {
 
         this.signedInToWeb3 = this.activeAccountAddress != null;
 
-        // await this.fetchTokenURI();
-
-        // let result = this.parseMetadata(this.encodedMetadata);
-
-        // this.encodedImageSVG = result.image;
-
         this.getTotalSupply();
       }.bind(this)
     );
@@ -719,10 +684,6 @@ export default {
     );
 
     this.web3Plug.reconnectWeb();
-
-    // let result = this.parseMetadata(this.encodedMetadata);
-
-    // this.encodedImageSVG = result.image;
   },
   mounted: function () {
     this.getBalances();

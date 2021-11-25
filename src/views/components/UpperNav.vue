@@ -19,7 +19,7 @@
                                 </svg>
                             </a>
                         </div>
-                        <div class="flex-1 px-2 mt-3 mx-auto hide">
+                        <div class="flex-1 px-2 mt-3 mx-auto">
                             <a href="https://opensea.io/collection/cosmic-caps/" target="_blank">
                                 <svg class="block mx-auto mb-1 pt-1" width="48" height="48" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M90 45C90 69.8514 69.8514 90 45 90C20.1486 90 0 69.8514 0 45C0 20.1486 20.1486 0 45 0C69.8566 0 90 20.1486 90 45Z" fill="#2081E2"/>
@@ -32,16 +32,17 @@
             </div>
 
 
+                    <div class="flex-none px-2 mt-1 lg:mt-0 text-center">
 
-          <!-- <Web3NetButton
+          <Web3NetButton
              v-bind:providerNetworkID="activeNetworkId"
              v-bind:web3Plug='web3Plug'
            />
 
             <span class="  " style="max-width:120px">
-            <a   v-bind:href="getEtherscanBaseURL()+'/address/'+web3Plug.getActiveAccountAddress()" class="text-gray-800  "   target="_blank">  {{web3Plug.getActiveAccountAddress()}} </a>
-           </span> -->
-
+            <a   v-bind:href="getEtherscanBaseURL()+'/address/'+web3Plug.getActiveAccountAddress()" class="text-gray-800  "   target="_blank">  {{web3Plug.getActiveAccountENS()}} </a>
+           </span>
+                    </div>
 
         </div>
     </div>
