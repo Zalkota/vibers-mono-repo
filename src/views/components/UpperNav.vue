@@ -1,7 +1,14 @@
 <template>
+
+
   <nav role="navigation" class="w-full p-2 flex flex-row">
-            <div class="lg:flex-none flex-1" v-for="item in navConfig.dropdowns" :key="item.title">
+
                 <div class="flex">
+                    <div class="hide flex-auto px-2 mt-1 lg:mt-0 text-center">
+                        <router-link class="no-underline" to="/gallery">
+                            <div class="bg-blue-700 text-2xl text-white font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer hover:bg-blue-500 shadow-md hover:shadow-sm rounded-xl max-w-xs no-underline">View Gallery</div>
+                        </router-link>
+                    </div>
                     <div class="flex-auto px-2 mt-1 lg:mt-0 text-center">
                         <div v-if="web3Plug.connectedToWeb3() == false" @click="connectToWeb3" class="button bg-yellow-400 hover:bg-yellow-300 lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-md hover:shadow-sm rounded-xl max-w-xs">Connect</div>
                     </div>
@@ -29,18 +36,57 @@
                             </a>
                         </div>
                 </div>
-            </div>
 
 
+                <!-- <div class="w-full lg:w-auto block lg:inline-block" v-for="item in navConfig.dropdowns" :key="item.title">
+                <t-dropdown  class="w-full" >
+                  <div
+                    slot="trigger"
+                    slot-scope="{
+                      mousedownHandler,
+                      focusHandler,
+                      blurHandler,
+                      keydownHandler,
+                      isShown
+                    }"
+                  >
+                    <button
+                      class="flex text-md  p-2 m-1 mx-2 text-gray-900 items-center pr-3 bg-transparent focus:outline-none focus:shadow-solid transition duration-150 ease-in-out border-2 border-gray-200"
+                      :class="{ 'border-gray-300 bg-gray-500 text-white ': isShown }"
+                      aria-label="User menu"
+                      aria-haspopup="true"
+                      @mousedown="mousedownHandler"
+                      @focus="focusHandler"
+                      @blur="blurHandler"
+                      @keydown="keydownHandler"
+                    >
 
-          <!-- <Web3NetButton
-             v-bind:providerNetworkID="activeNetworkId"
-             v-bind:web3Plug='web3Plug'
-           />
+                        <span class="px-2">{{item.title}}</span> <i class="fas fa-caret-down "></i>
+                    </button>
+                  </div>
 
-            <span class="  " style="max-width:120px">
-            <a   v-bind:href="getEtherscanBaseURL()+'/address/'+web3Plug.getActiveAccountAddress()" class="text-gray-800  "   target="_blank">  {{web3Plug.getActiveAccountAddress()}} </a>
-           </span> -->
+                  <div slot-scope="{ hide, blurHandler }" class="origin-top-right absolute right-0 w-56 shadow-lg text-md bg-gray-200 text-gray-900">
+
+                    <router-link
+                    :to="row.url"
+                    v-for="row in item.rows"
+
+                    :key="row.title"
+                    class="block w-full px-4 py-2 leading-5 hover:bg-gray-600 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                    role="menuitem"
+                    @blur="blurHandler"
+                    >
+                      {{ row.title }}
+                    </router-link>
+
+
+                  </div>
+                </t-dropdown>
+
+              </div>
+     -->
+
+
 
 
         </div>

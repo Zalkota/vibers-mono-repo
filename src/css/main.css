@@ -210,3 +210,28 @@ SVG Icons - svgicons.sparkk.fr
     display: none;
   }
 }
+
+
+.background-factory-image {
+    background: url("/images/cosmic_factory.jpg");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+
+}
+
+
+
+input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .custom-number-input input:focus {
+    outline: none !important;
+  }
+
+  .custom-number-input button:focus {
+    outline: none !important;
+  }

@@ -10,32 +10,44 @@
 
 <div class="section">
     <div class="video-container pb-0">
-        <div class="title-container" v-if="canMint">
-            <input
-              type="number"
-              min="1"
-              max="16"
-              v-model="mintAmount"
-              class="text-black border-black border-2 p-4 mx-4"
-            />
-            <div
-              class="
-                select-none
-                bg-yellow-500
-                hover:bg-yellow-500
-                p-4
-                px-12
-                rounded
-                cursor-pointer
-              "
-              @click="mint"
-            >
-          <div class="text-black text-s">
-
-              Mint 0.06 Ξ
-          </div>
+        <div class="title-container mushroom-" v-if="canMint">
+                <div class="custom-number-input h-10 justify-center content-center text-center px-16">
+                      <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2 ">
+                        <button v-on:click="mintAmount--" class=" bg-gray-300 text-gray-600 hover:text-gray-800 hover:bg-yellow-500 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                        </button>
+                        <input
+                        type="number"
+                          min="1"
+                          max="16"
+                          v-model="mintAmount"
+                        class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"></input>
+                        <button v-on:click="mintAmount++" data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                            <span class="m-auto text-2xl font-thin">+</span>
+                      </button>
+                    </div>
+                </div>
+                <br>
+                <div
+                  class="
+                    select-none
+                    bg-yellow-500
+                    hover:bg-yellow-500
+                    p-4
+                    px-16
+                    text-3xl
+                    text-center
+                    rounded-xl
+                    font-bold
+                    cursor-pointer
+                  "
+                  @click="mint"
+                >
+                    <div class="text-black text-s">
+                      Mint 0.06 Ξ
+                    </div>
+                </div>
             </div>
-        </div>
 
         <div class="text-white text-xs">
           {{ errorMessage }}
@@ -86,18 +98,18 @@
         <div class="container px-12 sm:px-4 pb-10 mx-auto">
                 <div class="lg:flex">
                     <div class="lg:flex-1">
-                        <h2 class="text-3xl font-bold text-blue-700 mb-3">Cosmic Cargo Drop!</h2>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-3 underline">Cosmic Cargo Drop</h2>
 
-                        <p>Arriving from the Shroomiverse.. We present to you the upcoming 2021 Cosmic Cargo Drop.<br> <br>
+                        <p>Arriving from the Shroomiverse, The Cosmic Cargo Drop.<br> <br>
                             <!-- <h3 class="font-bold text-black">Mint a Cosmic Cargo and receive the following:</h3> <br><br> -->
-                            <a href="#" class="button bg-blue-500 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Each Cosmic Cargo Contains:</a>
-                            <h3 class="text-blue-700 font-bold">
-                                <br>
-                                - Cosmic Cap NFT <br>
-                                - Between 25-150 0xBitcoin ERC20 Tokens<br>
-                                - Cosmic Factory NFT <br>
-                                - 0xBitcoin NFT <br>
-                            </h3>
+                            <h2 class="text-xl text-gray-800 font-bold no-underline">The Cosmic Cargo has the potential of containing:</h2>
+                            <br>
+                            <ul class="text-gray-700 font-medium">
+                                <li><span class="font-bold">1x</span> - Cosmic Cap NFT (100% Chance)</li>
+                                <li><span class="font-bold">50x</span> - 0xBitcoin ERC20 Tokens (100% Chance)</li>
+                                <li><span class="font-bold">1x</span> - Cosmic Factory NFT (10% Chance)</li>
+                                <li><span class="font-bold">1x</span> -0xBitcoin NFT (10% Chance)</li>
+                            </ul>
                         <!-- <br>Mintable for 0.06 Ether, each mintable cargo drop contains between 25-150 0xBitcoin ERC20 tokens, ONE random and newly minted Cosmic Cap, along with  </p> -->
                         <br>
 
@@ -119,7 +131,7 @@
 
 
         <div class="container px-12 sm:px-4 pb-20 mx-auto">
-                <h2 class="text-3xl font-bold text-blue-700 mb-3">Price</h2>
+                <h2 class="text-3xl font-bold text-blue-700 mb-3 underline">Price</h2>
 
                 <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32.</p>
                 <br />
@@ -130,12 +142,11 @@
 
     <div class="container px-12 sm:px-4 pb-20 mx-auto">
         <div class="">
-            <h2 class="text-3xl font-bold text-blue-700 mb-3">Rarity</h2>
+            <h2 class="text-3xl font-bold text-blue-700 mb-3 underline">Rarity</h2>
 
             <p>Each Cosmic Cap is unique! Some are more rare than others.</p>
 
             <p>Cosmic Caps are a Non-Fungible species of 10,000 unique fungi making their way from the shroomiverse to the metaverse!</p>
-
             <br>
 
             <p>Each Cosmic Cap is completely unique. Created using over 110 individual features.</p>
@@ -143,6 +154,14 @@
             <p>Cosmic Caps star in the upcoming Cosmic Cap animated series that is releasing this fall.</p>
 
             <br>
+                <router-link class="no-underline" to="/gallery"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">View Gallery</a></router-link>
+                <br>
+                <br>
+                <router-link class="no-underline" to="/collection/cosmic-caps"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Shop Cosmic Caps</a></router-link>
+                <br>
+                <br>
+                <router-link class="no-underline" to="/holiday-cargo-form"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Cargo Form</a></router-link>
+            <br><br><br>
 
             <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
 
@@ -549,7 +568,7 @@
 <div class="section bg-gray-300">
    <div class="container px-12 sm:px-4 py-20 mx-auto">
            <div class="">
-                   <h2 class="text-3xl font-bold text-blue-700 mb-12">FAQ</h2>
+                   <h2 class="text-3xl font-bold text-blue-700 mb-12 underline">FAQ</h2>
 
                    <h3 class="text-2xl text-blue-700 font-bold mb-3">How do I adopt a Cosmic Cap?</h3>
                    <p class="mb-8">Once minting is live, you can connect your Metamask wallet and adopt up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
@@ -576,13 +595,11 @@
 <div class="section bg-blue-900 text-gray-300">
     <div class="container px-12 sm:px-4 py-20 mx-auto">
         <div class="">
-                <h2 class="text-4xl font-bold text-blue-100 mb-12">Roadmap</h2>
+                <h2 class="text-4xl font-bold text-blue-100 mb-12 underline">Roadmap</h2>
 
-                <h3 class="text-2xl text-blue-100 font-bold mb-3">New Animated Short Series</h3>
-                <p class="mb-8">Cosmic Caps are much more than just an NFT. We are part of a network of Ethereum developers, animators, and forward thinkers focused on bringing the benefits and therapies of mushrooms to viewers across the world.
-                    To do this, we are releasing a series of <span class="text-bold">animated short comedy films</span>.
-
-                    Become one with the fungi and join us for the first release of Episode 1 of Cosmic Caps. After Epsiode 1, Cosmic Cap holders will have the ability to vote on the story line of Cosmic Caps. Earn unique 1/1 NFTs from the epsiode you watch and participate in.</p>
+                <h3 class="text-2xl text-blue-100 font-bold mb-3">Cosmic Factory 1/1 NFTs</h3>
+                <p class="mb-8">Cosmic Caps will be releasing ten unique 1/1 3-D animated gifs depicting the inside of the Cosmic Labs Factory. Each animated gif will showcase a different portion of the assembly process of the original Cosmic Cap PFP collection.
+                    </p>
 
                 <br />
 
@@ -604,10 +621,9 @@
 
                 <br />
 
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Holders will be airdropped future Cosmic NFTs from each Episode</h3>
+                <!-- <h3 class="text-2xl text-gray-100 font-bold mb-3">Holders will be airdropped future Cosmic NFTs from each Episode</h3>
                 <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.</p>
-
-                <br />
+                <br /> -->
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Giving Back To Our Community</h3>
                 <p class="mb-8">Once all Cosmic Caps have been minted, the real story begins. We will donate $100,000 to Multidisciplinary Association For Psychedelic Studies (MAPS).
@@ -618,7 +634,7 @@
 
                 <br />
 
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Ownership rights</h3>
+                <h3 class="text-2xl text-gray-100 font-bold mb-3">CCO Ownership rights</h3>
                 <p class="mb-8">As long as you own the Cosmic Cap NFT, you’ll have exclusive rights to your Cosmic Cap.
                 </p>
         </div>
