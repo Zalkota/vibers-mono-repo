@@ -38,7 +38,7 @@
                 </div>
 
 
-                    <div class="flex-none px-2 mt-1 lg:mt-0 text-center">
+                    <!-- <div class="flex-none px-2 mt-1 lg:mt-0 text-center">
 
           <Web3NetButton
              v-bind:providerNetworkID="activeNetworkId"
@@ -48,9 +48,9 @@
             <span class="  " style="max-width:120px">
             <a   v-bind:href="getEtherscanBaseURL()+'/address/'+web3Plug.getActiveAccountAddress()" class="text-gray-800  "   target="_blank">  {{web3Plug.getActiveAccountENS()}} </a>
            </span>
-                    </div>
+                    </div> -->
 
-        </div>
+        </div> 
     </div>
 
 

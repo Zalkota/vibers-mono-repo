@@ -291,22 +291,22 @@ export default class Web3Plug {
   }
 
 
-  getActiveAccountENS()
-  {
-    // let address = this.getActiveAccountAddress()
-    let address = this.getActiveAccountAddress();
-    console.log("1");
-    console.log(web3.eth.getAccounts());
-    console.log("2");
-    // let address = window.ethereum.selectedAddress;
-    // let ENS = new 
-    console.log(web3.eth.ens.getAddress(address));
-
-    // var ENS = new web3.eth.ens.resolver(address);
-    // console.log(ENS);
-
-    return "0xaaa";
-  }
+  // getActiveAccountENS()
+  // {
+  //   // let address = this.getActiveAccountAddress()
+  //   let address = this.getActiveAccountAddress();
+  //   console.log("1");
+  //   console.log(web3.eth.getAccounts());
+  //   console.log("2");
+  //   // let address = window.ethereum.selectedAddress;
+  //   // let ENS = new
+  //   console.log(web3.eth.ens.getAddress(address));
+  //
+  //   // var ENS = new web3.eth.ens.resolver(address);
+  //   // console.log(ENS);
+  //
+  //   return "0xaaa";
+  // }
 
 
   async getETHBalance(ownerAddress)
