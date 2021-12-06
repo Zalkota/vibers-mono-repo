@@ -13,7 +13,7 @@ import Collection from './views/Collection.vue'
 import NftToken from './views/NftToken.vue'
 
 import GalleryDetail from './views/components/GalleryDetail.vue'
-import HolidayCargoForm from './views/components/HolidayCargoForm.vue'
+import HolidayOrderForm from './views/components/HolidayOrderForm.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -36,22 +36,22 @@ export default new Router({
       name: 'gallery',
       component: Gallery,
     },
-    {
-      path: '/collection/:contractAddress',
-      name: 'collection',
-      component: Collection
-    },
+    // {
+    //   path: '/collection/:contractAddress',
+    //   name: 'collection',
+    //   component: Collection
+    // },
+    //
+    // {
+    //   path: '/collection/:contractAddress/:tokenId',
+    //   name: 'nftToken',
+    //   component: NftToken
+    // },
 
     {
-      path: '/collection/:contractAddress/:tokenId',
-      name: 'nftToken',
-      component: NftToken
-    },
-
-    {
-      path: '/holiday-cargo-form',
+      path: '/holiday-order-form',
       name: 'holiday cargo form',
-      component: HolidayCargoForm,
+      component: HolidayOrderForm,
     },
 
     {

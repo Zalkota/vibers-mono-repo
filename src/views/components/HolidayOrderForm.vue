@@ -130,7 +130,7 @@ import FrontendHelper from "../../js/frontend-helper.js";
 import emailjs from 'emailjs-com';
 
 export default {
-  name: 'HolidayCargoForm',
+  name: 'HolidayOrderForm',
   props: [],
   components: { Navbar },
   data() {

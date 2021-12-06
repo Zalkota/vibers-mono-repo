@@ -10,9 +10,9 @@
 
 <div class="section">
     <div class="video-container pb-0">
-        <div class="title-container mushroom-" v-if="canMint">
-                <div class="custom-number-input h-10 justify-center content-center text-center px-16">
-                      <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2 ">
+        <div class="title-container" v-if="canMint">
+                <div class="custom-number-input h-10 justify-center content-center text-center px-2">
+                      <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
                         <button v-on:click="mintAmount--" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
                             <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M206.387 28.4073C165.844 -0.76659 126.385 1.32271 126.385 1.32271C126.385 1.32271 86.1015 0.717249 47.9906 29.9702C3.98272 64.0788 -2.92064 125.947 3.25974 131.635C6.27559 136.071 16.2625 136.762 26.3231 136.762H52.8353C54.8037 138.182 45.2244 174.448 45.2244 174.448L40.9961 200.176C40.9961 200.176 40.4764 215.775 45.2244 224.455C48.9682 231.299 59.1776 239.674 59.1776 239.674C59.1776 239.674 75.1366 252.411 132.326 251.27C187.647 250.166 200.084 239.674 200.084 239.674C200.084 239.674 208.235 231.556 211.817 224.455C215.893 216.375 213.932 201.988 213.932 201.988L211.817 174.448C211.817 174.448 202.938 140.706 202.938 136.762H230.467C242.061 136.762 249.641 137.313 251.938 133.508C256.286 123.791 255.689 66.2486 206.387 28.4073Z" fill="#E2E8F0" stroke="black"/>
@@ -24,7 +24,7 @@
                           min="1"
                           max="16"
                           v-model="mintAmount"
-                          class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none"></input>
+                          class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
                         <button v-on:click="mintAmount++" data-action="increment" class="bg-transparent text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
                             <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M206.387 27.9046C165.844 -1.26928 126.385 0.820026 126.385 0.820026C126.385 0.820026 86.1015 0.214563 47.9906 29.4675C3.98272 63.5762 -2.92064 125.444 3.25974 131.132C6.27559 135.568 16.2625 136.26 26.3231 136.26H52.8353C54.8037 137.679 45.2244 173.946 45.2244 173.946L40.9961 199.674C40.9961 199.674 40.4764 215.272 45.2244 223.952C48.9682 230.796 59.1776 239.171 59.1776 239.171C59.1776 239.171 75.1366 251.908 132.326 250.767C187.647 249.664 200.084 239.171 200.084 239.171C200.084 239.171 208.235 231.054 211.817 223.952C215.893 215.872 213.932 201.485 213.932 201.485L211.817 173.946C211.817 173.946 202.938 140.204 202.938 136.26H230.467C242.061 136.26 249.641 136.81 251.938 133.006C256.286 123.288 255.689 65.7459 206.387 27.9046Z" fill="#E2E8F0" stroke="black"/>
@@ -40,8 +40,8 @@
                     select-none
                     bg-yellow-500
                     hover:bg-yellow-500
-                    p-4
-                    px-16
+                    py-4
+                    px-8
                     text-3xl
                     text-center
                     rounded-xl
@@ -51,7 +51,7 @@
                   @click="mint"
                 >
                     <div class="text-black text-s">
-                      Mint 0.06 Ξ
+                      Mint 0.06 <span  style="font-family: sans-serif;">Ξ</span>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <video autoplay loop muted id="video">
+        <video autoplay loop muted id="video" class="fillWidth">
             <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
             Your browser does not support the video tag. Try Upgrading your browser.
         </video>
@@ -104,30 +104,20 @@
         </div>
 
 
-        <div class="container px-12 sm:px-4 pb-10 mx-auto">
+        <!-- <div class="container px-12 sm:px-4 pb-10 mx-auto">
                 <div class="lg:flex">
                     <div class="lg:flex-1">
-                        <h2 class="text-3xl font-bold text-blue-700 mb-3 underline">Cosmic Cargo Drop</h2>
-
-                        <p>Arriving from the Shroomiverse, The Cosmic Cargo Drop.<br> <br>
-                            <!-- <h3 class="font-bold text-black">Mint a Cosmic Cargo and receive the following:</h3> <br><br> -->
-                            <h2 class="text-xl text-gray-800 font-bold no-underline">The Cosmic Cargo has the potential of containing:</h2>
-                            <br>
+                        <h2 class="text-3xl font-bold text-blue-700 mb-3">Cosmic Cargo Mint</h2>
+                        <p>Arriving soon from the Shroomiverse, Cosmic Cargo Drop.<br> <br>
+                            <h2 class="text-xl text-gray-800 font-bold no-underline mb-3">The Cosmic Cargo has the potential of containing:</h2>
                             <ul class="text-gray-700 font-medium">
                                 <li><span class="font-bold">1x</span> - Cosmic Cap NFT (100% Chance)</li>
                                 <li><span class="font-bold">50x</span> - 0xBitcoin ERC20 Tokens (100% Chance)</li>
                                 <li><span class="font-bold">1x</span> - Cosmic Factory NFT (10% Chance)</li>
                                 <li><span class="font-bold">1x</span> -0xBitcoin NFT (10% Chance)</li>
                             </ul>
-                        <!-- <br>Mintable for 0.06 Ether, each mintable cargo drop contains between 25-150 0xBitcoin ERC20 tokens, ONE random and newly minted Cosmic Cap, along with  </p> -->
                         <br>
-
                         <br>
-
-                        <!-- <h2 class="text-3xl font-bold text-blue-700 mb-3">Animated Short Film Series</h2>
-                        <p>Tune In! Become one with the fungi and join us for the first release of Episode 1 of Cosmic Caps.</p>
-                        <br>
-                        <a href="#" class="button bg-blue-800 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">View Film Trailer </a> -->
                     </div>
                     <div class="lg:flex-1 container ">
                         <img
@@ -136,11 +126,18 @@
                         class="max-w-md mx-auto"/>
                     </div>
                 </div>
-        </div>
+        </div> -->
 
+        <!-- <h3 class="font-bold text-black">Mint a Cosmic Cargo and receive the following:</h3> <br><br> -->
+        <!-- <br>Mintable for 0.06 Ether, each mintable cargo drop contains between 25-150 0xBitcoin ERC20 tokens, ONE random and newly minted Cosmic Cap, along with  </p> -->
+
+        <!-- <h2 class="text-3xl font-bold text-blue-700 mb-3">Animated Short Film Series</h2>
+        <p>Tune In! Become one with the fungi and join us for the first release of Episode 1 of Cosmic Caps.</p>
+        <br>
+        <a href="#" class="button bg-blue-800 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">View Film Trailer </a> -->
 
         <div class="container px-12 sm:px-4 pb-20 mx-auto">
-                <h2 class="text-3xl font-bold text-blue-700 mb-3 underline">Price</h2>
+                <h2 class="text-3xl font-bold text-blue-700 mb-3">Price</h2>
 
                 <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32.</p>
                 <br />
@@ -151,7 +148,7 @@
 
     <div class="container px-12 sm:px-4 pb-20 mx-auto">
         <div class="">
-            <h2 class="text-3xl font-bold text-blue-700 mb-3 underline">Rarity</h2>
+            <h2 class="text-3xl font-bold text-blue-700 mb-3">Rarity</h2>
 
             <p>Each Cosmic Cap is unique! Some are more rare than others.</p>
 
@@ -164,12 +161,12 @@
 
             <br>
                 <router-link class="no-underline" to="/gallery"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">View Gallery</a></router-link>
-                <br>
+                <!-- <br>
                 <br>
                 <router-link class="no-underline" to="/collection/cosmic-caps"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Shop Cosmic Caps</a></router-link>
                 <br>
-                <br>
-                <router-link class="no-underline" to="/holiday-cargo-form"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Cargo Form</a></router-link>
+                <br> -->
+                <!-- <router-link class="no-underline" to="/holiday-order-form"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Cargo Form</a></router-link> -->
             <br><br><br>
 
             <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
@@ -577,10 +574,10 @@
 <div class="section bg-gray-300">
    <div class="container px-12 sm:px-4 py-20 mx-auto">
            <div class="">
-                   <h2 class="text-3xl font-bold text-blue-700 mb-12 underline">FAQ</h2>
+                   <h2 class="text-3xl font-bold text-blue-700 mb-12">FAQ</h2>
 
                    <h3 class="text-2xl text-blue-700 font-bold mb-3">How do I adopt a Cosmic Cap?</h3>
-                   <p class="mb-8">Once minting is live, you can connect your Metamask wallet and adopt up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
+                   <p class="mb-8">Connect your Web3 wallet and mint up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
                    <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >How do I join the community?</h3>
                    <p class="mb-8">Cosmic Caps make great profile pictures so you can easily spot fellow community members! Follow the official Twitter account and come and say hi in the community Discord server.</p>
@@ -589,11 +586,12 @@
                    <p class="mb-8">We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
                    mission.
                    </p>
+                   <br>
                    <h3 class="text-2xl text-blue-700 font-bold mb-3" >What are NFTs?</h3>
                    <p class="mb-8">NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
                    </p>
                    <br>
-                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >What inpsired Cosmic Caps?</h3>
+                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >What inspired Cosmic Caps?</h3>
                    <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.
                    </p>
            </div>
@@ -604,7 +602,7 @@
 <div class="section bg-blue-900 text-gray-300">
     <div class="container px-12 sm:px-4 py-20 mx-auto">
         <div class="">
-                <h2 class="text-4xl font-bold text-blue-100 mb-12 underline">Roadmap</h2>
+                <h2 class="text-4xl font-bold text-blue-100 mb-12 ">Roadmap</h2>
 
                 <h3 class="text-2xl text-blue-100 font-bold mb-3">Cosmic Factory 1/1 NFTs</h3>
                 <p class="mb-8">Cosmic Caps will be releasing ten unique 1/1 3-D animated gifs depicting the inside of the Cosmic Labs Factory. Each animated gif will showcase a different portion of the assembly process of the original Cosmic Cap PFP collection.

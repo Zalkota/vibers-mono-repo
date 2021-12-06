@@ -19,7 +19,7 @@
             </h1>
             <input class="w-full h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg" v-model="search" placeholder="Search Cosmic Caps by ID..">
 
-                    <div class="flex flex-row">
+                    <!-- <div class="flex flex-row">
                         <div class="flex-auto">
                             <FilterDropdown/>
                         </div>
@@ -38,8 +38,7 @@
                         <div class="flex-auto">
                             <FilterDropdown/>
                         </div>
-
-                    </div>
+                    </div> -->
             <!-- <span class="text-gray-700"> Showing: {{ this.end}}  / 10,000</span> -->
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">

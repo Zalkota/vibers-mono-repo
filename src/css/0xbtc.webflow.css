@@ -95,7 +95,7 @@ body {
   background-color: #312e2b;
   color: #ff972c;
 }
- 
+
 
 
 .section.dark {
@@ -629,7 +629,7 @@ body {
   float: right;
   cursor: pointer;
 }
-
+/* 
 .video-container {
   display: block;
   padding-right: 10%;
@@ -651,7 +651,7 @@ body {
 
 .video {
   width: 80%;
-}
+} */
 
 .image-7 {
   cursor: pointer;
