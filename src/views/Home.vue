@@ -50,7 +50,7 @@
                   "
                   @click="mint"
                 >
-                    <div class="text-black text-s">
+                    <div class="text-black text-s inline">
                       Mint 0.06 <span  style="font-family: sans-serif;">Ξ</span>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <video autoplay loop muted id="video" class="fillWidth">
+        <video autoplay loop muted id="video" class="fillWidth hide-video">
             <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
             Your browser does not support the video tag. Try Upgrading your browser.
         </video>

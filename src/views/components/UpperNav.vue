@@ -1,9 +1,8 @@
 <template>
 
 
-  <nav role="navigation" class="w-full p-2 flex flex-row">
-
-                <div class="flex">
+  <nav role="navigation" class="w-full p-2 ">
+                <div class="flex flex-row">
                     <div class="hide flex-auto px-2 mt-1 lg:mt-0 text-center">
                         <router-link class="no-underline" to="/gallery">
                             <div class="bg-blue-700 text-2xl text-white font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer hover:bg-blue-500 shadow-md hover:shadow-sm rounded-xl max-w-xs no-underline">View Gallery</div>
@@ -26,7 +25,7 @@
                                 </svg>
                             </a>
                         </div>
-                        <div class="flex-1 px-2 mt-3 mx-auto">
+                        <div class="flex-1 px-2 mt-3 mx-auto hide">
                             <a href="https://opensea.io/collection/cosmic-caps/" target="_blank">
                                 <svg class="block mx-auto mb-1 pt-1" width="48" height="48" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M90 45C90 69.8514 69.8514 90 45 90C20.1486 90 0 69.8514 0 45C0 20.1486 20.1486 0 45 0C69.8566 0 90 20.1486 90 45Z" fill="#2081E2"/>
@@ -50,7 +49,7 @@
            </span>
                     </div> -->
 
-        </div> 
+        </div>
     </div>
 
 
