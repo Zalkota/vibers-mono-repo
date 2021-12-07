@@ -173,9 +173,11 @@
 
                 <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                      <router-link class="no-underline" to="/gallery/85">
                       <img class="w-full" src="@/assets/images/cosmic_cap_1.png" alt="Sunset in the mountains">
+                      </router-link>
                       <div class="px-6 py-4">
-                        <h4 class="font-bold text-blue-800 text-2xl mb-2">#3249</h4>
+                        <h4 class="font-bold text-blue-800 text-2xl mb-2">#85</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -219,9 +221,12 @@
 
                 <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                        <img class="w-full" src="@/assets/images/cosmic_cap_4.png" alt="Sunset in the mountains">
+                        <router-link class="no-underline" to="/gallery/344">
+                            <img class="w-full" src="@/assets/images/cosmic_cap_4.png" alt="Sunset in the mountains">
+                        </router-link>
+
                         <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#2241</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">344</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -268,9 +273,11 @@
 
                 <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                      <img class="w-full" src="@/assets/images/cosmic_cap_2.png" alt="Sunset in the mountains">
+                        <router-link class="no-underline" to="/gallery/109">
+                            <img class="w-full" src="@/assets/images/cosmic_cap_2.png" alt="Sunset in the mountains">
+                        </router-link>
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#1279</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#109</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -317,9 +324,11 @@
 
                 <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                      <img class="w-full" src="@/assets/images/cosmic_cap_3.png" alt="Sunset in the mountains">
+                        <router-link class="no-underline" to="/gallery/1315">
+                            <img class="w-full" src="@/assets/images/cosmic_cap_3.png" alt="Sunset in the mountains">
+                        </router-link>
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#7289</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#1315</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -369,9 +378,11 @@
 
                 <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4">
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                      <img class="w-full" src="@/assets/images/cosmic_cap_11.png" alt="Sunset in the mountains">
+                        <router-link class="no-underline" to="/gallery/8220">
+                            <img class="w-full" src="@/assets/images/cosmic_cap_11.png" alt="Sunset in the mountains">
+                        </router-link>
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#324</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8220</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -409,8 +420,6 @@
                             </clipPath>
                             </defs>
                             </svg>
-
-
                         </div>
                       </div>
                     </div>
@@ -422,9 +431,11 @@
 
                 <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                      <img class="w-full" src="@/assets/images/cosmic_cap_5.png" alt="Sunset in the mountains">
+                        <router-link class="no-underline" to="/gallery/8702">
+                            <img class="w-full" src="@/assets/images/cosmic_cap_5.png" alt="Sunset in the mountains">
+                        </router-link>
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#993</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8702</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -471,9 +482,12 @@
 
                 <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                      <img class="w-full" src="@/assets/images/cosmic_cap_9.png" alt="Sunset in the mountains">
+                        <router-link class="no-underline" to="/gallery/7826">
+                            <img class="w-full" src="@/assets/images/cosmic_cap_9.png" alt="Sunset in the mountains">
+                        </router-link>
+
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#4366</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#7826</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -519,9 +533,11 @@
 
                 <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                     <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                      <img class="w-full" src="@/assets/images/cosmic_cap_12.png" alt="Sunset in the mountains">
+                        <router-link class="no-underline" to="/gallery/8340">
+                            <img class="w-full" src="@/assets/images/cosmic_cap_12.png" alt="Sunset in the mountains">
+                        </router-link>
                       <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#6283</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8340</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
