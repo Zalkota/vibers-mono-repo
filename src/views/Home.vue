@@ -13,19 +13,19 @@
         <div class="title-container" v-if="canMint">
                 <div class="custom-number-input h-10 justify-center content-center text-center px-2">
                       <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
-                        <button v-on:click="mintAmount--" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
+                        <button v-on:click="decrementMint" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
                             <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M206.387 28.4073C165.844 -0.76659 126.385 1.32271 126.385 1.32271C126.385 1.32271 86.1015 0.717249 47.9906 29.9702C3.98272 64.0788 -2.92064 125.947 3.25974 131.635C6.27559 136.071 16.2625 136.762 26.3231 136.762H52.8353C54.8037 138.182 45.2244 174.448 45.2244 174.448L40.9961 200.176C40.9961 200.176 40.4764 215.775 45.2244 224.455C48.9682 231.299 59.1776 239.674 59.1776 239.674C59.1776 239.674 75.1366 252.411 132.326 251.27C187.647 250.166 200.084 239.674 200.084 239.674C200.084 239.674 208.235 231.556 211.817 224.455C215.893 216.375 213.932 201.988 213.932 201.988L211.817 174.448C211.817 174.448 202.938 140.706 202.938 136.762H230.467C242.061 136.762 249.641 137.313 251.938 133.508C256.286 123.791 255.689 66.2486 206.387 28.4073Z" fill="#E2E8F0" stroke="black"/>
                             <line x1="84.8352" y1="124.399" x2="171.372" y2="124.399" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
                             </svg>
                         </button>
                         <input
-                        type="number"
+                          type="number"
                           min="1"
                           max="16"
                           v-model="mintAmount"
                           class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
-                        <button v-on:click="mintAmount++" data-action="increment" class="bg-transparent text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
+                        <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
                             <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M206.387 27.9046C165.844 -1.26928 126.385 0.820026 126.385 0.820026C126.385 0.820026 86.1015 0.214563 47.9906 29.4675C3.98272 63.5762 -2.92064 125.444 3.25974 131.132C6.27559 135.568 16.2625 136.26 26.3231 136.26H52.8353C54.8037 137.679 45.2244 173.946 45.2244 173.946L40.9961 199.674C40.9961 199.674 40.4764 215.272 45.2244 223.952C48.9682 230.796 59.1776 239.171 59.1776 239.171C59.1776 239.171 75.1366 251.908 132.326 250.767C187.647 249.664 200.084 239.171 200.084 239.171C200.084 239.171 208.235 231.054 211.817 223.952C215.893 215.872 213.932 201.485 213.932 201.485L211.817 173.946C211.817 173.946 202.938 140.204 202.938 136.26H230.467C242.061 136.26 249.641 136.81 251.938 133.006C256.286 123.288 255.689 65.7459 206.387 27.9046Z" fill="#E2E8F0" stroke="black"/>
                             <line x1="84.8352" y1="123.896" x2="171.372" y2="123.896" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
@@ -51,7 +51,7 @@
                   @click="mint"
                 >
                     <div class="text-black text-s inline">
-                      Mint 0.06 <span  style="font-family: sans-serif;">Ξ</span>
+                      Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
                 <router-link class="no-underline" to="/collection/cosmic-caps"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Shop Cosmic Caps</a></router-link>
                 <br>-->
                 <br>
-                <router-link class="no-underline" to="/holiday-order-form"><a href="" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Cargo Form</a></router-link>
+                <router-link class="no-underline hidden" to="/holiday-order-form"><a href="" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Holiday Package Form</a></router-link>
             <br><br><br>
 
             <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
@@ -226,7 +226,7 @@
                         </router-link>
 
                         <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2"># 344</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#344</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -776,6 +776,18 @@ export default {
 */
     },
 
+    async incrementMint() {
+        if (this.mintAmount < 32) {
+            this.mintAmount++;
+        }
+    },
+
+    async decrementMint() {
+        if (this.mintAmount > 1) {
+            this.mintAmount--;
+        }
+    },
+
     // async fetchTokenURI() {
     //   let contractData = await this.web3Plug.getContractDataForActiveNetwork();
     //   const nftContract = this.web3Plug.getCustomContract(
@@ -875,6 +887,23 @@ export default {
       // await nftContract.methods.mint(userAddress, amt).send({from: userAddress, value: ethValue});
       // this.totalSupply = this.getTotalSupply();
     },
+  },
+
+  computed: {
+      mintCostDisplayAmount: function(){
+        let numbers = [11, 15, 21, 22, 27, 30, 31]
+        let answers = [0.66, 0.9, 1.26, 1.32, 1.62, 1.80, 1.86]
+
+        if (numbers.includes(this.mintAmount)) {
+            let position = numbers.indexOf(this.mintAmount);
+            let cost = answers[position];
+            return cost;
+        } else {
+            let cost = this.mintAmount * 0.06;
+            return cost;
+        }
+
+      }
   },
 };
 </script>
