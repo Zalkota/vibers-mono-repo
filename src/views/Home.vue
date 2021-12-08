@@ -164,9 +164,9 @@
                 <!-- <br>
                 <br>
                 <router-link class="no-underline" to="/collection/cosmic-caps"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Shop Cosmic Caps</a></router-link>
+                <br>-->
                 <br>
-                <br> -->
-                <!-- <router-link class="no-underline" to="/holiday-order-form"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Cargo Form</a></router-link> -->
+                <router-link class="no-underline" to="/holiday-order-form"><a href="" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Cargo Form</a></router-link>
             <br><br><br>
 
             <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
@@ -226,7 +226,7 @@
                         </router-link>
 
                         <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">344</h4>
+                        <h4 class="font-bold  text-blue-800 text-2xl mb-2"># 344</h4>
                         <div class="w-full">
                             <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
@@ -621,15 +621,15 @@
                 <h2 class="text-4xl font-bold text-blue-100 mb-12 ">Roadmap</h2>
 
                 <h3 class="text-2xl text-blue-100 font-bold mb-3">Cosmic Factory 1/1 NFTs</h3>
-                <p class="mb-8">Cosmic Caps will be releasing ten unique 1/1 3-D animated gifs depicting the inside of the Cosmic Labs Factory. Each animated gif will showcase a different portion of the assembly process of the original Cosmic Cap PFP collection.
-                    </p>
+                <p class="mb-8">Cosmic Caps will be releasing ten unique 1/1 animated gifs depicting the inside of the Chaotic Cosmic Caps Factory. Each animated gif will showcase a different portion of the assembly process of the original Cosmic Cap PFP collection.
+                </p>
 
                 <br />
 
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">ARKIT & Animations</h3>
+                <!-- <h3 class="text-2xl text-gray-100 font-bold mb-3">ARKIT & Animations</h3>
                 <p class="mb-8">Cosmic Caps owners will be able to stake their Cosmic Cap NFT to obtain a new animated 3D Cosmic Caps NFT (.GLB format) and ARKIT integration files. These can be imported into any metaverse or game engine that supports .GLB format.</p>
 
-                <br />
+                <br /> -->
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Metaverse Integration</h3>
                 <p class="mb-8">Cosmic Caps will be compatible with Decentraland and Cryptovoxels. As an owner of Cosmic Caps, you will be given access to download 3D model files that can be imported into Decentraland and Cryptovoxels as a player model.
