@@ -166,7 +166,7 @@
                 <router-link class="no-underline" to="/collection/cosmic-caps"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Shop Cosmic Caps</a></router-link>
                 <br>-->
                 <br>
-                <router-link class="no-underline hidden" to="/holiday-order-form"><a href="" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Holiday Package Form</a></router-link>
+                <router-link class="no-underline" to="/holiday-order-form"><a href="" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Holiday Package Form</a></router-link>
             <br><br><br>
 
             <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
