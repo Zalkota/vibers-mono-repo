@@ -1,4 +1,4 @@
 {
-    "tokenDataApiRoot":"https://api.swampz.io",
-    "marketApiRoot":"https://api.swampz.io" 
+    "tokenDataApiRoot":"http://localhost:3000",
+    "marketApiRoot":"http://localhost:3000"
 }

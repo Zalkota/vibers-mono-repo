@@ -1,5 +1,5 @@
 
- 
+
 import axios from "axios";
 
 
@@ -12,11 +12,12 @@ export default class StarflaskAPIHelper {
 
       axios.post(uri, inputData )
       .then((res) => {
-         
+
+           console.log("Axios is attempting to post at", uri)
            console.log(res.data)
            let results = res.data
-          
-     
+
+
             resolve(results)
 
        }) .catch((error) => {
@@ -24,7 +25,7 @@ export default class StarflaskAPIHelper {
            reject(error)
        })
 
-   }); 
+   });
 
   }
 
@@ -34,9 +35,9 @@ export default class StarflaskAPIHelper {
       static async findHashmasksOwnedBy(publicAddress)
       {
            publicAddress = publicAddress.toLowerCase()
-     
+
             let graphURL = "https://api.thegraph.com/subgraphs/name/tibike6/hashmasks"
-    
+
             let queryString = `
                         {
                           account(id: "`+publicAddress+`") {
@@ -47,20 +48,20 @@ export default class StarflaskAPIHelper {
                             }
                           }
                         }
-                        `        
-                               
-    
-                            
+                        `
+
+
+
           let result = await TheGraphHelper.resolveGraphQuery(graphURL , queryString  )
-    
+
           console.log('graph', result)
           let tokens =  result.data.account.hashmasks
-    
+
           return tokens.map(x => ({tokenId: x.id, needsWrap: false, specialName: x.name}))
-     
-    
+
+
         }*/
-     
+
 
 
 
@@ -74,19 +75,19 @@ export default class StarflaskAPIHelper {
                       cats {
                         id
                       }
-                    
+
                     }
-                  }  
+                  }
                   `
                 })
                 .then((res) => {
-                  
+
                     console.log(res.data)
                     let results = res.data
                     let owner = results.data.owners[0]
-                    if(!owner)return 
- 
-                  
+                    if(!owner)return
+
+
                     resolve(owner.cats)
                 })
                 .catch((error) => {
@@ -96,8 +97,8 @@ export default class StarflaskAPIHelper {
 
   */
 
- 
- 
+
+
 
 
 

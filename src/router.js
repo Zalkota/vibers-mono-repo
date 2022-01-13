@@ -5,7 +5,13 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Mint from './views/Mint.vue'
 import Gallery from './views/Gallery.vue'
-import NotFound from './views/NotFound.vue'
+
+
+
+// tutorial
+// import EventCreate from './views/EventCreate.vue'
+// import EventList from './views/EventList.vue'
+// import EventShow from './views/EventShow.vue'
 
 
 // Toadz Collection Tiles
@@ -36,35 +42,60 @@ export default new Router({
       name: 'gallery',
       component: Gallery,
     },
-    // {
-    //   path: '/collection/:contractAddress',
-    //   name: 'collection',
-    //   component: Collection
-    // },
-    //
-    // {
-    //   path: '/collection/:contractAddress/:tokenId',
-    //   name: 'nftToken',
-    //   component: NftToken
-    // },
-
-    {
-      path: '/holiday-order-form',
-      name: 'holiday cargo form',
-      component: HolidayOrderForm,
-    },
 
     {
       path: '/gallery/:id',
       name: 'gallery detail',
       component: GalleryDetail,
     },
-
-
+    
+    {
+      path: '/collection/:contractAddress',
+      name: 'collection',
+      component: Collection
+    },
 
     {
-      path: '/*',
-      component: NotFound
+      path: '/collection/:contractAddress/:tokenId',
+      name: 'nftToken',
+      component: NftToken
     },
+
+    // {
+    //   path: '/holiday-order-form',
+    //   name: 'holiday cargo form',
+    //   component: HolidayOrderForm,
+    // },
+
+
+
+
+// tutorial
+  //   {
+  //     path: '/event-list',
+  //     name: 'event-list',
+  //     component: EventList
+  //   },
+  //   {
+  //     path: '/event/:id',
+  //     name: 'event-show',
+  //     component: EventShow,
+  //     props: true
+  //   },
+  //   {
+  //     path: '/event/create',
+  //     name: 'event-create',
+  //     component: EventCreate
+  // },
+
+
+
+
+
+    // not found??
+    // {
+    //   path: '/*',
+    //   component: NotFound
+    // },
   ]
 })

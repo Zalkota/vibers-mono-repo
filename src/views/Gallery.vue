@@ -14,8 +14,10 @@
 
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
         <div class="text-center pb-12">
-            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                Cosmic Caps Gallery
+            <span class="text-3xl text-blue-800 font-bold">Cosmic Caps</span>
+            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0">
+
+                Marketplace
             </h1>
             <input class="w-full h-16 px-3 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg" v-model="search" placeholder="Search Cosmic Caps by ID..">
 
@@ -44,14 +46,14 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
           <template v-for="mushroom in filteredMushrooms">
-              <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
+              <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center  border border-gray-300">
                   <router-link v-bind:to="'/gallery/' + mushroom.tokenId">
                       <div>
                           <img class="object-center object-cover h-auto w-full" v-bind:src="'https://cosmic-caps.s3.amazonaws.com/Final_10000_caps/' + mushroom.tokenId + '.png'" alt="photo">
                       </div>
                   </router-link>
-                  <div class="text-center py-8 sm:py-6">
-                      <p class="text-xl text-gray-700 font-bold mb-2">#{{ mushroom.tokenId }}</p>
+                  <div class="text-left  px-3 pt-3 pb-2">
+                      <h4 class="text-sm text-gray-900 mb-2">Cosmic Cap #{{ mushroom.tokenId }}</h4>
                   </div>
               </div>
           </template>
@@ -63,7 +65,7 @@
     </section>
 
 
-    <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;">
+    <div class="section  text-white   " v-if="signedInToWeb3" style="background:#222;">
     </div>
 
 </div>

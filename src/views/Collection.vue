@@ -2,61 +2,45 @@
 
 <div>
 
-   <div class="section    border-b-2 border-black px-0 lg:px-1">
+   <div class="section px-0 lg:px-1">
 
      <div class=" ">
         <Navbar
         v-bind:web3Plug="web3Plug"
        />
      </div>
-
-
    </div>
 
 
-   <div class="section  border-b-2 border-black ">
-     <div class=" container mb-16 margin-center">
+   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+       <div class="text-center pb-12">
+           <span class="text-3xl text-blue-800 font-bold">Cosmic Caps</span>
+           <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0">
+               Marketplace
+           </h1>
 
-       <div class="grid grid-cols-4 gap-4 p-4 ">
+                   <div class="flex flex-row">
+                       <div class="flex-auto">
+                           <!-- <FilterDropdown/> -->
+                           <TreeList
+                             v-bind:inputArray="filterTraitsList"
+                             v-bind:onClickCallback="onClickTraitCallback"
+                           />
+                       </div>
 
-
-          <div class="bg-gray-200 p-2 border-4 border-black text-gray-800" style="min-height:500px">
-
-                <TreeList
-                  v-bind:inputArray="filterTraitsList"
-                  v-bind:onClickCallback="onClickTraitCallback"
-                />
-
-            </div>
-          <div class="col-span-3 p-2">
-
-
-                <TiledTokenBrowser
-                  v-bind:currentFilter="tokenBrowserFilter"
-
-                />
-
-
-
-
-            </div>
-
-
-
-
-
-
-
+                   </div>
+           <!-- <span class="text-gray-700"> Showing: {{ this.end}}  / 10,000</span> -->
        </div>
-     </div>
-   </div>
+      
+           <TiledTokenBrowser
+             ref="TokenBrowser"
+             v-bind:currentFilter="tokenBrowserFilter"
+             v-bind:clearFiltersCallback="clearFiltersCallback"
+           />
+       
+       <br>
 
-
-
-
-
-
-
+   </section>
 
 
   <Footer/>
@@ -138,7 +122,7 @@ export default {
 
               let uri = FrontendConfig.marketApiRoot+'/api/v1/apikey'
 
-              let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "all_collection_traits", "input": {collectionName:'Cryptoadz'}})
+              let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "all_collection_traits", "input": {collectionName:'cosmiccaps_dev'}})
 
 
               this.filterTraitsList = this.computeFilterTraitsList(  result.output  )
@@ -167,6 +151,16 @@ export default {
           onClickTraitCallback(result){
 
             this.tokenBrowserFilter = { traitName: result.parent , traitValue: result.leaf }
+          },
+
+          clearFiltersCallback(){
+             this.currentPage = 1
+
+             this.$refs.TokenBrowser.forceSetPage( this.currentPage )
+
+            this.tokenBrowserFilter = { traitName: undefined , traitValue: undefined }
+
+            this.updateRouteParams()
           },
 
           setActivePanel(panelId){

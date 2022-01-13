@@ -5,9 +5,10 @@
 
         <div class="flex flex-row">
             <div class=" md:flex-1 flex-none ">
-                <img class="w-full unhide px-2 mt-4" style="max-width: 150px" src="/images/cosmic_cap_text.png" />
+
                 <!-- <img class="w-full hide" style="max-width: 250px" src="/images/cosmic_cap_text.png" /> -->
                 <router-link to="/" class=''>
+                    <img class="w-full unhide px-2 mt-4" style="max-width: 150px" src="/images/cosmic_cap_text.png" />
                     <svg class="w-full hide pl-4 pr-2" style="max-width: 20rem;"
                    xmlns:dc="http://purl.org/dc/elements/1.1/"
                    xmlns:cc="http://creativecommons.org/ns#"
