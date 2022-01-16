@@ -1,7 +1,7 @@
 <template>
   <div class="    text-xs" style=" ">
 
- 
+
     <div  v-if="itemData && !hiddenForSearch">
       <div class="tree-list-row cursor-pointer" @click="clickedButton" :class="{'text-gray-600':isFolder()}">
 
@@ -71,6 +71,7 @@ export default {
         this.setCollapsed(  !this.collapsed  )//toggle me
       }else{
           this.onClickCallback( {parent: this.parentTitle , leaf: this.itemData.title} )
+          console.log('onClickCallback', this.parentTitle, this.itemData.title)
           //bubbles up the chain to the tree list
       }
     }

@@ -5,7 +5,7 @@ const assetLookup = {
 
     "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270":{name:"Artblocks",chainId:1},
     "0x059edd72cd353df5106d2b9cc5ab83a52287ac3a":{name:"Chromie Squiggle",chainId:1},
-  
+
     "0x1f318502998772564ab84792edf6a1f66d5ff22d":{name:"Artblocks",chainId:4},
 
     "0x388f486dbcbe05029ba7adf784459b580b427032":{name:"Chromie Squiggle",chainId:4}
@@ -16,120 +16,120 @@ const assetLookup = {
 const abProjectLookup = {
 
     0: 'Chromie Squiggles',
-    1: 'Genesis', 
-    2: 'Construction Token', 
-    3: 'Cryptoblots', 
-    4: 'Dynamic Slices', 
-    5: 'Variant Plan', 
-    6: 'View Card', 
-    7: 'Elevated Deconstructions', 
-    8: 'Singularity', 
-    9: 'Ignition', 
-    10: 'NimBuds', 
-    11: 'HyperHash', 
-    12: 'Unigrids', 
-    13: 'Ringers', 
-    14: 'Cyber Cities', 
-    15: 'Utopia', 
-    16: 'Color Study', 
-    17: 'Spectron', 
-    18: 'Gen 2', 
-    19: 'R3sonance', 
-    20: 'Sentience', 
-    21: '27-Bit Digital', 
-    22: 'The Eternal Pump', 
-    23: 'Archetype', 
-    24: 'Pixel Glass', 
-    25: 'Pathfinders', 
-    26: 'EnergySculpture', 
-    27: '720 Minutes', 
-    28: 'Apparitions', 
-    29: 'Inspirals', 
-    30: 'Hieroglyphs', 
-    31: 'Galaxiss', 
-    32: 'Light Beams', 
-    33: 'Empyrean', 
-    34: 'Ensō', 
-    35: 'Aerial View', 
-    36: 'Gazettes', 
-    37: 'Paper Armada', 
-    38: 'ByteBeats', 
-    39: 'Synapses', 
-    40: 'Algobots', 
-    41: 'Elementals', 
-    42: 'Void', 
-    43: 'Origami Dream', 
-    44: 'CryptoGodKing', 
-    45: 'Gravity Grid', 
-    46: '70s Pop Series One', 
-    47: 'Asterisms', 
-    48: 'Gen 3', 
-    49: 'Dear Hash,', 
-    50: 'The Opera', 
-    51: 'Stipple Sunsets', 
-    52: 'Star Flower', 
-    53: 'Subscapes', 
-    54: 'P:X', 
-    55: 'Talking Blocks', 
-    56: 'Aurora IV', 
-    57: 'Rhythm', 
-    58: 'Color Magic Planets', 
-    59: 'Watercolor Dreams', 
-    60: 'Event Horizon Sunset (Series C)', 
-    61: '70s Pop Super Fun Summertime Bonus Pack', 
-    62: 'Bubble Blobby', 
-    63: 'Ode to Roy', 
-    64: 'AlgoRhythms', 
-    65: 'Traversals', 
-    66: 'Patchwork Saguaros', 
-    67: 'Petri', 
-    68: 'Messengers', 
-    69: 'Abstraction', 
-    70: 'Antennas', 
-    71: 'Andradite', 
-    72: 'Frammenti', 
-    73: 'CatBlocks', 
-    74: 'The Blocks of Art', 
-    75: 'Breathe You', 
-    76: 'dino pals', 
-    77: 'Return', 
-    78: 'Fidenza', 
-    79: 'Space Debris [maider]', 
-    80: 'Space Debris [warning]', 
-    81: 'Space Debris [ravaged]', 
-    82: 'Incantation', 
-    83: 'Panelscape', 
-    84: 'PrimiDance', 
-    85: '70s Pop Series Two', 
-    86: 'Stroming', 
-    87: 'Patterns of Life', 
-    88: 'Orthogone', 
-    89: 'Dreams', 
-    90: 'Hashtractors', 
-    91: 'planets', 
-    92: 'Libertad Parametrizada', 
-    93: 'Sigils', 
-    94: 'Portal', 
-    95: 'CryptoVenetian', 
-    96: 'Gravity 12', 
-    97: '[Dis]entanglement', 
-    98: 'sail-o-bots', 
-    99: 'Spaghettification', 
-    100: 'CENTURY', 
-    101: 'Enchiridion', 
-    102: 'I Saw It in a Dream', 
-    103: 'Octo Garden', 
-    104: 'Eccentrics', 
-    105: 'Gizmobotz', 
-    106: 'Radiance', 
-    107: 'Low Tide', 
-    108: 'Divisions', 
-    109: 'Speckled Summits', 
-    110: 'Lava Glow', 
-    111: '70s Pop Ghost Bonus Pack', 
-    112: 'Alien Clock', 
-    113: 'celestial cyclones', 
-    114: 'glitch crystal monsters', 
+    1: 'Genesis',
+    2: 'Construction Token',
+    3: 'Cryptoblots',
+    4: 'Dynamic Slices',
+    5: 'Variant Plan',
+    6: 'View Card',
+    7: 'Elevated Deconstructions',
+    8: 'Singularity',
+    9: 'Ignition',
+    10: 'NimBuds',
+    11: 'HyperHash',
+    12: 'Unigrids',
+    13: 'Ringers',
+    14: 'Cyber Cities',
+    15: 'Utopia',
+    16: 'Color Study',
+    17: 'Spectron',
+    18: 'Gen 2',
+    19: 'R3sonance',
+    20: 'Sentience',
+    21: '27-Bit Digital',
+    22: 'The Eternal Pump',
+    23: 'Archetype',
+    24: 'Pixel Glass',
+    25: 'Pathfinders',
+    26: 'EnergySculpture',
+    27: '720 Minutes',
+    28: 'Apparitions',
+    29: 'Inspirals',
+    30: 'Hieroglyphs',
+    31: 'Galaxiss',
+    32: 'Light Beams',
+    33: 'Empyrean',
+    34: 'Ensō',
+    35: 'Aerial View',
+    36: 'Gazettes',
+    37: 'Paper Armada',
+    38: 'ByteBeats',
+    39: 'Synapses',
+    40: 'Algobots',
+    41: 'Elementals',
+    42: 'Void',
+    43: 'Origami Dream',
+    44: 'CryptoGodKing',
+    45: 'Gravity Grid',
+    46: '70s Pop Series One',
+    47: 'Asterisms',
+    48: 'Gen 3',
+    49: 'Dear Hash,',
+    50: 'The Opera',
+    51: 'Stipple Sunsets',
+    52: 'Star Flower',
+    53: 'Subscapes',
+    54: 'P:X',
+    55: 'Talking Blocks',
+    56: 'Aurora IV',
+    57: 'Rhythm',
+    58: 'Color Magic Planets',
+    59: 'Watercolor Dreams',
+    60: 'Event Horizon Sunset (Series C)',
+    61: '70s Pop Super Fun Summertime Bonus Pack',
+    62: 'Bubble Blobby',
+    63: 'Ode to Roy',
+    64: 'AlgoRhythms',
+    65: 'Traversals',
+    66: 'Patchwork Saguaros',
+    67: 'Petri',
+    68: 'Messengers',
+    69: 'Abstraction',
+    70: 'Antennas',
+    71: 'Andradite',
+    72: 'Frammenti',
+    73: 'CatBlocks',
+    74: 'The Blocks of Art',
+    75: 'Breathe You',
+    76: 'dino pals',
+    77: 'Return',
+    78: 'Fidenza',
+    79: 'Space Debris [maider]',
+    80: 'Space Debris [warning]',
+    81: 'Space Debris [ravaged]',
+    82: 'Incantation',
+    83: 'Panelscape',
+    84: 'PrimiDance',
+    85: '70s Pop Series Two',
+    86: 'Stroming',
+    87: 'Patterns of Life',
+    88: 'Orthogone',
+    89: 'Dreams',
+    90: 'Hashtractors',
+    91: 'planets',
+    92: 'Libertad Parametrizada',
+    93: 'Sigils',
+    94: 'Portal',
+    95: 'CryptoVenetian',
+    96: 'Gravity 12',
+    97: '[Dis]entanglement',
+    98: 'sail-o-bots',
+    99: 'Spaghettification',
+    100: 'CENTURY',
+    101: 'Enchiridion',
+    102: 'I Saw It in a Dream',
+    103: 'Octo Garden',
+    104: 'Eccentrics',
+    105: 'Gizmobotz',
+    106: 'Radiance',
+    107: 'Low Tide',
+    108: 'Divisions',
+    109: 'Speckled Summits',
+    110: 'Lava Glow',
+    111: '70s Pop Ghost Bonus Pack',
+    112: 'Alien Clock',
+    113: 'celestial cyclones',
+    114: 'glitch crystal monsters',
     115: '?',
     116: 'Flowers',
     117: 'Transitions',
@@ -189,29 +189,29 @@ export default class AssetDataHelper {
     static getCollectionNameForAsset( contractAddress, tokenId   )
     {
         if(!contractAddress) return 'Unknown'
-        
+
         let assetLookupData = assetLookup[contractAddress.toLowerCase()]
 
         if(assetLookupData){
-            let contractName = assetLookupData.name 
+            let contractName = assetLookupData.name
 
             return contractName
         }
-  
+
           return 'Unknown'
-  
+
       }
 
       static getProjectNameForProjectId( projectId   )
   {
 
         let projectName = abProjectLookup[projectId]
-        
+
         if(projectName){
-            return projectName 
+            return projectName
         }
 
-        return 'Unknown'    
+        return 'Unknown'
   }
 
   static getProjectNameForAsset( contractAddress, tokenId   )
@@ -219,12 +219,14 @@ export default class AssetDataHelper {
 
     if(!contractAddress) return 'Unknown'
 
+    console.log('getProjectNameForAsset', contractAddress, tokenId)
+
     let assetLookupData = assetLookup[contractAddress.toLowerCase()]
 
     console.log('assetLookupData',assetLookupData)
 
     if(assetLookupData){
-        let contractName = assetLookupData.name 
+        let contractName = assetLookupData.name
 
         if(contractName == "Chromie Squiggle" ){
             return 'Chromie Squiggle'
@@ -232,18 +234,18 @@ export default class AssetDataHelper {
 
         if(contractName == "Artblocks" ){
 
-         
-            let projectId = parseInt( parseInt(tokenId) / 1000000 )  //one million 
+
+            let projectId = parseInt( parseInt(tokenId) / 1000000 )  //one million
 
 
             console.log('meep', projectId)
 
             let projectName = abProjectLookup[projectId]
-            
+
             if(projectName){
-                return projectName 
+                return projectName
             }
-            
+
         }
 
         return 'Unknown'
@@ -252,7 +254,7 @@ export default class AssetDataHelper {
 
     contractAddress = contractAddress.toLowerCase()
 
-     
+
   }
 
 
@@ -263,11 +265,11 @@ export default class AssetDataHelper {
   }
 /*
   static async fetchProjectDataForProjectId(projectId){
-    let previewTokenId = projectId * 1000000 
+    let previewTokenId = projectId * 1000000
 
     return await  AssetDataHelper.fetchProjectDataForTokenId( previewTokenId  )
 
-    
+
     }
 
 
@@ -276,7 +278,7 @@ export default class AssetDataHelper {
     return axios.get(`https://token.artblocks.io/${tokenId}`);
 
   }*/
- 
+
 
 
 

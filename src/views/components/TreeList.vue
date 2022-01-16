@@ -8,7 +8,7 @@
 
       <div  >
 
-      
+
       <TreeListItem
         v-for="item in inputArray.children"
         :key="item.title"
@@ -42,7 +42,7 @@ export default {
     }
   },
   mounted() {
-     
+
   },
   methods: {
     updatedSearchQuery: function()

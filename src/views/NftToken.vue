@@ -24,11 +24,15 @@
 
     <div class="flex-auto  py-8 px-12 pb-0 m-6 bg-white rounded-md border border-gray-300">
 
-        <a class="text-sm font-bold" v-bind:href="getProjectURL()"> {{getCollectionName() }} </a>
+        <router-link  :to="getProjectURL()" class="no-underline" >
+            <h4 class="text-md text-blue-600 font-bold"> Cosmic Caps </h4>
+        </router-link>
 
         <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900 mt-0 mb-1">
-            {{getAssetName() }}
+            #{{ this.nftTokenId }}
         </h1>
+
+        <hr>
 
         <!-- <div class="py-2" v-if="ownedByLocalUser()">
              <div v-if="bestSellOrder " class='my-2'>
@@ -50,69 +54,31 @@
              <div class="p-2 my-2 border-2 border-black inline-block cursor-pointer rounded hover:bg-purple-200  select-none"  @click="interactionMode='makeBuyOrder'"> Bid For This Item </div>
          </div> -->
 
-        <div class="p-2 mb-2">
-
+        <div class="p-2">
             <div class="inline">
-              <span class="text-sm">Owned By <router-link  :to="'/account/'+tokenOwnerAddress"  >  {{getOwnerAddress()}}   </router-link></span>
+              <span class="text-sm">Owned By <router-link  :to="'/account/'+tokenOwnerAddress"  >  {{getOwnerAddress()}}  {{tokenOwnerAddress}}  </router-link></span>
             </div>
-
             <div class="mt-2 py-2">
                 <h2 class="text-gray-800 font-bold">Description</h2>
             </div>
-
             <div class="py-2">
                 <p class="text-gray-800 text-sm">Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are exploring their way from the shroomiverse to the metaverse!</p>
             </div>
-
         </div>
 
-        <div class="mt-2 ">
+        <div class="">
             <div class="p-2">
                 <h2 class="text-gray-800 font-bold">Properties</h2>
             </div>
-
-            <tr v-for="trait in nftTraitsArray" v-bind:key="trait.trait_type">
-
-              <td class="px-2 font-bold">{{ trait.trait_type }}</td>
-              <td class="px-2"> <router-link  :to="getProjectURL(trait.trait_type,trait.value)"  >   {{ trait.value }} </router-link> </td>
-
-            </tr>
-
-
-            <!-- <div class="flex flex-wrap">
-                <div class="bg-blue-100 px-4 py-2 border-blue-300  border-2 rounded-md text-center m-2">
-                    <span class="text-sm text-gray-700"> Shroom Cap</span> <br>
-                    <span class="font-bold text-gray-800">{{ this.mushrooms[this.id]['Shroom Cap'] }}</span>
+            <div class="flex flex-wrap">
+                <div v-for="trait in nftTraitsArray" v-bind:key="trait.trait_type"  class="bg-blue-100 px-4 py-2 border-blue-300  border-2 rounded-md text-center no-underline m-2">
+                    <router-link  :to="getProjectURL()" class="no-underline" >
+                    <span class="text-sm font-medium text-gray-700"> {{ trait.trait_type }}</span> <br>
+                    <span class="font-bold text-gray-800">{{ trait.value }}</span>
+                    </router-link>
                 </div>
-
-                <div class="bg-blue-100 px-4 py-2 border-blue-300  border-2 rounded-md text-center m-2">
-                    <span class="text-sm text-gray-700"> Shroom Stem</span> <br>
-                    <span class="font-bold text-gray-800">{{ this.mushrooms[this.id]['Shroom Stem'] }}</span>
-                </div>
-
-                <div class="bg-blue-100 px-4 py-2 border-blue-300  border-2 rounded-md text-center m-2">
-                    <span class="text-sm text-gray-700"> Mouth</span> <br>
-                    <span class="font-bold text-gray-800">{{ this.mushrooms[this.id]['Mouth'] }}</span>
-                </div>
-
-                <div class="bg-blue-100 px-4 py-2 border-blue-300  border-2 rounded-md text-center m-2">
-                    <span class="text-sm text-gray-700"> Eyes</span> <br>
-                    <span class="font-bold text-gray-800">{{ this.mushrooms[this.id]['Eyes'] }}</span>
-                </div>
-
-                <div class="bg-blue-100 px-4 py-2 border-blue-300  border-2 rounded-md text-center m-2">
-                    <span class="text-sm text-gray-700">Background</span> <br>
-                    <span class="font-bold text-gray-800">{{ this.mushrooms[this.id]['Background'] }}</span>
-                </div>
-
-                <div class="bg-blue-100 px-4 py-2 border-blue-300  border-2 rounded-md text-center m-2">
-                    <span class="text-sm text-gray-700"> Body Props</span> <br>
-                    <span class="font-bold text-gray-800">{{ this.mushrooms[this.id]['Body Props'] }}</span>
-                </div>
-            </div> -->
             </div>
-            <br>
-            <br>
+        </div>
         </div>
     </div>
 
@@ -122,8 +88,12 @@
    </div>
 
    <div class="text-center mx-auto m-6 ">
-         <a v-bind:href="'https://opensea.io/assets/0xf3c9b7a97eba579f5c234f79108331f5513c9741/' + this.id" class="button bg-blue-500 text-3xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline " >Buy on Opensea</a>
+         <a v-bind:href="'https://opensea.io/assets/0xf3c9b7a97eba579f5c234f79108331f5513c9741/' + this.id" class="button bg-blue-600 text-3xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline  mx-2" >Buy on Opensea</a>
+         <a class="button bg-blue-600 text-3xl text-white font-bold my-2 py-3 px-6 mx-2 rounded-xl shadow-md w-56 text-center no-underline " v-bind:href="getCollectionExplorerURL()">
+             View On Etherscan
+         </a>
    </div>
+
    <div class="mb-24">
 
    </div>
@@ -174,7 +144,7 @@
 
 
 
-  <Footer/>
+  <!-- <Footer/> -->
 
 </div>
 </template>
@@ -233,7 +203,7 @@ export default {
 
 
 
-    this.nftContractAddress = this.$route.params.contractAddress
+    this.nftContractName = this.$route.params.contractAddress
     this.nftTokenId = parseInt( this.$route.params.tokenId )
 
 
@@ -246,7 +216,8 @@ export default {
         this.activeNetworkId = connectionState.activeNetworkId
 
           let contractData = this.web3Plug.getContractDataForActiveNetwork()
-        this.nftContractAddress = FrontendHelper.lookupContractAddress( this.nftContractAddress, contractData  )
+
+        this.nftContractAddress = FrontendHelper.lookupContractAddress( this.nftContractName, contractData  )
    console.log('found address',this.nftContractAddress)
 
 
@@ -288,8 +259,11 @@ export default {
 
       getAssetName(){
         //make this come from a giant config file that uses contract address and token id to look up
-        let typeName = AssetDataHelper.getProjectNameForAsset(this.nftContractAddress, this.nftTokenId)
+        let typeName = "Cosmic Cap"
         let tokenId = this.nftTokenId
+
+
+        console.log('typeName',typeName)
 
         return typeName + ' ' + '#' + tokenId
 
@@ -301,19 +275,10 @@ export default {
       },
 
 
+
       getProjectURL(){
 
-        let projectId = 0
-
-        if( this.nftTokenId >= 1000000 ) {
-
-           projectId = parseInt(  parseInt(this.nftTokenId) / 1000000 )
-
-        }
-
-
-
-        return '/project/'+projectId
+        return `/collection/${this.nftContractName}/`
       },
 
       getCollectionName(){
@@ -327,6 +292,8 @@ export default {
        getOwnerAddress(){
 
          if(this.ownedByLocalUser()) return 'You'
+
+         console.log('tokenOwnerAddress',this.tokenOwnerAddress)
 
         return this.tokenOwnerAddress
       },
@@ -451,15 +418,17 @@ export default {
       // },
 
     async fetchTokenData(){
-        let collectionName = this.collectionName
+        let collectionName = this.nftContractName
         console.log('fetchTokenData', FrontendConfig.marketApiRoot, collectionName)
-        let results = await StarflaskAPIHelper.resolveStarflaskQuery( FrontendConfig.marketApiRoot+'/api/v1/apikey', {"requestType": "NFTTile_by_token_id", "input":{"collectionName":collectionName,"tokenId":  this.nftTokenId}  }    )
-        console.log('fetchedTokenData',results )
+        let results = await StarflaskAPIHelper.resolveStarflaskQuery( FrontendConfig.marketApiRoot+'/api/v1/apikey', {"requestType": "NFTTile_by_token_id", "input":{"collectionName": collectionName, "tokenId":  this.nftTokenId}  }    )
+        console.log('fetchedTokeResults',results )
         let output = results.output
         if(output){
             this.tokenOwnerAddress = output.ownerPublicAddress
             this.nftTraitsArray = output.nftTraits
             this.isLoading = false
+
+            console.log('tokenOwnerAddress',tokenOwnerAddress)
      }
     },
 

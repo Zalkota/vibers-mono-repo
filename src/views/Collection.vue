@@ -12,38 +12,40 @@
    </div>
 
 
-   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
-       <div class="text-center pb-12">
+   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-">
+       <div class="text-center pb-2">
            <span class="text-3xl text-blue-800 font-bold">Cosmic Caps</span>
            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0">
                Marketplace
            </h1>
+           <div class="">
+               <div v-on:click="show = !show" class="right-0 button bg-blue-600 text-md text-white text-sm font-bold my-2 py-1 px-3 md:mx-2 rounded-md shadow-md text-center no-underline w-32 cursor-pointer hover:bg-blue-500 hover:shadow-sm" >
+                   Show Filters
+               </div>
+           </div>
 
-                   <div class="flex flex-row">
-                       <div class="flex-auto">
-                           <!-- <FilterDropdown/> -->
-                           <TreeList
-                             v-bind:inputArray="filterTraitsList"
-                             v-bind:onClickCallback="onClickTraitCallback"
-                           />
-                       </div>
-
-                   </div>
-           <!-- <span class="text-gray-700"> Showing: {{ this.end}}  / 10,000</span> -->
+           <div class="flex flex-row" v-if="show">
+               <div class="flex-auto">
+                   <FilterDropdown
+                   v-bind:inputArray="filterTraitsList"
+                   v-bind:onClickCallback="onClickTraitCallback"
+                   />
+               </div>
+           </div>
        </div>
-      
+
            <TiledTokenBrowser
              ref="TokenBrowser"
              v-bind:currentFilter="tokenBrowserFilter"
              v-bind:clearFiltersCallback="clearFiltersCallback"
            />
-       
+
        <br>
 
    </section>
 
 
-  <Footer/>
+  <!-- <Footer/> -->
 
 </div>
 </template>
@@ -61,7 +63,7 @@ import Navbar from './components/Navbar.vue';
 
 import Footer from './components/Footer.vue';
 import TreeList from './components/TreeList.vue';
-
+import FilterDropdown from './components/FilterDropdown.vue';
 import TiledTokenBrowser from './components/TiledTokenBrowser.vue';
 //import ToadzTileGrid from './components/ToadzTileGrid.vue';
 
@@ -74,14 +76,16 @@ const FrontendConfig = require('../config/FrontendConfig.json')
 export default {
   name: 'Collection',
   props: [],
-  components: {Navbar, Footer,TreeList,TiledTokenBrowser},
+  components: {Navbar, Footer,TreeList,TiledTokenBrowser, FilterDropdown},
   data() {
     return {
       web3Plug: new Web3Plug() ,
       activePanelId: null ,
 
       filterTraitsList: {},
-      tokenBrowserFilter: {}
+      tokenBrowserFilter: {},
+      show: false
+
     }
   },
 

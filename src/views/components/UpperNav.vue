@@ -4,8 +4,8 @@
   <nav role="navigation" class="w-full p-2 ">
                 <div class="flex flex-row">
                     <div class="hide flex-auto px-2 mt-1 lg:mt-0 text-center">
-                        <router-link class="no-underline" to="/gallery">
-                            <div class="bg-blue-700 text-2xl text-white font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer hover:bg-blue-500 shadow-md hover:shadow-sm rounded-xl max-w-xs no-underline">Shop NFTs</div>
+                        <router-link class="no-underline" to="/collection/cosmic-caps">
+                            <div class="bg-blue-600 text-2xl text-white font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer hover:bg-blue-500 shadow-md hover:shadow-sm rounded-xl max-w-xs no-underline">Shop NFTs</div>
                         </router-link>
                     </div>
                     <div class="flex-auto px-2 mt-1 lg:mt-0 text-center">

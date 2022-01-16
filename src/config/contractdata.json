@@ -1,7 +1,7 @@
 {
   "mainnet":{
     "contracts":{
-      "cosmicCaps":{"name":"COSMIC","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" }
+      "cosmicCaps_dev":{"name":"COSMIC","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" }
     }
   },
 
@@ -15,7 +15,7 @@
 
     "rinkeby":{
       "contracts":{
-        "cosmicCaps":{"name":"COSMIC","address":"0x008B5B80625Dc92848D57720eb3D1190c32ED580" } 
+        "cosmicCaps":{"name":"COSMIC","address":"0x008B5B80625Dc92848D57720eb3D1190c32ED580" }
       }
     }
 
