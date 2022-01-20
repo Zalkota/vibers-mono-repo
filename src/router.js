@@ -17,9 +17,9 @@ import Gallery from './views/Gallery.vue'
 // Toadz Collection Tiles
 import Collection from './views/Collection.vue'
 import NftToken from './views/NftToken.vue'
-
+import Profile from './views/Profile.vue'
 import GalleryDetail from './views/components/GalleryDetail.vue'
-import HolidayOrderForm from './views/components/HolidayOrderForm.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -48,7 +48,7 @@ export default new Router({
       name: 'gallery detail',
       component: GalleryDetail,
     },
-    
+
     {
       path: '/collection/:contractAddress',
       name: 'collection',
@@ -59,6 +59,12 @@ export default new Router({
       path: '/collection/:contractAddress/:tokenId',
       name: 'nftToken',
       component: NftToken
+    },
+
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
     },
 
     // {

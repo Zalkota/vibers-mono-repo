@@ -19,7 +19,7 @@
         static async handleApiRequest(request, appId, wolfpackInterface, mongoInterface){
 
             let inputData = request.body
-            console.log(request.body)
+            grandrequest.body)
 
 
             //save a new buy or sell order to the server

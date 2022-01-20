@@ -65,9 +65,6 @@ import Footer from './components/Footer.vue';
 import TreeList from './components/TreeList.vue';
 import FilterDropdown from './components/FilterDropdown.vue';
 import TiledTokenBrowser from './components/TiledTokenBrowser.vue';
-//import ToadzTileGrid from './components/ToadzTileGrid.vue';
-
-//import FrontPageMedia from './components/FrontPageMedia.vue';
 
 import StarflaskApiHelper from '../js/starflask-api-helper.js'
 
@@ -90,15 +87,11 @@ export default {
   },
 
   created(){
-
-
     this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
         console.log('stateChanged',connectionState);
 
         this.activeAccountAddress = connectionState.activeAccountAddress
         this.activeNetworkId = connectionState.activeNetworkId
-
-
 
       }.bind(this));
    this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
@@ -109,10 +102,6 @@ export default {
       }.bind(this));
 
       this.web3Plug.reconnectWeb()
-
-
-
-
 
   },
   mounted: function () {

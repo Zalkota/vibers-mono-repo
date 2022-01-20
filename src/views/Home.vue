@@ -1,5 +1,6 @@
 <template>
 <div>
+    <!-- Navbar -->
    <div class="section bg-gray-100 px-0 lg:px-1">
      <div class=" ">
         <Navbar
@@ -8,77 +9,82 @@
      </div>
    </div>
 
-<div class="section">
-    <div class="video-container pb-0">
-        <div class="title-container" v-if="canMint">
-                <div class="custom-number-input h-10 justify-center content-center text-center px-2">
-                      <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
-                        <button v-on:click="decrementMint" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
-                            <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M206.387 28.4073C165.844 -0.76659 126.385 1.32271 126.385 1.32271C126.385 1.32271 86.1015 0.717249 47.9906 29.9702C3.98272 64.0788 -2.92064 125.947 3.25974 131.635C6.27559 136.071 16.2625 136.762 26.3231 136.762H52.8353C54.8037 138.182 45.2244 174.448 45.2244 174.448L40.9961 200.176C40.9961 200.176 40.4764 215.775 45.2244 224.455C48.9682 231.299 59.1776 239.674 59.1776 239.674C59.1776 239.674 75.1366 252.411 132.326 251.27C187.647 250.166 200.084 239.674 200.084 239.674C200.084 239.674 208.235 231.556 211.817 224.455C215.893 216.375 213.932 201.988 213.932 201.988L211.817 174.448C211.817 174.448 202.938 140.706 202.938 136.762H230.467C242.061 136.762 249.641 137.313 251.938 133.508C256.286 123.791 255.689 66.2486 206.387 28.4073Z" fill="#E2E8F0" stroke="black"/>
-                            <line x1="84.8352" y1="124.399" x2="171.372" y2="124.399" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
-                            </svg>
-                        </button>
-                        <input
-                          type="number"
-                          min="1"
-                          max="16"
-                          v-model="mintAmount"
-                          class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
-                        <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
-                            <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M206.387 27.9046C165.844 -1.26928 126.385 0.820026 126.385 0.820026C126.385 0.820026 86.1015 0.214563 47.9906 29.4675C3.98272 63.5762 -2.92064 125.444 3.25974 131.132C6.27559 135.568 16.2625 136.26 26.3231 136.26H52.8353C54.8037 137.679 45.2244 173.946 45.2244 173.946L40.9961 199.674C40.9961 199.674 40.4764 215.272 45.2244 223.952C48.9682 230.796 59.1776 239.171 59.1776 239.171C59.1776 239.171 75.1366 251.908 132.326 250.767C187.647 249.664 200.084 239.171 200.084 239.171C200.084 239.171 208.235 231.054 211.817 223.952C215.893 215.872 213.932 201.485 213.932 201.485L211.817 173.946C211.817 173.946 202.938 140.204 202.938 136.26H230.467C242.061 136.26 249.641 136.81 251.938 133.006C256.286 123.288 255.689 65.7459 206.387 27.9046Z" fill="#E2E8F0" stroke="black"/>
-                            <line x1="84.8352" y1="123.896" x2="171.372" y2="123.896" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
-                            <line x1="126.984" y1="80.2537" x2="126.984" y2="166.791" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
-                            </svg>
-                      </button>
+    <!-- Header -->
+    <div class="section ">
+        <div class="video-container pb-0">
+            <div class="title-container bg-blue-600 rounded-xl shadow-lg" v-if="canMint">
+                    <div class="custom-number-input h-10 justify-center content-center text-center px-2">
+                          <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
+                            <button v-on:click="decrementMint" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
+                                <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M206.387 28.4073C165.844 -0.76659 126.385 1.32271 126.385 1.32271C126.385 1.32271 86.1015 0.717249 47.9906 29.9702C3.98272 64.0788 -2.92064 125.947 3.25974 131.635C6.27559 136.071 16.2625 136.762 26.3231 136.762H52.8353C54.8037 138.182 45.2244 174.448 45.2244 174.448L40.9961 200.176C40.9961 200.176 40.4764 215.775 45.2244 224.455C48.9682 231.299 59.1776 239.674 59.1776 239.674C59.1776 239.674 75.1366 252.411 132.326 251.27C187.647 250.166 200.084 239.674 200.084 239.674C200.084 239.674 208.235 231.556 211.817 224.455C215.893 216.375 213.932 201.988 213.932 201.988L211.817 174.448C211.817 174.448 202.938 140.706 202.938 136.762H230.467C242.061 136.762 249.641 137.313 251.938 133.508C256.286 123.791 255.689 66.2486 206.387 28.4073Z" fill="#E2E8F0" stroke="black"/>
+                                <line x1="84.8352" y1="124.399" x2="171.372" y2="124.399" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <input
+                              type="number"
+                              min="1"
+                              max="16"
+                              v-model="mintAmount"
+                              class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-lg sm:text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
+                            <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
+                                <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M206.387 27.9046C165.844 -1.26928 126.385 0.820026 126.385 0.820026C126.385 0.820026 86.1015 0.214563 47.9906 29.4675C3.98272 63.5762 -2.92064 125.444 3.25974 131.132C6.27559 135.568 16.2625 136.26 26.3231 136.26H52.8353C54.8037 137.679 45.2244 173.946 45.2244 173.946L40.9961 199.674C40.9961 199.674 40.4764 215.272 45.2244 223.952C48.9682 230.796 59.1776 239.171 59.1776 239.171C59.1776 239.171 75.1366 251.908 132.326 250.767C187.647 249.664 200.084 239.171 200.084 239.171C200.084 239.171 208.235 231.054 211.817 223.952C215.893 215.872 213.932 201.485 213.932 201.485L211.817 173.946C211.817 173.946 202.938 140.204 202.938 136.26H230.467C242.061 136.26 249.641 136.81 251.938 133.006C256.286 123.288 255.689 65.7459 206.387 27.9046Z" fill="#E2E8F0" stroke="black"/>
+                                <line x1="84.8352" y1="123.896" x2="171.372" y2="123.896" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
+                                <line x1="126.984" y1="80.2537" x2="126.984" y2="166.791" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
+                                </svg>
+                          </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div
+                      class="
+                        select-none
+                        bg-gray-400
+                        hover:bg-yellow-500
+                        shadow-md
+                        sm:py-4
+                        py-3
+                        sm:px-8
+                        px-4
+                        text-md
+                        sm:text-3xl
+                        text-center
+                        rounded-xl
+                        font-bold
+                        cursor-pointer
+                      "
+                      @click="mint"
+                    >
+                        <div class="text-black text-s inline">
+                          Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
+                        </div>
                     </div>
                 </div>
-                <br>
-                <div
-                  class="
-                    select-none
-                    bg-yellow-500
-                    hover:bg-yellow-500
-                    py-4
-                    px-8
-                    text-3xl
-                    text-center
-                    rounded-xl
-                    font-bold
-                    cursor-pointer
-                  "
-                  @click="mint"
-                >
-                    <div class="text-black text-s inline">
-                      Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
-                    </div>
+
+
+            <div class="text-white text-xs">
+              {{ errorMessage }}
+            </div>
+
+            <div class="w-full lg:w-1/2 text-center p-8" v-if="!canMint">
+              <div>
+                <div class="text-white text-xl">
+                  This collection has been completely minted!
                 </div>
+              </div>
             </div>
 
-
-        <div class="text-white text-xs">
-          {{ errorMessage }}
+            <video autoplay loop muted id="video" class="fillWidth hide-video">
+                <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
+                Your browser does not support the video tag. Try Upgrading your browser.
+            </video>
         </div>
-
-        <div class="w-full lg:w-1/2 text-center p-8" v-if="!canMint">
-          <div>
-            <div class="text-white text-xl">
-              This collection has been completely minted!
-            </div>
-          </div>
-        </div>
-
-        <video autoplay loop muted id="video" class="fillWidth hide-video">
-            <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
-            Your browser does not support the video tag. Try Upgrading your browser.
-        </video>
     </div>
-</div>
 
 
 
-
+    <!-- Welcome  -->
     <div class="section mt-16">
         <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
                 <div class="lg:flex">
@@ -100,7 +106,6 @@
                                 class="mx-auto"/>
                         </div>
                 </div>
-                <br />
         </div>
 
 
@@ -128,6 +133,60 @@
                 </div>
         </div> -->
 
+
+
+
+        <div class="container shadow-md bg-gray-300 rounded-md p-12 sm:px-4 py-4 mx-auto border-2 border-purple-600">
+            <div class="lg:flex p-8">
+                <div class="lg:flex-1">
+                    <h2 class="text-5xl font-bold text-purple-700 mb-3">Cosmic Hoodie</h2>
+                    <p>Mint a Cosmic Cap and we'll ship you a Cosmic Cap Hoodie with your NFT on the back.
+                        Tweet a picture of your Cosmic Cap Hoodie to receive a whitelist for the Cosmic Cargo drop.<br> <br>
+                        <h2 class="text-xl text-purple-600 font-bold no-underline mb-3">Hoodie Utility:</h2>
+                        <ul class="text-gray-700 font-medium">
+                            <li><span class="font-bold text-purple-600">></span> You'll look dope</li>
+                            <li><span class="font-bold text-purple-600">></span> It's warm!</li>
+                            <li><span class="font-bold text-purple-600">></span> You'll code solidity 25% faster*</li>
+                            <li><span class="font-bold text-purple-600">></span> People will know you own an NFT</li>
+                            <!-- <li><span class="font-bold text-purple-600">></span> Future Ethereum Gas fees will decrease by 15%*</li> -->
+                        </ul>
+                    <br>
+                    <span class="text-gray-600 text-sm"> * = Not Guaranteed </span><br>
+                    <span class="text-gray-600 text-sm"> Free shipping within the United State and Canada. Available in black or gray. </span>
+                    <br>
+                    <br>
+                </div>
+                <div class="lg:flex-1 container ">
+                    <img
+                    src="@/assets/images/sweatshirt.png"
+                    alt="Cosmic Cap Television Ad"
+                    class="max-w-md mx-auto"/>
+                </div>
+            </div>
+
+            <div class="lg:flex p-8">
+                <div class="lg:flex-1">
+                    <h2 class="text-3xl font-bold  text-purple-700 mb-3">Cosmic Cargo Whitelist</h2>
+                    <p>Tweet a picture of your Cosmic Cap Hoodie to receive a whitelist for the Cosmic Cargo drop.<br> <br>
+                        <h2 class="text-xl text-purple-600 font-bold no-underline mb-3">The Cosmic Cargo has the potential of containing:</h2>
+                        <ul class="text-gray-700 font-medium">
+                            <!-- <li><span class="font-bold">1x</span> - Cosmic Cap NFT </li> -->
+                            <!-- <li><span class="font-bold">50x</span> - 0xBitcoin ERC20 Tokens</li> -->
+                            <li><span class="text-purple-600 font-bold">></span> Cosmic Factory NFTs</li>
+                            <!-- <li><span class="font-bold">1x</span> -0xBitcoin NFT</li> -->
+                        </ul>
+                    <br>
+                    <br>
+                </div>
+                <div class="lg:flex-1 container ">
+                    <img
+                    src="@/assets/images/website_cargo_box_3.png"
+                    alt="Cosmic Cap Television Ad"
+                    class="max-w-md mx-auto"/>
+                </div>
+            </div>
+        </div>
+
         <!-- <h3 class="font-bold text-black">Mint a Cosmic Cargo and receive the following:</h3> <br><br> -->
         <!-- <br>Mintable for 0.06 Ether, each mintable cargo drop contains between 25-150 0xBitcoin ERC20 tokens, ONE random and newly minted Cosmic Cap, along with  </p> -->
 
@@ -136,572 +195,544 @@
         <br>
         <a href="#" class="button bg-blue-800 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">View Film Trailer </a> -->
 
-        <div class="container px-12 sm:px-4 pb-20 mx-auto">
+        <!-- Price -->
+        <div class="container px-12 sm:px-4 py-20 mx-auto">
                 <h2 class="text-3xl font-bold text-blue-700 mb-3">Price</h2>
-
-                <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32.</p>
+                <p>To Mint a Cosmic Cap, the cost is 0.06 Ether. The max mint amount is 32. <br> Yes, we will send you 32 sweatshirts.</p>
                 <br />
-                <!-- <div class="button bg-yellow-400 text-2xl text-black font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center">
-                    Price 0.06 <span style="font-family: sans-serif;">Ξ</span>
-                </div> -->
         </div>
 
-    <div class="container px-12 sm:px-4 pb-20 mx-auto">
-        <div class="">
-            <h2 class="text-3xl font-bold text-blue-700 mb-3">Rarity</h2>
+        <!-- Rarity -->
+        <div class="container px-12 sm:px-4 pb-20 mx-auto">
+            <div class="">
+                <h2 class="text-3xl font-bold text-blue-700 mb-3">Rarity</h2>
 
-            <p>Each Cosmic Cap is unique! Some are more rare than others.</p>
+                <p>Each Cosmic Cap is unique! Some are more rare than others.</p>
 
-            <p>Cosmic Caps are a Non-Fungible species of 10,000 unique fungi making their way from the shroomiverse to the metaverse!</p>
-            <br>
-
-            <p>Each Cosmic Cap is completely unique. Created using over 110 individual features.</p>
-
-            <p>Cosmic Caps star in the upcoming Cosmic Cap animated series that is releasing this fall.</p>
-
-            <br>
-                <router-link class="no-underline" to="/gallery"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">View Gallery</a></router-link>
+                <p>Cosmic Caps are a Non-Fungible species of 10,000 unique fungi making their way from the shroomiverse to the metaverse!</p>
                 <br>
+
+                <p>Each Cosmic Cap is completely unique. Created using over 110 individual features.</p>
+
                 <br>
-                <router-link class="no-underline" to="/collection/cosmic-caps"><a href="#" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Shop Cosmic Caps</a></router-link>
-                <br>
-                <br>
-                <router-link class="no-underline hidden" to="/holiday-order-form"><a href="" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Holiday Package Form</a></router-link>
-            <br><br><br>
+                    <router-link class="no-underline" to="/collection/cosmic-caps"><a href="#" class="button bg-blue-700 text-md sm:text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Shop Cosmic Caps</a></router-link>
+                    <br>
+                    <br>
+                    <router-link class="no-underline hidden" to="/holiday-order-form"><a href="" class="button bg-blue-700 text-2xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline">Holiday Package Form</a></router-link>
+                <br><br><br>
 
-            <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
-
-                <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                    <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                      <router-link class="no-underline" to="/gallery/85">
-                      <img class="w-full" src="@/assets/images/cosmic_cap_1.png" alt="Sunset in the mountains">
-                      </router-link>
-                      <div class="px-6 py-4">
-                        <h4 class="font-bold text-blue-800 text-2xl mb-2">#85</h4>
-                        <div class="w-full">
-                            <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
-                            <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M40.1353 8.00005C38.2609 8.00005 38.2609 15.5 40.1353 15.5H53.2559L54.7554 8L40.1353 8.00005Z" fill="#F6E05E"/>
-                            <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
-                            <path d="M40.1353 79.9986C38.2609 79.9986 38.2609 87.4986 40.1353 87.4986H53.2559L54.7554 79.9985L40.1353 79.9986Z" fill="#F6E05E"/>
-                            <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M241.211 16.625C243.315 16.625 243.273 9.12505 241.211 9.12505L201.287 9.125L199.787 16.625H241.211Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
-                            <g clip-path="url(#clip11)">
-                            <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M152.264 45.7936C154.101 42.7419 158.19 39.9122 159.999 39.9122C161.201 39.9122 163.463 41.725 163.463 41.725C163.463 41.725 165.524 40.1539 167.089 39.9122C168.784 39.9122 172.869 42.6811 174.702 45.7936C175.124 46.4723 175.206 47.1259 174.702 47.8884C173.849 50.2307 170.81 56.0257 164.954 56.0257C164.893 56.0333 164.847 56.0401 164.813 56.0461C166.021 56.0766 164.392 56.1225 164.813 56.0461C164.366 56.0348 163.529 56.0257 162.053 56.0257C156.283 56.0257 153.185 50.2751 152.264 47.8884C151.879 47.1938 151.946 46.3482 152.264 45.7936Z" fill="#ABABAB"/>
-                            <path d="M163.474 46.3773C163.474 46.3773 161.866 46.3773 160.009 45.6453C156.546 45.6453 154.398 46.8654 154.398 46.8654C154.398 46.8654 157.297 50.355 163.474 50.355C169.65 50.355 172.652 46.8654 172.652 46.8654C172.652 46.8654 170.358 45.6453 167.099 45.6453C165.77 46.1821 163.474 46.3773 163.474 46.3773Z" fill="#C4C4C4"/>
-                            <g clip-path="url(#clip1)">
-                            <path d="M174.56 73.4525L173.172 72.0636C173.032 71.9243 172.867 71.8138 172.685 71.7384C172.503 71.663 172.308 71.6241 172.111 71.6241C171.914 71.6241 171.719 71.663 171.537 71.7384C171.355 71.8138 171.189 71.9243 171.05 72.0636L168.881 74.2353C168.699 74.4167 168.562 74.638 168.481 74.8817L167.911 76.5931L164.336 80.1678C163.766 79.7572 163.141 79.43 162.456 79.2706C160.888 78.906 159.316 79.2294 158.243 80.3019C157.806 80.7412 157.48 81.2793 157.294 81.8708C157.013 82.7408 156.207 83.4031 155.319 83.4861C154.208 83.5925 153.175 84.0228 152.384 84.8192C150.244 86.9525 150.629 90.7963 153.23 93.3955C155.831 95.9947 159.672 96.3744 161.807 94.2425C162.604 93.4513 163.033 92.4191 163.141 91.303C163.223 90.4194 163.886 89.6094 164.755 89.3277C165.346 89.1415 165.884 88.816 166.324 88.3785C167.396 87.306 167.718 85.7366 167.355 84.1714C167.196 83.4852 166.869 82.8589 166.457 82.287L170.031 78.7133L171.741 78.1433C171.985 78.0622 172.206 77.9253 172.387 77.7435L174.559 75.5722C174.84 75.2911 174.998 74.9101 174.998 74.5126C174.998 74.1152 174.841 73.7339 174.56 73.4525V73.4525ZM160.75 88.1244C160.305 88.1244 159.87 87.9924 159.5 87.7452C159.13 87.498 158.841 87.1466 158.671 86.7354C158.501 86.3243 158.456 85.8719 158.543 85.4354C158.63 84.999 158.844 84.5981 159.159 84.2834C159.473 83.9687 159.874 83.7544 160.311 83.6676C160.747 83.5808 161.2 83.6254 161.611 83.7957C162.022 83.966 162.373 84.2543 162.62 84.6244C162.868 84.9944 163 85.4294 163 85.8744C163 86.4711 162.763 87.0434 162.341 87.4654C161.919 87.8873 161.346 88.1244 160.75 88.1244Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M241.211 43.98C241.211 43.98 187.417 43.9799 186.667 43.98C184.792 43.98 184.792 51.48 186.667 51.48H241.211C243.315 51.48 243.273 43.98 241.211 43.98Z" fill="#F6E05E"/>
-                            <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#F6E05E"/>
-                            <path d="M187.034 9.12505C184.67 9.12505 184.67 16.625 187.034 16.625H221.424L222.842 9.12501L187.034 9.12505Z" fill="#F6E05E"/>
-                            <defs>
-                            <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#C4C4C4"/>
-                            <stop offset="1" stop-color="#E6E6E6"/>
-                            </linearGradient>
-                            <clipPath id="clip0">
-                            <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
-                            </clipPath>
-                            <clipPath id="clip1">
-                            <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
+                <!-- Rarity Cards -->
+                <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
+                    <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                          <router-link class="no-underline" to="/collection/cosmic-caps/85">
+                          <img class="w-full" src="@/assets/images/cosmic_cap_1.png" alt="Sunset in the mountains">
+                          </router-link>
+                          <div class="px-6 py-4">
+                            <h4 class="font-bold text-blue-800 text-2xl mb-2">#85</h4>
+                            <div class="w-full">
+                                <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
+                                <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M40.1353 8.00005C38.2609 8.00005 38.2609 15.5 40.1353 15.5H53.2559L54.7554 8L40.1353 8.00005Z" fill="#F6E05E"/>
+                                <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
+                                <path d="M40.1353 79.9986C38.2609 79.9986 38.2609 87.4986 40.1353 87.4986H53.2559L54.7554 79.9985L40.1353 79.9986Z" fill="#F6E05E"/>
+                                <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M241.211 16.625C243.315 16.625 243.273 9.12505 241.211 9.12505L201.287 9.125L199.787 16.625H241.211Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
+                                <g clip-path="url(#clip11)">
+                                <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M152.264 45.7936C154.101 42.7419 158.19 39.9122 159.999 39.9122C161.201 39.9122 163.463 41.725 163.463 41.725C163.463 41.725 165.524 40.1539 167.089 39.9122C168.784 39.9122 172.869 42.6811 174.702 45.7936C175.124 46.4723 175.206 47.1259 174.702 47.8884C173.849 50.2307 170.81 56.0257 164.954 56.0257C164.893 56.0333 164.847 56.0401 164.813 56.0461C166.021 56.0766 164.392 56.1225 164.813 56.0461C164.366 56.0348 163.529 56.0257 162.053 56.0257C156.283 56.0257 153.185 50.2751 152.264 47.8884C151.879 47.1938 151.946 46.3482 152.264 45.7936Z" fill="#ABABAB"/>
+                                <path d="M163.474 46.3773C163.474 46.3773 161.866 46.3773 160.009 45.6453C156.546 45.6453 154.398 46.8654 154.398 46.8654C154.398 46.8654 157.297 50.355 163.474 50.355C169.65 50.355 172.652 46.8654 172.652 46.8654C172.652 46.8654 170.358 45.6453 167.099 45.6453C165.77 46.1821 163.474 46.3773 163.474 46.3773Z" fill="#C4C4C4"/>
+                                <g clip-path="url(#clip1)">
+                                <path d="M174.56 73.4525L173.172 72.0636C173.032 71.9243 172.867 71.8138 172.685 71.7384C172.503 71.663 172.308 71.6241 172.111 71.6241C171.914 71.6241 171.719 71.663 171.537 71.7384C171.355 71.8138 171.189 71.9243 171.05 72.0636L168.881 74.2353C168.699 74.4167 168.562 74.638 168.481 74.8817L167.911 76.5931L164.336 80.1678C163.766 79.7572 163.141 79.43 162.456 79.2706C160.888 78.906 159.316 79.2294 158.243 80.3019C157.806 80.7412 157.48 81.2793 157.294 81.8708C157.013 82.7408 156.207 83.4031 155.319 83.4861C154.208 83.5925 153.175 84.0228 152.384 84.8192C150.244 86.9525 150.629 90.7963 153.23 93.3955C155.831 95.9947 159.672 96.3744 161.807 94.2425C162.604 93.4513 163.033 92.4191 163.141 91.303C163.223 90.4194 163.886 89.6094 164.755 89.3277C165.346 89.1415 165.884 88.816 166.324 88.3785C167.396 87.306 167.718 85.7366 167.355 84.1714C167.196 83.4852 166.869 82.8589 166.457 82.287L170.031 78.7133L171.741 78.1433C171.985 78.0622 172.206 77.9253 172.387 77.7435L174.559 75.5722C174.84 75.2911 174.998 74.9101 174.998 74.5126C174.998 74.1152 174.841 73.7339 174.56 73.4525V73.4525ZM160.75 88.1244C160.305 88.1244 159.87 87.9924 159.5 87.7452C159.13 87.498 158.841 87.1466 158.671 86.7354C158.501 86.3243 158.456 85.8719 158.543 85.4354C158.63 84.999 158.844 84.5981 159.159 84.2834C159.473 83.9687 159.874 83.7544 160.311 83.6676C160.747 83.5808 161.2 83.6254 161.611 83.7957C162.022 83.966 162.373 84.2543 162.62 84.6244C162.868 84.9944 163 85.4294 163 85.8744C163 86.4711 162.763 87.0434 162.341 87.4654C161.919 87.8873 161.346 88.1244 160.75 88.1244Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M241.211 43.98C241.211 43.98 187.417 43.9799 186.667 43.98C184.792 43.98 184.792 51.48 186.667 51.48H241.211C243.315 51.48 243.273 43.98 241.211 43.98Z" fill="#F6E05E"/>
+                                <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#F6E05E"/>
+                                <path d="M187.034 9.12505C184.67 9.12505 184.67 16.625 187.034 16.625H221.424L222.842 9.12501L187.034 9.12505Z" fill="#F6E05E"/>
+                                <defs>
+                                <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#C4C4C4"/>
+                                <stop offset="1" stop-color="#E6E6E6"/>
+                                </linearGradient>
+                                <clipPath id="clip0">
+                                <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
+                                </clipPath>
+                                <clipPath id="clip1">
+                                <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                            <router-link class="no-underline" to="/collection/cosmic-caps/344">
+                                <img class="w-full" src="@/assets/images/cosmic_cap_4.png" alt="Sunset in the mountains">
+                            </router-link>
+                            <div class="px-6 py-4">
+                            <h4 class="font-bold  text-blue-800 text-2xl mb-2">#344</h4>
+                            <div class="w-full">
+                                <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
+                                <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M40.1353 79.9986C38.2609 79.9986 38.2609 87.4986 40.1353 87.4986H53.2559L54.7554 79.9985L40.1353 79.9986Z" fill="#F6E05E"/>
+                                <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M241.211 14.9999C243.315 14.9999 243.273 7.49993 241.211 7.49993L201.287 7.49988L199.787 14.9999H241.211Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
+                                <g clip-path="url(#clip11)">
+                                <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
+                                <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
+                                <g clip-path="url(#clip1)">
+                                <path d="M174.56 73.4525L173.172 72.0636C173.032 71.9243 172.867 71.8138 172.685 71.7384C172.503 71.663 172.308 71.6241 172.111 71.6241C171.914 71.6241 171.719 71.663 171.537 71.7384C171.355 71.8138 171.189 71.9243 171.05 72.0636L168.881 74.2353C168.699 74.4167 168.562 74.638 168.481 74.8817L167.911 76.5931L164.336 80.1678C163.766 79.7572 163.141 79.43 162.456 79.2706C160.888 78.906 159.316 79.2294 158.243 80.3019C157.806 80.7412 157.48 81.2793 157.294 81.8708C157.013 82.7408 156.207 83.4031 155.319 83.4861C154.208 83.5925 153.175 84.0228 152.384 84.8192C150.244 86.9525 150.629 90.7963 153.23 93.3955C155.831 95.9947 159.672 96.3744 161.807 94.2425C162.604 93.4513 163.033 92.4191 163.141 91.303C163.223 90.4194 163.886 89.6094 164.755 89.3277C165.346 89.1415 165.884 88.816 166.324 88.3785C167.396 87.306 167.718 85.7366 167.355 84.1714C167.196 83.4852 166.869 82.8589 166.457 82.287L170.031 78.7133L171.741 78.1433C171.985 78.0622 172.206 77.9253 172.387 77.7435L174.559 75.5722C174.84 75.2911 174.998 74.9101 174.998 74.5126C174.998 74.1152 174.841 73.7339 174.56 73.4525V73.4525ZM160.75 88.1244C160.305 88.1244 159.87 87.9924 159.5 87.7452C159.13 87.498 158.841 87.1466 158.671 86.7354C158.501 86.3243 158.456 85.8719 158.543 85.4354C158.63 84.999 158.844 84.5981 159.159 84.2834C159.473 83.9687 159.874 83.7544 160.311 83.6676C160.747 83.5808 161.2 83.6254 161.611 83.7957C162.022 83.966 162.373 84.2543 162.62 84.6244C162.868 84.9944 163 85.4294 163 85.8744C163 86.4711 162.763 87.0434 162.341 87.4654C161.919 87.8873 161.346 88.1244 160.75 88.1244Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M241.211 43.98C241.211 43.98 187.417 43.9799 186.667 43.98C184.792 43.98 184.792 51.48 186.667 51.48H241.211C243.315 51.48 243.273 43.98 241.211 43.98Z" fill="#F6E05E"/>
+                                <path d="M241.211 7.50005C241.211 7.50005 187.417 7.49994 186.667 7.50005C184.792 7.50005 184.792 15 186.667 15H241.211C243.315 15 243.273 7.50005 241.211 7.50005Z" fill="#F6E05E"/>
+                                <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
+                                <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
+                                <path d="M40.5022 44.25C38.1386 44.25 38.1386 51.75 40.5022 51.75H74.8926L76.3107 44.25L40.5022 44.25Z" fill="#F6E05E"/>
+                                <defs>
+                                <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#C4C4C4"/>
+                                <stop offset="1" stop-color="#E6E6E6"/>
+                                </linearGradient>
+                                <clipPath id="clip0">
+                                <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
+                                </clipPath>
+                                <clipPath id="clip1">
+                                <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                            <router-link class="no-underline" to="/collection/cosmic-caps/109">
+                                <img class="w-full" src="@/assets/images/cosmic_cap_2.png" alt="Sunset in the mountains">
+                            </router-link>
+                          <div class="px-6 py-4">
+                            <h4 class="font-bold  text-blue-800 text-2xl mb-2">#109</h4>
+                            <div class="w-full">
+                                <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
+                                <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M241.211 14.9999C243.315 14.9999 243.273 7.49993 241.211 7.49993L201.287 7.49988L199.787 14.9999H241.211Z" fill="#E2E8F0"/>
+                                <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
+                                <g clip-path="url(#clip11)">
+                                <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
+                                <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
+                                <g clip-path="url(#clip1)">
+                                <path d="M174.56 73.4525L173.172 72.0636C173.032 71.9243 172.867 71.8138 172.685 71.7384C172.503 71.663 172.308 71.6241 172.111 71.6241C171.914 71.6241 171.719 71.663 171.537 71.7384C171.355 71.8138 171.189 71.9243 171.05 72.0636L168.881 74.2353C168.699 74.4167 168.562 74.638 168.481 74.8817L167.911 76.5931L164.336 80.1678C163.766 79.7572 163.141 79.43 162.456 79.2706C160.888 78.906 159.316 79.2294 158.243 80.3019C157.806 80.7412 157.48 81.2793 157.294 81.8708C157.013 82.7408 156.207 83.4031 155.319 83.4861C154.208 83.5925 153.175 84.0228 152.384 84.8192C150.244 86.9525 150.629 90.7963 153.23 93.3955C155.831 95.9947 159.672 96.3744 161.807 94.2425C162.604 93.4513 163.033 92.4191 163.141 91.303C163.223 90.4194 163.886 89.6094 164.755 89.3277C165.346 89.1415 165.884 88.816 166.324 88.3785C167.396 87.306 167.718 85.7366 167.355 84.1714C167.196 83.4852 166.869 82.8589 166.457 82.287L170.031 78.7133L171.741 78.1433C171.985 78.0622 172.206 77.9253 172.387 77.7435L174.559 75.5722C174.84 75.2911 174.998 74.9101 174.998 74.5126C174.998 74.1152 174.841 73.7339 174.56 73.4525V73.4525ZM160.75 88.1244C160.305 88.1244 159.87 87.9924 159.5 87.7452C159.13 87.498 158.841 87.1466 158.671 86.7354C158.501 86.3243 158.456 85.8719 158.543 85.4354C158.63 84.999 158.844 84.5981 159.159 84.2834C159.473 83.9687 159.874 83.7544 160.311 83.6676C160.747 83.5808 161.2 83.6254 161.611 83.7957C162.022 83.966 162.373 84.2543 162.62 84.6244C162.868 84.9944 163 85.4294 163 85.8744C163 86.4711 162.763 87.0434 162.341 87.4654C161.919 87.8873 161.346 88.1244 160.75 88.1244Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M94.6796 79.875C94.6796 79.875 40.885 79.8749 40.1353 79.875C38.2609 79.875 38.2609 87.375 40.1353 87.375H94.6796C96.7839 87.375 96.7414 79.875 94.6796 79.875Z" fill="#F6E05E"/>
+                                <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
+                                <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
+                                <path d="M187.034 7.49993C184.67 7.49993 184.67 14.9999 187.034 14.9999H221.424L222.842 7.49989L187.034 7.49993Z" fill="#F6E05E"/>
+                                <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
+                                <path d="M186.667 44.25C184.792 44.25 184.792 51.75 186.667 51.75H199.787L201.287 44.25L186.667 44.25Z" fill="#F6E05E"/>
+                                <defs>
+                                <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#C4C4C4"/>
+                                <stop offset="1" stop-color="#E6E6E6"/>
+                                </linearGradient>
+                                <clipPath id="clip0">
+                                <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
+                                </clipPath>
+                                <clipPath id="clip1">
+                                <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                            <router-link class="no-underline" to="/collection/cosmic-caps/1315">
+                                <img class="w-full" src="@/assets/images/cosmic_cap_3.png" alt="Sunset in the mountains">
+                            </router-link>
+                          <div class="px-6 py-4">
+                            <h4 class="font-bold  text-blue-800 text-2xl mb-2">#1315</h4>
+                            <div class="w-full">
+                                <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
+                                <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M241.211 14.9999C243.315 14.9999 243.273 7.49993 241.211 7.49993L201.287 7.49988L199.787 14.9999H241.211Z" fill="#E2E8F0"/>
+                                <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
+                                <g clip-path="url(#clip11)">
+                                <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
+                                <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
+                                <g clip-path="url(#clip1)">
+                                <path d="M174.56 73.4525L173.172 72.0636C173.032 71.9243 172.867 71.8138 172.685 71.7384C172.503 71.663 172.308 71.6241 172.111 71.6241C171.914 71.6241 171.719 71.663 171.537 71.7384C171.355 71.8138 171.189 71.9243 171.05 72.0636L168.881 74.2353C168.699 74.4167 168.562 74.638 168.481 74.8817L167.911 76.5931L164.336 80.1678C163.766 79.7572 163.141 79.43 162.456 79.2706C160.888 78.906 159.316 79.2294 158.243 80.3019C157.806 80.7412 157.48 81.2793 157.294 81.8708C157.013 82.7408 156.207 83.4031 155.319 83.4861C154.208 83.5925 153.175 84.0228 152.384 84.8192C150.244 86.9525 150.629 90.7963 153.23 93.3955C155.831 95.9947 159.672 96.3744 161.807 94.2425C162.604 93.4513 163.033 92.4191 163.141 91.303C163.223 90.4194 163.886 89.6094 164.755 89.3277C165.346 89.1415 165.884 88.816 166.324 88.3785C167.396 87.306 167.718 85.7366 167.355 84.1714C167.196 83.4852 166.869 82.8589 166.457 82.287L170.031 78.7133L171.741 78.1433C171.985 78.0622 172.206 77.9253 172.387 77.7435L174.559 75.5722C174.84 75.2911 174.998 74.9101 174.998 74.5126C174.998 74.1152 174.841 73.7339 174.56 73.4525V73.4525ZM160.75 88.1244C160.305 88.1244 159.87 87.9924 159.5 87.7452C159.13 87.498 158.841 87.1466 158.671 86.7354C158.501 86.3243 158.456 85.8719 158.543 85.4354C158.63 84.999 158.844 84.5981 159.159 84.2834C159.473 83.9687 159.874 83.7544 160.311 83.6676C160.747 83.5808 161.2 83.6254 161.611 83.7957C162.022 83.966 162.373 84.2543 162.62 84.6244C162.868 84.9944 163 85.4294 163 85.8744C163 86.4711 162.763 87.0434 162.341 87.4654C161.919 87.8873 161.346 88.1244 160.75 88.1244Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M94.6796 79.875C94.6796 79.875 40.885 79.8749 40.1353 79.875C38.2609 79.875 38.2609 87.375 40.1353 87.375H94.6796C96.7839 87.375 96.7414 79.875 94.6796 79.875Z" fill="#F6E05E"/>
+                                <path d="M241.211 44.25C241.211 44.25 187.417 44.2499 186.667 44.25C184.792 44.25 184.792 51.75 186.667 51.75H241.211C243.315 51.75 243.273 44.25 241.211 44.25Z" fill="#F6E05E"/>
+                                <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
+                                <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
+                                <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
+                                <path d="M186.667 7.49993C184.792 7.49993 184.792 14.9999 186.667 14.9999H199.787L201.287 7.49988L186.667 7.49993Z" fill="#F6E05E"/>
+                                <defs>
+                                <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#C4C4C4"/>
+                                <stop offset="1" stop-color="#E6E6E6"/>
+                                </linearGradient>
+                                <clipPath id="clip0">
+                                <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
+                                </clipPath>
+                                <clipPath id="clip1">
+                                <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                    <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                        <router-link class="no-underline" to="/gallery/344">
-                            <img class="w-full" src="@/assets/images/cosmic_cap_4.png" alt="Sunset in the mountains">
-                        </router-link>
-
-                        <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#344</h4>
-                        <div class="w-full">
-                            <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
-                            <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M40.1353 79.9986C38.2609 79.9986 38.2609 87.4986 40.1353 87.4986H53.2559L54.7554 79.9985L40.1353 79.9986Z" fill="#F6E05E"/>
-                            <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M241.211 14.9999C243.315 14.9999 243.273 7.49993 241.211 7.49993L201.287 7.49988L199.787 14.9999H241.211Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
-                            <g clip-path="url(#clip11)">
-                            <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
-                            <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
-                            <g clip-path="url(#clip1)">
-                            <path d="M174.56 73.4525L173.172 72.0636C173.032 71.9243 172.867 71.8138 172.685 71.7384C172.503 71.663 172.308 71.6241 172.111 71.6241C171.914 71.6241 171.719 71.663 171.537 71.7384C171.355 71.8138 171.189 71.9243 171.05 72.0636L168.881 74.2353C168.699 74.4167 168.562 74.638 168.481 74.8817L167.911 76.5931L164.336 80.1678C163.766 79.7572 163.141 79.43 162.456 79.2706C160.888 78.906 159.316 79.2294 158.243 80.3019C157.806 80.7412 157.48 81.2793 157.294 81.8708C157.013 82.7408 156.207 83.4031 155.319 83.4861C154.208 83.5925 153.175 84.0228 152.384 84.8192C150.244 86.9525 150.629 90.7963 153.23 93.3955C155.831 95.9947 159.672 96.3744 161.807 94.2425C162.604 93.4513 163.033 92.4191 163.141 91.303C163.223 90.4194 163.886 89.6094 164.755 89.3277C165.346 89.1415 165.884 88.816 166.324 88.3785C167.396 87.306 167.718 85.7366 167.355 84.1714C167.196 83.4852 166.869 82.8589 166.457 82.287L170.031 78.7133L171.741 78.1433C171.985 78.0622 172.206 77.9253 172.387 77.7435L174.559 75.5722C174.84 75.2911 174.998 74.9101 174.998 74.5126C174.998 74.1152 174.841 73.7339 174.56 73.4525V73.4525ZM160.75 88.1244C160.305 88.1244 159.87 87.9924 159.5 87.7452C159.13 87.498 158.841 87.1466 158.671 86.7354C158.501 86.3243 158.456 85.8719 158.543 85.4354C158.63 84.999 158.844 84.5981 159.159 84.2834C159.473 83.9687 159.874 83.7544 160.311 83.6676C160.747 83.5808 161.2 83.6254 161.611 83.7957C162.022 83.966 162.373 84.2543 162.62 84.6244C162.868 84.9944 163 85.4294 163 85.8744C163 86.4711 162.763 87.0434 162.341 87.4654C161.919 87.8873 161.346 88.1244 160.75 88.1244Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M241.211 43.98C241.211 43.98 187.417 43.9799 186.667 43.98C184.792 43.98 184.792 51.48 186.667 51.48H241.211C243.315 51.48 243.273 43.98 241.211 43.98Z" fill="#F6E05E"/>
-                            <path d="M241.211 7.50005C241.211 7.50005 187.417 7.49994 186.667 7.50005C184.792 7.50005 184.792 15 186.667 15H241.211C243.315 15 243.273 7.50005 241.211 7.50005Z" fill="#F6E05E"/>
-                            <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
-                            <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
-                            <path d="M40.5022 44.25C38.1386 44.25 38.1386 51.75 40.5022 51.75H74.8926L76.3107 44.25L40.5022 44.25Z" fill="#F6E05E"/>
-                            <defs>
-                            <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#C4C4C4"/>
-                            <stop offset="1" stop-color="#E6E6E6"/>
-                            </linearGradient>
-                            <clipPath id="clip0">
-                            <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
-                            </clipPath>
-                            <clipPath id="clip1">
-                            <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-
-
-
+                <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-4">
+                    <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                            <router-link class="no-underline" to="/collection/cosmic-caps/8220">
+                                <img class="w-full" src="@/assets/images/cosmic_cap_11.png" alt="Sunset in the mountains">
+                            </router-link>
+                          <div class="px-6 py-4">
+                            <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8220</h4>
+                            <div class="w-full">
+                                <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
+                                <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M241.211 15C243.315 15 243.273 7.50005 241.211 7.50005L201.287 7.5L199.787 15H241.211Z" fill="#E2E8F0"/>
+                                <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
+                                <g clip-path="url(#clip11)">
+                                <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
+                                <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
+                                <g clip-path="url(#clip1)">
+                                <path d="M174.56 73.4524L173.172 72.0635C173.032 71.9242 172.867 71.8136 172.685 71.7382C172.503 71.6628 172.308 71.624 172.111 71.624C171.914 71.624 171.719 71.6628 171.537 71.7382C171.355 71.8136 171.189 71.9242 171.05 72.0635L168.881 74.2352C168.699 74.4166 168.562 74.6379 168.481 74.8816L167.911 76.593L164.336 80.1677C163.766 79.7571 163.141 79.4299 162.456 79.2705C160.888 78.9058 159.316 79.2293 158.243 80.3018C157.806 80.7411 157.48 81.2792 157.294 81.8707C157.013 82.7407 156.207 83.403 155.319 83.486C154.208 83.5924 153.175 84.0227 152.384 84.8191C150.244 86.9524 150.629 90.7961 153.23 93.3954C155.831 95.9946 159.672 96.3743 161.807 94.2424C162.604 93.4511 163.033 92.419 163.141 91.3029C163.223 90.4193 163.886 89.6093 164.755 89.3275C165.346 89.1414 165.884 88.8159 166.324 88.3783C167.396 87.3058 167.718 85.7365 167.355 84.1713C167.196 83.485 166.869 82.8588 166.457 82.2869L170.031 78.7132L171.741 78.1432C171.985 78.0621 172.206 77.9252 172.387 77.7433L174.559 75.5721C174.84 75.291 174.998 74.91 174.998 74.5125C174.998 74.1151 174.841 73.7338 174.56 73.4524V73.4524ZM160.75 88.1243C160.305 88.1243 159.87 87.9923 159.5 87.7451C159.13 87.4978 158.841 87.1464 158.671 86.7353C158.501 86.3242 158.456 85.8718 158.543 85.4353C158.63 84.9989 158.844 84.5979 159.159 84.2833C159.473 83.9686 159.874 83.7543 160.311 83.6675C160.747 83.5807 161.2 83.6252 161.611 83.7955C162.022 83.9658 162.373 84.2542 162.62 84.6242C162.868 84.9942 163 85.4293 163 85.8743C163 86.471 162.763 87.0433 162.341 87.4653C161.919 87.8872 161.346 88.1243 160.75 88.1243Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
+                                <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
+                                <path d="M187.034 44.25C184.67 44.25 184.67 51.75 187.034 51.75H221.424L222.842 44.25L187.034 44.25Z" fill="#F6E05E"/>
+                                <path d="M187.034 7.4998C184.67 7.4998 184.67 14.9998 187.034 14.9998H221.424L222.842 7.49976L187.034 7.4998Z" fill="#F6E05E"/>
+                                <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
+                                <path d="M40.1353 79.9986C38.2609 79.9986 38.2609 87.4986 40.1353 87.4986H53.2559L54.7554 79.9985L40.1353 79.9986Z" fill="#F6E05E"/>
+                                <defs>
+                                <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#C4C4C4"/>
+                                <stop offset="1" stop-color="#E6E6E6"/>
+                                </linearGradient>
+                                <clipPath id="clip0">
+                                <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
+                                </clipPath>
+                                <clipPath id="clip1">
+                                <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+                            </div>
+                          </div>
                         </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                            <router-link class="no-underline" to="/collection/cosmic-caps/8702">
+                                <img class="w-full" src="@/assets/images/cosmic_cap_5.png" alt="Sunset in the mountains">
+                            </router-link>
+                          <div class="px-6 py-4">
+                            <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8702</h4>
+                            <div class="w-full">
+                                <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
+                                <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M241.211 15C243.315 15 243.273 7.50005 241.211 7.50005L201.287 7.5L199.787 15H241.211Z" fill="#E2E8F0"/>
+                                <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
+                                <g clip-path="url(#clip11)">
+                                <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
+                                <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
+                                <g clip-path="url(#clip1)">
+                                <path d="M174.56 73.4524L173.172 72.0635C173.032 71.9242 172.867 71.8136 172.685 71.7382C172.503 71.6628 172.308 71.624 172.111 71.624C171.914 71.624 171.719 71.6628 171.537 71.7382C171.355 71.8136 171.189 71.9242 171.05 72.0635L168.881 74.2352C168.699 74.4166 168.562 74.6379 168.481 74.8816L167.911 76.593L164.336 80.1677C163.766 79.7571 163.141 79.4299 162.456 79.2705C160.888 78.9058 159.316 79.2293 158.243 80.3018C157.806 80.7411 157.48 81.2792 157.294 81.8707C157.013 82.7407 156.207 83.403 155.319 83.486C154.208 83.5924 153.175 84.0227 152.384 84.8191C150.244 86.9524 150.629 90.7961 153.23 93.3954C155.831 95.9946 159.672 96.3743 161.807 94.2424C162.604 93.4511 163.033 92.419 163.141 91.3029C163.223 90.4193 163.886 89.6093 164.755 89.3275C165.346 89.1414 165.884 88.8159 166.324 88.3783C167.396 87.3058 167.718 85.7365 167.355 84.1713C167.196 83.485 166.869 82.8588 166.457 82.2869L170.031 78.7132L171.741 78.1432C171.985 78.0621 172.206 77.9252 172.387 77.7433L174.559 75.5721C174.84 75.291 174.998 74.91 174.998 74.5125C174.998 74.1151 174.841 73.7338 174.56 73.4524V73.4524ZM160.75 88.1243C160.305 88.1243 159.87 87.9923 159.5 87.7451C159.13 87.4978 158.841 87.1464 158.671 86.7353C158.501 86.3242 158.456 85.8718 158.543 85.4353C158.63 84.9989 158.844 84.5979 159.159 84.2833C159.473 83.9686 159.874 83.7543 160.311 83.6675C160.747 83.5807 161.2 83.6252 161.611 83.7955C162.022 83.9658 162.373 84.2542 162.62 84.6242C162.868 84.9942 163 85.4293 163 85.8743C163 86.471 162.763 87.0433 162.341 87.4653C161.919 87.8872 161.346 88.1243 160.75 88.1243Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
+                                <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
+                                <path d="M187.034 7.4998C184.67 7.4998 184.67 14.9998 187.034 14.9998H221.424L222.842 7.49976L187.034 7.4998Z" fill="#F6E05E"/>
+                                <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
+                                <path d="M186.667 44.25C184.792 44.25 184.792 51.75 186.667 51.75H199.787L201.287 44.25L186.667 44.25Z" fill="#F6E05E"/>
+                                <path d="M40.1353 79.9986C38.2609 79.9986 38.2609 87.4986 40.1353 87.4986H53.2559L54.7554 79.9985L40.1353 79.9986Z" fill="#F6E05E"/>
+                                <defs>
+                                <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#C4C4C4"/>
+                                <stop offset="1" stop-color="#E6E6E6"/>
+                                </linearGradient>
+                                <clipPath id="clip0">
+                                <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
+                                </clipPath>
+                                <clipPath id="clip1">
+                                <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                            <router-link class="no-underline" to="/collection/cosmic-caps/7826">
+                                <img class="w-full" src="@/assets/images/cosmic_cap_9.png" alt="Sunset in the mountains">
+                            </router-link>
+
+                          <div class="px-6 py-4">
+                            <h4 class="font-bold  text-blue-800 text-2xl mb-2">#7826</h4>
+                            <div class="w-full">
+                                <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
+                                <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M241.211 15C243.315 15 243.273 7.50005 241.211 7.50005L201.287 7.5L199.787 15H241.211Z" fill="#E2E8F0"/>
+                                <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
+                                <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
+                                <g clip-path="url(#clip11)">
+                                <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
+                                <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
+                                <g clip-path="url(#clip1)">
+                                <path d="M174.56 73.4524L173.172 72.0635C173.032 71.9242 172.867 71.8136 172.685 71.7382C172.503 71.6628 172.308 71.624 172.111 71.624C171.914 71.624 171.719 71.6628 171.537 71.7382C171.355 71.8136 171.189 71.9242 171.05 72.0635L168.881 74.2352C168.699 74.4166 168.562 74.6379 168.481 74.8816L167.911 76.593L164.336 80.1677C163.766 79.7571 163.141 79.4299 162.456 79.2705C160.888 78.9058 159.316 79.2293 158.243 80.3018C157.806 80.7411 157.48 81.2792 157.294 81.8707C157.013 82.7407 156.207 83.403 155.319 83.486C154.208 83.5924 153.175 84.0227 152.384 84.8191C150.244 86.9524 150.629 90.7961 153.23 93.3954C155.831 95.9946 159.672 96.3743 161.807 94.2424C162.604 93.4511 163.033 92.419 163.141 91.3029C163.223 90.4193 163.886 89.6093 164.755 89.3275C165.346 89.1414 165.884 88.8159 166.324 88.3783C167.396 87.3058 167.718 85.7365 167.355 84.1713C167.196 83.485 166.869 82.8588 166.457 82.2869L170.031 78.7132L171.741 78.1432C171.985 78.0621 172.206 77.9252 172.387 77.7433L174.559 75.5721C174.84 75.291 174.998 74.91 174.998 74.5125C174.998 74.1151 174.841 73.7338 174.56 73.4524V73.4524ZM160.75 88.1243C160.305 88.1243 159.87 87.9923 159.5 87.7451C159.13 87.4978 158.841 87.1464 158.671 86.7353C158.501 86.3242 158.456 85.8718 158.543 85.4353C158.63 84.9989 158.844 84.5979 159.159 84.2833C159.473 83.9686 159.874 83.7543 160.311 83.6675C160.747 83.5807 161.2 83.6252 161.611 83.7955C162.022 83.9658 162.373 84.2542 162.62 84.6242C162.868 84.9942 163 85.4293 163 85.8743C163 86.471 162.763 87.0433 162.341 87.4653C161.919 87.8872 161.346 88.1243 160.75 88.1243Z" fill="#ABABAB"/>
+                                </g>
+                                <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
+                                <path d="M187.034 7.4998C184.67 7.4998 184.67 14.9998 187.034 14.9998H221.424L222.842 7.49976L187.034 7.4998Z" fill="#F6E05E"/>
+                                <path d="M40.5022 79.8733C38.1386 79.8733 38.1386 87.3733 40.5022 87.3733H74.8926L76.3107 79.8733L40.5022 79.8733Z" fill="#F6E05E"/>
+                                <path d="M94.6796 8.00005C94.6796 8.00005 40.885 7.99994 40.1353 8.00005C38.2609 8.00005 38.2609 15.5 40.1353 15.5H94.6796C96.7839 15.5 96.7414 8.00005 94.6796 8.00005Z" fill="#F6E05E"/>
+                                <path d="M94.6796 44.2498C94.6796 44.2498 40.885 44.2497 40.1353 44.2498C38.2609 44.2498 38.2609 51.7498 40.1353 51.7498H94.6796C96.7839 51.7498 96.7414 44.2498 94.6796 44.2498Z" fill="#F6E05E"/>
+                                <path d="M241.211 43.6875C241.211 43.6875 187.417 43.6874 186.667 43.6875C184.792 43.6875 184.792 51.1875 186.667 51.1875H241.211C243.315 51.1875 243.273 43.6875 241.211 43.6875Z" fill="#F6E05E"/>
+                                <defs>
+                                <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#C4C4C4"/>
+                                <stop offset="1" stop-color="#E6E6E6"/>
+                                </linearGradient>
+                                <clipPath id="clip0">
+                                <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
+                                </clipPath>
+                                <clipPath id="clip1">
+                                <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                            <router-link class="no-underline" to="/collection/cosmic-caps/8340">
+                                <img class="w-full" src="@/assets/images/cosmic_cap_12.png" alt="Sunset in the mountains">
+                            </router-link>
+                            <div class="px-6 py-4">
+                                <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8340</h4>
+                                <div class="w-full">
+                                    <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
+                                    <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                    <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
+                                    <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
+                                    <path d="M241.211 15C243.315 15 243.273 7.50005 241.211 7.50005L201.287 7.5L199.787 15H241.211Z" fill="#E2E8F0"/>
+                                    <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
+                                    <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
+                                    <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
+                                    <g clip-path="url(#clip11)">
+                                    <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
+                                    </g>
+                                    <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
+                                    <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
+                                    <g clip-path="url(#clip1)">
+                                    <path d="M174.56 73.4524L173.172 72.0635C173.032 71.9242 172.867 71.8136 172.685 71.7382C172.503 71.6628 172.308 71.624 172.111 71.624C171.914 71.624 171.719 71.6628 171.537 71.7382C171.355 71.8136 171.189 71.9242 171.05 72.0635L168.881 74.2352C168.699 74.4166 168.562 74.6379 168.481 74.8816L167.911 76.593L164.336 80.1677C163.766 79.7571 163.141 79.4299 162.456 79.2705C160.888 78.9058 159.316 79.2293 158.243 80.3018C157.806 80.7411 157.48 81.2792 157.294 81.8707C157.013 82.7407 156.207 83.403 155.319 83.486C154.208 83.5924 153.175 84.0227 152.384 84.8191C150.244 86.9524 150.629 90.7961 153.23 93.3954C155.831 95.9946 159.672 96.3743 161.807 94.2424C162.604 93.4511 163.033 92.419 163.141 91.3029C163.223 90.4193 163.886 89.6093 164.755 89.3275C165.346 89.1414 165.884 88.8159 166.324 88.3783C167.396 87.3058 167.718 85.7365 167.355 84.1713C167.196 83.485 166.869 82.8588 166.457 82.2869L170.031 78.7132L171.741 78.1432C171.985 78.0621 172.206 77.9252 172.387 77.7433L174.559 75.5721C174.84 75.291 174.998 74.91 174.998 74.5125C174.998 74.1151 174.841 73.7338 174.56 73.4524V73.4524ZM160.75 88.1243C160.305 88.1243 159.87 87.9923 159.5 87.7451C159.13 87.4978 158.841 87.1464 158.671 86.7353C158.501 86.3242 158.456 85.8718 158.543 85.4353C158.63 84.9989 158.844 84.5979 159.159 84.2833C159.473 83.9686 159.874 83.7543 160.311 83.6675C160.747 83.5807 161.2 83.6252 161.611 83.7955C162.022 83.9658 162.373 84.2542 162.62 84.6242C162.868 84.9942 163 85.4293 163 85.8743C163 86.471 162.763 87.0433 162.341 87.4653C161.919 87.8872 161.346 88.1243 160.75 88.1243Z" fill="#ABABAB"/>
+                                    </g>
+                                    <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
+                                    <path d="M94.6796 8.00005C94.6796 8.00005 40.885 7.99994 40.1353 8.00005C38.2609 8.00005 38.2609 15.5 40.1353 15.5H94.6796C96.7839 15.5 96.7414 8.00005 94.6796 8.00005Z" fill="#F6E05E"/>
+                                    <path d="M94.6796 44.2498C94.6796 44.2498 40.885 44.2497 40.1353 44.2498C38.2609 44.2498 38.2609 51.7498 40.1353 51.7498H94.6796C96.7839 51.7498 96.7414 44.2498 94.6796 44.2498Z" fill="#F6E05E"/>
+                                    <path d="M241.211 80.1255C241.211 80.1255 187.417 80.1254 186.667 80.1255C184.792 80.1255 184.792 87.6255 186.667 87.6255H241.211C243.315 87.6255 243.273 80.1255 241.211 80.1255Z" fill="#F6E05E"/>
+                                    <path d="M241.211 7.74956C241.211 7.74956 187.417 7.74945 186.667 7.74956C184.792 7.74956 184.792 15.2496 186.667 15.2496H241.211C243.315 15.2496 243.273 7.74956 241.211 7.74956Z" fill="#F6E05E"/>
+                                    <path d="M40.1353 79.8733C38.2609 79.8733 38.2609 87.3733 40.1353 87.3733H53.2559L54.7554 79.8733L40.1353 79.8733Z" fill="#F6E05E"/>
+                                    <path d="M186.667 43.6875C184.792 43.6875 184.792 51.1875 186.667 51.1875H199.787L201.287 43.6875L186.667 43.6875Z" fill="#F6E05E"/>
+                                    <defs>
+                                    <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#C4C4C4"/>
+                                    <stop offset="1" stop-color="#E6E6E6"/>
+                                    </linearGradient>
+                                    <clipPath id="clip0">
+                                    <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
+                                    </clipPath>
+                                    <clipPath id="clip1">
+                                    <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
+                                    </clipPath>
+                                    </defs>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                    <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                        <router-link class="no-underline" to="/gallery/109">
-                            <img class="w-full" src="@/assets/images/cosmic_cap_2.png" alt="Sunset in the mountains">
-                        </router-link>
-                      <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#109</h4>
-                        <div class="w-full">
-                            <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
-                            <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M241.211 14.9999C243.315 14.9999 243.273 7.49993 241.211 7.49993L201.287 7.49988L199.787 14.9999H241.211Z" fill="#E2E8F0"/>
-                            <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
-                            <g clip-path="url(#clip11)">
-                            <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
-                            <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
-                            <g clip-path="url(#clip1)">
-                            <path d="M174.56 73.4525L173.172 72.0636C173.032 71.9243 172.867 71.8138 172.685 71.7384C172.503 71.663 172.308 71.6241 172.111 71.6241C171.914 71.6241 171.719 71.663 171.537 71.7384C171.355 71.8138 171.189 71.9243 171.05 72.0636L168.881 74.2353C168.699 74.4167 168.562 74.638 168.481 74.8817L167.911 76.5931L164.336 80.1678C163.766 79.7572 163.141 79.43 162.456 79.2706C160.888 78.906 159.316 79.2294 158.243 80.3019C157.806 80.7412 157.48 81.2793 157.294 81.8708C157.013 82.7408 156.207 83.4031 155.319 83.4861C154.208 83.5925 153.175 84.0228 152.384 84.8192C150.244 86.9525 150.629 90.7963 153.23 93.3955C155.831 95.9947 159.672 96.3744 161.807 94.2425C162.604 93.4513 163.033 92.4191 163.141 91.303C163.223 90.4194 163.886 89.6094 164.755 89.3277C165.346 89.1415 165.884 88.816 166.324 88.3785C167.396 87.306 167.718 85.7366 167.355 84.1714C167.196 83.4852 166.869 82.8589 166.457 82.287L170.031 78.7133L171.741 78.1433C171.985 78.0622 172.206 77.9253 172.387 77.7435L174.559 75.5722C174.84 75.2911 174.998 74.9101 174.998 74.5126C174.998 74.1152 174.841 73.7339 174.56 73.4525V73.4525ZM160.75 88.1244C160.305 88.1244 159.87 87.9924 159.5 87.7452C159.13 87.498 158.841 87.1466 158.671 86.7354C158.501 86.3243 158.456 85.8719 158.543 85.4354C158.63 84.999 158.844 84.5981 159.159 84.2834C159.473 83.9687 159.874 83.7544 160.311 83.6676C160.747 83.5808 161.2 83.6254 161.611 83.7957C162.022 83.966 162.373 84.2543 162.62 84.6244C162.868 84.9944 163 85.4294 163 85.8744C163 86.4711 162.763 87.0434 162.341 87.4654C161.919 87.8873 161.346 88.1244 160.75 88.1244Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M94.6796 79.875C94.6796 79.875 40.885 79.8749 40.1353 79.875C38.2609 79.875 38.2609 87.375 40.1353 87.375H94.6796C96.7839 87.375 96.7414 79.875 94.6796 79.875Z" fill="#F6E05E"/>
-                            <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
-                            <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
-                            <path d="M187.034 7.49993C184.67 7.49993 184.67 14.9999 187.034 14.9999H221.424L222.842 7.49989L187.034 7.49993Z" fill="#F6E05E"/>
-                            <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
-                            <path d="M186.667 44.25C184.792 44.25 184.792 51.75 186.667 51.75H199.787L201.287 44.25L186.667 44.25Z" fill="#F6E05E"/>
-                            <defs>
-                            <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#C4C4C4"/>
-                            <stop offset="1" stop-color="#E6E6E6"/>
-                            </linearGradient>
-                            <clipPath id="clip0">
-                            <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
-                            </clipPath>
-                            <clipPath id="clip1">
-                            <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-
-
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                    <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                        <router-link class="no-underline" to="/gallery/1315">
-                            <img class="w-full" src="@/assets/images/cosmic_cap_3.png" alt="Sunset in the mountains">
-                        </router-link>
-                      <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#1315</h4>
-                        <div class="w-full">
-                            <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
-                            <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M241.211 14.9999C243.315 14.9999 243.273 7.49993 241.211 7.49993L201.287 7.49988L199.787 14.9999H241.211Z" fill="#E2E8F0"/>
-                            <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
-                            <g clip-path="url(#clip11)">
-                            <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
-                            <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
-                            <g clip-path="url(#clip1)">
-                            <path d="M174.56 73.4525L173.172 72.0636C173.032 71.9243 172.867 71.8138 172.685 71.7384C172.503 71.663 172.308 71.6241 172.111 71.6241C171.914 71.6241 171.719 71.663 171.537 71.7384C171.355 71.8138 171.189 71.9243 171.05 72.0636L168.881 74.2353C168.699 74.4167 168.562 74.638 168.481 74.8817L167.911 76.5931L164.336 80.1678C163.766 79.7572 163.141 79.43 162.456 79.2706C160.888 78.906 159.316 79.2294 158.243 80.3019C157.806 80.7412 157.48 81.2793 157.294 81.8708C157.013 82.7408 156.207 83.4031 155.319 83.4861C154.208 83.5925 153.175 84.0228 152.384 84.8192C150.244 86.9525 150.629 90.7963 153.23 93.3955C155.831 95.9947 159.672 96.3744 161.807 94.2425C162.604 93.4513 163.033 92.4191 163.141 91.303C163.223 90.4194 163.886 89.6094 164.755 89.3277C165.346 89.1415 165.884 88.816 166.324 88.3785C167.396 87.306 167.718 85.7366 167.355 84.1714C167.196 83.4852 166.869 82.8589 166.457 82.287L170.031 78.7133L171.741 78.1433C171.985 78.0622 172.206 77.9253 172.387 77.7435L174.559 75.5722C174.84 75.2911 174.998 74.9101 174.998 74.5126C174.998 74.1152 174.841 73.7339 174.56 73.4525V73.4525ZM160.75 88.1244C160.305 88.1244 159.87 87.9924 159.5 87.7452C159.13 87.498 158.841 87.1466 158.671 86.7354C158.501 86.3243 158.456 85.8719 158.543 85.4354C158.63 84.999 158.844 84.5981 159.159 84.2834C159.473 83.9687 159.874 83.7544 160.311 83.6676C160.747 83.5808 161.2 83.6254 161.611 83.7957C162.022 83.966 162.373 84.2543 162.62 84.6244C162.868 84.9944 163 85.4294 163 85.8744C163 86.4711 162.763 87.0434 162.341 87.4654C161.919 87.8873 161.346 88.1244 160.75 88.1244Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M94.6796 79.875C94.6796 79.875 40.885 79.8749 40.1353 79.875C38.2609 79.875 38.2609 87.375 40.1353 87.375H94.6796C96.7839 87.375 96.7414 79.875 94.6796 79.875Z" fill="#F6E05E"/>
-                            <path d="M241.211 44.25C241.211 44.25 187.417 44.2499 186.667 44.25C184.792 44.25 184.792 51.75 186.667 51.75H241.211C243.315 51.75 243.273 44.25 241.211 44.25Z" fill="#F6E05E"/>
-                            <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
-                            <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
-                            <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
-                            <path d="M186.667 7.49993C184.792 7.49993 184.792 14.9999 186.667 14.9999H199.787L201.287 7.49988L186.667 7.49993Z" fill="#F6E05E"/>
-                            <defs>
-                            <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#C4C4C4"/>
-                            <stop offset="1" stop-color="#E6E6E6"/>
-                            </linearGradient>
-                            <clipPath id="clip0">
-                            <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
-                            </clipPath>
-                            <clipPath id="clip1">
-                            <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-4">
-
-                <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4">
-                    <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                        <router-link class="no-underline" to="/gallery/8220">
-                            <img class="w-full" src="@/assets/images/cosmic_cap_11.png" alt="Sunset in the mountains">
-                        </router-link>
-                      <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8220</h4>
-                        <div class="w-full">
-                            <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
-                            <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M241.211 15C243.315 15 243.273 7.50005 241.211 7.50005L201.287 7.5L199.787 15H241.211Z" fill="#E2E8F0"/>
-                            <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
-                            <g clip-path="url(#clip11)">
-                            <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
-                            <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
-                            <g clip-path="url(#clip1)">
-                            <path d="M174.56 73.4524L173.172 72.0635C173.032 71.9242 172.867 71.8136 172.685 71.7382C172.503 71.6628 172.308 71.624 172.111 71.624C171.914 71.624 171.719 71.6628 171.537 71.7382C171.355 71.8136 171.189 71.9242 171.05 72.0635L168.881 74.2352C168.699 74.4166 168.562 74.6379 168.481 74.8816L167.911 76.593L164.336 80.1677C163.766 79.7571 163.141 79.4299 162.456 79.2705C160.888 78.9058 159.316 79.2293 158.243 80.3018C157.806 80.7411 157.48 81.2792 157.294 81.8707C157.013 82.7407 156.207 83.403 155.319 83.486C154.208 83.5924 153.175 84.0227 152.384 84.8191C150.244 86.9524 150.629 90.7961 153.23 93.3954C155.831 95.9946 159.672 96.3743 161.807 94.2424C162.604 93.4511 163.033 92.419 163.141 91.3029C163.223 90.4193 163.886 89.6093 164.755 89.3275C165.346 89.1414 165.884 88.8159 166.324 88.3783C167.396 87.3058 167.718 85.7365 167.355 84.1713C167.196 83.485 166.869 82.8588 166.457 82.2869L170.031 78.7132L171.741 78.1432C171.985 78.0621 172.206 77.9252 172.387 77.7433L174.559 75.5721C174.84 75.291 174.998 74.91 174.998 74.5125C174.998 74.1151 174.841 73.7338 174.56 73.4524V73.4524ZM160.75 88.1243C160.305 88.1243 159.87 87.9923 159.5 87.7451C159.13 87.4978 158.841 87.1464 158.671 86.7353C158.501 86.3242 158.456 85.8718 158.543 85.4353C158.63 84.9989 158.844 84.5979 159.159 84.2833C159.473 83.9686 159.874 83.7543 160.311 83.6675C160.747 83.5807 161.2 83.6252 161.611 83.7955C162.022 83.9658 162.373 84.2542 162.62 84.6242C162.868 84.9942 163 85.4293 163 85.8743C163 86.471 162.763 87.0433 162.341 87.4653C161.919 87.8872 161.346 88.1243 160.75 88.1243Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
-                            <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
-                            <path d="M187.034 44.25C184.67 44.25 184.67 51.75 187.034 51.75H221.424L222.842 44.25L187.034 44.25Z" fill="#F6E05E"/>
-                            <path d="M187.034 7.4998C184.67 7.4998 184.67 14.9998 187.034 14.9998H221.424L222.842 7.49976L187.034 7.4998Z" fill="#F6E05E"/>
-                            <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
-                            <path d="M40.1353 79.9986C38.2609 79.9986 38.2609 87.4986 40.1353 87.4986H53.2559L54.7554 79.9985L40.1353 79.9986Z" fill="#F6E05E"/>
-                            <defs>
-                            <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#C4C4C4"/>
-                            <stop offset="1" stop-color="#E6E6E6"/>
-                            </linearGradient>
-                            <clipPath id="clip0">
-                            <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
-                            </clipPath>
-                            <clipPath id="clip1">
-                            <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                    <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                        <router-link class="no-underline" to="/gallery/8702">
-                            <img class="w-full" src="@/assets/images/cosmic_cap_5.png" alt="Sunset in the mountains">
-                        </router-link>
-                      <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8702</h4>
-                        <div class="w-full">
-                            <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
-                            <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M241.211 15C243.315 15 243.273 7.50005 241.211 7.50005L201.287 7.5L199.787 15H241.211Z" fill="#E2E8F0"/>
-                            <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
-                            <g clip-path="url(#clip11)">
-                            <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
-                            <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
-                            <g clip-path="url(#clip1)">
-                            <path d="M174.56 73.4524L173.172 72.0635C173.032 71.9242 172.867 71.8136 172.685 71.7382C172.503 71.6628 172.308 71.624 172.111 71.624C171.914 71.624 171.719 71.6628 171.537 71.7382C171.355 71.8136 171.189 71.9242 171.05 72.0635L168.881 74.2352C168.699 74.4166 168.562 74.6379 168.481 74.8816L167.911 76.593L164.336 80.1677C163.766 79.7571 163.141 79.4299 162.456 79.2705C160.888 78.9058 159.316 79.2293 158.243 80.3018C157.806 80.7411 157.48 81.2792 157.294 81.8707C157.013 82.7407 156.207 83.403 155.319 83.486C154.208 83.5924 153.175 84.0227 152.384 84.8191C150.244 86.9524 150.629 90.7961 153.23 93.3954C155.831 95.9946 159.672 96.3743 161.807 94.2424C162.604 93.4511 163.033 92.419 163.141 91.3029C163.223 90.4193 163.886 89.6093 164.755 89.3275C165.346 89.1414 165.884 88.8159 166.324 88.3783C167.396 87.3058 167.718 85.7365 167.355 84.1713C167.196 83.485 166.869 82.8588 166.457 82.2869L170.031 78.7132L171.741 78.1432C171.985 78.0621 172.206 77.9252 172.387 77.7433L174.559 75.5721C174.84 75.291 174.998 74.91 174.998 74.5125C174.998 74.1151 174.841 73.7338 174.56 73.4524V73.4524ZM160.75 88.1243C160.305 88.1243 159.87 87.9923 159.5 87.7451C159.13 87.4978 158.841 87.1464 158.671 86.7353C158.501 86.3242 158.456 85.8718 158.543 85.4353C158.63 84.9989 158.844 84.5979 159.159 84.2833C159.473 83.9686 159.874 83.7543 160.311 83.6675C160.747 83.5807 161.2 83.6252 161.611 83.7955C162.022 83.9658 162.373 84.2542 162.62 84.6242C162.868 84.9942 163 85.4293 163 85.8743C163 86.471 162.763 87.0433 162.341 87.4653C161.919 87.8872 161.346 88.1243 160.75 88.1243Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
-                            <path d="M40.5022 8.00005C38.1386 8.00005 38.1386 15.5 40.5022 15.5H74.8926L76.3107 8.00001L40.5022 8.00005Z" fill="#F6E05E"/>
-                            <path d="M187.034 7.4998C184.67 7.4998 184.67 14.9998 187.034 14.9998H221.424L222.842 7.49976L187.034 7.4998Z" fill="#F6E05E"/>
-                            <path d="M40.1353 44.25C38.2609 44.25 38.2609 51.75 40.1353 51.75H53.2559L54.7554 44.25L40.1353 44.25Z" fill="#F6E05E"/>
-                            <path d="M186.667 44.25C184.792 44.25 184.792 51.75 186.667 51.75H199.787L201.287 44.25L186.667 44.25Z" fill="#F6E05E"/>
-                            <path d="M40.1353 79.9986C38.2609 79.9986 38.2609 87.4986 40.1353 87.4986H53.2559L54.7554 79.9985L40.1353 79.9986Z" fill="#F6E05E"/>
-                            <defs>
-                            <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#C4C4C4"/>
-                            <stop offset="1" stop-color="#E6E6E6"/>
-                            </linearGradient>
-                            <clipPath id="clip0">
-                            <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
-                            </clipPath>
-                            <clipPath id="clip1">
-                            <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-
-                <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                    <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                        <router-link class="no-underline" to="/gallery/7826">
-                            <img class="w-full" src="@/assets/images/cosmic_cap_9.png" alt="Sunset in the mountains">
-                        </router-link>
-
-                      <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#7826</h4>
-                        <div class="w-full">
-                            <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
-                            <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M241.211 15C243.315 15 243.273 7.50005 241.211 7.50005L201.287 7.5L199.787 15H241.211Z" fill="#E2E8F0"/>
-                            <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
-                            <g clip-path="url(#clip11)">
-                            <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
-                            <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
-                            <g clip-path="url(#clip1)">
-                            <path d="M174.56 73.4524L173.172 72.0635C173.032 71.9242 172.867 71.8136 172.685 71.7382C172.503 71.6628 172.308 71.624 172.111 71.624C171.914 71.624 171.719 71.6628 171.537 71.7382C171.355 71.8136 171.189 71.9242 171.05 72.0635L168.881 74.2352C168.699 74.4166 168.562 74.6379 168.481 74.8816L167.911 76.593L164.336 80.1677C163.766 79.7571 163.141 79.4299 162.456 79.2705C160.888 78.9058 159.316 79.2293 158.243 80.3018C157.806 80.7411 157.48 81.2792 157.294 81.8707C157.013 82.7407 156.207 83.403 155.319 83.486C154.208 83.5924 153.175 84.0227 152.384 84.8191C150.244 86.9524 150.629 90.7961 153.23 93.3954C155.831 95.9946 159.672 96.3743 161.807 94.2424C162.604 93.4511 163.033 92.419 163.141 91.3029C163.223 90.4193 163.886 89.6093 164.755 89.3275C165.346 89.1414 165.884 88.8159 166.324 88.3783C167.396 87.3058 167.718 85.7365 167.355 84.1713C167.196 83.485 166.869 82.8588 166.457 82.2869L170.031 78.7132L171.741 78.1432C171.985 78.0621 172.206 77.9252 172.387 77.7433L174.559 75.5721C174.84 75.291 174.998 74.91 174.998 74.5125C174.998 74.1151 174.841 73.7338 174.56 73.4524V73.4524ZM160.75 88.1243C160.305 88.1243 159.87 87.9923 159.5 87.7451C159.13 87.4978 158.841 87.1464 158.671 86.7353C158.501 86.3242 158.456 85.8718 158.543 85.4353C158.63 84.9989 158.844 84.5979 159.159 84.2833C159.473 83.9686 159.874 83.7543 160.311 83.6675C160.747 83.5807 161.2 83.6252 161.611 83.7955C162.022 83.9658 162.373 84.2542 162.62 84.6242C162.868 84.9942 163 85.4293 163 85.8743C163 86.471 162.763 87.0433 162.341 87.4653C161.919 87.8872 161.346 88.1243 160.75 88.1243Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
-                            <path d="M187.034 7.4998C184.67 7.4998 184.67 14.9998 187.034 14.9998H221.424L222.842 7.49976L187.034 7.4998Z" fill="#F6E05E"/>
-                            <path d="M40.5022 79.8733C38.1386 79.8733 38.1386 87.3733 40.5022 87.3733H74.8926L76.3107 79.8733L40.5022 79.8733Z" fill="#F6E05E"/>
-                            <path d="M94.6796 8.00005C94.6796 8.00005 40.885 7.99994 40.1353 8.00005C38.2609 8.00005 38.2609 15.5 40.1353 15.5H94.6796C96.7839 15.5 96.7414 8.00005 94.6796 8.00005Z" fill="#F6E05E"/>
-                            <path d="M94.6796 44.2498C94.6796 44.2498 40.885 44.2497 40.1353 44.2498C38.2609 44.2498 38.2609 51.7498 40.1353 51.7498H94.6796C96.7839 51.7498 96.7414 44.2498 94.6796 44.2498Z" fill="#F6E05E"/>
-                            <path d="M241.211 43.6875C241.211 43.6875 187.417 43.6874 186.667 43.6875C184.792 43.6875 184.792 51.1875 186.667 51.1875H241.211C243.315 51.1875 243.273 43.6875 241.211 43.6875Z" fill="#F6E05E"/>
-                            <defs>
-                            <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#C4C4C4"/>
-                            <stop offset="1" stop-color="#E6E6E6"/>
-                            </linearGradient>
-                            <clipPath id="clip0">
-                            <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
-                            </clipPath>
-                            <clipPath id="clip1">
-                            <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                    <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                        <router-link class="no-underline" to="/gallery/8340">
-                            <img class="w-full" src="@/assets/images/cosmic_cap_12.png" alt="Sunset in the mountains">
-                        </router-link>
-                      <div class="px-6 py-4">
-                        <h4 class="font-bold  text-blue-800 text-2xl mb-2">#8340</h4>
-                        <div class="w-full">
-                            <svg width="100%" height="100%" viewBox="0 0 249 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27.8065 73.625H5.23389C4.6816 73.625 4.23389 74.0727 4.23389 74.625V92.625C4.23389 93.1773 4.6816 93.625 5.23389 93.625H27.8065C28.3588 93.625 28.8065 93.1773 28.8065 92.625V74.625C28.8065 74.0727 28.3588 73.625 27.8065 73.625Z" fill="url(#paint0_linear)" stroke="#ABABAB"/>
-                            <path d="M31.0403 18.25H2C2 18.25 2 5.25 16.5202 5.25C31.0403 5.25 31.0403 18.25 31.0403 18.25Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M5.35913 47.7478C5.0612 44.1527 6.78145 38.605 6.78145 38.605H25.8572C25.8572 38.605 27.9308 44.1258 27.6979 47.7478C27.521 50.4974 27.6979 52.1619 25.8572 54.605C23.597 57.605 10.3853 57.605 7.19978 54.605C5.47954 52.3217 5.58674 50.4944 5.35913 47.7478Z" fill="#C4C4C4" stroke="#ABABAB" stroke-width="2"/>
-                            <path d="M94.6796 15.5C96.7839 15.5 96.7414 8.00005 94.6796 8.00005L54.7554 8L53.2559 15.5H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M241.211 15C243.315 15 243.273 7.50005 241.211 7.50005L201.287 7.5L199.787 15H241.211Z" fill="#E2E8F0"/>
-                            <path d="M241.211 51.4375C243.315 51.4375 243.273 43.9375 241.211 43.9375L201.287 43.9375L199.787 51.4375H241.211Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 51.75C96.7839 51.75 96.7414 44.25 94.6796 44.25L54.7554 44.25L53.2559 51.75H94.6796Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 87.4986C96.7839 87.4986 96.7414 79.9986 94.6796 79.9986L54.7554 79.9985L53.2559 87.4986H94.6796Z" fill="#E2E8F0"/>
-                            <g clip-path="url(#clip11)">
-                            <path d="M173.927 12.1544L172.195 5.41124C171.97 4.53175 171.371 3.77658 170.553 3.34017C169.734 2.90488 168.759 2.81656 167.872 3.10527L167.29 3.29378C166.969 3.39732 166.796 3.7339 166.903 4.04488L167.096 4.6082C167.203 4.91917 167.549 5.08728 167.869 4.98374L168.372 4.82083C168.788 4.6865 169.251 4.68835 169.639 4.88503C170.032 5.08431 170.31 5.42535 170.417 5.8432L171.886 11.5514C171.038 11.2986 169.984 11.089 168.785 11.089C167.457 11.089 165.959 11.3495 164.398 12.0813H161.603C160.042 11.3487 158.544 11.0886 157.216 11.0886C156.016 11.0886 154.962 11.2983 154.114 11.551L155.583 5.84245C155.69 5.42497 155.968 5.08357 156.361 4.88466C156.749 4.68798 157.212 4.68613 157.628 4.82046L158.131 4.98337C158.451 5.08691 158.797 4.9188 158.903 4.60783L159.097 4.04451C159.203 3.73353 159.03 3.39695 158.71 3.29341L158.128 3.1049C157.241 2.81618 156.266 2.90413 155.447 3.3398C154.629 3.77658 154.03 4.53138 153.804 5.4105L152.073 12.1544C152.024 12.3424 152 12.5354 152 12.7292V15.3361C152 17.6703 153.97 19.5625 156.4 19.5625H157.818C160.12 19.5625 162.033 17.8577 162.206 15.6523L162.317 14.2188H163.683L163.795 15.6523C163.967 17.8577 165.88 19.5625 168.182 19.5625H169.6C172.03 19.5625 174 17.6703 174 15.3365V12.7296C174 12.5355 173.976 12.3425 173.927 12.1544ZM159.768 15.4727C159.693 16.4342 158.836 17.1875 157.818 17.1875H156.4C155.322 17.1875 154.444 16.357 154.444 15.3361V13.9431C155.137 13.7022 156.103 13.4636 157.217 13.4636C158.128 13.4636 159.022 13.6243 159.888 13.9431L159.768 15.4727V15.4727ZM171.556 15.3365C171.556 16.3574 170.678 17.1875 169.6 17.1875H168.182C167.164 17.1875 166.307 16.4342 166.232 15.4727L166.112 13.9431C166.978 13.6243 167.872 13.4636 168.784 13.4636C169.896 13.4636 170.863 13.7026 171.555 13.9434V15.3365H171.556Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M152.264 45.7935C154.101 42.7418 158.19 39.9121 159.999 39.9121C161.201 39.9121 163.463 41.7249 163.463 41.7249C163.463 41.7249 165.524 40.1537 167.089 39.9121C168.784 39.9121 172.869 42.681 174.702 45.7935C175.124 46.4721 175.206 47.1258 174.702 47.8883C173.849 50.2306 170.81 56.0256 164.954 56.0256C164.893 56.0332 164.847 56.04 164.813 56.046C166.021 56.0764 164.392 56.1224 164.813 56.046C164.366 56.0347 163.529 56.0256 162.053 56.0256C156.283 56.0256 153.185 50.275 152.264 47.8883C151.879 47.1936 151.946 46.3481 152.264 45.7935Z" fill="#ABABAB"/>
-                            <path d="M163.474 46.3771C163.474 46.3771 161.866 46.3771 160.009 45.645C156.546 45.645 154.398 46.8652 154.398 46.8652C154.398 46.8652 157.297 50.3547 163.474 50.3547C169.65 50.3547 172.652 46.8652 172.652 46.8652C172.652 46.8652 170.358 45.645 167.099 45.645C165.77 46.1819 163.474 46.3771 163.474 46.3771Z" fill="#C4C4C4"/>
-                            <g clip-path="url(#clip1)">
-                            <path d="M174.56 73.4524L173.172 72.0635C173.032 71.9242 172.867 71.8136 172.685 71.7382C172.503 71.6628 172.308 71.624 172.111 71.624C171.914 71.624 171.719 71.6628 171.537 71.7382C171.355 71.8136 171.189 71.9242 171.05 72.0635L168.881 74.2352C168.699 74.4166 168.562 74.6379 168.481 74.8816L167.911 76.593L164.336 80.1677C163.766 79.7571 163.141 79.4299 162.456 79.2705C160.888 78.9058 159.316 79.2293 158.243 80.3018C157.806 80.7411 157.48 81.2792 157.294 81.8707C157.013 82.7407 156.207 83.403 155.319 83.486C154.208 83.5924 153.175 84.0227 152.384 84.8191C150.244 86.9524 150.629 90.7961 153.23 93.3954C155.831 95.9946 159.672 96.3743 161.807 94.2424C162.604 93.4511 163.033 92.419 163.141 91.3029C163.223 90.4193 163.886 89.6093 164.755 89.3275C165.346 89.1414 165.884 88.8159 166.324 88.3783C167.396 87.3058 167.718 85.7365 167.355 84.1713C167.196 83.485 166.869 82.8588 166.457 82.2869L170.031 78.7132L171.741 78.1432C171.985 78.0621 172.206 77.9252 172.387 77.7433L174.559 75.5721C174.84 75.291 174.998 74.91 174.998 74.5125C174.998 74.1151 174.841 73.7338 174.56 73.4524V73.4524ZM160.75 88.1243C160.305 88.1243 159.87 87.9923 159.5 87.7451C159.13 87.4978 158.841 87.1464 158.671 86.7353C158.501 86.3242 158.456 85.8718 158.543 85.4353C158.63 84.9989 158.844 84.5979 159.159 84.2833C159.473 83.9686 159.874 83.7543 160.311 83.6675C160.747 83.5807 161.2 83.6252 161.611 83.7955C162.022 83.9658 162.373 84.2542 162.62 84.6242C162.868 84.9942 163 85.4293 163 85.8743C163 86.471 162.763 87.0433 162.341 87.4653C161.919 87.8872 161.346 88.1243 160.75 88.1243Z" fill="#ABABAB"/>
-                            </g>
-                            <path d="M241.211 79.875C241.211 79.875 187.417 79.8749 186.667 79.875C184.792 79.875 184.792 87.375 186.667 87.375H241.211C243.315 87.375 243.273 79.875 241.211 79.875Z" fill="#E2E8F0"/>
-                            <path d="M94.6796 8.00005C94.6796 8.00005 40.885 7.99994 40.1353 8.00005C38.2609 8.00005 38.2609 15.5 40.1353 15.5H94.6796C96.7839 15.5 96.7414 8.00005 94.6796 8.00005Z" fill="#F6E05E"/>
-                            <path d="M94.6796 44.2498C94.6796 44.2498 40.885 44.2497 40.1353 44.2498C38.2609 44.2498 38.2609 51.7498 40.1353 51.7498H94.6796C96.7839 51.7498 96.7414 44.2498 94.6796 44.2498Z" fill="#F6E05E"/>
-                            <path d="M241.211 80.1255C241.211 80.1255 187.417 80.1254 186.667 80.1255C184.792 80.1255 184.792 87.6255 186.667 87.6255H241.211C243.315 87.6255 243.273 80.1255 241.211 80.1255Z" fill="#F6E05E"/>
-                            <path d="M241.211 7.74956C241.211 7.74956 187.417 7.74945 186.667 7.74956C184.792 7.74956 184.792 15.2496 186.667 15.2496H241.211C243.315 15.2496 243.273 7.74956 241.211 7.74956Z" fill="#F6E05E"/>
-                            <path d="M40.1353 79.8733C38.2609 79.8733 38.2609 87.3733 40.1353 87.3733H53.2559L54.7554 79.8733L40.1353 79.8733Z" fill="#F6E05E"/>
-                            <path d="M186.667 43.6875C184.792 43.6875 184.792 51.1875 186.667 51.1875H199.787L201.287 43.6875L186.667 43.6875Z" fill="#F6E05E"/>
-                            <defs>
-                            <linearGradient id="paint0_linear" x1="16.5202" y1="73.625" x2="14.3398" y2="93.3844" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#C4C4C4"/>
-                            <stop offset="1" stop-color="#E6E6E6"/>
-                            </linearGradient>
-                            <clipPath id="clip0">
-                            <rect width="22" height="19" fill="white" transform="translate(152 1.75)"/>
-                            </clipPath>
-                            <clipPath id="clip1">
-                            <rect width="24" height="24" fill="white" transform="translate(151 71.625)"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-
-                        </div>
-                      </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
-</div>
 
-<div class="section bg-gray-300">
-   <div class="container px-12 sm:px-4 py-20 mx-auto">
-           <div class="">
-                   <h2 class="text-3xl font-bold text-blue-700 mb-12">FAQ</h2>
+    <!-- FAQ -->
+    <div class="section bg-gray-300">
+       <div class="container px-12 sm:px-4 py-20 mx-auto">
+               <div class="">
+                       <h2 class="text-3xl font-bold text-blue-700 mb-12">FAQ</h2>
 
-                   <h3 class="text-2xl text-blue-700 font-bold mb-3">How do I adopt a Cosmic Cap?</h3>
-                   <p class="mb-8">Connect your Web3 wallet and mint up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
-                   <br>
-                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >How do I join the community?</h3>
-                   <p class="mb-8">Cosmic Caps make great profile pictures so you can easily spot fellow community members! Follow the official Twitter account and come and say hi in the community Discord server.</p>
-                   <br>
-                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >Are Cosmic Caps supporting charities?</h3>
-                   <p class="mb-8">We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
-                   mission.
-                   </p>
-                   <br>
-                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >What are NFTs?</h3>
-                   <p class="mb-8">NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
-                   </p>
-                   <br>
-                   <h3 class="text-2xl text-blue-700 font-bold mb-3" >What inspired Cosmic Caps?</h3>
-                   <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.
-                   </p>
-           </div>
-   </div>
-</div>
+                       <h3 class="text-2xl text-blue-700 font-bold mb-3">How do I adopt a Cosmic Cap?</h3>
+                       <p class="mb-8">Connect your Web3 wallet and mint up to 32 Cosmic Caps in one transaction. Make sure to have enough ETH to cover any extra gas costs and be careful not to be too slow, once they're gone they're gone and your transaction might fail!</p>
+                       <br>
+                       <h3 class="text-2xl text-blue-700 font-bold mb-3" >How do I join the community?</h3>
+                       <p class="mb-8">Cosmic Caps make great profile pictures so you can easily spot fellow community members! Follow the official Twitter account and come and say hi in the community Discord server.</p>
+                       <br>
+                       <h3 class="text-2xl text-blue-700 font-bold mb-3" >Are Cosmic Caps supporting charities?</h3>
+                       <p class="mb-8">We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a percentage of the proceeds to the <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.
+                       mission.
+                       </p>
+                       <br>
+                       <h3 class="text-2xl text-blue-700 font-bold mb-3" >What are NFTs?</h3>
+                       <p class="mb-8">NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
+                       </p>
+                       <br>
+                       <h3 class="text-2xl text-blue-700 font-bold mb-3" >What inspired Cosmic Caps?</h3>
+                       <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.
+                       </p>
+               </div>
+       </div>
+    </div>
 
-
-<div class="section bg-blue-900 text-gray-300">
-    <div class="container px-12 sm:px-4 py-20 mx-auto">
-        <div class="">
+    <!-- Roadmap -->
+    <div class="section bg-blue-900 text-gray-300">
+        <div class="container px-12 sm:px-4 py-20 mx-auto">
+            <div class="">
                 <h2 class="text-4xl font-bold text-blue-100 mb-12 ">Roadmap</h2>
+                <div class="lg:flex">
+                        <div class="lg:flex-1">
+                            <h3 class="text-2xl text-blue-100 font-bold mb-3">Cosmic Factory 1/1 NFTs</h3>
+                            <p class="mb-8">
+                                Cosmic Caps will be releasing ten unique 1/1 animated gifs depicting the inside of the Chaotic Cosmic Caps Factory. Each animated gif will showcase a different portion of the assembly process of the original Cosmic Cap PFP collection.
+                            </p>
 
-                <h3 class="text-2xl text-blue-100 font-bold mb-3">Cosmic Factory 1/1 NFTs</h3>
-                <p class="mb-8">Cosmic Caps will be releasing ten unique 1/1 animated gifs depicting the inside of the Chaotic Cosmic Caps Factory. Each animated gif will showcase a different portion of the assembly process of the original Cosmic Cap PFP collection.
-                </p>
+                            <br>
+                            <br>
 
-                <br />
+                            <h3 class="text-2xl text-gray-100 font-bold mb-3">Exclusive Cosmic Cap Clothing Line</h3>
+                            <p class="mb-8">
+                                NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
+                            </p>
+                        </div>
+                        <div class="lg:flex-1">
+                            <img
+                            src="@/assets/images/cargo.png"
+                            alt="Cosmic Cap Cargo Factory"
+                            class="max-w-md mx-auto rounded-lg shadow-md border-2 border-gray-300"/>
+                        </div>
+                </div>
 
-                <!-- <h3 class="text-2xl text-gray-100 font-bold mb-3">ARKIT & Animations</h3>
-                <p class="mb-8">Cosmic Caps owners will be able to stake their Cosmic Cap NFT to obtain a new animated 3D Cosmic Caps NFT (.GLB format) and ARKIT integration files. These can be imported into any metaverse or game engine that supports .GLB format.</p>
-
-                <br /> -->
+                <br>
+                <br>
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Metaverse Integration</h3>
                 <p class="mb-8">Cosmic Caps will be compatible with Decentraland and Cryptovoxels. As an owner of Cosmic Caps, you will be given access to download 3D model files that can be imported into Decentraland and Cryptovoxels as a player model.
                     Not only are Cosmic Caps psychedelic mushroom themed character-collectibles, they also serve as your ticket to a community of 3D content and serve to distinguish yourself in the metaverse.
                 </p>
 
-                <br />
-
-                <h3 class="text-2xl text-gray-100 font-bold mb-3">Web Store & Cosmic Cap Merchandise</h3>
-                <p class="mb-8">NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
-                </p>
-
-                <br />
-
-                <!-- <h3 class="text-2xl text-gray-100 font-bold mb-3">Holders will be airdropped future Cosmic NFTs from each Episode</h3>
-                <p class="mb-8">Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with.</p>
-                <br /> -->
+                <br>
+                <br>
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">Giving Back To Our Community</h3>
                 <p class="mb-8">Once all Cosmic Caps have been minted, the real story begins. We will donate $100,000 to Multidisciplinary Association For Psychedelic Studies (MAPS).
                     Holders of Cosmic Caps will be able to take part in future airdrops of 1/1 NFTs related to the films and in person Cosmic Cap events. <br>
-
-                    <!-- Cosmic Caps was created by a team of DeFi builders who've been contributing to the Ethereum community since 2016. We've been avid NFT collectors and blown away by the uniting power of the NFT communities we've been involved with. -->
                 </p>
 
-                <br />
+                <br>
+                <br>
 
                 <h3 class="text-2xl text-gray-100 font-bold mb-3">CCO Ownership rights</h3>
                 <p class="mb-8">As long as you own the Cosmic Cap NFT, you’ll have exclusive rights to your Cosmic Cap.
                 </p>
+            </div>
         </div>
     </div>
-</div>
 
-
-<div class="section bg-gray-300">
-    <div class="container py-20 mx-auto flex">
-            <div class="md:flex-1/6 md:w-1/6 w-1 px-4 invisible md:visible">
-                    <img
-                    src="@/assets/images/Logo.png"
-                    alt="gold shroom, pink makeup"
-                    class="logo"/>
-            </div>
-            <div class="md:flex-4/6 flex-1 flex-1 px-6">
-                    <h2 class="text-3xl font-bold text-blue-700 mb-6">Donating to Science and Medicine!</h2>
-                    <p>We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a portion of the proceeds to the  <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.</p>
-            </div>
+    <!-- Donating to Science -->
+    <div class="section bg-gray-300">
+        <div class="container py-20 mx-auto flex">
+                <div class="md:flex-1/6 md:w-1/6 w-1 px-4 invisible md:visible">
+                        <img
+                        src="@/assets/images/Logo.png"
+                        alt="Multidisciplinary Association For Psychedelic Studies (MAPS) Logo"
+                        class="logo"/>
+                </div>
+                <div class="md:flex-4/6 flex-1 flex-1 px-6">
+                        <h2 class="text-3xl font-bold text-blue-700 mb-6">Donating to Science and Medicine!</h2>
+                        <p>We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a portion of the proceeds to the  <a href="https://maps.org/about/" target="_blank">Multidisciplinary Association For Psychedelic Studies (MAPS)</a>.</p>
+                </div>
+        </div>
     </div>
-</div>
 
+    <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;"></div>
 
-
-     <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;">
-
-   </div>
-
-
-  <Footer/>
+    <Footer/>
 
 </div>
 </template>
 
 <script>
 import Web3Plug from "../js/web3-plug.js";
-
 import Navbar from "./components/Navbar.vue";
-
 import Footer from "./components/Footer.vue";
 import TabsBar from "./components/TabsBar.vue";
-
 import FrontendHelper from "../js/frontend-helper.js";
-
 const ERC721ABI = require("../contracts/ERC721ABI.json");
 
 export default {
@@ -718,6 +749,7 @@ export default {
       totalSupply: 0,
       mintAmount: 1,
       errorMessage: null,
+
     };
   },
 
@@ -749,14 +781,53 @@ export default {
   mounted: function () {
     this.getBalances();
 
-    this.getTotalSupply();
+    // this.getTotalSupply();
 
     setInterval(this.getBalances.bind(this), 5000);
+
+    this.CallProfileDetails()
   },
   methods: {
     canMint() {
       return this.totalSupply >= 9999;
     },
+
+    // async CallProfileDetails(){
+    //
+    //   console.log("CallProfileDetails");
+    //
+    //   if (!this.signedInToWeb3) {
+    //     this.web3Plug.connectWeb3();
+    //     return;
+    //   }
+    //
+    //   let userAddress = this.web3Plug.getActiveAccountAddress();
+    //   console.log("userAddress:" + userAddress);
+    //
+    //
+    // },
+
+    async CallProfileDetails(){
+
+      console.log("CallProfileDetails");
+
+      try {
+          if (!this.signedInToWeb3) {
+            this.web3Plug.connectWeb3();
+            return;
+          }
+          this.userAddress = this.web3Plug.getActiveAccountAddress();
+      }
+      catch(err) {
+        console.log('error!')
+      }
+      console.log("userAddress:" + this.userAddress);
+
+      // return this.userAddress
+
+
+    },
+
 
     async getBalances() {
       /*

@@ -52,7 +52,7 @@
       height: 100%;
       width: 100%;
       overflow: hidden;
-      background-color: #2a4365;
+      background-color: #fff;
       }
 
      .video-container video {
@@ -81,7 +81,7 @@
       height: 35vh;
       width: 100%;
       overflow: hidden;
-      background-color: #2a4365;
+      background-color: #edf2f7;
       }
 
      .video-container video {
