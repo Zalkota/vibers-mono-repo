@@ -1,7 +1,7 @@
 <template>
     <div class="md:mx-2">
         <div class="my-3 ">
-                <span class=" text-sm text-gray-600">{{ filterTokenIdArrayLength }} Cosmic Caps owned by you.</span>
+                <span class=" text-sm text-gray-600">{{ activeTokenIdArrayLength }} Cosmic Caps owned by you.</span>
         </div>
 
           <br>
@@ -24,16 +24,12 @@
             </div>
 
           <div v-bind:class=" [singleColActive ? classGridSingle : 'grid-cols-2', 'grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6']" >
-                <span class="text-red-400 ">activeTokenIdArray {{ activeTokenIdArray}}</span>
-                <span class="text-green-400 ">allTokenIdArray {{ allTokenIdArray }}</span>
               <NftTile
                 v-for="tokenId in activeTokenIdArray"
                 v-bind:key="tokenId"
 
                 v-bind:collectionName="resultsData.collectionName"
                 v-bind:nftTokenId="tokenId"
-                v-bind="co"
-
                 v-bind:clickedTileCallback="clickedTileCallback"
                />
             </div>
@@ -54,16 +50,16 @@ const FrontendConfig = require('../../config/FrontendConfig.json')
 
 export default {
   name: 'TiledTokenProfileBrowser',
-  props: ['userAddress'],
+  props: ['web3Plug', 'userAddress'],
   components: {NftTile, PaginationBar},
   watch: {
-    // currentFilter: {
-    //   immediate: true,
-    //   deep: true,
-    //   handler(newValue, oldValue) {
-    //       this.fetchFilteredTokensArray()
-    //   }
-    // }
+    userAddress: {
+      immediate: true,
+      deep: true,
+      handler(newValue, oldValue) {
+          this.fetchFilteredTokensArray()
+      }
+    }
   },
 
   data() {
@@ -71,9 +67,7 @@ export default {
       resultsData : {},
       // filterExists: false,
       activeTokenIdArray: [],
-      allTokenIdArray: [],
-      allTokenIdArrayLength: 0,
-      filterTokenIdArrayLength: 0,
+      activeTokenIdArrayLength: 0,
       currentPage: 0,
       maxPages: 0,
       itemsPerPage: 25,
@@ -87,12 +81,7 @@ export default {
   },
 
   mounted: async function() {
-    this.fetchFilteredTokensArray()
     },
-
-
-
-
 
   methods: {
 
@@ -100,24 +89,31 @@ export default {
         console.log('fetching results  - fetchFilteredTokensArray ')
          let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
 
-         let inputQuery = Object.assign( { accountAddress: userAddress})
-         console.log('input', userAddress)
-         let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_owner", "input": inputQuery})
-           let output = result.output
-           console.log('result.output', output, )
 
-           if(output && output.tokenIdArray[0]){
+         if (this.userAddress !== null) {
 
-              this.resultsData = output
-              console.log('resultsData', this.resultsData)
+             // Define contract address as nftContract
+             let contractData = await this.web3Plug.getContractDataForActiveNetwork();
+             let nftContract = contractData.cosmicCaps_dev.address
 
-              this.currentPage = 1
-              this.activeTokenIdArray = this.filterTokensForCurrentPage(this.resultsData.tokenIdArray)
-              console.log('activeTokenIdArray', this.activeTokenIdArray)
+             let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": nftContract})
+             console.log('input', this.userAddress, nftContract)
+             let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_owner", "input": inputQuery})
+             let output = result.output[0]
+             console.log('result.output', output, )
 
-              this.filterTokenIdArrayLength = this.resultsData.tokenIdArray.length
-              this.maxPages = Math.ceil( this.resultsData.tokenIdArray.length / this.itemsPerPage )
-              console.log('max pages', this.maxPages)
+             if(output && output.tokenIds){
+                  this.resultsData = output
+                  console.log('resultsData', this.resultsData.tokenIds)
+
+                  this.currentPage = 0
+                  this.activeTokenIdArray = this.filterTokensForCurrentPage(this.resultsData.tokenIds)
+                  console.log('activeTokenIdArray', this.activeTokenIdArray)
+
+                  this.activeTokenIdArrayLength = this.resultsData.tokenIds.length
+                  this.maxPages = Math.ceil( this.resultsData.tokenIds.length / this.itemsPerPage )
+                  console.log('max pages', this.maxPages)
+         }
           }
       },
 
@@ -145,7 +141,7 @@ export default {
       setCurrentPageCallback(newPage){
         console.log('newPage',newPage)
         this.currentPage = newPage
-        this.activeTokenIdArray = this.filterTokensForCurrentPage(this.resultsData.tokenIdArray)
+        this.activeTokenIdArray = this.filterTokensForCurrentPage(this.resultsData.tokenIds)
 
       },
 

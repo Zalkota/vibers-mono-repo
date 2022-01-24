@@ -3,7 +3,7 @@
 
      <div
      v-if="currentPage>1"
-    class="select-none bg-white hover:bg-blue-400 cursor-pointer p-4 mx-2 my-4 border border-gray-400 rounded-lg inline " 
+    class="select-none bg-white hover:bg-blue-400 cursor-pointer p-4 mx-2 my-4 border border-gray-400 rounded-lg inline "
 
      @click="setCurrentPageCallback(currentPage-1)" >
         {{'<' }}
@@ -19,7 +19,6 @@
 
     <div
     class="select-none bg-white hover:bg-blue-400 cursor-pointer p-4 mx-2 my-4 border border-gray-400 rounded-lg inline "
-
       >
         ...
     </div>

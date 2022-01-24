@@ -7,6 +7,7 @@
      <div class=" ">
         <Navbar
         v-bind:web3Plug="web3Plug"
+        v-bind:userAddress="userAddress"
        />
      </div>
 
@@ -19,10 +20,7 @@
          <img class="object-center object-cover h-auto rounded-md " v-bind:src="getImageURL()" alt="Cosmic Cap NFT">
      </div>
 
-
-
-
-    <div class="flex-auto  py-8 px-12 pb-0 m-6 bg-white rounded-md border border-gray-300">
+    <div class="flex-auto py-8 md:px-8 px-6 pb-0 m-6 bg-white rounded-md border border-gray-300">
 
         <router-link  :to="getProjectURL()" class="no-underline" >
             <h4 class="text-md text-blue-600 font-bold"> Cosmic Caps </h4>
@@ -88,8 +86,8 @@
    </div>
 
    <div class="text-center mx-auto m-6 ">
-         <a v-bind:href="'https://opensea.io/assets/0xf3c9b7a97eba579f5c234f79108331f5513c9741/' + this.id" class="button bg-blue-600 text-3xl text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline  mx-2" >Buy on Opensea</a>
-         <a class="button bg-blue-600 text-3xl text-white font-bold my-2 py-3 px-6 mx-2 rounded-xl shadow-md w-56 text-center no-underline " v-bind:href="getCollectionExplorerURL()">
+         <a v-bind:href="'https://opensea.io/assets/0xf3c9b7a97eba579f5c234f79108331f5513c9741/' + this.id" class="button bg-blue-600 lg:text-3xl text-sm text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline  mx-2" >Buy on Opensea</a>
+         <a class="button bg-blue-600 lg:text-3xl text-sm text-white font-bold my-6 lg:my-2 py-3 px-6 mx-2 rounded-xl shadow-md w-56 text-center no-underline" v-bind:href="getCollectionExplorerURL()">
              View On Etherscan
          </a>
    </div>
@@ -155,6 +153,7 @@
 
 
 import Web3Plug from '../js/web3-plug.js'
+import mushroomJson from "../mushrooms.json";
 
 
 import Navbar from './components/Navbar.vue';
@@ -171,7 +170,7 @@ import AssetDataHelper from '../js/asset-data-helper'
 
 import FrontendHelper from '../js/frontend-helper'
 
-const web3utils = require('web3').utils
+import web3utils from 'web3-utils'
 
 const BN = web3utils.BN
 
@@ -189,6 +188,7 @@ export default {
       nftTokenId: null,
       tokenOwnerAddress: null,
       interactionMode: null ,
+      userAddress: null,
       nftTraitsArray:[],
 
       activeAccountAddress: null,
@@ -197,52 +197,75 @@ export default {
 
     }
   },
-  mounted: function () {
-      console.log('contractAddress', this.$route.params.contractAddress)
+  created() {
+      this.web3Plug.getPlugEventEmitter().on(
+        "stateChanged",
+        async function (connectionState) {
+          console.log("stateChanged", connectionState);
 
+          console.log('contractAddress', this.$route.params.contractAddress)
+          this.nftContractName = this.$route.params.contractAddress
+          this.nftTokenId = parseInt( this.$route.params.tokenId )
 
+          this.activeAccountAddress = connectionState.activeAccountAddress;
+          this.activeNetworkId = connectionState.activeNetworkId;
 
-
-    this.nftContractName = this.$route.params.contractAddress
-    this.nftTokenId = parseInt( this.$route.params.tokenId )
-
-
-
-
-    this.web3Plug.getPlugEventEmitter().on('stateChanged', async function(connectionState) {
-        console.log('stateChanged',connectionState);
-
-        this.activeAccountAddress = connectionState.activeAccountAddress
-        this.activeNetworkId = connectionState.activeNetworkId
+          this.signedInToWeb3 = this.activeAccountAddress != null;
 
           let contractData = this.web3Plug.getContractDataForActiveNetwork()
 
-        this.nftContractAddress = FrontendHelper.lookupContractAddress( this.nftContractName, contractData  )
-   console.log('found address',this.nftContractAddress)
+          this.nftContractAddress = FrontendHelper.lookupContractAddress( this.nftContractName, contractData  )
+          console.log('found address',this.nftContractAddress)
 
 
         await this.fetchTokenData()
 
-        await this.fetchOrdersForToken()
+        // await this.fetchOrdersForToken()
 
 
 
         this.$forceUpdate();
 
+          // this.getTotalSupply();
+        }.bind(this)
+      );
+      this.web3Plug.getPlugEventEmitter().on(
+        "error",
+        function (errormessage) {
+          console.error("error", errormessage);
 
+          this.web3error = errormessage;
+        }.bind(this)
+      );
 
-
-      }.bind(this));
-   this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
-        console.error('error',errormessage);
-
-        this.web3error = errormessage
-        // END CUSTOM CODE
-      }.bind(this));
-    this.web3Plug.reconnectWeb()
-
+      this.web3Plug.reconnectWeb();
   },
+
+  mounted: function () {
+      this.CallProfileDetails()
+  },
+
+
   methods: {
+
+      // thisMushroom: function(){
+      //           // console.log("forloop");
+      //           for (let object in this.mushrooms) {
+      //               console.log("forloop", object.tokenId);
+      //               if (object.id == this.id) {
+      //                   console.log(object.id);
+      //                   this.cap == object['Shroom Cap'];
+      //                 return object.id
+      //               }
+      //           }
+      //       },
+
+      userAddressString(){
+          if (this.userAddress !== null) {
+              let result = this.userAddress
+              return result
+          }
+      },
 
       getLinkUrl(){
 
@@ -309,7 +332,7 @@ export default {
 
         // await this.fetchTokenData()
 
-        await this.fetchOrdersForToken()
+        // await this.fetchOrdersForToken()
 
       },
 
@@ -486,7 +509,24 @@ export default {
 
         return null
 
-      }
+    },
+
+      async CallProfileDetails(){
+        console.log("CallProfileDetails");
+        try {
+            if (!this.signedInToWeb3) {
+              this.web3Plug.connectWeb3();
+              return;
+            }
+            this.userAddress = this.web3Plug.getActiveAccountAddress();
+            this.userAddress = web3utils.toChecksumAddress(this.userAddress)
+
+        }
+        catch(err) {
+          console.log('error: CallProfileDetails')
+        }
+        console.log("userAddress:" + this.userAddress);
+      },
 
 
 

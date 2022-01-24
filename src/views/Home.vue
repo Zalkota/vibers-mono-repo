@@ -5,6 +5,7 @@
      <div class=" ">
         <Navbar
         v-bind:web3Plug="web3Plug"
+        v-bind:userAddress="userAddress"
        />
      </div>
    </div>
@@ -749,6 +750,7 @@ export default {
       totalSupply: 0,
       mintAmount: 1,
       errorMessage: null,
+      userAddress: null,
 
     };
   },
@@ -764,7 +766,7 @@ export default {
 
         this.signedInToWeb3 = this.activeAccountAddress != null;
 
-        this.getTotalSupply();
+        // this.getTotalSupply();
       }.bind(this)
     );
     this.web3Plug.getPlugEventEmitter().on(
@@ -792,41 +794,26 @@ export default {
       return this.totalSupply >= 9999;
     },
 
-    // async CallProfileDetails(){
-    //
-    //   console.log("CallProfileDetails");
-    //
-    //   if (!this.signedInToWeb3) {
-    //     this.web3Plug.connectWeb3();
-    //     return;
-    //   }
-    //
-    //   let userAddress = this.web3Plug.getActiveAccountAddress();
-    //   console.log("userAddress:" + userAddress);
-    //
-    //
-    // },
+
 
     async CallProfileDetails(){
-
       console.log("CallProfileDetails");
-
       try {
           if (!this.signedInToWeb3) {
             this.web3Plug.connectWeb3();
             return;
           }
           this.userAddress = this.web3Plug.getActiveAccountAddress();
+          this.userAddress = web3utils.toChecksumAddress(this.userAddress)
+
       }
       catch(err) {
-        console.log('error!')
+        console.log('error: CallProfileDetails')
       }
       console.log("userAddress:" + this.userAddress);
-
-      // return this.userAddress
-
-
     },
+
+
 
 
     async getBalances() {
@@ -877,10 +864,10 @@ export default {
     async getTotalSupply() {
       let contractData = await this.web3Plug.getContractDataForActiveNetwork();
 
-      const nftContract = this.web3Plug.getCustomContract(
-        ERC721ABI,
-        contractData.cosmicCaps.address
-      );
+      // const nftContract = this.web3Plug.getCustomContract(
+      //   ERC721ABI,
+      //   contractData.cosmicCaps.address
+      // );
 
       this.totalSupply = await nftContract.methods.totalSupply().call();
 
@@ -912,9 +899,6 @@ export default {
         return;
       }
 
-      let userAddress = this.web3Plug.getActiveAccountAddress();
-      console.log("userAddress:" + userAddress);
-
       let amt = this.mintAmount.toString();
       console.log("mintAmount:" + this.mintAmount);
 
@@ -927,7 +911,9 @@ export default {
       // let ethValue = parseInt(amt) * 6 * 10000002000000000;
       // console.log("ethvalue:" + ethValue);
 
+      // request contract address
       let contractData = await this.web3Plug.getContractDataForActiveNetwork();
+
       const price = 0.06;
       const overrides = {
         value: (price * Math.pow(10, 18) * amt).toString(),
@@ -936,22 +922,19 @@ export default {
         ).toString(),
       };
 
-      let ethBalance = await this.web3Plug.getETHBalance(userAddress);
+      let ethBalance = await this.web3Plug.getETHBalance(this.userAddress);
       console.log("ethBalance: " + ethBalance);
 
-      // const nftContract = this.web3Plug.getCustomContract(
-      //   ERC721ABI,
-      //   contractData.cosmicCaps.address
-      // );
 
+      // request contract methods using ERC721ABI file and contract address
       const nftContract = this.web3Plug.getCustomContract(
         ERC721ABI,
-        contractData.cosmicCaps.address
+        contractData.cosmicCaps_dev.address
       );
 
       console.log("calling mint");
-      this.totalSupply = await nftContract.methods.mint(userAddress, amt).send({
-        from: userAddress,
+      this.totalSupply = await nftContract.methods.mint(this.userAddress, amt).send({
+        from: this.userAddress,
         value: overrides.value,
         gasLimit: overrides.gasLimit,
       });

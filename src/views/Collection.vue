@@ -7,6 +7,7 @@
      <div class=" ">
         <Navbar
         v-bind:web3Plug="web3Plug"
+        v-bind:userAddress="userAddress"
        />
      </div>
    </div>
@@ -56,9 +57,7 @@
 
 
 import Web3Plug from '../js/web3-plug.js'
-
-
-//import SearchBar from './components/legacy/SearchBar.vue';
+import web3utils from 'web3-utils'
 import Navbar from './components/Navbar.vue';
 
 import Footer from './components/Footer.vue';
@@ -81,32 +80,41 @@ export default {
 
       filterTraitsList: {},
       tokenBrowserFilter: {},
-      show: false
+      show: false,
+      userAddress: null
 
     }
   },
 
-  created(){
-    this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
-        console.log('stateChanged',connectionState);
+  created() {
+    this.web3Plug.getPlugEventEmitter().on(
+      "stateChanged",
+      async function (connectionState) {
+        console.log("stateChanged", connectionState);
 
-        this.activeAccountAddress = connectionState.activeAccountAddress
-        this.activeNetworkId = connectionState.activeNetworkId
+        this.activeAccountAddress = connectionState.activeAccountAddress;
+        this.activeNetworkId = connectionState.activeNetworkId;
 
-      }.bind(this));
-   this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
-        console.error('error',errormessage);
+        this.signedInToWeb3 = this.activeAccountAddress != null;
 
-        this.web3error = errormessage
+        // this.getTotalSupply();
+      }.bind(this)
+    );
+    this.web3Plug.getPlugEventEmitter().on(
+      "error",
+      function (errormessage) {
+        console.error("error: getPlugEventEmitter", errormessage);
 
-      }.bind(this));
+        this.web3error = errormessage;
+      }.bind(this)
+    );
 
-      this.web3Plug.reconnectWeb()
-
+    this.web3Plug.reconnectWeb();
   },
   mounted: function () {
 
       this.fetchTraits()
+      this.CallProfileDetails()
 
   },
   methods: {
@@ -169,6 +177,23 @@ export default {
               this.selectedTab = tabname.toLowerCase()
 
 
+          },
+
+          async CallProfileDetails(){
+            console.log("CallProfileDetails");
+            try {
+                if (!this.signedInToWeb3) {
+                  this.web3Plug.connectWeb3();
+                  return;
+                }
+                this.userAddress = this.web3Plug.getActiveAccountAddress();
+                this.userAddress = web3utils.toChecksumAddress(this.userAddress)
+
+            }
+            catch(err) {
+              console.log('error: CallProfileDetails')
+            }
+            console.log("userAddress:" + this.userAddress);
           },
 
 

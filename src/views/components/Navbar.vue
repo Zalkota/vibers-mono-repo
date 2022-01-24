@@ -144,6 +144,7 @@
                 <div class="flex">
                     <UpperNav
                        v-bind:web3Plug="web3Plug"
+                       v-bind:userAddress="userAddress"
                        />
                 </div>
             </div>
@@ -165,7 +166,7 @@ import UpperNav from './UpperNav.vue';
 import AccordionNav from './AccordionNav.vue';
 export default {
   name: 'Navbar',
-  props: ['web3Plug' ],
+  props: ['web3Plug', 'userAddress'],
   components: {UpperNav,AccordionNav},
   data() {
     return {

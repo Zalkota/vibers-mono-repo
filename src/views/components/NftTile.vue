@@ -7,7 +7,9 @@
                 <h4 class="text-sm text-gray-900 font-bold">Cosmic Cap #{{ this.nftTokenId }} </h4>
             </div>
         </router-link>
-  </div>
+    </div>
+
+
 </template>
 
 

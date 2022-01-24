@@ -31,42 +31,46 @@
               </button>
             </div>
 
-          <div v-bind:class=" [singleColActive ? classGridSingle : 'grid-cols-2', 'grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6']" >
-                <span class="text-red-400 ">activeTokenIdArray {{ activeTokenIdArray}}</span>
-                <span class="text-green-400 ">allTokenIdArray {{ allTokenIdArray }}</span>
-              <NftTile
-                v-if="currentFilter.traitValue"
-                v-for="tokenId in activeTokenIdArray"
-                v-bind:key="tokenId"
 
-                v-bind:collectionName="resultsData.collectionName"
-                v-bind:nftTokenId="tokenId"
-                v-bind="co"
+            <div>
+                <div v-if="currentFilter.traitValue !== undefined" v-bind:class=" [singleColActive ? classGridSingle : 'grid-cols-2', 'grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6']">
+                    <NftTile
+                      v-for="tokenId in activeTokenIdArray"
+                      v-bind:key="tokenId"
 
-                v-bind:clickedTileCallback="clickedTileCallback"
-               />
-               <NftTile
-                 v-else="currentFilter.traitValue"
-                 v-for="tokenId in allTokenIdArray"
-                 v-bind:key="tokenId"
+                      v-bind:collectionName="resultsData.collectionName"
+                      v-bind:nftTokenId="tokenId"
 
-                 v-bind:collectionName="resultsData.collectionName"
-                 v-bind:nftTokenId="tokenId"
+                      v-bind:clickedTileCallback="clickedTileCallback"
+                     />
+                </div>
 
-                 v-bind:clickedTileCallback="clickedTileCallback"
-                />
+
+               <div v-else="currentFilter.traitValue == undefined"  v-bind:class=" [singleColActive ? classGridSingle : 'grid-cols-2', 'grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6']">
+                   <div v-for="mushroom in activeTokenIdArray" class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center border border-gray-400">
+                       <router-link v-bind:to="'/collection/cosmiccaps_dev/' + mushroom.tokenId" class=" cursor-pointer  no-underline select-none inline-block  relative"   >
+                           <img class="object-center object-cover h-auto w-full" v-bind:src="'https://cosmic-caps.s3.amazonaws.com/Final_10000_caps/' + mushroom.tokenId + '.png'" alt="Cosmic Cap NFT Image">
+                           <div class="text-center  px-2 sm:px-4  py-2 sm:py-4 ">
+                               <h4 class="text-sm text-gray-900 font-bold">Cosmic Cap #{{ mushroom.tokenId }} </h4>
+                           </div>
+                       </router-link>
+                   </div>
+               </div>
             </div>
-            <PaginationBar
-              :currentPage="currentPage"
-              :maxPages="maxPages"
-              :setCurrentPageCallback="setCurrentPageCallback"
-             />
+
+           <PaginationBar
+             :currentPage="currentPage"
+             :maxPages="maxPages"
+             :setCurrentPageCallback="setCurrentPageCallback"
+            />
+
     </div>
 </template>
 
 
 <script>
 import StarflaskApiHelper from '../../js/starflask-api-helper.js'
+import mushroomJson from "../../mushrooms.json";
 import NftTile from './NftTile.vue';
 import PaginationBar from './PaginationBar.vue';
 const FrontendConfig = require('../../config/FrontendConfig.json')
@@ -81,7 +85,6 @@ export default {
       deep: true,
       handler(newValue, oldValue) {
           this.fetchFilteredTokensArray()
-          // this.fetchAllTokensArray()
       }
     }
   },
@@ -92,13 +95,16 @@ export default {
       // filterExists: false,
       activeTokenIdArray: [],
       allTokenIdArray: [],
-       allTokenIdArrayLength: 0,
+      allTokenIdArrayLength: 0,
       filterTokenIdArrayLength: 0,
       currentPage: 0,
-      maxPages: 0,
+      maxPages: 1,
       itemsPerPage: 25,
       singleColActive: true,
       classGridSingle: 'grid-cols-1',
+      mushrooms: mushroomJson,
+      mushroomArray: [],
+      tokenIdArray: [],
 
     }
   },
@@ -108,6 +114,9 @@ export default {
 
 
   methods: {
+
+
+
 
       // update(){
       //     UpdateArrayLength()
@@ -143,38 +152,63 @@ export default {
 
       async fetchFilteredTokensArray(){
         console.log('fetching results  - fetchFilteredTokensArray ')
-        // this.currentFilter
 
          let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
 
          let inputQuery = Object.assign( {collectionName:'cosmiccaps_dev'}, this.currentFilter)
-         let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_by_trait_value", "input": inputQuery})
-           let output = result.output
-           console.log('result.output', output, )
 
-           if(output && output.tokenIdArray[0]){
+         this.activeTokenIdArray = []
+
+         console.log('this.currentFilter.traitvalue', this.currentFilter.traitName)
+
+         if (this.currentFilter.traitName !== undefined ){
+             console.log('Filter == defined', this.currentFilter.traitvalue)
+             let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_by_trait_value", "input": inputQuery})
+               let output = result.output
+               console.log('result.output', output, )
+
+               if(output && output.tokenIdArray[0]){
+
+                  this.resultsData = output
+                  console.log('resultsData', this.resultsData.tokenIdArray)
+
+                  this.tokenIdArray = this.resultsData.tokenIdArray
+
+                  this.currentPage = 0
+                  this.activeTokenIdArray = this.filterTokensForCurrentPage(this.tokenIdArray)
+                  console.log('activeTokenIdArray', this.activeTokenIdArray)
+
+                  this.filterTokenIdArrayLength = this.resultsData.tokenIdArray.length
+
+                  this.maxPages = Math.ceil( this.resultsData.tokenIdArray.length / this.itemsPerPage )
+
+                  console.log('max pages', this.maxPages)
+              }
+         } else {
+             console.log('Filter == undefined')
+             this.activeTokenIdArray = []
+
+             this.tokenIdArray = this.mushrooms
+
+             this.currentPage = 0
+             this.activeTokenIdArray = this.filterTokensForCurrentPage(this.tokenIdArray)
+             console.log('activeTokenIdArray', this.activeTokenIdArray)
 
 
-              this.resultsData = output
-              console.log('resultsData', this.resultsData)
 
-              this.currentPage = 1
-              this.activeTokenIdArray = this.filterTokensForCurrentPage(this.resultsData.tokenIdArray)
-              console.log('activeTokenIdArray', this.activeTokenIdArray)
+             this.filterTokenIdArrayLength = this.mushrooms.length
+             this.maxPages = Math.ceil( this.mushrooms.length / this.itemsPerPage )
+             console.log('max pages', this.maxPages)
 
-              this.filterTokenIdArrayLength = this.resultsData.tokenIdArray.length
+         }
 
-              this.maxPages = Math.ceil( this.resultsData.tokenIdArray.length / this.itemsPerPage )
 
-              console.log('max pages', this.maxPages)
-          }
       },
 
 
 
       filterTokensForCurrentPage(allTokenIds){
         //sort
-
         //slice
         let startIndex = this.currentPage * this.itemsPerPage;
         let endIndex = startIndex+this.itemsPerPage
@@ -194,7 +228,7 @@ export default {
       setCurrentPageCallback(newPage){
         console.log('newPage',newPage)
         this.currentPage = newPage
-        this.activeTokenIdArray = this.filterTokensForCurrentPage(this.resultsData.tokenIdArray)
+        this.activeTokenIdArray = this.filterTokensForCurrentPage(this.tokenIdArray)
 
       },
 
@@ -207,7 +241,8 @@ export default {
   mounted() {
 
 
-      this.fetchAllTokensArray()
+
+      // this.fetchAllTokensArray()
   }
 }
 
