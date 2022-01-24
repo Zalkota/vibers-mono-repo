@@ -1,4 +1,4 @@
 {
-    "tokenDataApiRoot":"http://localhost:3000",
-    "marketApiRoot":"http://localhost:3000"
+    "tokenDataApiRoot":"http://cosmicflask.com/",
+    "marketApiRoot":"http://cosmicflask.com/"
 }
