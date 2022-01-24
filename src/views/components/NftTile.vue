@@ -1,6 +1,5 @@
 <template>
     <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center border border-gray-400">
-        {{ collectionName }}
         <router-link v-bind:to="getLinkUrl()" class=" cursor-pointer  no-underline select-none inline-block  relative"   >
             <!-- <img v-bind:src="getImageURL()" width="256" height="256" /> -->
             <img class="object-center object-cover h-auto w-full" v-bind:src="getImageURL()" alt="photo">
