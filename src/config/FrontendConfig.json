@@ -1,4 +1,4 @@
 {
-    "tokenDataApiRoot":"http://cosmicflask.com/",
-    "marketApiRoot":"http://cosmicflask.com/"
+    "tokenDataApiRoot":"https://cosmicflask.com/",
+    "marketApiRoot":"https://cosmicflask.com/"
 }
