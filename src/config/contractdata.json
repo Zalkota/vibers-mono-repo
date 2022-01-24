@@ -1,7 +1,7 @@
 {
   "mainnet":{
     "contracts":{
-      "cosmicCaps_dev":{"name":"COSMIC","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" }
+      "cosmiccaps_dev":{"name":"COSMIC","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" }
     }
   },
 

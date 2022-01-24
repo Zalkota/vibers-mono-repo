@@ -95,8 +95,9 @@ export default {
 
         this.activeAccountAddress = connectionState.activeAccountAddress;
         this.activeNetworkId = connectionState.activeNetworkId;
-
         this.signedInToWeb3 = this.activeAccountAddress != null;
+
+        
 
         // this.getTotalSupply();
       }.bind(this)
@@ -124,6 +125,8 @@ export default {
   },
 
   methods: {
+
+
 
       userAddressSliceMiddle(){
           if (this.userAddress !== null) {

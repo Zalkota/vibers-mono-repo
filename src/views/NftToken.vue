@@ -20,7 +20,7 @@
          <img class="object-center object-cover h-auto rounded-md " v-bind:src="getImageURL()" alt="Cosmic Cap NFT">
      </div>
 
-    <div class="flex-auto py-8 md:px-8 px-6 pb-0 m-6 bg-white rounded-md border border-gray-300">
+    <div class="flex-auto py-8 md:px-8 px-6 md:pb-0 m-6 bg-white rounded-md border border-gray-300">
 
         <router-link  :to="getProjectURL()" class="no-underline" >
             <h4 class="text-md text-blue-600 font-bold"> Cosmic Caps </h4>
@@ -69,10 +69,10 @@
                 <h2 class="text-gray-800 font-bold">Properties</h2>
             </div>
             <div class="flex flex-wrap">
-                <div v-for="trait in nftTraitsArray" v-bind:key="trait.trait_type"  class="bg-blue-100 px-4 py-2 border-blue-300  border-2 rounded-md text-center no-underline m-2">
+                <div v-for="trait in nftTraitsArray" v-bind:key="trait.trait_type"  class="bg-blue-100 px-2 md:leading-6 leading-4 md:px-4 py-2  border-blue-300  border-2 rounded-md text-center no-underline m-2 md:m-2">
                     <router-link  :to="getProjectURL()" class="no-underline" >
-                    <span class="text-sm font-medium text-gray-700"> {{ trait.trait_type }}</span> <br>
-                    <span class="font-bold text-gray-800">{{ trait.value }}</span>
+                    <span class="text-xs md:text-sm font-medium text-gray-700"> {{ trait.trait_type }}</span> <br>
+                    <span class="text-sm md:text-sm font-bold text-gray-800">{{ trait.value }}</span>
                     </router-link>
                 </div>
             </div>
@@ -87,7 +87,7 @@
 
    <div class="text-center mx-auto m-6 ">
          <a v-bind:href="'https://opensea.io/assets/0xf3c9b7a97eba579f5c234f79108331f5513c9741/' + this.id" class="button bg-blue-600 lg:text-3xl text-sm text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline  mx-2" >Buy on Opensea</a>
-         <a class="button bg-blue-600 lg:text-3xl text-sm text-white font-bold my-6 lg:my-2 py-3 px-6 mx-2 rounded-xl shadow-md w-56 text-center no-underline" v-bind:href="getCollectionExplorerURL()">
+         <a class="button bg-white-600 lg:text-3xl text-sm text-blue-600 font-bold my-6 lg:my-2 py-3 px-6 mx-2 rounded-xl shadow-md w-56 text-center no-underline border-2 border-blue-600" v-bind:href="getCollectionExplorerURL()">
              View On Etherscan
          </a>
    </div>
@@ -190,9 +190,7 @@ export default {
       interactionMode: null ,
       userAddress: null,
       nftTraitsArray:[],
-
       activeAccountAddress: null,
-
       bestSellOrder:null
 
     }
@@ -203,8 +201,7 @@ export default {
         async function (connectionState) {
           console.log("stateChanged", connectionState);
 
-          console.log('contractAddress', this.$route.params.contractAddress)
-          this.nftContractName = this.$route.params.contractAddress
+          this.nftContractName = this.$route.params.contractAddress //obtain cosmiccaps_dev
           this.nftTokenId = parseInt( this.$route.params.tokenId )
 
           this.activeAccountAddress = connectionState.activeAccountAddress;
@@ -243,6 +240,7 @@ export default {
 
   mounted: function () {
       this.CallProfileDetails()
+      this.fetchTokenData()
   },
 
 
@@ -336,60 +334,60 @@ export default {
 
       },
 
-
-      getBuyoutPrice(){
-
-        if(this.bestSellOrder){
-          let formattedAmount = this.web3Plug.rawAmountToFormatted( this.bestSellOrder.currencyTokenAmount ,18  )
-
-
-          return  parseFloat(  formattedAmount )
-        }
-
-        return null
-      },
-
-      async buyoutNow(){
-
-
-        let orderToFulfill = this.bestSellOrder
-
-        let contractData = this.web3Plug.getContractDataForActiveNetwork() ;
-
-        let storeContractAddress = contractData['blockstore'].address
-
-        let orderInputs = [
-          orderToFulfill.orderCreator,
-          orderToFulfill.nftContractAddress,
-          orderToFulfill.nftTokenId,
-          orderToFulfill.currencyTokenAddress,
-
-           new BN( orderToFulfill.currencyTokenAmount.toString()),
-
-          orderToFulfill.nonce,
-          orderToFulfill.expires,
-          orderToFulfill.signature
-        ]
-
-        let txEthValue = 0
-
-        const NATIVE_ETH = "0x0000000000000000000000000000000000000010"
-
-
-        if(orderToFulfill.currencyTokenAddress == NATIVE_ETH){
-          txEthValue = parseInt( orderToFulfill.currencyTokenAmount )
-        }
-
-
-        let storeContract = this.web3Plug.getCustomContract( StoreContractABI, storeContractAddress )
-
-        let response = await storeContract.methods.buyNFTUsingSellOrder(  ...orderInputs  )
-        .send({from: this.web3Plug.getActiveAccountAddress() , value:  txEthValue  })
-
-        console.log('response',response)
-
-
-      },
+      //
+      // getBuyoutPrice(){
+      //
+      //   if(this.bestSellOrder){
+      //     let formattedAmount = this.web3Plug.rawAmountToFormatted( this.bestSellOrder.currencyTokenAmount ,18  )
+      //
+      //
+      //     return  parseFloat(  formattedAmount )
+      //   }
+      //
+      //   return null
+      // },
+      //
+      // async buyoutNow(){
+      //
+      //
+      //   let orderToFulfill = this.bestSellOrder
+      //
+      //   let contractData = this.web3Plug.getContractDataForActiveNetwork() ;
+      //
+      //   let storeContractAddress = contractData['blockstore'].address
+      //
+      //   let orderInputs = [
+      //     orderToFulfill.orderCreator,
+      //     orderToFulfill.nftContractAddress,
+      //     orderToFulfill.nftTokenId,
+      //     orderToFulfill.currencyTokenAddress,
+      //
+      //      new BN( orderToFulfill.currencyTokenAmount.toString()),
+      //
+      //     orderToFulfill.nonce,
+      //     orderToFulfill.expires,
+      //     orderToFulfill.signature
+      //   ]
+      //
+      //   let txEthValue = 0
+      //
+      //   const NATIVE_ETH = "0x0000000000000000000000000000000000000010"
+      //
+      //
+      //   if(orderToFulfill.currencyTokenAddress == NATIVE_ETH){
+      //     txEthValue = parseInt( orderToFulfill.currencyTokenAmount )
+      //   }
+      //
+      //
+      //   let storeContract = this.web3Plug.getCustomContract( StoreContractABI, storeContractAddress )
+      //
+      //   let response = await storeContract.methods.buyNFTUsingSellOrder(  ...orderInputs  )
+      //   .send({from: this.web3Plug.getActiveAccountAddress() , value:  txEthValue  })
+      //
+      //   console.log('response',response)
+      //
+      //
+      // },
 
 
       async cancelBuyout( orderToCancel ){
@@ -447,42 +445,38 @@ export default {
         console.log('fetchedTokeResults',results )
         let output = results.output
         if(output){
-            this.tokenOwnerAddress = output.ownerPublicAddress
-            this.nftTraitsArray = output.nftTraits
-            this.isLoading = false
+            try {
+                this.tokenOwnerAddress = output.ownerPublicAddress
+                this.nftTraitsArray = output.nftTraits
+                this.isLoading = false
 
-            console.log('tokenOwnerAddress',tokenOwnerAddress)
+                console.log('tokenOwnerAddress',tokenOwnerAddress)
+            } catch {
+                console.log('tokenOwnerAddress missing')
+            }
      }
     },
 
 
 
-      async fetchOrdersForToken(){
-
-          //update the buy offers list
-         this.$refs.OffersList.fetchBuyOffers()
-
-
-        //update the buyout button
-         let response = await StarflaskAPIHelper.resolveStarflaskQuery( FrontendConfig.marketApiRoot+'/api/v1/apikey', {"requestType": "get_orders_for_token", "input":{"contractAddress":this.nftContractAddress,"tokenId":  this.nftTokenId}  }    )
-
-
-         let ordersForNFT = response.output.slice(0,5000)
-
-
-
-         let ordersFromOwner = ordersForNFT.filter(x => x.orderCreator.toLowerCase() == this.tokenOwnerAddress.toLowerCase()  )
-
-
-
-         let buyOrders = ordersFromOwner.filter(x => x.isSellOrder == false  )
-         let sellOrders = ordersFromOwner.filter(x => x.isSellOrder == true  )
-
-
-         this.bestSellOrder = await this.getBestSellOrder( sellOrders )
-
-
-      },
+      // async fetchOrdersForToken(){
+      //
+      //     //update the buy offers list
+      //    this.$refs.OffersList.fetchBuyOffers()
+      //
+      //
+      //   //update the buyout button
+      //    let response = await StarflaskAPIHelper.resolveStarflaskQuery( FrontendConfig.marketApiRoot+'/api/v1/apikey', {"requestType": "get_orders_for_token", "input":{"contractAddress":this.nftContractAddress,"tokenId":  this.nftTokenId}  }    )
+      //    let ordersForNFT = response.output.slice(0,5000)
+      //    let ordersFromOwner = ordersForNFT.filter(x => x.orderCreator.toLowerCase() == this.tokenOwnerAddress.toLowerCase()  )
+      //    let buyOrders = ordersFromOwner.filter(x => x.isSellOrder == false  )
+      //    let sellOrders = ordersFromOwner.filter(x => x.isSellOrder == true  )
+      //
+      //
+      //    this.bestSellOrder = await this.getBestSellOrder( sellOrders )
+      //
+      //
+      // },
 
 
 

@@ -86,7 +86,7 @@
 
 
     <!-- Welcome  -->
-    <div class="section mt-16">
+    <div class="section md:mt-16">
         <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
@@ -161,7 +161,7 @@
                     <img
                     src="@/assets/images/sweatshirt.png"
                     alt="Cosmic Cap Television Ad"
-                    class="max-w-md mx-auto"/>
+                    class=" mx-auto"/>
                 </div>
             </div>
 
@@ -183,7 +183,7 @@
                     <img
                     src="@/assets/images/website_cargo_box_3.png"
                     alt="Cosmic Cap Television Ad"
-                    class="max-w-md mx-auto"/>
+                    class="mx-auto"/>
                 </div>
             </div>
         </div>
@@ -675,7 +675,7 @@
                             <img
                             src="@/assets/images/cargo.png"
                             alt="Cosmic Cap Cargo Factory"
-                            class="max-w-md mx-auto rounded-lg shadow-md border-2 border-gray-300"/>
+                            class="mx-auto rounded-lg shadow-md border-2 border-gray-300"/>
                         </div>
                 </div>
 

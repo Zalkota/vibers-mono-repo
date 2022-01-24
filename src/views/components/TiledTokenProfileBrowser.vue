@@ -28,7 +28,7 @@
                 v-for="tokenId in activeTokenIdArray"
                 v-bind:key="tokenId"
 
-                v-bind:collectionName="resultsData.collectionName"
+                v-bind:collectionName="collectionName"
                 v-bind:nftTokenId="tokenId"
                 v-bind:clickedTileCallback="clickedTileCallback"
                />
@@ -43,6 +43,7 @@
 
 
 <script>
+import Web3Plug from '../../js/web3-plug.js'
 import StarflaskApiHelper from '../../js/starflask-api-helper.js'
 import NftTile from './NftTile.vue';
 import PaginationBar from './PaginationBar.vue';
@@ -73,6 +74,7 @@ export default {
       itemsPerPage: 25,
       singleColActive: true,
       classGridSingle: 'grid-cols-1',
+      collectionName: ''
 
     }
   },
@@ -81,6 +83,7 @@ export default {
   },
 
   mounted: async function() {
+
     },
 
   methods: {
@@ -94,7 +97,11 @@ export default {
 
              // Define contract address as nftContract
              let contractData = await this.web3Plug.getContractDataForActiveNetwork();
-             let nftContract = contractData.cosmicCaps_dev.address
+             let keyName = Object.keys(contractData);
+             this.collectionName = keyName[0]
+             let nftContract = contractData.cosmiccaps_dev.address
+
+
 
              let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": nftContract})
              console.log('input', this.userAddress, nftContract)
