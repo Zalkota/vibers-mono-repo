@@ -86,9 +86,9 @@
    </div>
 
    <div class="text-center mx-auto m-6 ">
-         <a v-bind:href="'https://opensea.io/assets/0xf3c9b7a97eba579f5c234f79108331f5513c9741/' + this.id" class="button bg-blue-600 lg:text-3xl text-sm text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline  mx-2" >Buy on Opensea</a>
-         <a class="button bg-white-600 lg:text-3xl text-sm text-blue-600 font-bold my-6 lg:my-2 py-3 px-6 mx-2 rounded-xl shadow-md w-56 text-center no-underline border-2 border-blue-600" v-bind:href="getCollectionExplorerURL()">
-             View On Etherscan
+         <a target="_blank" v-bind:href="'https://opensea.io/assets/0xf3c9b7a97eba579f5c234f79108331f5513c9741/' + this.nftTokenId" class="button bg-blue-600 lg:text-3xl text-sm text-white font-bold my-2 py-3 px-6 rounded-xl shadow-md w-56 text-center no-underline  mx-2" >Buy on Opensea</a>
+         <a target="_blank" class="button bg-white-600 lg:text-3xl text-sm text-blue-600 font-bold my-6 lg:my-2 py-3 px-6 mx-2 rounded-xl hover:bg-blue-600 hover:text-white w-56 text-center no-underline border-2 border-blue-600" v-bind:href="getCollectionExplorerURL()">
+             Etherscan
          </a>
    </div>
 
@@ -292,7 +292,8 @@ export default {
       },
 
       getCollectionExplorerURL(){
-        return this.web3Plug.getExplorerLinkForAddress(this.nftContractAddress)
+        // return this.web3Plug.getExplorerLinkForAddress(this.nftContractAddress)
+        return `https://etherscan.io/token/0xf3c9b7a97eba579f5c234f79108331f5513c9741?a=${this.nftTokenId}`
       },
 
 

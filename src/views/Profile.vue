@@ -29,27 +29,31 @@
            ref="clone"
            readonly
            :value="userAddressString()" />
-           <button @click="copy" class="button bg-white text-md fontmedium sm:text-md text-gray-700 my-2 py-2 px-4 rounded-xl rounded-l-none shadow-sm text-center no-underline border border-gray-400">
+           <button @click="copy" class="button bg-white text-md  sm:text-md text-gray-700 my-2 py-2 px-4 rounded-xl rounded-l-none shadow-sm text-center no-underline border border-gray-400">
                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"></path></svg>
            </button>
        </div>
 
-       <div v-if="web3Plug.connectedToWeb3() == false" class="text-center mb-3 py-10">
+       <div v-if="web3Plug.connectedToWeb3() == false" class="text-center mb-3 py-10 ">
            <h1 class="font-bold text-3xl  font-heading text-black-800 mt-0 pt-0 mb-3">
                Connect your wallet.
            </h1>
            <p>Connect your wallet with our available wallet providers.</p>
-           <div @click="connectToWeb3" class="px-2 mt-1 lg:mt-0 text-center">
-               <div  class="button bg-yellow-400 hover:bg-yellow-300 lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-md hover:shadow-sm rounded-xl max-w-xs">Connect</div>
+           <div class="text-center mx-auto m-6 mt-12">
+                 <a @click="connectToWeb3" class="button bg-yellow-400 hover:bg-yellow-300 hover:shadow-sm lg:text-3xl text-sm text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Connect Wallet</a>
            </div>
+
        </div>
 
        <hr>
+       <div class="" v-if="signedInToWeb3 == true">
            <TiledTokenProfileBrowser
              ref="TokenProfileBrowser"
              v-bind:web3Plug="web3Plug"
              v-bind:userAddress="userAddress"
            />
+       </div>
+
        <br>
    </section>
 
@@ -97,7 +101,7 @@ export default {
         this.activeNetworkId = connectionState.activeNetworkId;
         this.signedInToWeb3 = this.activeAccountAddress != null;
 
-        
+
 
         // this.getTotalSupply();
       }.bind(this)

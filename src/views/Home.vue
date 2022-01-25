@@ -226,7 +226,7 @@
                 <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                         <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                          <router-link class="no-underline" to="/collection/cosmic-caps/85">
+                          <router-link class="no-underline" to="/collection/cosmiccaps_dev/85">
                           <img class="w-full" src="@/assets/images/cosmic_cap_1.png" alt="Sunset in the mountains">
                           </router-link>
                           <div class="px-6 py-4">
@@ -274,7 +274,7 @@
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                         <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                            <router-link class="no-underline" to="/collection/cosmic-caps/344">
+                            <router-link class="no-underline" to="/collection/cosmiccaps_dev/344">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_4.png" alt="Sunset in the mountains">
                             </router-link>
                             <div class="px-6 py-4">
@@ -322,7 +322,7 @@
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                         <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                            <router-link class="no-underline" to="/collection/cosmic-caps/109">
+                            <router-link class="no-underline" to="/collection/cosmiccaps_dev/109">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_2.png" alt="Sunset in the mountains">
                             </router-link>
                           <div class="px-6 py-4">
@@ -371,7 +371,7 @@
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                         <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                            <router-link class="no-underline" to="/collection/cosmic-caps/1315">
+                            <router-link class="no-underline" to="/collection/cosmiccaps_dev/1315">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_3.png" alt="Sunset in the mountains">
                             </router-link>
                           <div class="px-6 py-4">
@@ -422,7 +422,7 @@
                 <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-4">
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4">
                         <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                            <router-link class="no-underline" to="/collection/cosmic-caps/8220">
+                            <router-link class="no-underline" to="/collection/cosmiccaps_dev/8220">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_11.png" alt="Sunset in the mountains">
                             </router-link>
                           <div class="px-6 py-4">
@@ -471,7 +471,7 @@
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                         <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                            <router-link class="no-underline" to="/collection/cosmic-caps/8702">
+                            <router-link class="no-underline" to="/collection/cosmiccaps_dev/8702">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_5.png" alt="Sunset in the mountains">
                             </router-link>
                           <div class="px-6 py-4">
@@ -520,7 +520,7 @@
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                         <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                            <router-link class="no-underline" to="/collection/cosmic-caps/7826">
+                            <router-link class="no-underline" to="/collection/cosmiccaps_dev/7826">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_9.png" alt="Sunset in the mountains">
                             </router-link>
 
@@ -571,7 +571,7 @@
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
                         <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
-                            <router-link class="no-underline" to="/collection/cosmic-caps/8340">
+                            <router-link class="no-underline" to="/collection/cosmiccaps_dev/8340">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_12.png" alt="Sunset in the mountains">
                             </router-link>
                             <div class="px-6 py-4">
@@ -722,6 +722,12 @@
     </div>
 
     <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;"></div>
+
+    <div class="section  text-white h-full bg-gray-300 " style=" min-height: 100px;">
+        <div class="w-full text-center relative">
+            <img src="@/assets/images/opensea_banner.png" class="invisible md:visible" style="margin:0 auto; width:100%;  " />
+        </div>
+    </div>
 
     <Footer/>
 

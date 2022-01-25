@@ -6,7 +6,7 @@
 
           <br>
 
-          <div class="inline-flex unhide ">
+          <div class="inline-flex sm:hidden mb-2">
               <button v-on:click="singleColActive = true" v-bind:class="[singleColActive ? classGridSingle : 'bg-white shadow-none', ' shadow-inner text-gray-800 font-bold py-3 px-3 rounded-l-md border border-gray-400']">
                   <svg width="35" height="35" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect x="31.6733" y="31.6729" width="186.654" height="186.654" rx="4" fill="#A6AFB9"/>
