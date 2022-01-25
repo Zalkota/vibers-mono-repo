@@ -11,9 +11,9 @@
    </div>
 
     <!-- Header -->
-    <div class="section ">
-        <div class="video-container pb-0">
-            <div class="title-container bg-blue-600 rounded-xl shadow-lg" v-if="canMint">
+    <div class="hero">
+        <div class="text">
+            <div class="title-container border border-blue-800 md:rounded-xl rounded-md shadow-xl" v-if="canMint" style="backdrop-filter: blur(22px); background-color: rgba(49, 130, 206, 0.45);">
                     <div class="custom-number-input h-10 justify-center content-center text-center px-2">
                           <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
                             <button v-on:click="decrementMint" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
@@ -42,7 +42,7 @@
                       class="
                         select-none
                         bg-gray-400
-                        hover:bg-yellow-500
+                        hover:bg-yellow-400
                         shadow-md
                         sm:py-4
                         py-3
@@ -51,7 +51,8 @@
                         text-md
                         sm:text-3xl
                         text-center
-                        rounded-xl
+                        md:rounded-xl
+                        rounded-md
                         font-bold
                         cursor-pointer
                       "
@@ -63,25 +64,86 @@
                     </div>
                 </div>
 
-
-            <div class="text-white text-xs">
-              {{ errorMessage }}
-            </div>
-
-            <div class="w-full lg:w-1/2 text-center p-8" v-if="!canMint">
-              <div>
-                <div class="text-white text-xl">
-                  This collection has been completely minted!
+                <div class="text-white text-xs">
+                  {{ errorMessage }}
                 </div>
-              </div>
-            </div>
 
-            <video autoplay loop muted id="video" class="fillWidth hide-video">
-                <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
-                Your browser does not support the video tag. Try Upgrading your browser.
-            </video>
+                <div class="w-full lg:w-1/2 text-center p-8" v-if="!canMint">
+                  <div>
+                    <div class="text-white text-xl">
+                      This collection has been completely minted!
+                    </div>
+                  </div>
+                </div>
+
         </div>
     </div>
+
+<!--
+    <div class="section ">
+        <div class="video-container pb-0">
+            <div class="title-container bg-blue-600 md:rounded-xl rounded-md shadow-lg" v-if="canMint">
+                    <div class="custom-number-input h-10 justify-center content-center text-center px-2">
+                          <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
+                            <button v-on:click="decrementMint" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
+                                <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M206.387 28.4073C165.844 -0.76659 126.385 1.32271 126.385 1.32271C126.385 1.32271 86.1015 0.717249 47.9906 29.9702C3.98272 64.0788 -2.92064 125.947 3.25974 131.635C6.27559 136.071 16.2625 136.762 26.3231 136.762H52.8353C54.8037 138.182 45.2244 174.448 45.2244 174.448L40.9961 200.176C40.9961 200.176 40.4764 215.775 45.2244 224.455C48.9682 231.299 59.1776 239.674 59.1776 239.674C59.1776 239.674 75.1366 252.411 132.326 251.27C187.647 250.166 200.084 239.674 200.084 239.674C200.084 239.674 208.235 231.556 211.817 224.455C215.893 216.375 213.932 201.988 213.932 201.988L211.817 174.448C211.817 174.448 202.938 140.706 202.938 136.762H230.467C242.061 136.762 249.641 137.313 251.938 133.508C256.286 123.791 255.689 66.2486 206.387 28.4073Z" fill="#E2E8F0" stroke="black"/>
+                                <line x1="84.8352" y1="124.399" x2="171.372" y2="124.399" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <input
+                              type="number"
+                              min="1"
+                              max="16"
+                              v-model="mintAmount"
+                              class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-lg sm:text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
+                            <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
+                                <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M206.387 27.9046C165.844 -1.26928 126.385 0.820026 126.385 0.820026C126.385 0.820026 86.1015 0.214563 47.9906 29.4675C3.98272 63.5762 -2.92064 125.444 3.25974 131.132C6.27559 135.568 16.2625 136.26 26.3231 136.26H52.8353C54.8037 137.679 45.2244 173.946 45.2244 173.946L40.9961 199.674C40.9961 199.674 40.4764 215.272 45.2244 223.952C48.9682 230.796 59.1776 239.171 59.1776 239.171C59.1776 239.171 75.1366 251.908 132.326 250.767C187.647 249.664 200.084 239.171 200.084 239.171C200.084 239.171 208.235 231.054 211.817 223.952C215.893 215.872 213.932 201.485 213.932 201.485L211.817 173.946C211.817 173.946 202.938 140.204 202.938 136.26H230.467C242.061 136.26 249.641 136.81 251.938 133.006C256.286 123.288 255.689 65.7459 206.387 27.9046Z" fill="#E2E8F0" stroke="black"/>
+                                <line x1="84.8352" y1="123.896" x2="171.372" y2="123.896" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
+                                <line x1="126.984" y1="80.2537" x2="126.984" y2="166.791" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
+                                </svg>
+                          </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div
+                      class="
+                        select-none
+                        bg-gray-400
+                        hover:bg-yellow-400
+                        shadow-md
+                        sm:py-4
+                        py-3
+                        sm:px-8
+                        px-4
+                        text-md
+                        sm:text-3xl
+                        text-center
+                        md:rounded-xl
+                        rounded-md
+                        font-bold
+                        cursor-pointer
+                      "
+                      @click="mint"
+                    >
+                        <div class="text-black text-s inline">
+                          Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
+                        </div>
+                    </div>
+                </div> -->
+
+
+
+
+
+
+            <!-- <video autoplay loop muted id="video" class="fillWidth hide-video ">
+                <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
+                Your browser does not support the video tag. Try Upgrading your browser.
+            </video> -->
+        <!-- </div>
+    </div> -->
 
 
 
@@ -90,7 +152,7 @@
         <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
-                                <h1 class="text-4xl font-bold text-blue-700 mb-3">Welcome to Cosmic Caps</h1>
+                                <h1 class=" text-3xl md:text-4xl font-bold text-blue-700 mb-3">Welcome to Cosmic Caps</h1>
 
                                 <p>Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
                                 <br>
@@ -671,11 +733,11 @@
                                 NFTs are Non-Fungible Tokens. Each Cosmic Cap NFT that you own is truly unique and verifiable on the Ethereum blockchain.
                             </p>
                         </div>
-                        <div class="lg:flex-1">
+                        <div class="lg:flex-1 m-4">
                             <img
                             src="@/assets/images/cargo.png"
                             alt="Cosmic Cap Cargo Factory"
-                            class="mx-auto rounded-lg shadow-md border-2 border-gray-300"/>
+                            class="mx-auto rounded-lg shadow-md border-2 border-gray-300 "/>
                         </div>
                 </div>
 
@@ -723,11 +785,15 @@
 
     <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;"></div>
 
-    <div class="section  text-white h-full bg-gray-300 " style=" min-height: 100px;">
-        <div class="w-full text-center relative">
+    <!-- <div class="section  text-white h-full bg-gray-300 " style=" min-height: 100px;"> -->
+        <!-- <div class="w-full text-center relative">
             <img src="@/assets/images/opensea_banner.png" class="invisible md:visible" style="margin:0 auto; width:100%;  " />
-        </div>
-    </div>
+        </div> -->
+        <!-- <video autoplay loop muted id="video" class="fillWidth hide-video ">
+            <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
+            Your browser does not support the video tag. Try Upgrading your browser.
+        </video> -->
+    <!-- </div> -->
 
     <Footer/>
 

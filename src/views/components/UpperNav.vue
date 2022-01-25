@@ -35,16 +35,15 @@
                         </router-link>
                     </div>
 
-
                     <div v-if="web3Plug.connectedToWeb3() == false" @click="connectToWeb3" class="flex-auto px-2 mt-1 lg:mt-0 text-center">
-                        <div  class="button bg-yellow-400 hover:bg-yellow-300 lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-md hover:shadow-sm rounded-xl max-w-xs">Connect</div>
+                        <div  class="button bg-yellow-400 hover:bg-yellow-300 lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-md hover:shadow-sm md:rounded-xl rounded-md rounded-xl max-w-xs">Connect</div>
                     </div>
 
-                        <div v-if="web3Plug.connectedToWeb3() == true" @click="connectToWeb3" class="flex-auto px-2 mt-1 lg:mt-0 text-center">
-                            <router-link class="no-underline" to="/profile">
-                                <div  class="button bg-gray-300 hover:bg-blue-200 text-md text-black font-bold lg:py-4 py-2 my-2 px-2 lg:px-4 cursor-pointer hover:shadow-sm rounded-xl border border-gray-400">{{ userAddressSlice() }}</div>
-                            </router-link>
-                        </div>
+                    <div v-if="web3Plug.connectedToWeb3() == true" @click="connectToWeb3" class="flex-1 px-1 mt-1 lg:mt-0 text-center">
+                        <router-link class="no-underline" to="/profile">
+                            <div  class="button bg-gray-300 hover:bg-blue-200 text-md text-black font-bold lg:py-4 py-2 my-2 px-0 lg:px-4 cursor-pointer hover:shadow-sm md:rounded-xl rounded-md border border-gray-400">{{ userAddressSlice() }}</div>
+                        </router-link>
+                    </div>
                 </div>
 
         </div>

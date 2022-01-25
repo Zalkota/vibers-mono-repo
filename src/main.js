@@ -11,7 +11,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 import './css/main.css'
 import './css/normalize.css'
 import './css/video.css'
-
+import './css/hero.css'
 
 
 Vue.config.productionTip = false
