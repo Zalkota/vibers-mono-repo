@@ -20,7 +20,7 @@
          <img class="object-center object-cover h-auto rounded-md " v-bind:src="getImageURL()" alt="Cosmic Cap NFT">
      </div>
 
-    <div class="flex-auto py-8 md:px-8 px-6 md:pb-0 m-6 bg-white rounded-md border border-gray-300">
+    <div class="flex-auto py-8 md:px-8 px-6 xl:pb-0 pb-6 m-6 bg-white rounded-md border border-gray-300">
 
         <router-link  :to="getProjectURL()" class="no-underline" >
             <h4 class="text-md text-blue-600 font-bold"> Cosmic Caps </h4>
@@ -64,7 +64,6 @@
             </div>
         </div>
 
-        <div class="">
             <div class="p-2">
                 <h2 class="text-gray-800 font-bold">Properties</h2>
             </div>
@@ -76,7 +75,6 @@
                     </router-link>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 

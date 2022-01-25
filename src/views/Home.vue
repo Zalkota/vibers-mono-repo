@@ -935,7 +935,7 @@ export default {
       // request contract methods using ERC721ABI file and contract address
       const nftContract = this.web3Plug.getCustomContract(
         ERC721ABI,
-        contractData.cosmicCaps_dev.address
+        contractData.cosmiccaps_dev.address
       );
 
       console.log("calling mint");
