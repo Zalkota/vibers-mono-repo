@@ -41,9 +41,10 @@
                     <div
                       class="
                         select-none
-                        bg-gray-400
-                        hover:bg-yellow-400
+                        bg-yellow-400
+                        hover:bg-yellow-300
                         shadow-md
+                        hover:shadow-lg
                         sm:py-4
                         py-3
                         sm:px-8
@@ -148,7 +149,7 @@
 
 
     <!-- Welcome  -->
-    <div class="section md:mt-16">
+    <div class="section mt-10">
         <div class="container px-12 sm:px-4 pb-10 mx-auto text-blue-900">
                 <div class="lg:flex">
                         <div class="lg:flex-1">

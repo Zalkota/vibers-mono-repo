@@ -31,12 +31,12 @@
 
                     <div class="hide flex-auto px-2 mt-1 lg:mt-0 text-center">
                         <router-link class="no-underline" to="/collection/cosmic-caps">
-                            <div class="bg-blue-600 text-2xl text-white font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer hover:bg-blue-500 shadow-md hover:shadow-sm rounded-xl max-w-xs no-underline">Shop NFTs</div>
+                            <div class="bg-blue-600 text-2xl text-white font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer hover:bg-blue-500 shadow-sm hover:shadow-md rounded-xl max-w-xs no-underline">Shop NFTs</div>
                         </router-link>
                     </div>
 
                     <div v-if="web3Plug.connectedToWeb3() == false" @click="connectToWeb3" class="flex-auto px-2 mt-1 lg:mt-0 text-center">
-                        <div  class="button bg-yellow-400 hover:bg-yellow-300 lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-md hover:shadow-sm md:rounded-xl rounded-md rounded-xl max-w-xs">Connect</div>
+                        <div  class="button bg-yellow-400 hover:bg-yellow-300 lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 py-2 px-2 mx-2 lg:mr-2 mr-0 rounded cursor-pointer shadow-sm hover:shadow-sm md:rounded-xl rounded-md max-w-xs">Connect</div>
                     </div>
 
                     <div v-if="web3Plug.connectedToWeb3() == true" @click="connectToWeb3" class="flex-1 px-1 mt-1 lg:mt-0 text-center">
