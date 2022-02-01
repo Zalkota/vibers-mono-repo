@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [
     // eslint-disable-next-line import/no-extraneous-dependencies, global-require
-    require('@tailwindcss/custom-forms'),
-    require('@themesberg/flowbite/plugin'),
+import '@tailwindcss/custom-forms'
+import '@themesberg/flowbite/plugin'
   ],
 };
