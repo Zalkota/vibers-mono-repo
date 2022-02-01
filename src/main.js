@@ -12,6 +12,7 @@ import './css/main.css'
 import './css/normalize.css'
 import './css/video.css'
 import './css/hero.css'
+import '@themesberg/flowbite';
 
 
 Vue.config.productionTip = false

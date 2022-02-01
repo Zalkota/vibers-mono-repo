@@ -58,11 +58,11 @@
                </div>
             </div>
 
-           <PaginationBar
+           <!-- <PaginationBar
              :currentPage="currentPage"
              :maxPages="maxPages"
              :setCurrentPageCallback="setCurrentPageCallback"
-            />
+            /> -->
 
     </div>
 </template>
@@ -77,7 +77,7 @@ const FrontendConfig = require('../../config/FrontendConfig.json')
 
 export default {
   name: 'TiledTokenBrowser',
-  props: [ 'currentFilter' , 'clearFiltersCallback' ],
+  props: [ 'currentFilter' , 'clearFiltersCallback'],
   components: {NftTile,PaginationBar},
   watch: {
     currentFilter: {
@@ -86,7 +86,16 @@ export default {
       handler(newValue, oldValue) {
           this.fetchFilteredTokensArray()
       }
+  },
+  itemsPerPage: {
+    immediate: true,
+    deep: true,
+    handler(newValue, oldValue) {
+        console.log("test")
+         this.updateTokenArrayInfiniteScroll()
     }
+  }
+
   },
 
   data() {
@@ -99,7 +108,7 @@ export default {
       filterTokenIdArrayLength: 0,
       currentPage: 0,
       maxPages: 1,
-      itemsPerPage: 25,
+
       singleColActive: true,
       classGridSingle: 'grid-cols-1',
       mushrooms: mushroomJson,
@@ -112,43 +121,29 @@ export default {
 
   },
 
+  mounted: function () {
+      this.getNextPage() //Infinite Scroll function
+
+  },
+
 
   methods: {
 
+      getNextPage() {
+          window.onscroll = () => {
+              let windowLocation = document.documentElement.scrollTop + window.innerHeight
+              let offsetNearHeight = document.documentElement.offsetHeight - (document.documentElement.offsetHeight * 0.2)
 
-
-
-      // update(){
-      //     UpdateArrayLength()
-      // }
-
-// BROKEN ATM FIX MONGO.FIND
-      // async fetchAllTokensArray(){
-      //     console.log('fetching results  - fetchAllTokensArray ')
-      //      let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
-      //       let inputQuery = Object.assign({contractAddress:'0xf3c9B7A97Eba579f5c234F79108331F5513c9741'})
-      //      // let inputQuery = '0xf3c9B7A97Eba579f5c234F79108331F5513c9741'
-      //      console.log('inputQuery', inputQuery )
-      //
-      //      let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_contract", "input": inputQuery})
-      //        let output = result.output
-      //        console.log('result.output', output, )
-      //
-      //        if(output && output.tokenIdArray[0]){
-      //           this.resultsData = output
-      //           console.log('resultsData', this.resultsData)
-      //
-      //           this.currentPage = 1
-      //           this.activeTokenIdArray = this.filterTokensForCurrentPage(this.resultsData.tokenIdArray)
-      //           console.log('activeTokenIdArray', this.activeTokenIdArray)
-      //
-      //           this.maxPages = Math.ceil( this.resultsData.tokenIdArray.length / this.itemsPerPage )
-      //           console.log('max pages', this.maxPages)
-      //       }
-      //     },
-
-
-
+            let bottomOfWindow = windowLocation >= offsetNearHeight;
+            if (bottomOfWindow) {
+                console.log("infinite scroll detected", this.currentPage, this.itemsPerPage)
+                this.currentPage = this.currentPage + 1
+                this.itemsPerPage = this.currentPage * 25
+                console.log("this.itemsPerPage", this.itemsPerPage)
+                this.activeTokenIdArray = this.filterTokensForCurrentPage(this.tokenIdArray)
+            }
+          }
+      },
 
       async fetchFilteredTokensArray(){
         console.log('fetching results  - fetchFilteredTokensArray ')
@@ -156,6 +151,8 @@ export default {
          let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
 
          let inputQuery = Object.assign( {collectionName:'cosmiccaps_dev'}, this.currentFilter)
+
+         this.itemsPerPage = 25
 
          this.activeTokenIdArray = []
 
@@ -194,11 +191,9 @@ export default {
              this.activeTokenIdArray = this.filterTokensForCurrentPage(this.tokenIdArray)
              console.log('activeTokenIdArray', this.activeTokenIdArray)
 
-
-
              this.filterTokenIdArrayLength = this.mushrooms.length
-             this.maxPages = Math.ceil( this.mushrooms.length / this.itemsPerPage )
-             console.log('max pages', this.maxPages)
+             // this.maxPages = Math.ceil( this.mushrooms.length / this.itemsPerPage )
+             // console.log('max pages', this.maxPages)
 
          }
 
@@ -206,13 +201,9 @@ export default {
       },
 
 
-
       filterTokensForCurrentPage(allTokenIds){
-        //sort
-        //slice
-        let startIndex = this.currentPage * this.itemsPerPage;
-        let endIndex = startIndex+this.itemsPerPage
-
+        let startIndex = 0;
+        let endIndex = this.itemsPerPage
         return allTokenIds.slice(startIndex,endIndex)
 
       },
@@ -238,12 +229,7 @@ export default {
 
   },
 
-  mounted() {
 
-
-
-      // this.fetchAllTokensArray()
-  }
 }
 
 </script>

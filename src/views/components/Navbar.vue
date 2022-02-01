@@ -5,8 +5,6 @@
 
         <div class="flex flex-row">
             <div class=" md:flex-1 flex-none ">
-
-                <!-- <img class="w-full hide" style="max-width: 250px" src="/images/cosmic_cap_text.png" /> -->
                 <router-link to="/" class=''>
                     <img class="w-full unhide px-2 mt-4" style="max-width: 150px" src="/images/cosmic_cap_text.png" />
                     <svg class="w-full hide pl-4 pr-2" style="max-width: 20rem;"
@@ -133,20 +131,18 @@
                            id="g883"
                            transform="translate(188.3242,219.6689)" /></g></g></g></svg>
                 </router-link>
-
-
             </div>
 
             <div class="sm:flex-grow">
             </div>
 
             <div class="lg:flex-none flex-1">
-                <div class="flex">
-                    <UpperNav
-                       v-bind:web3Plug="web3Plug"
-                       v-bind:userAddress="userAddress"
-                       />
-                </div>
+                    <div class="flex row justify-end">
+                        <UpperNav
+                           v-bind:web3Plug="web3Plug"
+                           v-bind:userAddress="userAddress"
+                           />
+                    </div>
             </div>
         </div>
 

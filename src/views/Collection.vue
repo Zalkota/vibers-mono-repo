@@ -44,10 +44,7 @@
        <br>
 
    </section>
-
-
   <!-- <Footer/> -->
-
 </div>
 </template>
 
@@ -77,7 +74,9 @@ export default {
     return {
       web3Plug: new Web3Plug() ,
       activePanelId: null ,
-
+      itemsPerPage: 25,
+      itemsActive: 25,
+      currentPage: 1,
       filterTraitsList: {},
       tokenBrowserFilter: {},
       show: false,
@@ -91,13 +90,11 @@ export default {
       "stateChanged",
       async function (connectionState) {
         console.log("stateChanged", connectionState);
-
         this.activeAccountAddress = connectionState.activeAccountAddress;
         this.activeNetworkId = connectionState.activeNetworkId;
-
+        //Addons
         this.signedInToWeb3 = this.activeAccountAddress != null;
-
-        // this.getTotalSupply();
+        this.CallProfileDetails()
       }.bind(this)
     );
     this.web3Plug.getPlugEventEmitter().on(
@@ -108,16 +105,19 @@ export default {
         this.web3error = errormessage;
       }.bind(this)
     );
-
     this.web3Plug.reconnectWeb();
   },
-  mounted: function () {
-
+  beforeMount() {
       this.fetchTraits()
       this.CallProfileDetails()
 
   },
+
+  mounted: function () {
+
+  },
   methods: {
+
 
           async fetchTraits( ){
 
@@ -179,16 +179,12 @@ export default {
 
           },
 
+
           async CallProfileDetails(){
             console.log("CallProfileDetails");
             try {
-                if (!this.signedInToWeb3) {
-                  this.web3Plug.connectWeb3();
-                  return;
-                }
                 this.userAddress = this.web3Plug.getActiveAccountAddress();
                 this.userAddress = web3utils.toChecksumAddress(this.userAddress)
-
             }
             catch(err) {
               console.log('error: CallProfileDetails')

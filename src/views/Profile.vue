@@ -101,9 +101,8 @@ export default {
         this.activeNetworkId = connectionState.activeNetworkId;
         this.signedInToWeb3 = this.activeAccountAddress != null;
 
-
-
-        // this.getTotalSupply();
+        // Addons
+        this.CallProfileDetails()
       }.bind(this)
     );
     this.web3Plug.getPlugEventEmitter().on(
@@ -119,9 +118,7 @@ export default {
   },
 
   mounted: function () {
-
     this.CallProfileDetails()
-
   },
 
   computed: {
@@ -162,13 +159,8 @@ export default {
       async CallProfileDetails(){
         console.log("CallProfileDetails");
         try {
-            if (!this.signedInToWeb3) {
-              this.web3Plug.connectWeb3();
-              return;
-            }
             this.userAddress = this.web3Plug.getActiveAccountAddress();
             this.userAddress = web3utils.toChecksumAddress(this.userAddress)
-
         }
         catch(err) {
           console.log('error: CallProfileDetails')

@@ -13,7 +13,7 @@
     <!-- Header -->
     <div class="hero">
         <div class="text">
-            <div class="title-container border border-blue-800 md:rounded-xl rounded-md shadow-xl" v-if="canMint" style="backdrop-filter: blur(22px); background-color: rgba(49, 130, 206, 0.45);">
+            <div class="title-container border border-blue-800 md:rounded-xl rounded-md shadow-xl" v-if="canMint" style="backdrop-filter: blur(22px); background-color: rgba(69, 150, 236, 0.75);">
                     <div class="custom-number-input h-10 justify-center content-center text-center px-2">
                           <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
                             <button v-on:click="decrementMint" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
@@ -136,15 +136,15 @@
 
 
 
-
-
-
             <!-- <video autoplay loop muted id="video" class="fillWidth hide-video ">
                 <source src="https://cosmic-caps.s3.amazonaws.com/cosmic-caps-video-2.mp4" type="video/mp4" alt="Cosmic Cap Promotional Video" id="video_container"/>
                 Your browser does not support the video tag. Try Upgrading your browser.
             </video> -->
         <!-- </div>
     </div> -->
+
+
+
 
 
 
@@ -200,7 +200,7 @@
 
 
 
-        <div class="container shadow-md bg-gray-300 rounded-md p-12 sm:px-4 py-4 mx-auto border-2 border-purple-600">
+        <div class="container shadow-md bg-purple-100 rounded-md p-4 sm:px-4 py-4 mx-auto border-4 border-purple-600">
             <div class="lg:flex p-8">
                 <div class="lg:flex-1">
                     <h2 class="text-5xl font-bold text-purple-700 mb-3">Cosmic Hoodie</h2>
@@ -288,7 +288,7 @@
                 <!-- Rarity Cards -->
                 <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-8">
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 border border-gray-400 mx-3">
                           <router-link class="no-underline" to="/collection/cosmiccaps_dev/85">
                           <img class="w-full" src="@/assets/images/cosmic_cap_1.png" alt="Sunset in the mountains">
                           </router-link>
@@ -336,7 +336,7 @@
                     </div>
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 border border-gray-400 mx-3">
                             <router-link class="no-underline" to="/collection/cosmiccaps_dev/344">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_4.png" alt="Sunset in the mountains">
                             </router-link>
@@ -384,7 +384,7 @@
                     </div>
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 border border-gray-400 mx-3">
                             <router-link class="no-underline" to="/collection/cosmiccaps_dev/109">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_2.png" alt="Sunset in the mountains">
                             </router-link>
@@ -433,7 +433,7 @@
                     </div>
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 border border-gray-400 mx-3">
                             <router-link class="no-underline" to="/collection/cosmiccaps_dev/1315">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_3.png" alt="Sunset in the mountains">
                             </router-link>
@@ -484,7 +484,7 @@
 
                 <div class="flex flex-wrap -mx-1 lg:-mx-4 mt-4">
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4">
-                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 border border-gray-400 mx-3">
                             <router-link class="no-underline" to="/collection/cosmiccaps_dev/8220">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_11.png" alt="Sunset in the mountains">
                             </router-link>
@@ -533,7 +533,7 @@
                     </div>
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 border border-gray-400 mx-3">
                             <router-link class="no-underline" to="/collection/cosmiccaps_dev/8702">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_5.png" alt="Sunset in the mountains">
                             </router-link>
@@ -582,7 +582,7 @@
                     </div>
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 border border-gray-400 mx-3">
                             <router-link class="no-underline" to="/collection/cosmiccaps_dev/7826">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_9.png" alt="Sunset in the mountains">
                             </router-link>
@@ -633,7 +633,7 @@
                     </div>
 
                     <div class="w-full md:w-1/2 lg:my-2 my-4 lg:w-1/4 ">
-                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 mx-3">
+                        <div class="rounded-3xl overflow-hidden shadow-md hover:shadow-lg bg-gray-100 border border-gray-400 mx-3">
                             <router-link class="no-underline" to="/collection/cosmiccaps_dev/8340">
                                 <img class="w-full" src="@/assets/images/cosmic_cap_12.png" alt="Sunset in the mountains">
                             </router-link>
@@ -784,7 +784,6 @@
         </div>
     </div>
 
-    <div class="section  text-white  border-b-2 border-black " v-if="signedInToWeb3" style="background:#222;"></div>
 
     <!-- <div class="section  text-white h-full bg-gray-300 " style=" min-height: 100px;"> -->
         <!-- <div class="w-full text-center relative">
@@ -829,29 +828,23 @@ export default {
   },
 
   created() {
-    this.web3Plug.getPlugEventEmitter().on(
-      "stateChanged",
-      async function (connectionState) {
-        console.log("stateChanged", connectionState);
 
-        this.activeAccountAddress = connectionState.activeAccountAddress;
-        this.activeNetworkId = connectionState.activeNetworkId;
+      this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
+          console.log('stateChanged',connectionState);
+          this.activeAccountAddress = connectionState.activeAccountAddress
+          this.activeNetworkId = connectionState.activeNetworkId
+          this.signedInToWeb3 = this.activeAccountAddress != null;
 
-        this.signedInToWeb3 = this.activeAccountAddress != null;
+          // Addons
+          this.CallProfileDetails()
 
-        // this.getTotalSupply();
-      }.bind(this)
-    );
-    this.web3Plug.getPlugEventEmitter().on(
-      "error",
-      function (errormessage) {
-        console.error("error", errormessage);
+        }.bind(this));
+     this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
+          console.error('error',errormessage);
+          this.web3error = errormessage
+        }.bind(this));
+        this.web3Plug.reconnectWeb()
 
-        this.web3error = errormessage;
-      }.bind(this)
-    );
-
-    this.web3Plug.reconnectWeb();
   },
   mounted: function () {
     this.getBalances();
@@ -860,7 +853,7 @@ export default {
 
     setInterval(this.getBalances.bind(this), 5000);
 
-    this.CallProfileDetails()
+    // this.CallProfileDetails()
   },
   methods: {
     canMint() {
@@ -872,10 +865,9 @@ export default {
     async CallProfileDetails(){
       console.log("CallProfileDetails");
       try {
-          if (!this.signedInToWeb3) {
-            this.web3Plug.connectWeb3();
-            return;
-          }
+          // if (!this.signedInToWeb3) {
+          //   return;
+          // }
           this.userAddress = this.web3Plug.getActiveAccountAddress();
           this.userAddress = web3utils.toChecksumAddress(this.userAddress)
 

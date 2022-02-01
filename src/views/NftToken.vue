@@ -201,27 +201,21 @@ export default {
 
           this.nftContractName = this.$route.params.contractAddress //obtain cosmiccaps_dev
           this.nftTokenId = parseInt( this.$route.params.tokenId )
-
           this.activeAccountAddress = connectionState.activeAccountAddress;
           this.activeNetworkId = connectionState.activeNetworkId;
-
           this.signedInToWeb3 = this.activeAccountAddress != null;
+
+          this.CallProfileDetails()
 
           let contractData = this.web3Plug.getContractDataForActiveNetwork()
 
           this.nftContractAddress = FrontendHelper.lookupContractAddress( this.nftContractName, contractData  )
           console.log('found address',this.nftContractAddress)
 
-
         await this.fetchTokenData()
 
-        // await this.fetchOrdersForToken()
-
-
-
         this.$forceUpdate();
-
-          // this.getTotalSupply();
+        this.CallProfileDetails()
         }.bind(this)
       );
       this.web3Plug.getPlugEventEmitter().on(
@@ -507,22 +501,14 @@ export default {
       async CallProfileDetails(){
         console.log("CallProfileDetails");
         try {
-            if (!this.signedInToWeb3) {
-              this.web3Plug.connectWeb3();
-              return;
-            }
             this.userAddress = this.web3Plug.getActiveAccountAddress();
             this.userAddress = web3utils.toChecksumAddress(this.userAddress)
-
         }
         catch(err) {
           console.log('error: CallProfileDetails')
         }
         console.log("userAddress:" + this.userAddress);
       },
-
-
-
   }
 }
 </script>
