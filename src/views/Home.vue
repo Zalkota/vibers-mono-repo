@@ -4,8 +4,6 @@
    <div class="section bg-gray-100 px-0 lg:px-1">
      <div class=" ">
         <Navbar
-        v-bind:web3Plug="web3Plug"
-        v-bind:userAddress="userAddress"
        />
      </div>
    </div>
@@ -79,6 +77,7 @@
 
         </div>
     </div>
+
 
 <!--
     <div class="section ">
@@ -797,6 +796,7 @@
 
     <Footer/>
 
+
 </div>
 </template>
 
@@ -807,11 +807,20 @@ import Footer from "./components/Footer.vue";
 import TabsBar from "./components/TabsBar.vue";
 import FrontendHelper from "../js/frontend-helper.js";
 const ERC721ABI = require("../contracts/ERC721ABI.json");
+import web3utils from 'web3-utils'
+
+
+// Web3Modal-Vue
+import Web3ModalVue from "web3modal-vue";
+import web3ModalStore from "../store/modules/web3Modal.js";
+import {web3Modal} from "../js/mixins.js";
+//Wallets
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
 export default {
   name: "Home",
   props: [],
-  components: { Navbar, Footer },
+  components: { Navbar, Footer},
   data() {
     return {
       web3Plug: new Web3Plug(),
@@ -823,39 +832,37 @@ export default {
       mintAmount: 1,
       errorMessage: null,
       userAddress: null,
-
     };
   },
 
   created() {
 
-      this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
-          console.log('stateChanged',connectionState);
-          this.activeAccountAddress = connectionState.activeAccountAddress
-          this.activeNetworkId = connectionState.activeNetworkId
-          this.signedInToWeb3 = this.activeAccountAddress != null;
+      this.CallProfileDetails()
 
-          // Addons
-          this.CallProfileDetails()
-
-        }.bind(this));
-     this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
-          console.error('error',errormessage);
-          this.web3error = errormessage
-        }.bind(this));
-        this.web3Plug.reconnectWeb()
+     //  this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
+     //      console.log('stateChanged', connectionState);
+     //      this.activeAccountAddress = connectionState.activeAccountAddress
+     //      this.activeNetworkId = connectionState.activeNetworkId
+     //      this.signedInToWeb3 = this.activeAccountAddress != null;
+     //      // Addons
+     //    }.bind(this));
+     // this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
+     //      console.error('error',errormessage);
+     //      this.web3error = errormessage
+     //    }.bind(this));
+     //    this.web3Plug.reconnectWeb()
 
   },
   mounted: function () {
     this.getBalances();
-
     // this.getTotalSupply();
-
     setInterval(this.getBalances.bind(this), 5000);
-
     // this.CallProfileDetails()
+
   },
+  mixins: [web3Modal],
   methods: {
+
     canMint() {
       return this.totalSupply >= 9999;
     },
@@ -863,19 +870,19 @@ export default {
 
 
     async CallProfileDetails(){
-      console.log("CallProfileDetails");
+        if (this.web3Modal.active) {
+            this.userAddress = this.web3Modal.account;
+            this.userAddress = web3utils.toChecksumAddress(this.userAddress)
+            console.log("userAddress:" + this.userAddress);
+        } else {
+            console.log("CallProfileDetails - No Active Account");
+        }
       try {
-          // if (!this.signedInToWeb3) {
-          //   return;
-          // }
-          this.userAddress = this.web3Plug.getActiveAccountAddress();
-          this.userAddress = web3utils.toChecksumAddress(this.userAddress)
 
       }
       catch(err) {
-        console.log('error: CallProfileDetails')
+        console.log('error: CallProfileDetails home')
       }
-      console.log("userAddress:" + this.userAddress);
     },
 
 
@@ -959,10 +966,13 @@ export default {
     async mint() {
       console.log("calling mint");
 
-      if (!this.signedInToWeb3) {
-        this.web3Plug.connectWeb3();
+      if (!this.web3Modal.active) {
+        this.$store.dispatch('connect')
         return;
       }
+
+      this.userAddress = this.web3Modal.account;
+      // this.userAddress = web3utils.toChecksumAddress(this.userAddress)
 
       let amt = this.mintAmount.toString();
       console.log("mintAmount:" + this.mintAmount);
@@ -989,6 +999,8 @@ export default {
 
       let ethBalance = await this.web3Plug.getETHBalance(this.userAddress);
       console.log("ethBalance: " + ethBalance);
+
+
 
 
       // request contract methods using ERC721ABI file and contract address

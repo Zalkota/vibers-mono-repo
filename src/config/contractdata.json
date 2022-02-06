@@ -15,7 +15,7 @@
 
     "rinkeby":{
       "contracts":{
-        "cosmicCaps":{"name":"COSMIC","address":"0x008B5B80625Dc92848D57720eb3D1190c32ED580" }
+        "cosmiccaps_dev":{"name":"COSMIC","address":"0x008B5B80625Dc92848D57720eb3D1190c32ED580" }
       }
     }
 

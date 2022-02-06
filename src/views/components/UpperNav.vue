@@ -35,13 +35,19 @@
                             </router-link>
                         </div>
 
-                        <div v-if="web3Plug.connectedToWeb3() == false" class="flex-auto px-2 mt-1 lg:mt-0 text-center">
-                            <button class="button bg-yellow-400 hover:bg-yellow-300 sm:text-xl lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 rounded cursor-pointer shadow-sm hover:shadow-sm md:rounded-xl rounded-md max-w-xs" type="button" data-modal-toggle="defaultModal">
+                        <div v-if="web3Modal.active == false" class="flex-auto px-2 mt-1 lg:mt-0 text-center">
+                            <button class="button bg-yellow-400 hover:bg-yellow-300 sm:text-xl lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 rounded cursor-pointer shadow-sm hover:shadow-sm md:rounded-xl rounded-md max-w-xs" type="button" v-on:click="connect()">
                               Connect
                             </button>
+
+                            <!-- LoginModal -->
+                            <!-- <button class="button bg-yellow-400 hover:bg-yellow-300 sm:text-xl lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 rounded cursor-pointer shadow-sm hover:shadow-sm md:rounded-xl rounded-md max-w-xs" type="button" data-modal-toggle="defaultModal">
+                              Connect
+                            </button> -->
+
                         </div>
 
-                        <div v-if="web3Plug.connectedToWeb3() == true" class="flex-1 px-1 mt-1 lg:mt-0 text-center">
+                        <div v-if="web3Modal.active == true" class="flex-1 px-1 mt-1 lg:mt-0 text-center">
                             <router-link class="no-underline" to="/profile">
                                 <div  class="button bg-gray-300 hover:bg-blue-200 text-md text-black font-bold lg:py-4 py-2 my-2 px-0 lg:px-4 cursor-pointer hover:shadow-sm md:rounded-xl rounded-md border border-gray-400">{{ userAddressSlice() }}</div>
                             </router-link>
@@ -49,9 +55,17 @@
                     </div>
 
     </nav>
-    <LoginModal
+    <!-- <LoginModal
       v-bind:web3Plug="web3Plug"
+     /> -->
+
+     <web3-modal-vue
+     ref="web3modal"
+     :theme="theme"
+     :providerOptions="providerOptions"
+     cache-provider
      />
+
 </div>
 </template>
 
@@ -60,17 +74,36 @@
 import Web3NetButton from './Web3NetButton.vue'
 import Config from '../config/UpperNav.js'
 import LoginModal from './LoginModal.vue';
+
+// Web3Modal-Vue
+import Web3ModalVue from "web3modal-vue";
+import web3ModalStore from "../../store/modules/web3Modal.js";
+import {web3Modal} from "../../js/mixins.js";
+//Wallets
+import WalletConnectProvider from "@walletconnect/web3-provider";
+
+
 export default {
   name: 'UpperNav',
-  props: ['web3Plug', 'userAddress'],
-  components:{Web3NetButton, LoginModal},
+  props: [],
+  components:{Web3NetButton, LoginModal, Web3ModalVue},
   data() {
     return {
       activeAccountAddress:null,
       activeNetworkId: null,
       navConfig: null,
+      theme: 'light',
+      providerOptions: {
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            infuraId: "4c76d7dff70d44e0a81b60432e88b558"
+          }
+        }
+      },
     }
   },
+  mixins: [web3Modal],
   created(){
     // this.navConfig = Config;
     // this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
@@ -80,19 +113,29 @@ export default {
     //        this.$forceUpdate();
     //     }.bind(this));
   },
+
+  mounted: function () {
+      this.$nextTick(async () => {
+        const web3modal = this.$refs.web3modal;
+        this.$store.commit('setWeb3Modal', web3modal)
+        if (web3modal.cachedProvider) {
+          this.connect()
+        }
+      })
+  },
   methods: {
 
-        userAddressSlice(){
-            if (this.userAddress !== null) {
-                let slice = this.userAddress.slice(0, 6)
-                let result = slice + ".."
-                return result
-            }
-        },
+    connect() {
+        this.$store.dispatch('connect')
+    },
 
-          connectToWeb3(){
-            this.web3Plug.connectWeb3( )
-          },
+    userAddressSlice(){
+        if (this.userAddress !== null) {
+            let slice = this.web3Modal.account.slice(0, 6)
+            let result = slice + ".."
+            return result
+        }
+    },
 
   }
 }
