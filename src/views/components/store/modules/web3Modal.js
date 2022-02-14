@@ -1,8 +1,6 @@
-import {getLibrary} from "../../js/web3";
+import {getLibrary} from "@/utils/web3";
 import {ethers} from "ethers";
 import {parseInt} from 'lodash'
-
-const ERC721ABI = require("../../contracts/ERC721ABI.json");
 
 const web3ModalStore = {
     state: {
@@ -12,12 +10,6 @@ const web3ModalStore = {
         active: false,
         account: null,
         chainId: 0,
-        contract: null,
-        contractAddress: null,
-        signer: null,
-        abi: null,
-        balance: 0,
-        signer: null,
     },
     mutations: {
         setWeb3Modal(state, web3Modal) {
@@ -30,71 +22,17 @@ const web3ModalStore = {
             state.active = active
         },
         setAccount(state, account) {
-            if (account) {
-                state.account = account.toLowerCase()
-            }
+            state.account = account.toLowerCase()
         },
         setChainId(state, chainId) {
             state.chainId = chainId
-        },
-
-        setEthBalance(state, balance) {
-            state.balance = balance
-        },
-
-        setSigner(state, signer) {
-            state.signer = signer
-        },
-
-        // callandSetSigner(state, signer) {
-        //
-        // },
-
-        // setEthBalance(state, address) {
-        //
-        //     const provider = await state.web3Modal.connect();
-        //     // const library = new ethers.providers.Web3Provider(provider)
-        //
-        //     state.balance = await provider.getBalance(address);
-        // },
-
-        async setContract(state, {abi, contractAddress}) {
-            // const provider = ethers.getDefaultProvider();
-            // const library = new ethers.providers.Web3Provider(provider)
-            const signer = state.signer;
-            const contract = new ethers.Contract(contractAddress, abi, signer);
-            state.contract = contract
-        },
+        }
     },
     actions: {
-
-        // getCustomContract(   contractABI, contractAddress)
-        // {
-        //   var contract = new web3Instance.eth.Contract(contractABI,contractAddress)
-        //
-        //   return contract;
-        // }
-
-
-
-        // async getCustomContract({state, commit, dispatch}) {
-        //     const contract = new ethers.Contract(address, abi, provider);
-        //     commit('setContract', contract)
-        // },
-        async callSigner({state, commit, dispatch}) {
-            const provider = ethers.getDefaultProvider();
-            const library = new ethers.providers.Web3Provider(provider)
-            const signer = library.getSigner()
-            commit('setSigner', signer)
-        },
-
         async connect({state, commit, dispatch}) {
             const provider = await state.web3Modal.connect();
+
             const library = new ethers.providers.Web3Provider(provider)
-            const signer = library.getSigner()
-            //
-            //
-            commit('setSigner', signer)
 
             library.pollingInterval = 12000
             commit('setLibrary', library)
@@ -102,15 +40,7 @@ const web3ModalStore = {
             const accounts = await library.listAccounts()
             if (accounts.length > 0) {
                 commit('setAccount', accounts[0])
-
             }
-
-            console.log(accounts[0])
-            const balance = await library.getBalance(accounts[0]);
-            commit('setEthBalance', balance)
-            console.log('big number?', balance)
-
-
             const network = await library.getNetwork()
             commit('setChainId', network.chainId)
             commit('setActive', true)

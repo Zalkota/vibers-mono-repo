@@ -49,7 +49,7 @@
 
                         <div v-if="web3Modal.active == true" class="flex-1 px-1 mt-1 lg:mt-0 text-center">
                             <router-link class="no-underline" to="/profile">
-                                <div  class="button bg-gray-300 hover:bg-blue-200 text-md text-black font-bold lg:py-4 py-2 my-2 px-0 lg:px-4 cursor-pointer hover:shadow-sm md:rounded-xl rounded-md border border-gray-400">{{ userAddressSlice() }}</div>
+                                <div  class="button bg-gray-300 hover:bg-blue-200 text-md text-black font-bold lg:py-4 py-2 my-2 px-3 lg:px-4 cursor-pointer hover:shadow-sm md:rounded-xl rounded-md border border-gray-400">{{ userAddressSlice() }}</div>
                             </router-link>
                         </div>
                     </div>
@@ -105,6 +105,7 @@ export default {
   },
   mixins: [web3Modal],
   created(){
+
     // this.navConfig = Config;
     // this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
     //       console.log('stateChanged',connectionState);
@@ -131,6 +132,7 @@ export default {
 
     userAddressSlice(){
         if (this.userAddress !== null) {
+            console.log("userAddress:" + this.web3Modal.account);
             let slice = this.web3Modal.account.slice(0, 6)
             let result = slice + ".."
             return result

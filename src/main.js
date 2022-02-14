@@ -42,7 +42,6 @@ const settings = {
     }
   }
 }
-
 Vue.use(VueTailwind, settings)
 
 new Vue({
