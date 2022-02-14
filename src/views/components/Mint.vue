@@ -187,7 +187,6 @@ export default {
   methods: {
 
 
-
     canMint() {
       return this.totalSupply >= 9999;
     },
@@ -216,7 +215,6 @@ export default {
               console.log('sale is in the future')
       }
 
-      //SaleStatus can be false if Web3Modal isn't connected, this fixes this issue
       console.log('time', this.endDate.getTime(), now.getTime())
       console.log('getSaleStatus', this.saleStatus)
       },
@@ -229,19 +227,12 @@ export default {
             const abi = ERC721ABI
             this.$store.commit('setContract', {abi, contractAddress})
             this.nftContract = await this.web3Modal.contract
-            // const signer = this.web3Modal.signer;
-            // console.log('signer call', signer)
-            // const nftContract = new ethers.Contract(contractAddress, abi, signer);
-
             console.log('nftContract call', this.nftContract)
-              this.totalSupply = await this.nftContract.totalSupply();
-              this.$forceUpdate();
-
+            this.totalSupply = await this.nftContract.totalSupply();
+            this.$forceUpdate();
         }
         await this.getSaleStatus();
     },
-
-
 
 
     async mint() {

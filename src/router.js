@@ -1,16 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-
 import Home from './views/Home.vue'
-import Gallery from './views/Gallery.vue'
-
+import NotFound from './views/NotFound.vue'
 
 // Toadz Collection Tiles
 import Collection from './views/Collection.vue'
 import NftToken from './views/NftToken.vue'
 import Profile from './views/Profile.vue'
-import GalleryDetail from './views/components/GalleryDetail.vue'
 
 Vue.use(Router)
 
@@ -40,6 +37,11 @@ export default new Router({
       name: 'profile',
       component: Profile,
     },
+
+    {
+        path: "*",
+        component: NotFound
+   }
 
   ]
 })
