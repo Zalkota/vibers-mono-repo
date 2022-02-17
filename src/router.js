@@ -4,10 +4,10 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import NotFound from './views/NotFound.vue'
 
-// Toadz Collection Tiles
 import Collection from './views/Collection.vue'
 import NftToken from './views/NftToken.vue'
 import Profile from './views/Profile.vue'
+import WhitelistForm from './views/WhitelistForm.vue'
 
 Vue.use(Router)
 
@@ -36,6 +36,11 @@ export default new Router({
       path: '/profile',
       name: 'profile',
       component: Profile,
+    },
+    {
+      path: '/whitelist',
+      name: 'whitelistform',
+      component: WhitelistForm,
     },
 
     {

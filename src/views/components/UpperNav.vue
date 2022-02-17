@@ -76,11 +76,14 @@ import Config from '../config/UpperNav.js'
 import LoginModal from './LoginModal.vue';
 
 // Web3Modal-Vue
+const INFURA_ID = process.env.INFURA_ID
 import Web3ModalVue from "web3modal-vue";
 import web3ModalStore from "../../store/modules/web3Modal.js";
 import {web3Modal} from "../../js/mixins.js";
 //Wallets
 import WalletConnectProvider from "@walletconnect/web3-provider";
+
+"4c76d7dff70d44e0a81b60432e88b558"
 
 
 export default {
@@ -97,7 +100,7 @@ export default {
         walletconnect: {
           package: WalletConnectProvider,
           options: {
-            infuraId: "4c76d7dff70d44e0a81b60432e88b558"
+            infuraId: INFURA_ID,
           }
         }
       },

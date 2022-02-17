@@ -81,12 +81,12 @@ const web3ModalStore = {
         //     const contract = new ethers.Contract(address, abi, provider);
         //     commit('setContract', contract)
         // },
-        async callSigner({state, commit, dispatch}) {
-            const provider = ethers.getDefaultProvider();
-            const library = new ethers.providers.Web3Provider(provider)
-            const signer = library.getSigner()
-            commit('setSigner', signer)
-        },
+        // async callSigner({state, commit, dispatch}) {
+        //     const provider = ethers.getDefaultProvider();
+        //     const library = new ethers.providers.Web3Provider(provider)
+        //     const signer = library.getSigner()
+        //     commit('setSigner', signer)
+        // },
 
         async connect({state, commit, dispatch}) {
             const provider = await state.web3Modal.connect();

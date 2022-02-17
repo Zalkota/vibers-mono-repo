@@ -128,6 +128,11 @@ import TabsBar from "../components/TabsBar.vue";
 import FrontendHelper from "../../js/frontend-helper.js";
 
 import emailjs from 'emailjs-com';
+const EMAIL_SERVICE = process.env.EMAIL_SERVICE
+const EMAIL_TEMPLATE = process.env.EMAIL_TEMPLATE
+const EMAIL_USER = process.env.EMAIL_USER
+
+
 
 export default {
   name: 'HolidayOrderForm',
@@ -174,7 +179,7 @@ export default {
   },
   methods: {
       sendEmail() {
-      emailjs.sendForm('service_bkp0yp1', 'template_v036e4k', this.$refs.form, 'user_fNg37z6Q0NFs8JNe0yc9S')
+      emailjs.sendForm(EMAIL_SERVICE, EMAIL_TEMPLATE, this.$refs.form, EMAIL_USER)
         .then((result) => {
             console.log('SUCCESS!', result.text);
             this.success = true;
