@@ -2,6 +2,9 @@
   "mainnet":{
     "contracts":{
       "cosmiccaps_dev":{"name":"COSMIC","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" }
+      "cryptoadz":{"name":"TOADZ","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" }
+      "dystopunks":{"name":"DYSTO","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" }
+      "cryptoskulls":{"name":"SKULLS","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" }
     }
   },
 

@@ -83,7 +83,6 @@ import {web3Modal} from "../../js/mixins.js";
 //Wallets
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
-"4c76d7dff70d44e0a81b60432e88b558"
 
 
 export default {
