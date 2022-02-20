@@ -134,7 +134,7 @@ export default {
 
     userAddressSlice(){
         if (this.userAddress !== null) {
-            console.log("userAddress:" + this.web3Modal.account);
+            console.log("uppernav userAddress:" + this.web3Modal.account);
             let slice = this.web3Modal.account.slice(0, 6)
             let result = slice + ".."
             return result

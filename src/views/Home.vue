@@ -774,6 +774,7 @@ export default {
 
   },
   mounted: function () {
+      
     // this.getBalances();
     // this.getTotalSupply();
     // setInterval(this.getBalances.bind(this), 5000);

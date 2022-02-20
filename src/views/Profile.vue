@@ -18,6 +18,9 @@
            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0 mb-3">
                Profile
            </h1>
+           <div class="my-3 ">
+               <a @click="" class="text-sm text-red-600 font-bold py-3 px-8 rounded-xl w-56 text-center no-underline cursor-pointer  mx-2">Disconnect Wallet</a>
+           </div>
            <input
            class="button bg-blue-100 text-sm font-medium sm:text-md text-gray-800 mb-2 py-3 px-0 rounded-xl rounded-r-none shadow-sm text-center no-underline border border-gray-400"
            ref="clone1"
@@ -148,6 +151,10 @@ export default {
       connectToWeb3(){
         this.web3Plug.connectWeb3( )
       },
+
+      // disconnect() {
+      //     this.$store.dispatch('resetApp')
+      // },
 
 
       copy() {

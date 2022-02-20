@@ -6,57 +6,40 @@
 
      <div class=" ">
         <Navbar
-        v-bind:web3Plug="web3Plug"
-        v-bind:userAddress="userAddress"
        />
      </div>
    </div>
 
 
    <section class=" max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6">
-       <div v-if="web3Plug.connectedToWeb3() == true" class="text-center mb-3">
-           <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0 mb-3">
-               Join the Whitelist!
-           </h1>
-           <!-- <input
-           class="button bg-blue-100 text-sm font-medium sm:text-md text-gray-800 mb-2 py-3 px-0 rounded-xl rounded-r-none shadow-sm text-center no-underline border border-gray-400"
-           ref="clone1"
-           readonly
-           :value="userAddressSliceMiddle()" />
-           <input
-           class="hidden"
-           v-on:focus="$event.target.select()"
-           ref="clone"
-           readonly
-           :value="userAddressString()" />
-           <button @click="copy" class="button bg-white text-md  sm:text-md text-gray-700 my-2 py-2 px-4 rounded-xl rounded-l-none shadow-sm text-center no-underline border border-gray-400">
-               <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"></path></svg>
-           </button> -->
-       </div>
-
 
        <br>
        <br>
 
+        <div v-show="web3Modal.active == true && this.amount > 0" class="text-center container shadow-md bg-white rounded-md p-4 sm:px-4 py-4 mx-auto border-4 border-green-400">
+            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0 mb-6">
+            Join the Whitelist!
 
+            </h1>
+            <h2 class="font-bold">Congratulations, claim your whitelist spot.</h2>
+            <p class="text-gray-600 text-sm">Whitelist spots are available for holders of the following NFTs:<br> CrypToadz, DystoPunks, Cosmic Caps, and CryptoSkulls.</p>
+            <div class="text-center mx-auto m-6 mt-12">
+               <a @click="sendWhitelistData()" class="button bg-green-400 hover:bg-green-300 hover:shadow-sm lg:text-3xl text-xl text-white font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Claim ( {{ amount }} )</a>
+            </div>
+        </div>
 
-       <div v-show="web3Modal.active == true && returnHoldingsAmount > 0" class="text-center">
-         <h2>Congratulations, claim your whitelist spot.</h2>
-         <div class="text-center mx-auto m-6 mt-12">
-               <a @click="sendWhitelistData()" class="button bg-green-400 hover:bg-green-300 hover:shadow-sm lg:text-3xl text-sm text-white font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Claim (1)</a>
-         </div>
-       </div>
-
-       <div v-show="web3Modal.active == true && returnHoldingsAmount == 0" class="text-center">
-         <h2>To be legible for this Whitelist, you must own at least one of the following:</h2>
+       <div v-show="web3Modal.active == true && amount == 0" class="text-center container shadow-md bg-white rounded-md p-4 sm:px-4 py-4 mx-auto border-4 border-red-400">
+         <h2 class="font-bold text-lg md:text-xl lg:text-xl font-heading text-black-800 mt-0 pt-0 mb-6">Whitelist spots are available for holders of the following NFTs:</h2>
          <ul>
            <li>CrypToadz</li>
            <li>DystoPunks</li>
            <li>Cosmic Caps</li>
            <li>CryptoSkulls</li>
          </ul>
+         <br>
+         <p class="text-gray-600 text-sm">The connected wallet does not contain any. <br> Please disconnect your wallet and connect one that does.</p>
          <div class="text-center mx-auto m-6 mt-12">
-               <a @click="sendWhitelistData()" class="button bg-green-400 hover:bg-green-300 hover:shadow-sm lg:text-3xl text-sm text-white font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Claim (1)</a>
+               <a @click="disconnect()" class="button bg-red-500 hover:bg-red-300 hover:shadow-sm lg:text-3xl text-lg text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Disconnect Wallet</a>
          </div>
        </div>
 
@@ -67,7 +50,7 @@
             </h1>
             <p>Connect your wallet with our available wallet providers.</p>
             <div class="text-center mx-auto m-6 mt-12">
-                  <a @click="connectToWeb3" class="button bg-yellow-400 hover:bg-yellow-300 hover:shadow-sm lg:text-3xl text-lg text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Connect Wallet</a>
+                  <a @click="connect()" class="button bg-yellow-400 hover:bg-yellow-300 hover:shadow-sm lg:text-3xl text-lg text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Connect Wallet</a>
             </div>
         </div>
        <!-- <div class="" v-if="signedInToWeb3 == true">
@@ -109,15 +92,28 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 
 
 
-
 export default {
   name: 'WhitelistForm',
   props: [],
   components: {Navbar, Footer, Web3ModalVue},
+  watch: {
+        // accountActive: {
+        //     immediate: true,
+        //     deep: true,
+        //     // console.log('watcher', this.web3Modal.active)
+        //
+        // }
+
+      // handler(newValue, oldValue) {
+      //   this.returnHoldingsAmount()
+      //   console.log('watcher', this.web3Modal.active)
+      //
+      // }
+  },
 
   data() {
     return {
-      // web3Plug: new Web3Plug(),
+      web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,
       amount: 0,
@@ -138,6 +134,16 @@ export default {
   },
 
   mounted: function () {
+      let suscribe = this.$store.subscribe((mutation, state) => {
+      console.log(mutation.type)
+      console.log(mutation.payload)
+      if (mutation.type == 'setActive' && mutation.payload == true) {
+          this.fetchCosmicCapNFT()
+          suscribe()
+      }
+    })
+
+
   },
 
   computed: {
@@ -153,13 +159,17 @@ export default {
         this.$store.dispatch('connect')
     },
 
+    disconnect() {
+        this.$store.dispatch('resetApp')
+    },
+
 
 
     async sendWhitelistData() {
       console.log('Whitelist')
        let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
 
-         let userAddress = this.web3Modal.account
+
 
            let inputQuery = Object.assign( { "publicAddress": this.userAddress, "whitelistAmount": whitelistAmount})
            console.log('input', this.userAddress, whitelistAmount)
@@ -173,26 +183,20 @@ export default {
     },
 
 
-    async returnHoldingsAmount() {
-      const cosmicCapAmount = fetechCosmicCapNFT()
-      const cryptoToadzAmount = fetchToadzNFT()
-      const dystoPunksAmount = fetchDystoNFT()
-      const cryptoSkullsAmount = fetchSkullsNFT()
 
-      let amount = sum(cosmicCapAmount, cryptoToadzAmount, dystopunks, cryptoSkullsAmount)
-      return amount
-    },
-
-    fetchCosmicCapNFT() {
+    async fetchCosmicCapNFT() {
       console.log('fetching Cosmic Cap NFTs held by account')
       // Obtain API Endpoint
        let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
+
+       console.log('this.web3Modal.account', this.web3Modal.account)
+       this.userAddress = this.web3Modal.account
 
        // Define contract address as nftContract
        let contractData = await this.web3Plug.getContractDataForActiveNetwork();
        let keyName = Object.keys(contractData);
        this.collectionName = keyName[0]
-       let nftContract = contractData.cryptoadz.address
+       let nftContract = contractData.cosmiccaps_dev.address
 
        let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": nftContract})
        console.log('input', this.userAddress, nftContract)
@@ -203,12 +207,24 @@ export default {
        if(output && output.tokenIds){
             this.resultsData = output
             console.log('resultsData', this.resultsData.tokenIds)
-            const amount = this.resultsData.tokenIds.length
+            this.amount = this.resultsData.tokenIds.length
+            console.log(this.amount)
 
-      return amount
 
-   }
-    }
+       }
+    },
+
+
+    async returnHoldingsAmount() {
+      const cosmicCapAmount = this.fetchCosmicCapNFT()
+      // const cryptoToadzAmount = fetchToadzNFT()
+      // const dystoPunksAmount = fetchDystoNFT()
+      // const cryptoSkullsAmount = fetchSkullsNFT()
+
+      // let amount = sum(cosmicCapAmount, cryptoToadzAmount, dystopunks, cryptoSkullsAmount)
+      // return amount
+      return cosmicCapAmount
+    },
 
 
 
@@ -226,10 +242,6 @@ export default {
               let result = this.userAddress
               return result
           }
-      },
-
-      connectToWeb3(){
-        this.web3Plug.connectWeb3( )
       },
 
 

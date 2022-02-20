@@ -24,7 +24,6 @@ const nftContractABI = require('../contracts/ERC721ABI')
 
 const EventEmitter = require('events');
 class Web3PlugEmitter extends EventEmitter {}
-
 const web3PlugEmitter = new Web3PlugEmitter();
 
 var web3Instance = null
