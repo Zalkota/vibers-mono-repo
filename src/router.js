@@ -37,11 +37,11 @@ export default new Router({
       name: 'profile',
       component: Profile,
     },
-    {
-      path: '/whitelist',
-      name: 'whitelistform',
-      component: WhitelistForm,
-    },
+    // {
+    //   path: '/whitelist',
+    //   name: 'whitelistform',
+    //   component: WhitelistForm,
+    // },
 
     {
         path: "*",
