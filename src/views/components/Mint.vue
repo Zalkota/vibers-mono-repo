@@ -119,7 +119,6 @@ export default {
     return {
       // SET MINT DATE
       endDate: new Date(2021, 3, 1, 10, 10, 10, 10),
-
       web3Plug: new Web3Plug(),
       signedInToWeb3: false,
       balances: {},
@@ -138,6 +137,7 @@ export default {
   },
 
   created() {
+    // this.getSaleStatus()
     this.web3Plug.getPlugEventEmitter().on(
       "stateChanged",
       async function (connectionState) {
@@ -162,9 +162,18 @@ export default {
 
   },
   mounted: function () {
+      let suscribe = this.$store.subscribe((mutation, state) => {
+      console.log(mutation.type)
+      console.log(mutation.payload)
+      if (mutation.type == 'setActive' && mutation.payload == true) {
+          // this.getSaleStatus()
+          this.getTotalSupply();
+          suscribe()
+      }
+    })
     this.getTotalSupply();
     //
-    setInterval(this.getTotalSupply.bind(this), 2500);
+    setInterval(this.getTotalSupply.bind(this), 5000);
   },
 
   computed: {
@@ -212,7 +221,7 @@ export default {
               console.log('sale is in the future')
       } else if (this.endDate <= now.getTime()) {
               this.saleStatus = true
-              console.log('sale is in the future')
+              console.log('sale is in the past')
       }
 
       console.log('time', this.endDate.getTime(), now.getTime())
@@ -231,7 +240,7 @@ export default {
             this.totalSupply = await this.nftContract.totalSupply();
             this.$forceUpdate();
         }
-        await this.getSaleStatus();
+        this.getSaleStatus()
     },
 
 

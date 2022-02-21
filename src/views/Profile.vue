@@ -18,8 +18,8 @@
            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0 mb-3">
                Profile
            </h1>
-           <div class="my-3 ">
-               <a @click="" class="text-sm text-red-600 font-bold py-3 px-8 rounded-xl w-56 text-center no-underline cursor-pointer  mx-2">Disconnect Wallet</a>
+           <div v-show="web3Modal.active == true" class="my-3 ">
+               <a @click="disconnect()" class="text-sm text-red-600 font-bold py-3 px-8 rounded-xl w-56 text-center no-underline cursor-pointer  mx-2">Disconnect Wallet</a>
            </div>
            <input
            class="button bg-blue-100 text-sm font-medium sm:text-md text-gray-800 mb-2 py-3 px-0 rounded-xl rounded-r-none shadow-sm text-center no-underline border border-gray-400"
@@ -79,10 +79,19 @@ import StarflaskApiHelper from '../js/starflask-api-helper.js'
 
 const FrontendConfig = require('../config/FrontendConfig.json')
 
+// Web3Modal-Vue
+const INFURA_ID = process.env.INFURA_ID
+import Web3ModalVue from "web3modal-vue";
+import web3ModalStore from "../store/modules/web3Modal.js";
+import {web3Modal} from "../js/mixins.js";
+//Wallets
+import WalletConnectProvider from "@walletconnect/web3-provider";
+
+
 export default {
   name: 'Profile',
   props: [],
-  components: {Navbar, Footer, TiledTokenProfileBrowser},
+  components: {Navbar, Footer, TiledTokenProfileBrowser, Web3ModalVue},
 
   data() {
     return {
@@ -90,6 +99,14 @@ export default {
       signedInToWeb3: false,
       activePanelId: null,
       userAddress: null,
+      providerOptions: {
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            infuraId: INFURA_ID,
+          }
+        }
+      },
 
     }
   },
@@ -128,8 +145,13 @@ export default {
 
   },
 
+  mixins: [web3Modal],
+
   methods: {
 
+      disconnect() {
+          this.$store.dispatch('resetApp')
+      },
 
 
       userAddressSliceMiddle(){

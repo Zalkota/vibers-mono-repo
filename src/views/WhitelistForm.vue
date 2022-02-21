@@ -11,7 +11,7 @@
    </div>
 
 
-   <section class=" max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6">
+   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6">
 
        <br>
        <br>
