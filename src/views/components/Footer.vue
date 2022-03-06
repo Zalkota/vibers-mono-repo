@@ -1,6 +1,6 @@
 <template>
 
-  <div class="text-center bg-blue-900 text-white">
+  <div class="text-center bg-four text-white">
       <div class="flex flex-row justify-center">
           <div class="flex-auto"></div>
           <div class="flex-initial px-2 mt-3">
@@ -28,8 +28,6 @@
                   </svg>
               </a>
           </div>
-
-
 
 
           <div class="flex-initial px-2 mt-3">
@@ -173,7 +171,7 @@
     </div>
 
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2021 Cosmic Caps
+    © 2022 DystoSkulls
   </div>
 </div>
 

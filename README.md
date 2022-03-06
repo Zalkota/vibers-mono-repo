@@ -1,10 +1,19 @@
-# Miners Guild 
+# DystoSkulls NFT 10,000 Collection
 
-Community DAO for Neutral Dapps
- 
+Stack:
+Vue.JS
+npm
+Web3.JS
+Ethers.JS
+DigitalOcean
 
- 
- 
+Live website:
+
+Solidity Smart contract can be found here:
+
+
+Created Febuary 02-21-2022
+Created by Jukabo.eth
 
 ### Development commands
 ```
@@ -18,4 +27,3 @@ npm run dev  (in terminal 2)
 npm run build
 npm run server
 ```
- 

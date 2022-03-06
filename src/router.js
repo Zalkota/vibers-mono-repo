@@ -21,27 +21,27 @@ export default new Router({
       name: 'home',
       component: Home
     } ,
-    {
-      path: '/collection/:contractAddress',
-      name: 'collection',
-      component: Collection
-    },
+    // {
+    //   path: '/collection/:contractAddress',
+    //   name: 'collection',
+    //   component: Collection
+    // },
 
-    {
-      path: '/collection/:contractAddress/:tokenId',
-      name: 'nftToken',
-      component: NftToken
-    },
+    // {
+    //   path: '/collection/:contractAddress/:tokenId',
+    //   name: 'nftToken',
+    //   component: NftToken
+    // },
     {
       path: '/profile',
       name: 'profile',
       component: Profile,
     },
-    // {
-    //   path: '/whitelist',
-    //   name: 'whitelistform',
-    //   component: WhitelistForm,
-    // },
+    {
+      path: '/whitelist',
+      name: 'whitelistform',
+      component: WhitelistForm,
+    },
 
     {
         path: "*",

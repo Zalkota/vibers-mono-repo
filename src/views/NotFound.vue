@@ -1,7 +1,7 @@
 <template>
 
-<div>
-   <div class="section  bg-whitepx-0 lg:px-1">
+<div class="bg-one">
+   <div class="section  bg-t px-0 lg:px-1">
      <div>
         <Navbar
        />
@@ -16,13 +16,13 @@
             <!-- <p class="text-gray-600 text-sm">Whitelist spots are available for holders of the following NFTs:<br> CrypToadz, DystoPunks, Cosmic Caps, and CryptoSkulls.</p> -->
             <div class="text-center m-6 mt-12 no-underline">
                 <router-link class="text-center mx-auto m-6 mt-12 no-underline" to="/">
-                   <a class="button bg-blue-600 hover:bg-blue-500 hover:shadow-sm lg:text-3xl text-xl text-white font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer mx-2">Go Home</a>
+                   <a class="button bg-four hover:shadow-md lg:text-3xl text-xl text-white font-bold my-2 py-3 px-8 rounded-xl shadow-sm w-56 text-center no-underline cursor-pointer mx-2">Go Home</a>
                 </router-link>
             </div>
         </div>
     </section>
 
-  <Footer/>
+  <!-- <Footer/> -->
 
 </div>
 </template>

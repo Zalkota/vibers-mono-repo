@@ -1,30 +1,30 @@
 <template>
     <div class="">
-        <section class="text-3xl flex justify-cewnter content-center flex-col mx-auto text-center">
-            Mint Starts
+        <section class="text-3xl flex justify-cewnter content-center flex-col mx-auto text-center mb-5">
+            <span class="font-bold color-four text-4xl">Mint Starts</span>
         </section>
-        <section class="flex text-6xl justify-center content-center">
-            <div class="days mx-2 relative p-2 bg-white rounded-md shadow-md">
+        <section class="flex text-6xl color-two justify-center content-center bg-black shadow-lg rounded-lg border-8 border-red-400" style="font-family: Righteous;">
+            <div class="days mx-2 relative p-2 bg-transparent color-two rounded-md  ">
                 {{ displayDays}}
-                <div class="label text-sm text-center mx-auto bottom-0">days</div>
+                <div class="label text-sm  text-center mx-auto bottom-0 ">days</div>
             </div>
             <span class="leading-snug">:</span>
 
-            <div class="hours mx-2 relative p-2 bg-gray-100 rounded-md shadow-md">
+            <div class="hours mx-2 relative p-2 bg-transparent rounded-md ">
                 {{ displayHours}}
-                <div class="label text-sm absolute bottom-0">hours</div>
+                <div class="label text-sm text-center mx-auto bottom-0">hours</div>
             </div>
             <span class="leading-snug">:</span>
 
-            <div class="minutes mx-2 relative p-2 bg-white rounded-md shadow-md">
+            <div class="minutes mx-2 relative  p-2 bg-transparent rounded-md  ">
                 {{ displayMinutes}}
-                <div class="label text-sm absolute bottom-0">minutes</div>
+                <div class="label text-sm text-center mx-auto bottom-0">minutes</div>
             </div>
-            <span class="leading-snug">:</span>
+            <span class="leading-snug ">:</span>
 
-            <div class="seconds mx-2 relative p-2 bg-white rounded-md shadow-md">
+            <div class="seconds mx-2 relative  p-2 bg-transparent rounded-md ">
                 {{ displaySeconds}}
-                <div class="label text-sm absolute bottom-0">seconds</div>
+                <div class="label text-sm  text-center mx-auto bottom-0">seconds</div>
             </div>
         </section>
 

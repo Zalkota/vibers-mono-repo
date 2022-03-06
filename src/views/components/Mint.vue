@@ -1,13 +1,10 @@
 <template>
     <div class="text">
-        <div class="title-container border border-blue-800 md:rounded-xl rounded-md shadow-xl" v-if="canMint" style="backdrop-filter: blur(22px); background-color: rgba(69, 150, 236, 0.75);">
+        <div class="title-container bg-transparent" v-if="canMint" >
                 <div v-show="saleStatus" class="custom-number-input h-10 justify-center content-center text-center px-2">
                       <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
-                        <button v-on:click="decrementMint" class=" bg-transparent text-gray-600  h-full w-20 rounded-l cursor-pointer outline-none">
-                            <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M206.387 28.4073C165.844 -0.76659 126.385 1.32271 126.385 1.32271C126.385 1.32271 86.1015 0.717249 47.9906 29.9702C3.98272 64.0788 -2.92064 125.947 3.25974 131.635C6.27559 136.071 16.2625 136.762 26.3231 136.762H52.8353C54.8037 138.182 45.2244 174.448 45.2244 174.448L40.9961 200.176C40.9961 200.176 40.4764 215.775 45.2244 224.455C48.9682 231.299 59.1776 239.674 59.1776 239.674C59.1776 239.674 75.1366 252.411 132.326 251.27C187.647 250.166 200.084 239.674 200.084 239.674C200.084 239.674 208.235 231.556 211.817 224.455C215.893 216.375 213.932 201.988 213.932 201.988L211.817 174.448C211.817 174.448 202.938 140.706 202.938 136.762H230.467C242.061 136.762 249.641 137.313 251.938 133.508C256.286 123.791 255.689 66.2486 206.387 28.4073Z" fill="#E2E8F0" stroke="black"/>
-                            <line x1="84.8352" y1="124.399" x2="171.372" y2="124.399" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
-                            </svg>
+                        <button v-on:click="decrementMint" class=" bg-transparent text-white text-3xl h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="text-3xl font-bold">-</span>
                         </button>
                         <input
                           type="number"
@@ -15,12 +12,8 @@
                           max="16"
                           v-model="mintAmount"
                           class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-lg sm:text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
-                        <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-gray-600 hover:text-gray-700 h-full w-20 rounded-r cursor-pointer">
-                            <svg width="40" height="40" viewBox="0 0 255 252" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M206.387 27.9046C165.844 -1.26928 126.385 0.820026 126.385 0.820026C126.385 0.820026 86.1015 0.214563 47.9906 29.4675C3.98272 63.5762 -2.92064 125.444 3.25974 131.132C6.27559 135.568 16.2625 136.26 26.3231 136.26H52.8353C54.8037 137.679 45.2244 173.946 45.2244 173.946L40.9961 199.674C40.9961 199.674 40.4764 215.272 45.2244 223.952C48.9682 230.796 59.1776 239.171 59.1776 239.171C59.1776 239.171 75.1366 251.908 132.326 250.767C187.647 249.664 200.084 239.171 200.084 239.171C200.084 239.171 208.235 231.054 211.817 223.952C215.893 215.872 213.932 201.485 213.932 201.485L211.817 173.946C211.817 173.946 202.938 140.204 202.938 136.26H230.467C242.061 136.26 249.641 136.81 251.938 133.006C256.286 123.288 255.689 65.7459 206.387 27.9046Z" fill="#E2E8F0" stroke="black"/>
-                            <line x1="84.8352" y1="123.896" x2="171.372" y2="123.896" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
-                            <line x1="126.984" y1="80.2537" x2="126.984" y2="166.791" stroke="#393939" stroke-width="20" stroke-linecap="round"/>
-                            </svg>
+                        <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-white h-full w-20 rounded-r cursor-pointer">
+                            <span class="text-3xl font-bold">+</span>
                       </button>
                     </div>
                 </div>
@@ -36,8 +29,8 @@
                 <div
                   class="
                     select-none
-                    bg-yellow-400
-                    hover:bg-yellow-300
+                    bg-two
+                    hover:bg-green-400
                     shadow-md
                     hover:shadow-lg
                     sm:py-4
@@ -69,6 +62,32 @@
                       :endDate="endDate"
                       />
                     </div>
+                </div>
+                <div class="text-center my-4 color-four">
+                    8,451 DystoSkulls burning books near you
+                    <svg width="25" height="25" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.72343 11.1371C9.56757 12.7996 9.4582 15.7418 10.4398 16.9942C10.4398 16.9942 9.97773 13.7621 14.1203 9.70705C15.7883 8.07463 16.1738 5.85432 15.5914 4.18908C15.2605 3.24572 14.6562 2.46642 14.1312 1.92228C13.825 1.60236 14.0602 1.07463 14.5059 1.09377C17.2019 1.21408 21.5715 1.9633 23.4281 6.62267C24.243 8.66799 24.3031 10.7817 23.9148 12.9309C23.6687 14.3035 22.7937 17.3551 24.7898 17.7297C26.2144 17.9977 26.9035 16.8656 27.2125 16.0508C27.341 15.7117 27.7867 15.627 28.0273 15.8977C30.4336 18.6348 30.6387 21.8586 30.141 24.634C29.1785 29.9988 23.7453 33.9035 18.3477 33.9035C11.6047 33.9035 6.2371 30.0453 4.84531 23.0617C4.28476 20.2426 4.56914 14.6645 8.91679 10.727C9.23945 10.4317 9.76718 10.6942 9.72343 11.1371Z" fill="url(#paint0_radial_8_49)"/>
+                    <path d="M20.8113 21.1696C18.3258 17.9704 19.4387 14.32 20.0484 12.8653C20.1305 12.6739 19.9117 12.4934 19.7395 12.611C18.6703 13.3383 16.4801 15.0501 15.4602 17.459C14.0793 20.7157 14.1777 22.3098 14.9953 24.2567C15.4875 25.4297 14.916 25.6786 14.6289 25.7223C14.35 25.7661 14.093 25.5801 13.8879 25.386C13.3 24.8254 12.8762 24.0954 12.6738 23.3079C12.6301 23.1383 12.4086 23.0919 12.3074 23.2313C11.5418 24.2895 11.1453 25.9876 11.1262 27.1879C11.066 30.8985 14.1313 33.9063 17.8391 33.9063C22.5121 33.9063 25.9164 28.7383 23.2313 24.418C22.452 23.1602 21.7191 22.3372 20.8113 21.1696Z" fill="url(#paint1_radial_8_49)"/>
+                    <defs>
+                    <radialGradient id="paint0_radial_8_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17.0122 33.9886) rotate(-179.751) scale(19.3013 31.6696)">
+                    <stop offset="0.3144" stop-color="#FF9800"/>
+                    <stop offset="0.6616" stop-color="#FF6D00"/>
+                    <stop offset="0.9715" stop-color="#F44336"/>
+                    </radialGradient>
+                    <radialGradient id="paint1_radial_8_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(18.0961 14.7818) rotate(90.5787) scale(20.1951 15.1983)">
+                    <stop offset="0.2141" stop-color="#FFF176"/>
+                    <stop offset="0.3275" stop-color="#FFF27D"/>
+                    <stop offset="0.4868" stop-color="#FFF48F"/>
+                    <stop offset="0.6722" stop-color="#FFF7AD"/>
+                    <stop offset="0.7931" stop-color="#FFF9C4"/>
+                    <stop offset="0.8221" stop-color="#FFF8BD" stop-opacity="0.804"/>
+                    <stop offset="0.8627" stop-color="#FFF6AB" stop-opacity="0.529"/>
+                    <stop offset="0.9101" stop-color="#FFF38D" stop-opacity="0.2088"/>
+                    <stop offset="0.9409" stop-color="#FFF176" stop-opacity="0"/>
+                    </radialGradient>
+                    </defs>
+                    </svg>
+
                 </div>
             </div>
 
@@ -118,7 +137,7 @@ export default {
   data() {
     return {
       // SET MINT DATE
-      endDate: new Date(2021, 3, 1, 10, 10, 10, 10),
+      endDate: new Date(2022, 3, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       signedInToWeb3: false,
       balances: {},

@@ -9,7 +9,7 @@
 
        /* Text styles */
        /* Background styles */
-       background: url('~@/assets/images/opensea_banner.png');
+       /* background-color: #A1D0E0; */
        /* clip-path: polygon(0 0%, 100% 0, 100% 75%, 0 90%); */
        background-size: cover;
        background-position: center;
