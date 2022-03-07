@@ -1,4 +1,4 @@
-# DystoSkulls NFT 10,000 Collection
+# Vibers NFT 10,000 Collection
 
 Stack:
 Vue.JS

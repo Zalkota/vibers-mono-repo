@@ -19,13 +19,13 @@
         <div class="container px-12 sm:px-4 pb-10 mx-auto text-black">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
-                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3">Welcome to DystoSkulls</h1>
+                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four">Welcome to Vibers</h1>
 
-                                <p>Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
+                                <p>Vibers are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
                                 <br>
                                 <p>10,000 randomly-generated psychedelic mushrooms with over 120 traits across 6 different categories (cap, stem, eyes, mouth, background, and body props).</p>
                                 <br>
-                                <p>Cosmic Caps are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
+                                <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
 
                         </div>
@@ -49,13 +49,13 @@
                                 class="mx-auto max-w-sm p-4"/>
                         </div>
                         <div class="lg:flex-1">
-                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3">Welcome to DystoSkulls</h1>
+                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four">Welcome to Vibers</h1>
 
-                                <p>Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
+                                <p>Vibers are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
                                 <br>
                                 <p>10,000 randomly-generated psychedelic mushrooms with over 120 traits across 6 different categories (cap, stem, eyes, mouth, background, and body props).</p>
                                 <br>
-                                <p>Cosmic Caps are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
+                                <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
 
                         </div>
@@ -137,7 +137,7 @@
                 </div>
                 <div class="md:flex-4/6 flex-1 flex-1 px-6">
                         <h2 class="text-3xl font-bold color-four mb-6">Donating to Science and Medicine!</h2>
-                        <p class="color-four">We’re always looking at new ways to bring more value to our community. Once all of the Cosmic Caps have been minted, we plan to donate a portion of the proceeds to the.</p>
+                        <p class="color-four">We’re always looking at new ways to bring more value to our community. Once all of the Vibers have been minted, we plan to donate a portion of the proceeds to the.</p>
                 </div>
         </div>
     </div>
@@ -153,11 +153,11 @@
                                 class="mx-auto max-w-sm p-4"/>
                         </div>
                         <div class="lg:flex-1">
-                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3">Welcome to DystoSkulls</h1>
+                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3">Welcome to Vibers</h1>
 
-                                <p>Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
+                                <p>Vibers are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
                                 <br>
-                                <p>Cosmic Caps are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
+                                <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
                         </div>
                 </div>

@@ -64,30 +64,7 @@
                     </div>
                 </div>
                 <div class="text-center my-4 color-four">
-                    8,451 DystoSkulls burning books near you
-                    <svg width="25" height="25" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.72343 11.1371C9.56757 12.7996 9.4582 15.7418 10.4398 16.9942C10.4398 16.9942 9.97773 13.7621 14.1203 9.70705C15.7883 8.07463 16.1738 5.85432 15.5914 4.18908C15.2605 3.24572 14.6562 2.46642 14.1312 1.92228C13.825 1.60236 14.0602 1.07463 14.5059 1.09377C17.2019 1.21408 21.5715 1.9633 23.4281 6.62267C24.243 8.66799 24.3031 10.7817 23.9148 12.9309C23.6687 14.3035 22.7937 17.3551 24.7898 17.7297C26.2144 17.9977 26.9035 16.8656 27.2125 16.0508C27.341 15.7117 27.7867 15.627 28.0273 15.8977C30.4336 18.6348 30.6387 21.8586 30.141 24.634C29.1785 29.9988 23.7453 33.9035 18.3477 33.9035C11.6047 33.9035 6.2371 30.0453 4.84531 23.0617C4.28476 20.2426 4.56914 14.6645 8.91679 10.727C9.23945 10.4317 9.76718 10.6942 9.72343 11.1371Z" fill="url(#paint0_radial_8_49)"/>
-                    <path d="M20.8113 21.1696C18.3258 17.9704 19.4387 14.32 20.0484 12.8653C20.1305 12.6739 19.9117 12.4934 19.7395 12.611C18.6703 13.3383 16.4801 15.0501 15.4602 17.459C14.0793 20.7157 14.1777 22.3098 14.9953 24.2567C15.4875 25.4297 14.916 25.6786 14.6289 25.7223C14.35 25.7661 14.093 25.5801 13.8879 25.386C13.3 24.8254 12.8762 24.0954 12.6738 23.3079C12.6301 23.1383 12.4086 23.0919 12.3074 23.2313C11.5418 24.2895 11.1453 25.9876 11.1262 27.1879C11.066 30.8985 14.1313 33.9063 17.8391 33.9063C22.5121 33.9063 25.9164 28.7383 23.2313 24.418C22.452 23.1602 21.7191 22.3372 20.8113 21.1696Z" fill="url(#paint1_radial_8_49)"/>
-                    <defs>
-                    <radialGradient id="paint0_radial_8_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17.0122 33.9886) rotate(-179.751) scale(19.3013 31.6696)">
-                    <stop offset="0.3144" stop-color="#FF9800"/>
-                    <stop offset="0.6616" stop-color="#FF6D00"/>
-                    <stop offset="0.9715" stop-color="#F44336"/>
-                    </radialGradient>
-                    <radialGradient id="paint1_radial_8_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(18.0961 14.7818) rotate(90.5787) scale(20.1951 15.1983)">
-                    <stop offset="0.2141" stop-color="#FFF176"/>
-                    <stop offset="0.3275" stop-color="#FFF27D"/>
-                    <stop offset="0.4868" stop-color="#FFF48F"/>
-                    <stop offset="0.6722" stop-color="#FFF7AD"/>
-                    <stop offset="0.7931" stop-color="#FFF9C4"/>
-                    <stop offset="0.8221" stop-color="#FFF8BD" stop-opacity="0.804"/>
-                    <stop offset="0.8627" stop-color="#FFF6AB" stop-opacity="0.529"/>
-                    <stop offset="0.9101" stop-color="#FFF38D" stop-opacity="0.2088"/>
-                    <stop offset="0.9409" stop-color="#FFF176" stop-opacity="0"/>
-                    </radialGradient>
-                    </defs>
-                    </svg>
-
+                    8,451 Vibers burning books near you
                 </div>
             </div>
 

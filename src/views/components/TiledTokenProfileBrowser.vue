@@ -1,7 +1,7 @@
 <template>
     <div class="md:mx-2">
         <div class="my-3 ">
-                <span class=" text-sm text-gray-600">{{ activeTokenIdArrayLength }} Cosmic Caps owned by you.</span>
+                <span class=" text-sm text-gray-600">{{ activeTokenIdArrayLength }} Vibers owned by you.</span>
         </div>
 
           <br>

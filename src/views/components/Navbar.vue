@@ -4,9 +4,9 @@
     <div class=" mx-auto">
 
         <div class="flex flex-row">
-            <div class=" md:flex-1 flex-none ">
-                <router-link to="/" class='color-four font-bold text-3xl no-underline p-6 py-10 my-10'>
-                    DYSTOSKULLS
+            <div class=" md:flex-1 flex-none " style="font-family: Prompt">
+                <router-link to="/" class='color-four font-bold text-3xl no-underline p-6 py-10 my-10' >
+                    <span style="font-family: Luckiest Guy">Vibers</span >
                 </router-link>
             </div>
 

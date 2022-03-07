@@ -51,9 +51,9 @@
               <div class="max-w-screen-xl mt-6 px-8 grid gap-8 mb-2 grid-cols-1 md:grid-cols-2 md:px-6 lg:px-8 xl:px-16 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg" v-else="success">
                 <div class="flex flex-col justify-between">
                   <div>
-                    <h2 class="text-4xl lg:text-5xl font-bold leading-tight">Cosmic Caps Cargo</h2>
+                    <h2 class="text-4xl lg:text-5xl font-bold leading-tight">Vibers Cargo</h2>
                     <div class="text-gray-700 mt-8">
-                      Tis the season, the Cosmic Caps team wants to give back to those that minted a Cosmic Caps NFT this year.
+                      Tis the season, the Vibers team wants to give back to those that minted a Vibers NFT this year.
                       <br><br>
                       We will be mailing a Cosmic Cap themed care package to the first 10 verified Cosmic Cap holders to submit this form.
                       <br><br>

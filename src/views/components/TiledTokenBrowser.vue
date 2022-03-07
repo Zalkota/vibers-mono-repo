@@ -1,7 +1,7 @@
 <template>
     <div class="md:mx-2">
         <div class="mb-3 ">
-                <span class=" text-sm text-gray-600">{{ filterTokenIdArrayLength }} Cosmic Caps Total</span>
+                <span class=" text-sm text-gray-600">{{ filterTokenIdArrayLength }} Vibers Total</span>
         </div>
           <div >
               <div v-if="currentFilter && currentFilter.traitName" @click="clearFilters" class="bg-gray-100 py-2 px-4 rounded border-blue-600 border-2 inline-block cursor-pointer text-black">

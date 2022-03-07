@@ -22,7 +22,7 @@
 
             </h1>
             <h2 class="font-bold">Congratulations, claim your whitelist spot.</h2>
-            <p class="text-gray-600 text-sm">Whitelist spots are available for holders of the following NFTs:<br> CrypToadz, DystoPunks, Cosmic Caps, and CryptoSkulls.</p>
+            <p class="text-gray-600 text-sm">Whitelist spots are available for holders of the following NFTs:<br> CrypToadz, DystoPunks, Vibers, and CryptoSkulls.</p>
             <div class="text-center mx-auto m-6 mt-12">
                <a @click="sendWhitelistData()" class="button bg-green-400 hover:bg-green-300 hover:shadow-sm lg:text-3xl text-xl text-white font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Claim ( {{ amount }} )</a>
             </div>
@@ -33,7 +33,7 @@
          <ul>
            <li>CrypToadz</li>
            <li>DystoPunks</li>
-           <li>Cosmic Caps</li>
+           <li>Vibers</li>
            <li>CryptoSkulls</li>
          </ul>
          <br>

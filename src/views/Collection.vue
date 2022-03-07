@@ -15,7 +15,7 @@
 
    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-">
        <div class="text-center pb-2">
-           <span class="text-3xl text-blue-800 font-bold">Cosmic Caps</span>
+           <span class="text-3xl text-blue-800 font-bold">Vibers</span>
            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0">
                Marketplace
            </h1>

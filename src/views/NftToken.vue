@@ -23,7 +23,7 @@
     <div class="flex-auto py-8 md:px-8 px-6 xl:pb-0 pb-6 m-6 bg-white rounded-md border border-gray-300">
 
         <router-link  :to="getProjectURL()" class="no-underline" >
-            <h4 class="text-md text-blue-600 font-bold"> Cosmic Caps </h4>
+            <h4 class="text-md text-blue-600 font-bold"> Vibers </h4>
         </router-link>
 
         <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900 mt-0 mb-1">
@@ -60,7 +60,7 @@
                 <h2 class="text-gray-800 font-bold">Description</h2>
             </div>
             <div class="py-2">
-                <p class="text-gray-800 text-sm">Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are exploring their way from the shroomiverse to the metaverse!</p>
+                <p class="text-gray-800 text-sm">Vibers are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are exploring their way from the shroomiverse to the metaverse!</p>
             </div>
         </div>
 

@@ -21,7 +21,7 @@
                  <h2 class="text-gray-800 font-bold">Description</h2>
              </div>
              <div class="py-2">
-                 <p class="text-gray-800 text-sm">Cosmic Caps are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are exploring their way from the shroomiverse to the metaverse!</p>
+                 <p class="text-gray-800 text-sm">Vibers are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are exploring their way from the shroomiverse to the metaverse!</p>
              </div>
          </div>
          <div class="mt-2 ">

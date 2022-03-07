@@ -1,7 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
+
+/* @font-face {
+  font-family: "Merienda";
+  src: local("Merienda"),
+   url(./fonts/Merienda/Merienda-Regular.ttf) format("truetype");
+} */
+</s
 
 [v-cloak] { display:none; }
 
@@ -9,6 +19,10 @@ a {
   color: #2791ec;
  text-decoration: underline;
  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Luckiest Guy;
 }
 
 

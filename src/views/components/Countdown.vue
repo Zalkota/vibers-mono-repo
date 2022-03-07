@@ -1,9 +1,9 @@
 <template>
     <div class="">
         <section class="text-3xl flex justify-cewnter content-center flex-col mx-auto text-center mb-5">
-            <span class="font-bold color-four text-4xl">Mint Starts</span>
+            <span style="font-family: Luckiest Guy;" class="font-bold color-two text-4xl">Mint Starts</span>
         </section>
-        <section class="flex text-6xl color-two justify-center content-center bg-black shadow-lg rounded-lg border-8 border-red-400" style="font-family: Righteous;">
+        <section class="flex text-6xl color-two justify-center content-center bg-black shadow-lg rounded-lg border-8 border-red-400" style="font-family: Russo One;">
             <div class="days mx-2 relative p-2 bg-transparent color-two rounded-md  ">
                 {{ displayDays}}
                 <div class="label text-sm  text-center mx-auto bottom-0 ">days</div>
