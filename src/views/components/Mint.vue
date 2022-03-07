@@ -114,7 +114,7 @@ export default {
   data() {
     return {
       // SET MINT DATE
-      endDate: new Date(2022, 6, 1, 10, 10, 10, 10),
+      endDate: new Date(2022, 4, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       signedInToWeb3: false,
       balances: {},
