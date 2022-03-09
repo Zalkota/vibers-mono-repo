@@ -1,12 +1,13 @@
 <template>
   <div data-collapse="small" data-animation="default" data-duration="400" class="navbar w-nav">
-    <div class="bg-gray-300">
+    <div class="bg-three">
     <div class=" mx-auto">
-
-        <div class="flex flex-row">
+        <div class="flex flex-row p-0">
             <div class=" md:flex-1 flex-none " style="font-family: Prompt">
-                <router-link to="/" class='color-four font-bold text-3xl no-underline p-6 py-10 my-10' >
-                    <span style="font-family: Luckiest Guy">Vibers</span >
+                <router-link to="/" class='no-underline' >
+                  <div class="color-four font-bold text-2xl lg:text-5xl tracking-wider pl-4 lg:pl-6 px-2 my-6 lg:my-0">
+                      <span style="font-family: Luckiest Guy">Vibers</span >
+                  </div>
                 </router-link>
             </div>
 

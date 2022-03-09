@@ -1,30 +1,37 @@
 <template>
-    <div class="">
-        <section class="text-3xl flex justify-cewnter content-center flex-col mx-auto text-center mb-5">
-            <span style="font-family: Luckiest Guy;" class="font-bold color-two text-4xl">Mint Starts</span>
-        </section>
-        <section class="flex text-6xl color-two justify-center content-center bg-black shadow-lg rounded-lg border-8 border-red-400" style="font-family: Russo One;">
-            <div class="days mx-2 relative p-2 bg-transparent color-two rounded-md  ">
+    <div class="relative mb-12 lg:mb-24 ">
+      <img
+      src="@/assets/images/vibers/SkullGiff.gif"
+      alt="Three Cosmic Cap Mushrooms"
+      class="mx-auto lg:max-w-sm p-0"/>
+        <!-- <section class="text-lg lg:text-3xl flex justify-cewnter content-center flex-col mx-auto text-center mb-5">
+            <span style="font-family: Luckiest Guy;" class="font-bold color-two text-4xl">Mint Startasds</span>
+        </section> -->
+        <section class="counter flex text-3xl lg:text-6xl color-two justify-center content-center bg-black shadow-xl rounded-lg border-4 lg:border-8 border-red-400" style="font-family: Russo One;">
+            <div class="days mx-2 relative p-1 lg:p-2 bg-transparent color-two rounded-md  ">
                 {{ displayDays}}
-                <div class="label text-sm  text-center mx-auto bottom-0 ">days</div>
+                <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 ">days</div>
             </div>
             <span class="leading-snug">:</span>
 
-            <div class="hours mx-2 relative p-2 bg-transparent rounded-md ">
+            <div class="hours mx-2 relative p-1 lg:p-2 bg-transparent rounded-md ">
                 {{ displayHours}}
-                <div class="label text-sm text-center mx-auto bottom-0">hours</div>
+                <div class="label text-sm lg:text-sm text-center mx-auto bottom-0 hide">hours</div>
+                <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 unhide">hrs</div>
             </div>
             <span class="leading-snug">:</span>
 
-            <div class="minutes mx-2 relative  p-2 bg-transparent rounded-md  ">
+            <div class="minutes mx-2 relative  p-1 lg:p-2 bg-transparent rounded-md  ">
                 {{ displayMinutes}}
-                <div class="label text-sm text-center mx-auto bottom-0">minutes</div>
+                <div class="label text-sm lg:text-sm text-center mx-auto bottom-0 hide">minutes</div>
+                <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 unhide">min</div>
             </div>
             <span class="leading-snug ">:</span>
 
-            <div class="seconds mx-2 relative  p-2 bg-transparent rounded-md ">
+            <div class="seconds mx-2 relative  p-1 lg:p-2 bg-transparent rounded-md ">
                 {{ displaySeconds}}
-                <div class="label text-sm  text-center mx-auto bottom-0">seconds</div>
+                <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 hide">seconds</div>
+                <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 unhide">sec</div>
             </div>
         </section>
 

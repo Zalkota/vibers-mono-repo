@@ -1,6 +1,6 @@
 <template>
 
-  <div class="text-center bg-four text-white">
+  <div class="text-center bg-two text-white">
       <div class="flex flex-row justify-center">
           <div class="flex-auto"></div>
           <div class="flex-initial px-2 mt-3">

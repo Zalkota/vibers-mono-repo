@@ -1,5 +1,7 @@
 <template>
     <div class="text">
+
+
         <div class="title-container bg-transparent" v-if="canMint" >
                 <div v-show="saleStatus" class="custom-number-input h-10 justify-center content-center text-center px-2">
                       <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
@@ -63,10 +65,12 @@
                       />
                     </div>
                 </div>
-                <div class="text-center my-4 color-four">
-                    8,451 Vibers burning books near you
-                </div>
+
             </div>
+            <div class="text-center my-12 color-four font-bold text-sm">
+                The Vibing Never Stops.
+            </div>
+
 
             <div class="text-white text-xs">
               {{ errorMessage }}

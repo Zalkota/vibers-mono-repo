@@ -65,7 +65,7 @@
        text-align: center;
        /* Background styles */
        /* background-image: url(/static/img/background_waves_6.svg); */
-       background: url('~@/assets/images/opensea_banner.png');
+       /* background: url('~@/assets/images/opensea_banner.png'); */
        background-size: cover;
        background-position: top;
        background-repeat: no-repeat;
@@ -172,4 +172,24 @@
          position: relative;
        }
 }
+}
+
+
+@media screen and (min-width: 992px) {
+    .counter {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 50;
+    }
+}
+@media screen and (max-width: 992px) {
+    .counter {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 50;
+    }
 }
