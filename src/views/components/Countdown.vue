@@ -1,9 +1,11 @@
 <template>
-    <div class="relative mb-12 lg:mb-24 ">
+    <div class="relative mb-12 lg:mb-24 border-4 lg:border-4 rounded-lg" style="border-color: #A9ECE3; font-family: Russo One;">
       <img
       src="@/assets/images/vibers/SkullGiff.gif"
       alt="Three Cosmic Cap Mushrooms"
-      class="mx-auto lg:max-w-sm rounded-lg shadow-sm p-0"/>
+      class="mx-auto lg:max-w-sm rounded-sm shadow-sm p-0 "
+
+      />
         <!-- <section class="text-lg lg:text-3xl flex justify-cewnter content-center flex-col mx-auto text-center mb-5">
             <span style="font-family: Luckiest Guy;" class="font-bold color-two text-4xl">Mint Startasds</span>
         </section> -->
