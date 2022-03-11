@@ -2,8 +2,8 @@
     <div class="text">
 
 
-        <div class="title-container bg-transparent" v-if="canMint" >
-                <div v-show="saleStatus" class="custom-number-input h-10 justify-center content-center text-center px-2">
+        <div class="title-container bg-transparent" v-if="" >
+                <div v-show="false" class="custom-number-input h-10 justify-center content-center text-center px-2">
                       <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
                         <button v-on:click="decrementMint" class=" bg-transparent text-white text-3xl h-full w-20 rounded-l cursor-pointer outline-none">
                             <span class="text-3xl font-bold">-</span>
@@ -19,7 +19,7 @@
                       </button>
                     </div>
                 </div>
-                <div v-show="saleStatus">
+                <div v-show="false">
                     <div v-if="web3Modal.active" class="text-center py-3 mb-0 font-medium text-xl">
                         {{ totalSupply }} / 10,000
                     </div>
@@ -48,7 +48,7 @@
                     cursor-pointer
                   "
                   @click="mint"
-                  v-show="saleStatus"
+                  v-show="false"
                 >
                     <div class="text-black text-s inline">
                       Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
@@ -57,7 +57,7 @@
 
                 <div
                   class=""
-                  v-show="!saleStatus"
+                  v-show="true"
                 >
                     <div class="text-black text-s inline">
                       <Countdown

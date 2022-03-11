@@ -3,7 +3,6 @@
 <div>
 
    <div class="section px-0 lg:px-1">
-
      <div class=" ">
         <Navbar
        />
@@ -28,7 +27,7 @@
             </div>
         </div>
 
-       <div v-show="web3Modal.active == true && amount == 0" class="text-center container shadow-md bg-white rounded-md p-4 sm:px-4 py-4 mx-auto border-4 border-red-400">
+       <!-- <div v-show="web3Modal.active == true && amount == 0" class="text-center container shadow-md bg-white rounded-md p-4 sm:px-4 py-4 mx-auto border-4 border-red-400">
          <h2 class="font-bold text-lg md:text-xl lg:text-xl font-heading text-black-800 mt-0 pt-0 mb-6">Whitelist spots are available for holders of the following NFTs:</h2>
          <ul>
            <li>CrypToadz</li>
@@ -41,27 +40,39 @@
          <div class="text-center mx-auto m-6 mt-12">
                <a @click="disconnect()" class="button bg-red-500 hover:bg-red-300 hover:shadow-sm lg:text-3xl text-lg text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Disconnect Wallet</a>
          </div>
-       </div>
-
-       <!-- If user is not logged in, prompt connect button -->
-        <div v-show="web3Modal.active == false" class="text-center mb-3 py-10 ">
-            <h1 class="font-bold text-3xl  font-heading text-black-800 mt-0 pt-0 mb-3">
-                Join the Whitelist!
-            </h1>
-            <p>Connect your wallet with our available wallet providers.</p>
-            <div class="text-center mx-auto m-6 mt-12">
-                  <a @click="connect()" class="button bg-yellow-400 hover:bg-yellow-300 hover:shadow-sm lg:text-3xl text-lg text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Connect Wallet</a>
-            </div>
-        </div>
-       <!-- <div class="" v-if="signedInToWeb3 == true">
-           <TiledTokenProfileBrowser
-             ref="TokenProfileBrowser"
-             v-bind:web3Plug="web3Plug"
-             v-bind:userAddress="userAddress"
-           />
        </div> -->
 
-       <br>
+
+
+
+   </section>
+
+   <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6">
+
+     <div v-show="web3Modal.active == true && amount == 0" class="text-center container shadow-md bg-four rounded-md p-4 sm:px-4 py-8 mx-auto ">
+       <h2 class="font-bold text-lg md:text-xl lg:text-3xl font-heading text-white mt-0 pt-0 mb-6 tracking-widest">Whitelist Coming soon.</h2>
+
+       <p class="text-gray-400 text-lg">Follow us on Twitter and <span class="color-three font-bold">VIBE</span> with us in Discord!</p>
+       <div class="my-4">
+         <SocialRow />
+       </div>
+       <!-- <div class="text-center mx-auto m-6 mt-12">
+             <a @click="disconnect()" class="button bg-red-500 hover:bg-red-300 hover:shadow-sm lg:text-3xl text-lg text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Disconnect Wallet</a>
+       </div> -->
+     </div>
+     <!-- If user is not logged in, prompt connect button -->
+         <div v-show="web3Modal.active == false" class="text-center shadow-md  rounded-sm mx-auto border-2 border-gray-900 mt-12 mb-64">
+           <div class="bg-four font-bold text-lg md:text-xl lg:text-2xl  text-white p-6 py-8 sm:px-6 lg:px-10">
+              <h2 class="tracking-widest">Connect your wallet</h2>
+              <p class=" text-gray-500 text-sm font-thin pt-2">Connect your wallet with the available wallet providers.</p>
+           </div>
+           <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800">
+
+               <div class="text-center mx-auto m-6 ">
+                     <a @click="connect()" class="button bg-six hover:bg-yellow-300 hover:shadow-sm lg:text-3xl text-sm text-black font-bold my-2 py-3 px-8 rounded-sm shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Connect Wallet</a>
+               </div>
+           </div>
+         </div>
    </section>
 
   <!-- <Footer/> -->
@@ -78,6 +89,7 @@ import Web3Plug from '../js/web3-plug.js'
 import web3utils from 'web3-utils'
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
+import SocialRow from './components/SocialRow.vue';
 import TiledTokenProfileBrowser from './components/TiledTokenProfileBrowser.vue';
 import StarflaskApiHelper from '../js/starflask-api-helper.js'
 const FrontendConfig = require('../config/FrontendConfig.json')
@@ -95,7 +107,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 export default {
   name: 'WhitelistForm',
   props: [],
-  components: {Navbar, Footer, Web3ModalVue},
+  components: {Navbar, Footer, Web3ModalVue, SocialRow},
   watch: {
         // accountActive: {
         //     immediate: true,

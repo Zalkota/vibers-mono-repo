@@ -13,6 +13,7 @@ import './css/main.css'
 import './css/normalize.css'
 import './css/video.css'
 import './css/hero.css'
+import './css/waves.css'
 import '@themesberg/flowbite';
 
 

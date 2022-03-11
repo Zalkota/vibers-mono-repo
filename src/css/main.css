@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700&family=Russo+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;500;700&family=Russo+One&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
@@ -133,6 +133,54 @@ SVG Icons - svgicons.sparkk.fr
 .svg-icon .dark {
   stroke: #222;
 }
+
+
+/* -----
+Fill colors
+----- */
+.fill-white {
+    fill: #fff;
+}
+
+.fill-gray-900 {
+    fill: #1a202c;
+}
+
+.fill-gray-800 {
+    fill: #2d3748;
+}
+
+.fill-gray-700 {
+    fill: #374151;
+}
+
+.fill-gray-600 {
+    fill: #4b5563;
+}
+
+.fill-gray-500 {
+    fill: #6b7280;
+}
+
+.fill-gray-400 {
+    fill: #9ca3af;
+}
+
+.fill-green-500 {
+    fill: #48bb78;
+}
+
+.fill-green-400 {
+    fill: #68d391;
+}
+
+
+
+.fill-red-500 {
+    fill: #f56565;
+}
+
+
 
 .color-one {
     color: #A1D0E0;

@@ -15,7 +15,7 @@
             </div>
 
             <div class="lg:flex-none flex-1">
-                    <div class="flex row justify-end">
+                    <div class="justify-end">
                         <UpperNav
                            />
                     </div>

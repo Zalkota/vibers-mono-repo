@@ -1,0 +1,122 @@
+@media screen and (min-width: 992px) {
+    .spike-two-bottom {
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("~@/assets/images/waves/spike_two_bottom.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+
+
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .spike-two-bottom {
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("~@/assets/images/waves/spike_two_bottom.svg");
+        background-size: cover;
+        background-position: left;
+        background-repeat: no-repeat;
+
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+    .spike-two-top {
+        height: 520px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("~@/assets/images/waves/spike_two_top.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .spike-two-top {
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("~@/assets/images/waves/spike_two_top.svg");
+        background-size: cover;
+        background-position: left;
+        background-repeat: no-repeat;
+
+
+    }
+}
+
+
+
+@media screen and (min-width: 992px) {
+    .spike-three-top {
+        height: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("~@/assets/images/waves/spike_three_top.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .spike-three-top {
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("~@/assets/images/waves/triangle_background.svg");
+        background-size: cover;
+        background-position: left;
+        background-repeat: no-repeat;
+
+
+    }
+}
+
+
+
+
+
+@media screen and (min-width: 992px) {
+    .bg-triangle {
+        height: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("~@/assets/images/waves/triangle_background.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .bg-triangle {
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("~@/assets/images/waves/spike_three_top.svg");
+        background-size: cover;
+        background-position: left;
+        background-repeat: no-repeat;
+
+
+    }
+}

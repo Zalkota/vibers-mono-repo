@@ -7,7 +7,7 @@
      </div>
 
     <!-- Header -->
-    <div class="hero">
+    <div class="bg-triangle hero">
         <Mint/>
     </div>
 
@@ -15,8 +15,8 @@
 
 
     <!-- Welcome  -->
-    <div class="section py-10 bg-white">
-        <div class="container px-12 sm:px-4 pb-10 mx-auto text-black">
+    <div class="spike-three-top section pt-16 bg-six">
+        <div class="container px-12 sm:px-4 mx-auto text-black">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider">Welcome to Vibers</h1>
@@ -33,20 +33,20 @@
                                 <img
                                 src="@/assets/images/skulls_1.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-sm p-2 lg:p-4"/>
+                                class="mx-auto lg:max-w-sm "/>
                         </div>
                 </div>
         </div>
     </div>
 
-    <div class="section py-10 bg-six">
-        <div class="container px-12 sm:px-4 pb-10 mx-auto text-black">
+    <div class="spike-two-bottom section pb-16 bg-six">
+        <div class="container px-12 sm:px-4 mx-auto text-black">
                 <div class="lg:flex">
-                        <div class="flex-initial lg:flex-1">
+                        <div class="flex-initial lg:flex-1 ">
                                 <img
                                 src="@/assets/images/skulls_1.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-sm p-2 lg:p-4"/>
+                                class="mx-auto lg:max-w-sm "/>
                         </div>
                         <div class="lg:flex-1">
                                 <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider">Welcome to Vibers</h1>
@@ -63,59 +63,59 @@
         </div>
     </div>
 
-    <div class="section py-10 bg-two">
-        <div class="container lg:px-12  mx-4 px-8 pb-10 mx-auto text-black">
+    <div class="section py-8 bg-two mx-auto ">
+        <div class="container mx-auto  lg:px-0  mx-4 px-10  my-10 text-black">
                 <div class=" flex-col lg:flex-row flex">
-                        <div class="flex-1 m-1">
+                        <div class="flex-1 m-1 pt-4 lg:pt-0">
                                 <img
                                 src="@/assets/images/skull_2.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-xs  shadow-md"/>
+                                class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
-                        <div class="flex-1  m-1">
+                        <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
                                 src="@/assets/images/skull_3.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-xs shadow-md"/>
+                                class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
-                        <div class="flex-1 m-1">
+                        <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
                                 src="@/assets/images/skull_4.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-xs shadow-md"/>
+                                class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
-                        <div class="flex-1 m-1">
+                        <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
                                 src="@/assets/images/skull_5.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-xs shadow-md"/>
+                                class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
 
                 </div>
                 <div class="flex-col lg:flex-row flex">
-                        <div class="flex-1 m-1">
+                        <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
                                 src="@/assets/images/skull_6.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-xs shadow-md "/>
+                                class="mx-auto lg:max-w-xs   p-2"/>
                         </div>
-                        <div class="flex-1  m-1">
+                        <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
                                 src="@/assets/images/skull_7.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-xs shadow-md"/>
+                                class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
-                        <div class="flex-1 m-1">
+                        <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
                                 src="@/assets/images/skull_8.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-xs shadow-md"/>
+                                class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
-                        <div class="flex-1 m-1">
+                        <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
                                 src="@/assets/images/skull_9.png"
                                 alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-xs shadow-md"/>
+                                class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
 
                 </div>
@@ -127,11 +127,11 @@
 
 
     <!-- Donating to Science -->
-    <div class="section bg-three">
+    <div class="spike-two-top section bg-three">
         <div class="container py-20 mx-auto flex">
                 <div class="md:flex-1/6 md:w-1/6 w-1 px-4 invisible md:visible">
                         <img
-                        src="@/assets/images/skull_5.png"
+                        src="@/assets/images/skull_3.png"
                         alt="Multidisciplinary Association For Psychedelic Studies (MAPS) Logo"
                         class="logo"/>
                 </div>
@@ -143,8 +143,8 @@
     </div>
 
 
-    <div class="section py-10 bg-one">
-        <div class="container px-12 sm:px-4 pb-10 mx-auto text-black">
+    <div class="spike-two-bottom section pb-16 bg-three">
+        <div class="container px-12 sm:px-4 mx-auto text-black">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <img
