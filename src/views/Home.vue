@@ -15,8 +15,14 @@
 
 
     <!-- Welcome  -->
-    <div class="spike-three-top section pt-16 bg-six">
-        <div class="container px-12 sm:px-4 mx-auto text-black">
+    <div class=" section  bg-six relative">
+        <div class="spike-three-top">
+            <img
+            src="@/assets/images/waves/spike_three_top.svg"
+            alt="Three Cosmic Cap Mushrooms"
+            class="unhide"/>
+        </div>
+        <div class="container px-12 pt-12 md:pt-24 lg:pt-40 sm:px-4 mx-auto text-black">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider">Welcome to Vibers</h1>
@@ -39,8 +45,14 @@
         </div>
     </div>
 
-    <div class="spike-two-bottom section pb-16 bg-six">
-        <div class="container px-12 sm:px-4 mx-auto text-black">
+    <div class="section pt-12 bg-six relative">
+        <div class="spike-two-bottom">
+            <img
+            src="@/assets/images/waves/spike_two_bottom.svg"
+            alt="Three Cosmic Cap Mushrooms"
+            class="unhide"/>
+        </div>
+        <div class="container px-12 md:pb-24 lg:pb-40 sm:px-4 mx-auto text-black">
                 <div class="lg:flex">
                         <div class="flex-initial lg:flex-1 ">
                                 <img
@@ -61,6 +73,7 @@
                         </div>
                 </div>
         </div>
+
     </div>
 
     <div class="section py-8 bg-two mx-auto ">
@@ -127,8 +140,14 @@
 
 
     <!-- Donating to Science -->
-    <div class="spike-two-top section bg-three">
-        <div class="container py-20 mx-auto flex">
+    <div class=" section bg-three relative">
+        <div class="spike-two-top">
+            <img
+            src="@/assets/images/waves/spike_two_top.svg"
+            alt="Three Cosmic Cap Mushrooms"
+            class="unhide"/>
+        </div>
+        <div class="container md:py-24 py-12 lg:py-40 mx-auto flex">
                 <div class="md:flex-1/6 md:w-1/6 w-1 px-4 invisible md:visible">
                         <img
                         src="@/assets/images/skull_3.png"
@@ -143,8 +162,14 @@
     </div>
 
 
-    <div class="spike-two-bottom section pb-16 bg-three">
-        <div class="container px-12 sm:px-4 mx-auto text-black">
+    <div class="section pb-16 bg-three relative">
+        <div class="spike-two-bottom">
+            <img
+            src="@/assets/images/waves/spike_two_bottom.svg"
+            alt="Three Cosmic Cap Mushrooms"
+            class="unhide"/>
+        </div>
+        <div class="container px-12 sm:px-4 lg:pt-24mx-auto text-black">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <img
