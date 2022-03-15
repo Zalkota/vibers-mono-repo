@@ -22,14 +22,14 @@
             alt="Three Cosmic Cap Mushrooms"
             class="unhide"/>
         </div>
-        <div class="container px-12 pt-12 md:pt-24 lg:pt-40 sm:px-4 mx-auto text-black">
+        <div class="container px-12 pt-12 pb-24 md:pt-24 lg:py-64 sm:px-4 mx-auto text-black">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider">Welcome to Vibers</h1>
 
-                                <p>Vibers are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
+                                <p>Vibers is 10k NFT collection that encompasses the ethos of web3 by taking inspiration from a wide range of iconic NFT collections and fusing them into a single project. </p>
                                 <br>
-                                <p>10,000 randomly-generated psychedelic mushrooms with over 120 traits across 6 different categories (cap, stem, eyes, mouth, background, and body props).</p>
+                                <p>The end result is a fun collection where you can spot aspects from many projects including CryptoSkulls, CryptToadz, DystoPunks, Doodles, Nouns, CryptoPunks, and more. Basically the dopest art rolled into one. CC0.</p>
                                 <br>
                                 <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
@@ -45,33 +45,12 @@
         </div>
     </div>
 
-    <div class="section pt-12 bg-six relative">
+    <div class="section bg-six relative">
         <div class="spike-two-bottom">
             <img
             src="@/assets/images/waves/spike_two_bottom.svg"
             alt="Three Cosmic Cap Mushrooms"
             class="unhide"/>
-        </div>
-        <div class="container px-12 md:pb-24 lg:pb-40 sm:px-4 mx-auto text-black">
-                <div class="lg:flex">
-                        <div class="flex-initial lg:flex-1 ">
-                                <img
-                                src="@/assets/images/skulls_1.png"
-                                alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-sm "/>
-                        </div>
-                        <div class="lg:flex-1">
-                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider">Welcome to Vibers</h1>
-
-                                <p>Vibers are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
-                                <br>
-                                <p>10,000 randomly-generated psychedelic mushrooms with over 120 traits across 6 different categories (cap, stem, eyes, mouth, background, and body props).</p>
-                                <br>
-                                <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
-                                <br>
-
-                        </div>
-                </div>
         </div>
 
     </div>
@@ -147,40 +126,42 @@
             alt="Three Cosmic Cap Mushrooms"
             class="unhide"/>
         </div>
-        <div class="container md:py-24 py-12 lg:py-40 mx-auto flex">
-                <div class="md:flex-1/6 md:w-1/6 w-1 px-4 invisible md:visible">
+        <!-- <div class="container md:py-24 py-12 lg:py-24 mx-auto flex">
+                <div class="flex-initial ">
                         <img
-                        src="@/assets/images/skull_3.png"
+                        src="@/assets/images/vibers/skull_12.png"
                         alt="Multidisciplinary Association For Psychedelic Studies (MAPS) Logo"
-                        class="logo"/>
+                        class="mx-auto lg:max-w-sm p-2 lg:p-4"/>
                 </div>
                 <div class="md:flex-4/6 flex-1 flex-1 px-6">
                         <h2 class="text-3xl font-bold color-four mb-6 tracking-wider">Donating to Science and Medicine!</h2>
                         <p class="color-four">We’re always looking at new ways to bring more value to our community. Once all of the Vibers have been minted, we plan to donate a portion of the proceeds to the.</p>
                 </div>
-        </div>
+        </div> -->
     </div>
 
 
-    <div class="section pb-16 bg-three relative">
+    <div class="section  pt-12 pb-40 bg-three relative">
         <div class="spike-two-bottom">
             <img
             src="@/assets/images/waves/spike_two_bottom.svg"
             alt="Three Cosmic Cap Mushrooms"
             class="unhide"/>
         </div>
-        <div class="container px-12 sm:px-4 lg:pt-24mx-auto text-black">
+        <div class="container px-12 sm:px-4 lg:pt-24 mx-auto text-black">
                 <div class="lg:flex">
-                        <div class="lg:flex-1">
+                        <div class="flex-initial ">
                                 <img
-                                src="@/assets/images/skull_9.png"
+                                src="@/assets/images/vibers/skull_10.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-sm p-2 lg:p-4"/>
                         </div>
-                        <div class="lg:flex-1">
+                        <div class="lg:flex-1 lg:px-6">
                                 <h1 class=" text-3xl md:text-4xl font-bold color-four mb-3 tracking-wider">Welcome to Vibers</h1>
 
-                                <p>Vibers are a Non-Fungible Token (NFT) species of 10,000 unique fungi. These adventurous mushrooms are making their way from the shroomiverse to the metaverse!</p>
+                                <p>Vibers is 10k NFT collection that encompasses the ethos of web3 by taking inspiration from a wide range of iconic NFT collections and fusing them into a single project. </p>
+                                <br>
+                                <p>The end result is a fun collection where you can spot aspects from many projects including CryptoSkulls, CryptToadz, DystoPunks, Doodles, Nouns, CryptoPunks, and more. Basically the dopest art rolled into one. CC0.</p>
                                 <br>
                                 <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
