@@ -67,8 +67,19 @@
                 </div>
 
             </div>
-            <div class="text-center my-12 color-four font-bold text-sm">
-                The Vibing Never Stops.
+            <div class="text-center my-6 color-four font-bold text-3xl tracking-wide lg:flex whitespace-nowrap" >
+                <div class="flex-1 ">
+
+                </div>
+                    <div class="whitespace-nowrap pr-2" style="">
+                        Vibing has never been this
+                    </div>
+                    <div class="flex-intital bg-six px-2">
+                        rewarding.
+                    </div>
+                    <div class="flex-1 ">
+
+                    </div>
             </div>
 
 

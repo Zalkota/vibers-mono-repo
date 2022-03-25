@@ -60,7 +60,7 @@
                 <div class=" flex-col lg:flex-row flex">
                         <div class="flex-1 m-1 pt-4 lg:pt-0">
                                 <img
-                                src="@/assets/images/skull_2.png"
+                                src="@/assets/images/skull_0.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
@@ -72,13 +72,13 @@
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_4.png"
+                                src="@/assets/images/skull_0.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_5.png"
+                                src="@/assets/images/skull_0.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
@@ -87,25 +87,25 @@
                 <div class="flex-col lg:flex-row flex">
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_6.png"
+                                src="@/assets/images/skull_0.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs   p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_7.png"
+                                src="@/assets/images/skull_0.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_8.png"
+                                src="@/assets/images/skull_0.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_9.png"
+                                src="@/assets/images/skull_0.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>

@@ -9,7 +9,7 @@
         <!-- <section class="text-lg lg:text-3xl flex justify-cewnter content-center flex-col mx-auto text-center mb-5">
             <span style="font-family: Luckiest Guy;" class="font-bold color-two text-4xl">Mint Startasds</span>
         </section> -->
-        <section class="counter relative flex text-3xl lg:text-6xl color-six justify-center content-center bg-four shadow-xl rounded-lg border-4 lg:border-8" style="border-color: #A9ECE3; font-family: Russo One;">
+        <section class="counter relative flex text-3xl lg:text-6xl color-six justify-center top-0  content-center bg-four shadow-xl rounded-lg border-4 lg:border-8" style="border-color: #A9ECE3; font-family: Russo One;">
             <div class="absolute left-0" >
               <img
               src="@/assets/images/vibers/static.gif"
@@ -17,7 +17,7 @@
               style="height: 132px; width: 600px;"
               class="mx-auto rounded-lg shadow-sm p-0 hidden"/>
             </div>
-
+<!--
             <div class="days mx-2 relative p-1 lg:p-2 bg-transparent rounded-md  ">
                 {{ displayDays}}
                 <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 ">days</div>
@@ -42,7 +42,7 @@
                 {{ displaySeconds}}
                 <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 hide">seconds</div>
                 <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 unhide">sec</div>
-            </div>
+            </div> -->
         </section>
 
     </div>
