@@ -1,19 +1,18 @@
 <template>
-    <div class="relative mb-12 lg:mb-24 border-4 lg:border-4 rounded-lg" style="border-color: #A9ECE3; font-family: Russo One;">
+    <div class="relative mb-40 lg:mb-24 border-4 lg:border-4 rounded-lg" style="border-color: #A9ECE3; font-family: Russo One;">
       <img
-      src="@/assets/images/vibers/SkullGiff.gif"
+      src="@/assets/images/vibers/SkullGif2.gif"
       alt="Three Cosmic Cap Mushrooms"
-      class="mx-auto lg:max-w-sm rounded-sm shadow-sm p-0 "
-
+      class="mx-auto lg:max-w-sm rounded-sm  shadow-sm p-0 "
       />
         <!-- <section class="text-lg lg:text-3xl flex justify-cewnter content-center flex-col mx-auto text-center mb-5">
             <span style="font-family: Luckiest Guy;" class="font-bold color-two text-4xl">Mint Startasds</span>
         </section> -->
-        <section class="counter relative flex text-3xl lg:text-6xl color-six justify-center top-0  content-center bg-four shadow-xl rounded-lg border-4 lg:border-8" style="border-color: #A9ECE3; font-family: Russo One;">
+        <!-- <section class="counter relative flex text-3xl lg:text-6xl color-six justify-center top-0  content-center bg-four shadow-xl rounded-lg border-4 lg:border-8" style="border-color: #A9ECE3; font-family: Russo One;">
             <div class="absolute left-0" >
               <img
-              src="@/assets/images/vibers/static.gif"
-              alt="Three Cosmic Cap Mushrooms"
+              src="@/assets/images/vibers/SkullGif2.gif"
+              alt="Image of Viber NFT"
               style="height: 132px; width: 600px;"
               class="mx-auto rounded-lg shadow-sm p-0 hidden"/>
             </div>
@@ -43,7 +42,7 @@
                 <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 hide">seconds</div>
                 <div class="label text-sm lg:text-sm  text-center mx-auto bottom-0 unhide">sec</div>
             </div> -->
-        </section>
+        <!-- </section> -->
 
     </div>
 </template>
