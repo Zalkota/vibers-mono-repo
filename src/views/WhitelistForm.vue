@@ -1,82 +1,91 @@
 <template>
 
-<div>
+<div class="">
+    <div class="header-3 lg:pb-64">
 
-   <div class="section px-0 lg:px-1">
-     <div class=" ">
-        <Navbar
-       />
-     </div>
-   </div>
-
-
-   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6">
-
-       <br>
-       <br>
-
-        <div v-show="web3Modal.active == true && this.amount > 0" class="text-center container shadow-md bg-white rounded-md p-4 sm:px-4 py-4 mx-auto border-4 border-green-400">
-            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0 mb-6">
-            Join the Whitelist!
-
-            </h1>
-            <h2 class="font-bold">Congratulations, claim your whitelist spot.</h2>
-            <p class="text-gray-600 text-sm">Whitelist spots are available for holders of the following NFTs:<br> CrypToadz, DystoPunks, Vibers, and CryptoSkulls.</p>
-            <div class="text-center mx-auto m-6 mt-12">
-               <a @click="sendWhitelistData()" class="button bg-green-400 hover:bg-green-300 hover:shadow-sm lg:text-3xl text-xl text-white font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Claim ( {{ amount }} )</a>
-            </div>
-        </div>
-
-       <!-- <div v-show="web3Modal.active == true && amount == 0" class="text-center container shadow-md bg-white rounded-md p-4 sm:px-4 py-4 mx-auto border-4 border-red-400">
-         <h2 class="font-bold text-lg md:text-xl lg:text-xl font-heading text-black-800 mt-0 pt-0 mb-6">Whitelist spots are available for holders of the following NFTs:</h2>
-         <ul>
-           <li>CrypToadz</li>
-           <li>DystoPunks</li>
-           <li>Vibers</li>
-           <li>CryptoSkulls</li>
-         </ul>
-         <br>
-         <p class="text-gray-600 text-sm">The connected wallet does not contain any. <br> Please disconnect your wallet and connect one that does.</p>
-         <div class="text-center mx-auto m-6 mt-12">
-               <a @click="disconnect()" class="button bg-red-500 hover:bg-red-300 hover:shadow-sm lg:text-3xl text-lg text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Disconnect Wallet</a>
+       <div class="section">
+         <div class=" ">
+            <Navbar
+           />
          </div>
-       </div> -->
-
-
-
-
-   </section>
-
-   <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6">
-
-     <div v-show="web3Modal.active == true && amount == 0" class="text-center container shadow-md bg-four rounded-md p-4 sm:px-4 py-8 mx-auto ">
-       <h2 class="font-bold text-lg md:text-xl lg:text-3xl font-heading text-white mt-0 pt-0 mb-6 tracking-widest">Whitelist Coming soon.</h2>
-
-       <p class="text-gray-400 text-lg">Follow us on Twitter and <span class="color-three font-bold">VIBE</span> with us in Discord!</p>
-       <div class="my-4">
-         <SocialRow />
        </div>
-       <!-- <div class="text-center mx-auto m-6 mt-12">
-             <a @click="disconnect()" class="button bg-red-500 hover:bg-red-300 hover:shadow-sm lg:text-3xl text-lg text-black font-bold my-2 py-3 px-8 rounded-xl shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Disconnect Wallet</a>
-       </div> -->
-     </div>
-     <!-- If user is not logged in, prompt connect button -->
-         <div v-show="web3Modal.active == false" class="text-center shadow-md  rounded-sm mx-auto border-2 border-gray-900 mt-12 mb-64">
-           <div class="bg-four font-bold text-lg md:text-xl lg:text-2xl  text-white p-6 py-8 sm:px-6 lg:px-10">
-              <h2 class="tracking-widest">Connect your wallet</h2>
-              <p class=" text-gray-500 text-sm font-thin pt-2">Connect your wallet with the available wallet providers.</p>
+
+       <section class=" mx-auto px-4 sm:px-6 lg:px-10 py-6 lg:mb-64">
+
+
+
+           <div v-show="web3Modal.active == true && userWhitelisted" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-24 border border-blue-400">
+             <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-blue-400 p-6 py-8 sm:px-6 lg:px-10">
+                <h2 class="tracking-widest uppercase">Account Whitelisted</h2>
+             </div>
+             <div class="text-center container shadow-md bg-gray-900 text-gray-500 text-md rounded-sm rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800">
+                 <p class="text-xl text-white">Welcome to the battle, Warrior. <br> <span class="text-gray-500 font-thin text-lg">The release date of the <span class="font-bold">Battle Pass NFT</span> mint has not yet been released. <br>Join us on Discord and follow up on twitter to stay up to date with our development.  <br> <br>   </span></p><br>
+                 <div class=" mb-6">
+                     <a href="https://discord.gg/a3bq9ZGdfZ" class="button text-2xl text-blue-500 font-bold py-4 px-6  hover:bg-blue-500 hover:text-white border-4 border-blue-500 rounded-sm  text-center no-underline cursor-pointer tracking-wider uppercase"  style="font-family: Russo One;">Join Discord</a>
+                 </div>
+                 <br>
+             </div>
            </div>
-           <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800">
 
-               <div class="text-center mx-auto m-6 ">
-                     <a @click="connect()" class="button bg-six hover:bg-yellow-300 hover:shadow-sm lg:text-3xl text-sm text-black font-bold my-2 py-3 px-8 rounded-sm shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Connect Wallet</a>
-               </div>
+           <div v-show="web3Modal.active == true && userWhitelisted == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-24">
+             <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
+                <h2 class="tracking-widest uppercase text-3xl color-six">Select Your Whitelist</h2>
+                <span class="text-gray-500 text-md">Mint Date: TBD</span>
+             </div>
+             <div class="shadow-md bg-gray-800 text-gray-300 text-md mx-auto border-2 border-gray-900  rounded-xl">
+                 <!-- <p>We are allowing only <span class="font-bold">1 whitelist spot per account</span> at this time.<br><br>
+                 Thank you - BlockForge Team</p> -->
+                 <div class="text-left flex lg:flex-row flex-col my-0 border-t lg:border-gray-800 border-blue-700 py-0  bg-gray-900 shadow-sm">
+
+                     <div class="flex-1 lg:border-r lg:border-gray-800 border-blue-700 border-b px-10 pt-16 pb-20 lg:pt-10 lg:pb-4">
+                         <span class="text-gray-600 font-thin">Holders of</span>
+                         <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">CryptoToadz & DystoPunks</h3>
+
+                         <br>
+                         <span class="text-gray-600 font-thin">Mint price:</span><span style="font-family: Russo One;"> 0.04 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br>
+                         <span class="text-gray-600 font-thin">Remaining:</span> <span style="font-family: Russo One;"> {{ minecraftWhitelistSpotsAvailable }}/{{ minecraftWhitelistSpotsTotal }}</span>
+                         <div class="text-center mt-16">
+                            <button v-if="minecraftTokensOwned > 0" @click="sendWhitelistData(minecraftWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
+                            <button v-else-if="minecraftWhitelistSpotsAvailable == minecraftWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
+                            <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
+                         </div>
+                     </div>
+
+                     <div class="flex-1 px-10 pt-16 pb-20 lg:pt-10 lg:pb-4">
+                         <span class="text-gray-600 text-md">All Users</span>
+                         <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">Public</h3>
+                         <br>
+                         <span class="text-gray-600 font-thin">Mint price:</span> <span style="font-family: Russo One;">  0.05 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br>
+                         <span class="text-gray-600 font-thin">Remaining:</span> <span style="font-family: Russo One;"> {{ publicWhitelistSpotsAvailable }}/{{ publicWhitelistSpotsTotal }}</span>
+                         <div class="text-center mb-6 mt-16">
+                            <button v-if="publicWhitelistSpotsAvailable < publicWhitelistSpotsTotal" @click="sendWhitelistData(publicWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
+                            <button v-else-if="publicWhitelistSpotsAvailable == publicWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
+                            <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
+                         </div>
+                     </div>
+
+                 </div>
+                 <div class="p-4 bg-gray-900 border-t lg:border-gray-800 border-blue-700 rounded-xl rounded-t-none">
+                     <span class="text-gray-600 text-sm">We are allowing only 1 whitelist spot per account at this time.</span>
+                 </div>
+
+             </div>
            </div>
-         </div>
-   </section>
 
-  <!-- <Footer/> -->
 
+
+
+           <LogoutButton
+           v-show="web3Modal.active == false"
+            />
+
+           <br>
+       </section>
+
+
+
+    </div>
+     <Footer/>
 </div>
 </template>
 
@@ -89,7 +98,8 @@ import Web3Plug from '../js/web3-plug.js'
 import web3utils from 'web3-utils'
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
-import SocialRow from './components/SocialRow.vue';
+import LogoutButton from './components/LogoutButton.vue';
+
 import TiledTokenProfileBrowser from './components/TiledTokenProfileBrowser.vue';
 import StarflaskApiHelper from '../js/starflask-api-helper.js'
 const FrontendConfig = require('../config/FrontendConfig.json')
@@ -107,7 +117,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 export default {
   name: 'WhitelistForm',
   props: [],
-  components: {Navbar, Footer, Web3ModalVue, SocialRow},
+  components: {Navbar, Footer, Web3ModalVue, LogoutButton},
   watch: {
         // accountActive: {
         //     immediate: true,
@@ -129,6 +139,31 @@ export default {
       userAddress: null,
       whitelistAmount: 1,
       amount: 0,
+      userWhitelisted: false,
+
+      cosmicWhitelistClaimed: false,
+      cosmicWhitelistType: 1,
+      cosmicNFTsOwned: 0,
+      cosmicWhitelistMintAmount: 1,
+      cosmicWhitelistSpotsAvailable: 0,
+      cosmicWhitelistSpotsTotal: 200,
+      cosmicContractAddress: '0xf3c9B7A97Eba579f5c234F79108331F5513c9741',
+
+      minecraftWhitelistClaimed: false,
+      minecraftWhitelistType: 2,
+      minecraftTokensOwned: 0,
+      minecraftWhitelistMintAmount: 1,
+      minecraftWhitelistSpotsAvailable: 0,
+      minecraftWhitelistSpotsTotal: 1000,
+      blockTokenContractAddress: '0x807a0774236A0fBE9e7f8E7Df49EDFED0e6777Ea',
+      worldTokenContractAddress: '0xD5d86FC8d5C0Ea1aC1Ac5Dfab6E529c9967a45E9',
+
+      publicWhitelistClaimed: false,
+      publicWhitelistType: 3,
+      publicWhitelistSpotsAvailable: 0,
+      publicWhitelistMintAmount: 1,
+      publicWhitelistSpotsTotal: 4000,
+
       providerOptions: {
         walletconnect: {
           package: WalletConnectProvider,
@@ -150,15 +185,17 @@ export default {
       console.log(mutation.type)
       console.log(mutation.payload)
       if (mutation.type == 'setActive' && mutation.payload == true) {
-          this.fetchCosmicCapNFT()
+          // this.fetchNFTbyContract(this.blockTokenContractAddress)
+          // this.fetchNFTbyContract(this.worldTokenContractAddress)
+          // this.fetchNFTbyContract(this.cosmicContractAddress)
+          this.checkWhitelistForAddress()
           suscribe()
       }
     })
-
-
   },
 
   computed: {
+
 
   },
 
@@ -177,68 +214,113 @@ export default {
 
 
 
-    async sendWhitelistData() {
-      console.log('Whitelist')
-       let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
-
-
-
-           let inputQuery = Object.assign( { "publicAddress": this.userAddress, "whitelistAmount": whitelistAmount})
-           console.log('input', this.userAddress, whitelistAmount)
-           let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "save_whitelist_address", "input": inputQuery})
-           let output = result.output[0]
-           console.log('result.output', output,)
-
-           if(output && output.tokenIds){
-                this.resultsData = output
-       }
+    async sendWhitelistData(type) {
+        console.log('Whitelist')
+         let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
+             let inputQuery = Object.assign( { "publicAddress": this.userAddress, "whitelistAmount": this.whitelistAmount, "whitelistType": type })
+             console.log('input', this.userAddress, type)
+             let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "save_whitelist_address", "input": inputQuery})
+             let output = result
+             console.log('sendWhitelistData', type, result)
+             if(output.success){
+                  this.userWhitelisted = true
+              } else {
+                  this.userWhitelisted = false
+              }
     },
 
+    async checkWhitelistForAddress() {
+      console.log('Checking Whitelist..')
+       let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
+           let inputQuery = Object.assign( { "publicAddress": this.userAddress})
+           console.log('input', this.userAddress)
+           let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "check_all_whitelists", "input": inputQuery})
+           let output = result
+           console.log('checkWhitelistForAddress', result)
 
+           if(output.success){
+                this.userWhitelisted = true
+            } else {
+                this.userWhitelisted = false
+            }
+    },
 
-    async fetchCosmicCapNFT() {
-      console.log('fetching Cosmic Cap NFTs held by account')
+    //
+    // async fetchCosmicCapNFT() {
+    //   console.log('fetching Cosmic Cap NFTs held by account')
+    //   // Obtain API Endpoint
+    //    let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
+    //    this.userAddress = this.web3Modal.account
+    //
+    //    // Define contract address as nftContract
+    //    let contractData = await this.web3Plug.getContractDataForActiveNetwork();
+    //    let keyName = Object.keys(contractData);
+    //    this.collectionName = keyName[0]
+    //    let nftContract = contractData.cosmiccaps_dev.address
+    //
+    //    let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": nftContract})
+    //    let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_owner", "input": inputQuery})
+    //    let output = result.output[0]
+    //
+    //    if(output && output.tokenIds){
+    //         this.cosmicNFTsOwned = output.tokenIds.length
+    //         console.log(this.cosmicNFTsOwned)
+    //    }
+    // },
+
+    async fetchNFTbyContract(contractAddress) {
+      console.log('fetching NFTs held by account for', contractAddress)
       // Obtain API Endpoint
        let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
 
        console.log('this.web3Modal.account', this.web3Modal.account)
        this.userAddress = this.web3Modal.account
 
-       // Define contract address as nftContract
-       let contractData = await this.web3Plug.getContractDataForActiveNetwork();
-       let keyName = Object.keys(contractData);
-       this.collectionName = keyName[0]
-       let nftContract = contractData.cosmiccaps_dev.address
+       let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": contractAddress})
+       console.log('input', this.userAddress, contractAddress)
 
-       let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": nftContract})
-       console.log('input', this.userAddress, nftContract)
-       let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_owner", "input": inputQuery})
-       let output = result.output[0]
-       console.log('result.output', output, )
+       // Search of Cosmic Cap NFTs
+       if (contractAddress == this.cosmicContractAddress) {
 
-       if(output && output.tokenIds){
-            this.resultsData = output
-            console.log('resultsData', this.resultsData.tokenIds)
-            this.amount = this.resultsData.tokenIds.length
-            console.log(this.amount)
+           let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_owner", "input": inputQuery})
+           let output = result.output[0]
+           console.log('result.output', output, )
 
+           if(output && output.tokenIds){
+                this.cosmicNFTsOwned = output.tokenIds.length
+                console.log('.cosmicNFTsOwned', this.cosmicNFTsOwned)
+           } else {
+               console.log("No NFTs located for ", contractAddress)
+           }
+
+           // Search of World Token or Critterz Token
+       } else if (contractAddress == this.blockTokenContractAddress || this.worldTokenContractAddress) {
+
+           let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC20_balance_by_owner", "input": inputQuery})
+           let output = result.output[0]
+           console.log('result.output', output, )
+
+           if(output.amount > 0){
+                   this.minecraftTokensOwned = output.amount
+                   console.log('minecraftTokensOwned', this.minecraftTokensOwned)
+           } else {
+               console.log("No tokens located for ", contractAddress)
+           }
 
        }
-    },
 
+   },
 
-    async returnHoldingsAmount() {
-      const cosmicCapAmount = this.fetchCosmicCapNFT()
-      // const cryptoToadzAmount = fetchToadzNFT()
+    // async returnHoldingsAmount() {
+      // const cosmicCapAmount = this.fetchCosmicCapNFT()
+      // const minecraftTokensOwned = this.fetchCritterzNFT()
       // const dystoPunksAmount = fetchDystoNFT()
       // const cryptoSkullsAmount = fetchSkullsNFT()
 
       // let amount = sum(cosmicCapAmount, cryptoToadzAmount, dystopunks, cryptoSkullsAmount)
       // return amount
-      return cosmicCapAmount
-    },
-
-
+      // return cosmicCapAmount
+    // },
 
       userAddressSliceMiddle(){
           if (this.userAddress !== null) {

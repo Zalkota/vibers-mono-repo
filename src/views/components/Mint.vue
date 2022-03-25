@@ -67,19 +67,16 @@
                 </div>
 
             </div>
-            <div class="text-center my-6 color-four font-bold text-3xl tracking-wide lg:flex whitespace-nowrap" >
-                <div class="flex-1 ">
+            <div class="text-center my-3 color-four font-bold text-3xl tracking-wide lg:flex whitespace-nowrap" >
+                <!-- <div class="flex-1 ">
 
                 </div>
-                    <div class="whitespace-nowrap pr-2" style="">
-                        Vibing has never been this
-                    </div>
-                    <div class="flex-intital bg-six px-2">
-                        rewarding.
+                    <div class="flex-intital px-2">
+                        !VIBE
                     </div>
                     <div class="flex-1 ">
 
-                    </div>
+                    </div> -->
             </div>
 
 
