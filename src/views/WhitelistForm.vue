@@ -32,40 +32,40 @@
                 <h2 class="tracking-widest uppercase text-3xl color-six">Select Your Whitelist</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
              </div>
-             <div class="shadow-md bg-gray-800 text-gray-300 text-md mx-auto border-2 border-gray-900  rounded-xl">
+             <div class="shadow-md bg-gray-800 text-gray-300 text-xl mx-auto border-2 border-gray-900  rounded-xl">
                  <!-- <p>We are allowing only <span class="font-bold">1 whitelist spot per account</span> at this time.<br><br>
                  Thank you - BlockForge Team</p> -->
-                 <div class="text-left flex lg:flex-row flex-col my-0 border-t lg:border-gray-800 border-blue-700 py-0  bg-gray-900 shadow-sm">
+                 <div class="text-left flex lg:flex-row flex-col my-0 border-t lg:border-gray-800 border-gray-600 py-0  bg-gray-900 shadow-sm">
 
-                     <div class="flex-1 lg:border-r lg:border-gray-800 border-blue-700 border-b px-10 pt-16 pb-20 lg:pt-10 lg:pb-4">
+                     <div class="flex-1 lg:border-r lg:border-gray-800 border-gray-600 border-b px-10 py-8 lg:pt-10 lg:pb-4">
                          <span class="text-gray-600 font-thin">Holders of</span>
                          <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">CryptoToadz & DystoPunks</h3>
 
                          <br>
                          <span class="text-gray-600 font-thin">Mint price:</span><span style="font-family: Russo One;"> 0.04 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br>
-                         <span class="text-gray-600 font-thin">Remaining:</span> <span style="font-family: Russo One;"> {{ minecraftWhitelistSpotsAvailable }}/{{ minecraftWhitelistSpotsTotal }}</span>
-                         <div class="text-center mt-16">
-                            <button v-if="minecraftTokensOwned > 0" @click="sendWhitelistData(minecraftWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
-                            <button v-else-if="minecraftWhitelistSpotsAvailable == minecraftWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
+                         <span class="text-gray-600 font-thin">Remaining:</span> <span style="font-family: Russo One;"> {{ OGWhitelistSpotsAvailable }}/{{ OGWhitelistSpotsTotal }}</span>
+                         <div class="text-center mt-12">
+                            <button v-if="NFTsOwned > 0" @click="sendWhitelistData(OGWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
+                            <button v-else-if="OGWhitelistSpotsAvailable == OGWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
                             <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
                          </div>
                      </div>
 
-                     <div class="flex-1 px-10 pt-16 pb-20 lg:pt-10 lg:pb-4">
+                     <div class="flex-1 px-10 py-8 lg:pt-10 lg:pb-4">
                          <span class="text-gray-600 text-md">All Users</span>
                          <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">Public</h3>
                          <br>
                          <span class="text-gray-600 font-thin">Mint price:</span> <span style="font-family: Russo One;">  0.05 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br>
                          <span class="text-gray-600 font-thin">Remaining:</span> <span style="font-family: Russo One;"> {{ publicWhitelistSpotsAvailable }}/{{ publicWhitelistSpotsTotal }}</span>
-                         <div class="text-center mb-6 mt-16">
-                            <button v-if="publicWhitelistSpotsAvailable < publicWhitelistSpotsTotal" @click="sendWhitelistData(publicWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
+                         <div class="text-center mt-12">
+                            <button v-if="publicWhitelistSpotsAvailable < publicWhitelistSpotsTotal" @click="sendWhitelistData(publicWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
                             <button v-else-if="publicWhitelistSpotsAvailable == publicWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
                             <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
                          </div>
                      </div>
 
                  </div>
-                 <div class="p-4 bg-gray-900 border-t lg:border-gray-800 border-blue-700 rounded-xl rounded-t-none">
+                 <div class="p-4 bg-gray-900 border-t lg:border-gray-800 border-gray-600 rounded-xl rounded-t-none">
                      <span class="text-gray-600 text-sm">We are allowing only 1 whitelist spot per account at this time.</span>
                  </div>
 
@@ -141,22 +141,24 @@ export default {
       amount: 0,
       userWhitelisted: false,
 
-      cosmicWhitelistClaimed: false,
-      cosmicWhitelistType: 1,
-      cosmicNFTsOwned: 0,
-      cosmicWhitelistMintAmount: 1,
-      cosmicWhitelistSpotsAvailable: 0,
-      cosmicWhitelistSpotsTotal: 200,
-      cosmicContractAddress: '0xf3c9B7A97Eba579f5c234F79108331F5513c9741',
+      // cosmicWhitelistClaimed: false,
+      // cosmicWhitelistType: 1,
+      // cosmicNFTsOwned: 0,
+      // cosmicWhitelistMintAmount: 1,
+      // cosmicWhitelistSpotsAvailable: 0,
+      // cosmicWhitelistSpotsTotal: 200,
+      // cosmicContractAddress: '0xf3c9B7A97Eba579f5c234F79108331F5513c9741',
 
-      minecraftWhitelistClaimed: false,
-      minecraftWhitelistType: 2,
-      minecraftTokensOwned: 0,
-      minecraftWhitelistMintAmount: 1,
-      minecraftWhitelistSpotsAvailable: 0,
-      minecraftWhitelistSpotsTotal: 1000,
-      blockTokenContractAddress: '0x807a0774236A0fBE9e7f8E7Df49EDFED0e6777Ea',
-      worldTokenContractAddress: '0xD5d86FC8d5C0Ea1aC1Ac5Dfab6E529c9967a45E9',
+      OGWhitelistClaimed: false,
+      OGWhitelistType: 2,
+      OGTokensOwned: 0,
+      OGWhitelistMintAmount: 1,
+      OGWhitelistSpotsAvailable: 0,
+      OGWhitelistSpotsTotal: 1000,
+
+      NFTsOwned: 0;
+      cryptoadzContractAddress: '0x1CB1A5e65610AEFF2551A50f76a87a7d3fB649C6',
+      dystopunksContractAddress: '0xbEA8123277142dE42571f1fAc045225a1D347977',
 
       publicWhitelistClaimed: false,
       publicWhitelistType: 3,
@@ -185,9 +187,8 @@ export default {
       console.log(mutation.type)
       console.log(mutation.payload)
       if (mutation.type == 'setActive' && mutation.payload == true) {
-          // this.fetchNFTbyContract(this.blockTokenContractAddress)
-          // this.fetchNFTbyContract(this.worldTokenContractAddress)
-          // this.fetchNFTbyContract(this.cosmicContractAddress)
+          this.fetchNFTbyContract(this.cryptoadzContractAddress)
+          this.fetchNFTbyContract(this.dystopunksContractAddress)
           this.checkWhitelistForAddress()
           suscribe()
       }
@@ -245,28 +246,7 @@ export default {
             }
     },
 
-    //
-    // async fetchCosmicCapNFT() {
-    //   console.log('fetching Cosmic Cap NFTs held by account')
-    //   // Obtain API Endpoint
-    //    let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
-    //    this.userAddress = this.web3Modal.account
-    //
-    //    // Define contract address as nftContract
-    //    let contractData = await this.web3Plug.getContractDataForActiveNetwork();
-    //    let keyName = Object.keys(contractData);
-    //    this.collectionName = keyName[0]
-    //    let nftContract = contractData.cosmiccaps_dev.address
-    //
-    //    let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": nftContract})
-    //    let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_owner", "input": inputQuery})
-    //    let output = result.output[0]
-    //
-    //    if(output && output.tokenIds){
-    //         this.cosmicNFTsOwned = output.tokenIds.length
-    //         console.log(this.cosmicNFTsOwned)
-    //    }
-    // },
+
 
     async fetchNFTbyContract(contractAddress) {
       console.log('fetching NFTs held by account for', contractAddress)
@@ -279,48 +259,20 @@ export default {
        let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": contractAddress})
        console.log('input', this.userAddress, contractAddress)
 
-       // Search of Cosmic Cap NFTs
-       if (contractAddress == this.cosmicContractAddress) {
+       // Search of OG NFTs
 
            let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_owner", "input": inputQuery})
            let output = result.output[0]
            console.log('result.output', output, )
 
            if(output && output.tokenIds){
-                this.cosmicNFTsOwned = output.tokenIds.length
-                console.log('.cosmicNFTsOwned', this.cosmicNFTsOwned)
+                this.NFTsOwned = output.tokenIds.length
+                console.log('this.NFTsOwned', this.NFTsOwned)
            } else {
                console.log("No NFTs located for ", contractAddress)
            }
 
-           // Search of World Token or Critterz Token
-       } else if (contractAddress == this.blockTokenContractAddress || this.worldTokenContractAddress) {
-
-           let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC20_balance_by_owner", "input": inputQuery})
-           let output = result.output[0]
-           console.log('result.output', output, )
-
-           if(output.amount > 0){
-                   this.minecraftTokensOwned = output.amount
-                   console.log('minecraftTokensOwned', this.minecraftTokensOwned)
-           } else {
-               console.log("No tokens located for ", contractAddress)
-           }
-
-       }
-
    },
-
-    // async returnHoldingsAmount() {
-      // const cosmicCapAmount = this.fetchCosmicCapNFT()
-      // const minecraftTokensOwned = this.fetchCritterzNFT()
-      // const dystoPunksAmount = fetchDystoNFT()
-      // const cryptoSkullsAmount = fetchSkullsNFT()
-
-      // let amount = sum(cosmicCapAmount, cryptoToadzAmount, dystopunks, cryptoSkullsAmount)
-      // return amount
-      // return cosmicCapAmount
-    // },
 
       userAddressSliceMiddle(){
           if (this.userAddress !== null) {

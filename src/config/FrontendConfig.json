@@ -1,4 +1,4 @@
 {
-    "tokenDataApiRoot":"https://cosmicflask.com/",
-    "marketApiRoot":"https://cosmicflask.com/"
+    "tokenDataApiRoot":"https://api.vibers.io/",
+    "marketApiRoot":"https://api.vibers.io/"
 }
