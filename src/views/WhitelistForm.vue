@@ -156,7 +156,7 @@ export default {
       OGWhitelistSpotsAvailable: 0,
       OGWhitelistSpotsTotal: 1000,
 
-      NFTsOwned: 0;
+      NFTsOwned: 0,
       cryptoadzContractAddress: '0x1CB1A5e65610AEFF2551A50f76a87a7d3fB649C6',
       dystopunksContractAddress: '0xbEA8123277142dE42571f1fAc045225a1D347977',
 
