@@ -1,15 +1,17 @@
 <template>
 
-    <div class="text-center shadow-md bg-gray-800 rounded-sm mx-auto border-2 border-gray-900 mt-12 mb-64">
-          <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-12 py-8 sm:px-6 lg:px-10">
-                 <h2 class="tracking-widest uppercase"style="font-family: Russo One;">Connect your wallet</h2>
-                 <p class=" text-gray-500 text-sm font-thin pt-2">Connect your wallet with the available wallet providers.</p>
+
+    <div class=" max-w-3xl mx-auto text-center shadow-md  rounded-sm mx-auto border-2 border-gray-900 mt-12 mb-64">
+      <div class="bg-four font-bold text-lg md:text-xl lg:text-2xl  text-white p-6 py-8 sm:px-6 lg:px-10">
+         <h2 class="tracking-widest">Connect your wallet</h2>
+         <p class=" text-gray-500 text-sm font-thin pt-2">Connect your wallet with the available wallet providers.</p>
+      </div>
+      <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800">
+
+          <div class="text-center mx-auto m-6 ">
+                <a @click="connect()" class="button bg-six hover:bg-yellow-300 hover:shadow-sm lg:text-3xl text-sm text-black font-bold my-2 py-3 px-8 rounded-sm shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Connect Wallet</a>
           </div>
-          <div class="text-center container shadow-md bg-gray-900 text-gray-500 text-sm rounded-sm rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800">
-              <div class="text-center mx-auto m-6 ">
-                    <a @click="connect()" class="button bg-yellow-400 hover:bg-yellow-300 hover:shadow-sm lg:text-3xl text-2xl text-black font-bold my-2 py-3 px-8 rounded-sm shadow-md w-56 text-center no-underline cursor-pointer  mx-2">Connect Wallet</a>
-              </div>
-          </div>
+      </div>
     </div>
 
 </template>
