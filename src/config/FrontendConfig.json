@@ -1,4 +1,4 @@
 {
-    "tokenDataApiRoot":"https://api.vibers.io/",
-    "marketApiRoot":"https://api.vibers.io/"
+    "tokenDataApiRoot":"https://api.vibers.io",
+    "marketApiRoot":"https://api.vibers.io"
 }
