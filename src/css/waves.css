@@ -116,3 +116,26 @@
 
     }
 }
+
+@media screen and (min-width: 992px) {
+    .bg-triangle-2 {
+
+        background-image: url("~@/assets/images/waves/triangle_background.svg");
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .bg-triangle-2 {
+
+        background-image: url("~@/assets/images/waves/triangle_background.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+
+    }
+}

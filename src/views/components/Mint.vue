@@ -67,16 +67,17 @@
                 </div>
 
             </div>
-            <div class="text-center my-3 color-four font-bold text-3xl tracking-wide lg:flex whitespace-nowrap" >
-                <!-- <div class="flex-1 ">
+            <div class="text-center my-2 mb-16 color-four font-bold text-xl tracking-wide lg:flex whitespace-nowrap" >
+                <div class="flex-1 ">
 
                 </div>
-                    <div class="flex-intital px-2">
-                        !VIBE
+                    <div class="whitespace-nowrap text-2xl pr-2" style="">
+                        Whitelist now open for <br> CrypToadz and DystoPunks NFT Holders
                     </div>
+
                     <div class="flex-1 ">
 
-                    </div> -->
+                </div>
             </div>
 
 

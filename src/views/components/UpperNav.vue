@@ -45,7 +45,7 @@
                             </router-link>
                         </div>
 
-                        <div v-if="web3Modal.active == false" class="flex-auto px-2 mt-1 lg:mt-0 text-center">
+                        <div v-if="web3Modal.active == false" class="flex-auto px-2 mt-1 lg:mt-0 text-center hide">
                             <button class="button bg-four sm:text-xl lg:text-2xl text-lg color-three font-bold  my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 rounded cursor-pointer shadow-sm hover:shadow-md md:rounded-xl rounded-md max-w-xs" type="button" v-on:click="connect()">
                               Connect
                             </button>
@@ -63,7 +63,7 @@
                             </router-link>
                         </div>
 
-                        <div v-if="web3Modal.active == true" class="flex-1 px-1 mt-1 lg:mt-0 text-center unhide">
+                        <div class="flex-1 px-1 mt-1 lg:mt-0 text-center unhide">
                             <router-link class="no-underline" to="/profile">
                                 <div class="bg-six text-2xl color-four font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-lg max-w-xs no-underline">Whitelist</div>
                             </router-link>
