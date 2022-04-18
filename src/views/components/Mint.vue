@@ -67,16 +67,17 @@
                 </div>
 
             </div>
-            <div class="text-center my-3 color-four font-bold text-3xl tracking-wide lg:flex whitespace-nowrap" >
-                <!-- <div class="flex-1 ">
+            <div class="text-center my-2 mb-16 color-four font-bold text-xl tracking-wide lg:flex whitespace-nowrap" >
+                <div class="flex-1 ">
 
                 </div>
-                    <div class="flex-intital px-2">
-                        !VIBE
+                    <div class="whitespace-nowrap text-lg lg:text-2xl border-4 lg:border-4 rounded-lg pr-2 p-4 rounded-lg" style="border-color: #A9ECE3;">
+                        Vibers Whitelist is now open for <br class="hide">CrypToadz and DystoPunks NFT Holders
                     </div>
+
                     <div class="flex-1 ">
 
-                    </div> -->
+                </div>
             </div>
 
 

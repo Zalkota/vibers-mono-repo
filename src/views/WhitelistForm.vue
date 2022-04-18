@@ -1,7 +1,7 @@
 <template>
 
 <div class="">
-    <div class="header-3 ">
+    <div class="bg-triangle-2">
 
        <div class="section">
          <div class=" ">
@@ -10,9 +10,7 @@
          </div>
        </div>
 
-       <section class=" mx-auto px-4 sm:px-6 lg:px-10 py-6">
-
-
+       <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6 ">
 
            <div v-show="web3Modal.active == true && userWhitelisted" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-3xl font-heading color-six p-6 py-8 sm:px-6 lg:px-10 rounded-lg rounded-b-none">
@@ -29,7 +27,7 @@
 
            <div v-show="web3Modal.active == true && userWhitelisted == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
-                <h2 class="tracking-widest uppercase text-3xl color-six">Select Your Whitelist</h2>
+                <h2 class="tracking-widest uppercase text-3xl color-six">Whitelist Signup</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
              </div>
              <div class="shadow-md bg-gray-800 text-gray-300 text-xl mx-auto border-2 border-gray-900  rounded-xl">
