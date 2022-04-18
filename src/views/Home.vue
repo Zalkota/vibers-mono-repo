@@ -29,7 +29,7 @@
 
                                 <p>Vibers is 10k NFT collection that encompasses the ethos of web3 by taking inspiration from a wide range of iconic NFT collections and fusing them into a single project. </p>
                                 <br>
-                                <p>The end result is a fun collection where you can spot aspects from many projects including CryptoSkulls, CryptToadz, DystoPunks, Doodles, Nouns, CryptoPunks, and more. Basically the dopest art rolled into one. CC0.</p>
+                                <p>The end result is a fun collection where you can spot aspects from many projects including CrypToadz, DystoPunks, CryptoSkulls, Doodles, Nouns, CryptoPunks. Basically the dopest art rolled into one. CC0.</p>
                                 <br>
                                 <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
@@ -60,13 +60,13 @@
                 <div class=" flex-col lg:flex-row flex">
                         <div class="flex-1 m-1 pt-4 lg:pt-0">
                                 <img
-                                src="@/assets/images/skull_0.png"
+                                src="@/assets/images/skull_7.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_3.png"
+                                src="@/assets/images/skull_0.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>

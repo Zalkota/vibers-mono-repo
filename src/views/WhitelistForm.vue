@@ -27,7 +27,7 @@
              </div>
            </div>
 
-           <div v-show="web3Modal.active == true && userWhitelisted == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12">
+           <div v-show="web3Modal.active == true && userWhitelisted == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
                 <h2 class="tracking-widest uppercase text-3xl color-six">Select Your Whitelist</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
@@ -39,11 +39,11 @@
 
                      <div class="flex-1 lg:border-r lg:border-gray-800 border-gray-600 border-b px-10 py-8 lg:pt-10 lg:pb-4">
                          <span class="text-gray-600 font-thin">Holders of</span>
-                         <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">CryptoToadz & DystoPunks</h3>
+                         <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Prompt;">CryptoToadz, DystoPunks, Doodles, CryptoSkulls, CryptoRayRays, Bonies, CryptoVans.</h3>
 
                          <br>
-                         <span class="text-gray-600 font-thin">Mint price:</span><span style="font-family: Russo One;"> 0.04 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br>
-                         <span class="text-gray-600 font-thin">Remaining:</span> <span style="font-family: Russo One;"> {{ OGWhitelistSpotsAvailable }}/{{ OGWhitelistSpotsTotal }}</span>
+                         <!-- <span class="text-gray-600 font-thin">Mint price:</span><span style="font-family: Russo One;"> 0.04 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br> -->
+                         <span class="text-gray-600 font-thin">Total Spots:</span> <span style="font-family: Russo One;"> {{ OGWhitelistSpotsTotal }}</span>
                          <div class="text-center mt-12">
                             <button v-if="NFTsOwned > 0" @click="sendWhitelistData(OGWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
                             <button v-else-if="OGWhitelistSpotsAvailable == OGWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
@@ -51,7 +51,7 @@
                          </div>
                      </div>
 
-                     <div class="flex-1 px-10 py-8 lg:pt-10 lg:pb-4">
+                     <!-- <div class="flex-1 px-10 py-8 lg:pt-10 lg:pb-4">
                          <span class="text-gray-600 text-md">All Users</span>
                          <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">Public</h3>
                          <br>
@@ -62,14 +62,22 @@
                             <button v-else-if="publicWhitelistSpotsAvailable == publicWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
                             <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
                          </div>
-                     </div>
+                     </div> -->
 
                  </div>
                  <div class="p-4 bg-gray-900 border-t lg:border-gray-800 border-gray-600 rounded-xl rounded-t-none">
-                     <span class="text-gray-600 text-sm">We are allowing only 1 whitelist spot per account at this time.</span>
+                     <span class="text-gray-600 text-sm">We are allowing only 1 whitelist spot per account.</span>
                  </div>
 
              </div>
+             <div class="bg-gray-800 p-6 text-gray-500 font-thin flex rounded-b-lg">
+                    <div class="flex-initial">
+                        {{ userAddressSliceMiddle() }} Connected
+                    </div>
+                    <div class="flex-1 text-right">
+                        <button v-on:click="disconnect()" class="no-underline color-two font-medium ml-4"> Disconnect Wallet </button>
+                    </div>
+                </div>
            </div>
 
 
