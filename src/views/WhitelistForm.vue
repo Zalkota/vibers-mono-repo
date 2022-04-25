@@ -78,6 +78,48 @@
                 </div>
            </div>
 
+           <!-- === QUESTION  SECTION === -->
+
+            <div v-show="web3Modal.active == true && userWhitelisted == false && showSpinner == false && networkError == false" class="container text-left my-6  py-0   rounded-sm shadow-sm" style="max-width: 1022px">
+                <div class="lg:flex shrink-0 bg-gray-900 px-10 pt-16 pb-20 lg:py-10 border-b border-gray-800">
+                    <div class="flex-1">
+                        <span class="text-sm text-blue-500 font-bold">Commonly Asked</span>
+                        <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">Questions</h3>
+                        <p class="text-xs text-gray-600">
+                            Here is a list of commonly asked questions related to the BlockForge Battle Pass NFT Mint.
+                        </p>
+                    </div>
+                    <div class="lg:text-right flex-initial mt-6 lg:mt-0">
+                        <button  class="button inline-block text-md text-blue-500 font-bold py-2 px-4 hover:bg-blue-500 hover:text-white border-2 border-blue-500 rounded-sm  text-center no-underline cursor-pointer tracking-wider uppercase max-w-lg">
+                            WhitePaper <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="hide w-6 inline-block icon-book-open"><path class="fill-blue-500" d="M13.41 20.41a2 2 0 0 1-2.82 0l-.83-.82A2 2 0 0 0 8.34 19H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4a5 5 0 0 1 4 2 5 5 0 0 1 4-2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4.34a2 2 0 0 0-1.42.59l-.83.82z"/><path class="fill-blue-400" d="M12 21V5a5 5 0 0 1 4-2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4.34a2 2 0 0 0-1.42.59l-.83.82A2 2 0 0 1 12 21z"/></svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="unhide w-6 inline-block  icon-external-window"><path class="fill-blue-500" d="M12 8a1 1 0 0 1-1 1H5v10h10v-6a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9c0-1.1.9-2 2-2h6a1 1 0 0 1 1 1z"/><path class="fill-blue-400" d="M19 6.41L8.7 16.71a1 1 0 1 1-1.4-1.42L17.58 5H14a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V6.41z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class=" shrink-0 bg-gray-900 px-10 pt-10 pb-8 lg:py-10 ">
+                    <h4 class="text-md text-gray-300 mb-2 font-bold">Is it is safe to register to this Whitelist?</h4>
+                    <p class="text-sm font-thin text-gray-200 bg-gray-800 p-4">
+                        We do not record any personal information and do not require any signatures from your web3 wallet.
+                    </p>
+                </div>
+
+                <div class=" shrink-0 bg-gray-900 px-10 pt-2 pb-8 lg:pt-2 lg:pb-10">
+                    <h4 class="text-md text-gray-300 mb-2 font-bold">When will the mint occur?</h4>
+                    <p class="text-sm font-thin text-gray-200 bg-gray-800 p-4">
+                        The release date of the Battle Pass NFT has not yet been announced. Follow us on twitter and join the Discord to stay up to date.
+                    </p>
+                </div>
+
+                <div class=" shrink-0 bg-gray-900 px-10 pt-2 pb-8 lg:pt-2 lg:pb-10">
+                    <h4 class="text-md text-gray-300 mb-2 font-bold">Is it is safe to register to this Whitelist?</h4>
+                    <p class="text-sm font-thin text-gray-200 bg-gray-800 p-4">
+                        The BlockForge Battle Pass NFT is an ERC721 Token that will be distributed via a public mint. Each Battle Pass NFT is unique, in that it will have a unique number on the front and a unique Minecraft skin on the back.
+                    </p>
+                </div>
+
+            </div>
+
 
 
 
