@@ -27,9 +27,9 @@
                         <div class="lg:flex-1">
                                 <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider">Welcome to Vibers</h1>
 
-                                <p>Vibers is 10k NFT collection that encompasses the ethos of web3 by taking inspiration from a wide range of iconic NFT collections and fusing them into a single project. </p>
+                                <p>Vibers is 10k NFT collection that encompasses the ethos of web3 by taking inspiration from a wide range of iconic NFT collections to create an entirely new and original CC0 project. </p>
                                 <br>
-                                <p>The end result is a fun collection where you can spot aspects from many projects including CrypToadz, DystoPunks, CryptoSkulls, Doodles, Nouns, CryptoPunks. Basically the dopest art rolled into one. CC0.</p>
+                                <p>The end result is a fun collection where you can spot aspects from many projects including CrypToadz, DystoPunks, CryptoSkulls, Doodles, Nouns, CryptoPunks. Basically the dopest art rolled into one.</p>
                                 <br>
                                 <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
@@ -46,39 +46,39 @@
     </div>
 
     <div class="section bg-six relative">
-        <div class="spike-two-bottom">
+        <div class="spike-three-bottom">
             <img
-            src="@/assets/images/waves/spike_two_bottom.svg"
+            src="@/assets/images/waves/spike_three_bottom.svg"
             alt="Three Cosmic Cap Mushrooms"
             class="unhide"/>
         </div>
 
     </div>
 
-    <div class="section py-8 bg-two mx-auto ">
+    <div class="section py-8 bg-three mx-auto ">
         <div class="container mx-auto  lg:px-0  mx-4 px-10  my-10 text-black">
                 <div class=" flex-col lg:flex-row flex">
                         <div class="flex-1 m-1 pt-4 lg:pt-0">
                                 <img
-                                src="@/assets/images/skull_7.png"
+                                src="@/assets/images/vibers/skull_21.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_0.png"
+                                src="@/assets/images/vibers/skull_22.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_0.png"
+                                src="@/assets/images/vibers/skull_23.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_0.png"
+                                src="@/assets/images/vibers/skull_24.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
@@ -87,25 +87,25 @@
                 <div class="flex-col lg:flex-row flex">
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_0.png"
+                                src="@/assets/images/vibers/skull_25.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs   p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_0.png"
+                                src="@/assets/images/vibers/skull_26.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_0.png"
+                                src="@/assets/images/vibers/skull_27.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
                         <div class="flex-1 pt-4 lg:pt-0 m-1">
                                 <img
-                                src="@/assets/images/skull_0.png"
+                                src="@/assets/images/vibers/skull_28.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-xs  p-2"/>
                         </div>
@@ -120,11 +120,11 @@
 
     <!-- Donating to Science -->
     <div class=" section bg-three relative">
-        <div class="spike-two-top">
-            <img
+        <div class="">
+            <!-- <img
             src="@/assets/images/waves/spike_two_top.svg"
             alt="Three Cosmic Cap Mushrooms"
-            class="unhide"/>
+            class="unhide"/> -->
         </div>
         <!-- <div class="container md:py-24 py-12 lg:py-24 mx-auto flex">
                 <div class="flex-initial ">
@@ -141,7 +141,7 @@
     </div>
 
 
-    <div class="section  pt-12 pb-40 bg-three relative">
+    <!-- <div class="section  pt-12 pb-40 bg-three relative">
         <div class="spike-two-bottom">
             <img
             src="@/assets/images/waves/spike_two_bottom.svg"
@@ -168,7 +168,7 @@
                         </div>
                 </div>
         </div>
-    </div>
+    </div> -->
 
     <Footer/>
 

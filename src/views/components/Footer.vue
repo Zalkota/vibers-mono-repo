@@ -1,6 +1,6 @@
 <template>
 
-  <div class="text-center bg-two text-white lg:pt-12">
+  <div class="text-center bg-three text-white lg:pt-12">
       <div class="flex flex-row justify-center">
           <div class="flex-auto"></div>
           <!-- <div class="flex-initial px-2 mt-3 unhide">

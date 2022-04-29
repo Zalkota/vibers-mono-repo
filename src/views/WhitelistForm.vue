@@ -25,7 +25,7 @@
              </div>
            </div>
 
-           <div v-show="web3Modal.active == true && userWhitelisted == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
+           <div v-show=" userWhitelisted == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
                 <h2 class="tracking-widest uppercase text-3xl color-six">Whitelist Signup</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
@@ -36,7 +36,7 @@
                  <div class="text-left flex lg:flex-row flex-col my-0 border-t lg:border-gray-800 border-gray-600 py-0  bg-gray-900 shadow-sm">
 
                      <div class="flex-1 lg:border-r lg:border-gray-800 border-gray-600 border-b px-10 py-8 lg:pt-10 lg:pb-4">
-                         <span class="text-gray-600 font-thin">Holders of</span>
+                         <span class="text-gray-600 font-thin">Whitelist Available for holders of:</span>
                          <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Prompt;">CryptoToadz, DystoPunks, Doodles, CryptoSkulls, CryptoRayRays, Bonies, CryptoVans.</h3>
 
                          <br>
@@ -68,14 +68,26 @@
                  </div>
 
              </div>
-             <div class="bg-gray-800 p-6 text-gray-500 font-thin flex rounded-b-lg">
-                    <div class="flex-initial">
-                        {{ userAddressSliceMiddle() }} Connected
-                    </div>
-                    <div class="flex-1 text-right">
-                        <button v-on:click="disconnect()" class="no-underline color-two font-medium ml-4"> Disconnect Wallet </button>
-                    </div>
-                </div>
+             <div v-if="web3Modal.active == true" class="bg-gray-800 p-6 text-gray-500 font-thin flex">
+                     <div class="flex-initial">
+                         {{ userAddressSliceMiddle() }} Connected
+                     </div>
+                     <div class="flex-1 text-right">
+                         <button v-on:click="disconnect()" class="no-underline text-red-500 font-medium ml-4" style="font-family: Russo One;"> Disconnect Wallet </button>
+                     </div>
+             </div>
+
+             <div v-if="web3Modal.active == false" class="bg-gray-800 p-4 text-gray-500 font-thin flex ">
+                     <div class="flex-initial pt-3 lg:pt-2 ml-2 hide">
+                         No Wallet Detected
+                     </div>
+                     <div class="lg:flex-1 text-right md:w-36 hide">
+                         <button v-on:click="connect()" class="no-underline w-36  text-yellow-500 font-medium lg:ml-4  px-4 py-2 uppercase tracking-wider" style="font-family: Russo One;"> Connect Wallet </button>
+                     </div>
+                     <div class="lg:flex-1 text-right w-full unhide">
+                         <button v-on:click="connect()" class="no-underline w-full   text-yellow-500 font-medium lg:ml-4  px-4 py-2 uppercase tracking-wider" style="font-family: Russo One;"> Connect Wallet </button>
+                     </div>
+             </div>
            </div>
 
            <!-- === QUESTION  SECTION === -->
@@ -122,10 +134,10 @@
 
 
 
-
+<!--
            <LogoutButton
            v-show="web3Modal.active == false"
-            />
+            /> -->
 
            <br>
        </section>

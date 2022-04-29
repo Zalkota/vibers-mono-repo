@@ -30,6 +30,35 @@
 
 
 @media screen and (min-width: 992px) {
+    .spike-three-bottom {
+        height: 650px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 1;
+        width: 100%;
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-image: url("~@/assets/images/waves/spike_three_bottom.svg");
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .spike-three-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 1;
+        width: 100%;
+    }
+}
+
+
+
+@media screen and (min-width: 992px) {
     .spike-two-top {
         height: 650px;
         position: absolute;
