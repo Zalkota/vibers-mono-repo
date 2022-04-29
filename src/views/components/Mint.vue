@@ -71,7 +71,7 @@
                 <div class="flex-1 ">
 
                 </div>
-                    <div class="text-center mx-auto whitespace-nowrap text-lg lg:text-5xl border-2 lg:border-4 pr-2 px-4 lg:w-40 w-20 rounded-md lg:rounded-lg" style="border-color: #A9ECE3;">
+                    <div class="text-center mx-auto whitespace-nowrap text-3xl lg:text-5xl border-2 lg:border-4 pr-2 px-4 lg:w-40 w-32 rounded-md lg:rounded-lg" style="border-color: #A9ECE3;">
                         !vibe
                     </div>
 

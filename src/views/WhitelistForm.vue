@@ -42,7 +42,9 @@
                          <br>
                          <!-- <span class="text-gray-600 font-thin">Mint price:</span><span style="font-family: Russo One;"> 0.04 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br> -->
                          <span class="text-gray-600 font-thin">Total Spots:</span> <span style="font-family: Russo One;"> {{ OGWhitelistSpotsTotal }}</span>
-                         <div class="text-center mt-12">
+                         <br>
+                         <br>
+                         <div v-if="web3Modal.active == true" class="text-center ">
                             <button v-if="NFTsOwned > 0" @click="sendWhitelistData(OGWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
                             <button v-else-if="OGWhitelistSpotsAvailable == OGWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
                             <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
@@ -73,7 +75,7 @@
                          {{ userAddressSliceMiddle() }} Connected
                      </div>
                      <div class="flex-1 text-right">
-                         <button v-on:click="disconnect()" class="no-underline text-red-500 font-medium ml-4" style="font-family: Russo One;"> Disconnect Wallet </button>
+                         <button v-on:click="disconnect()" class="no-underline font-bold text-red-500 font-medium ml-4 uppercase tracking-wider"> Disconnect Wallet </button>
                      </div>
              </div>
 
@@ -82,10 +84,10 @@
                          No Wallet Detected
                      </div>
                      <div class="lg:flex-1 text-right md:w-36 hide">
-                         <button v-on:click="connect()" class="no-underline w-36  text-yellow-500 font-medium lg:ml-4  px-4 py-2 uppercase tracking-wider" style="font-family: Russo One;"> Connect Wallet </button>
+                         <button v-on:click="connect()" class="no-underline w-36 font-bold text-yellow-500 font-medium lg:ml-4  px-4 py-2 uppercase tracking-wider"> Connect Wallet </button>
                      </div>
                      <div class="lg:flex-1 text-right w-full unhide">
-                         <button v-on:click="connect()" class="no-underline w-full   text-yellow-500 font-medium lg:ml-4  px-4 py-2 uppercase tracking-wider" style="font-family: Russo One;"> Connect Wallet </button>
+                         <button v-on:click="connect()" class="no-underline w-full font-bold  text-yellow-500 font-medium lg:ml-4  px-4 py-2 uppercase tracking-wider"> Connect Wallet </button>
                      </div>
              </div>
            </div>

@@ -37,7 +37,7 @@
                         </div>
                         <div class="lg:flex-1">
                                 <img
-                                src="@/assets/images/skulls_1.png"
+                                src="@/assets/images/vibers/skulls_1.png"
                                 alt="Three Cosmic Cap Mushrooms"
                                 class="mx-auto lg:max-w-sm "/>
                         </div>
