@@ -47,21 +47,40 @@
                             </router-link>
                         </div> -->
 
-                        <div v-if="web3Modal.active == false" class="flex-auto px-2 mt-1 lg:mt-0 text-center hide">
-                            <button class="button bg-four sm:text-xl lg:text-2xl text-lg color-three font-bold  my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 rounded cursor-pointer shadow-sm hover:shadow-md md:rounded-xl rounded-md max-w-xs" type="button" v-on:click="connect()">
-                              Connect
+                        <div v-if="web3Modal.active == false" class="flex-auto px-2 mt-1 lg:mt-0 text-center ">
+                            <!-- <button class="button bg-six sm:text-xl lg:text-2xl text-lg color-four font-bold custom-buttom-shadow my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 rounded-sm cursor-pointer  max-w-xs tracking-widest" type="button" v-on:click="connect()">
+
+                            </button> -->
+                            <button class="pushable my-6 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg max-w-xs tracking-widest hide" v-on:click="connect()">
+                              <span class="front">
+                                Connect Wallet
+                              </span>
                             </button>
 
-                            <!-- LoginModal -->
-                            <!-- <button class="button bg-yellow-400 hover:bg-yellow-300 sm:text-xl lg:text-2xl text-lg text-black font-bold my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 rounded cursor-pointer shadow-sm hover:shadow-sm md:rounded-xl rounded-md max-w-xs" type="button" data-modal-toggle="defaultModal">
-                              Connect
-                            </button> -->
+                            <button class="pushable my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg max-w-xs tracking-widest unhide" v-on:click="connect()">
+                              <span class="front" style="padding: 12px 16px;">
+                                Connect
+                              </span>
+                            </button>
+
 
                         </div>
 
-                        <div v-if="web3Modal.active == true" class="flex-1 px-1 mt-1 lg:mt-0 text-center hide">
-                            <router-link class="no-underline" to="/profile">
-                                <div  class="button bg-gray-300  text-md text-black font-bold lg:py-4 py-2 my-2 px-3 lg:px-4 cursor-pointer hover:shadow-md md:rounded-xl rounded-md border border-gray-400">{{ userAddressSlice() }}</div>
+                        <div v-if="web3Modal.active == true" class="flex-1 px-1 mt-1 lg:mt-0 text-center ">
+                            <router-link class="no-underline hide" to="/profile">
+                                <button class="pushable my-6 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg max-w-xs tracking-widest" v-on:click="connect()">
+                                  <span class="front">
+                                    {{ userAddressSlice() }}
+                                  </span>
+                                </button>
+                            </router-link>
+
+                            <router-link class="no-underline unhide" to="/profile">
+                                <button class="pushable my-2 lg:my-6 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-sm max-w-xs tracking-widest"  v-on:click="connect()">
+                                  <span class="front" style="padding: 12px 16px;">
+                                    {{ userAddressSlice() }}
+                                  </span>
+                                </button>
                             </router-link>
                         </div>
 

@@ -1,6 +1,7 @@
 {
   "mainnet":{
     "contracts":{
+      "vibers":{"name":"VIBE","address":""},
       "cosmiccaps_dev":{"name":"COSMIC","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" },
       "cryptoadz":{"name":"TOADZ","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" },
       "dystopunks":{"name":"DYSTO","address":"0xf3c9B7A97Eba579f5c234F79108331F5513c9741" },
@@ -18,6 +19,7 @@
 
     "rinkeby":{
       "contracts":{
+        "vibers":{"name":"VIBE","address":"0x16a293f0bfe0DdF9B02b1B333d551E39B1752EfE"},
         "cosmiccaps_dev":{"name":"COSMIC","address":"0x008B5B80625Dc92848D57720eb3D1190c32ED580" }
       }
     }

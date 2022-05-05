@@ -1,0 +1,47 @@
+.pushable {
+  background: hsl(220deg 12% 32%);
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  cursor: pointer;
+  background-color: #1A1F41;
+}
+.front {
+  display: block;
+  background-color: #fff;
+  padding: 12px 42px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  background-color: #B3FFC6;
+  color: #1A1F41;
+  transform: translateY(-4px);
+}
+
+
+
+.pushable:active .front {
+  transform: translateY(-2px);
+  background-color: #99dbaa;
+}
+
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+  background-color: #1A1F41;
+}
+
+
+
+.mint-front {
+  display: block;
+  background-color: #fff;
+  padding: 12px 42px;
+  border-radius: 12px;
+  background-color: #B3FFC6;
+  color: #1A1F41;
+  transform: translateY(-4px);
+}
+
+.pushable:active .mint-front {
+  transform: translateY(-2px);
+  background-color: #99dbaa;
+}

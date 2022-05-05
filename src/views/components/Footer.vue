@@ -66,7 +66,11 @@
                     <a href="#" target="_blank"class="bg-six text-2xl color-four font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-xl max-w-xs no-underline">Join Discord!</a>
               </div> -->
               <div class="flex px-2 mx-2 mt-1 lg:mt-0 text-center hide">
-                    <a href="https://twitter.com/VibersNFT" target="_blank" class="bg-six text-2xl color-four font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-xl max-w-xs no-underline">Twitter</a>
+                    <a href="https://twitter.com/VibersNFT" target="_blank" class="button pushable my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg max-w-xs tracking-widest no-underline">
+                        <span class="front">
+                          Twitter
+                        </span>
+                    </a>
               </div>
               <!-- <div class="flex px-2 mx-2 mt-1 lg:mt-0 text-center hide">
                     <a href="https://opensea.io" target="_blank" class="bg-six text-2xl color-four font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-xl max-w-xs no-underline">Opensea!</a>
