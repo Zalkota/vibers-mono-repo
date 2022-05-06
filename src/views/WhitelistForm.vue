@@ -10,6 +10,10 @@
          </div>
        </div>
 
+       <section>
+           <WhitelistMint />
+       </section>
+
        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6 ">
 
            <div v-show="web3Modal.active == true && userWhitelisted" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
@@ -50,19 +54,6 @@
                             <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
                          </div>
                      </div>
-
-                     <!-- <div class="flex-1 px-10 py-8 lg:pt-10 lg:pb-4">
-                         <span class="text-gray-600 text-md">All Users</span>
-                         <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">Public</h3>
-                         <br>
-                         <span class="text-gray-600 font-thin">Mint price:</span> <span style="font-family: Russo One;">  0.05 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br>
-                         <span class="text-gray-600 font-thin">Remaining:</span> <span style="font-family: Russo One;"> {{ publicWhitelistSpotsAvailable }}/{{ publicWhitelistSpotsTotal }}</span>
-                         <div class="text-center mt-12">
-                            <button v-if="publicWhitelistSpotsAvailable < publicWhitelistSpotsTotal" @click="sendWhitelistData(publicWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
-                            <button v-else-if="publicWhitelistSpotsAvailable == publicWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
-                            <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
-                         </div>
-                     </div> -->
 
                  </div>
                  <div class="p-4 bg-gray-900 border-t lg:border-gray-800 border-gray-600 rounded-xl rounded-t-none">
@@ -134,8 +125,6 @@
 
             </div>
 
-
-
 <!--
            <LogoutButton
            v-show="web3Modal.active == false"
@@ -157,6 +146,7 @@ import web3utils from 'web3-utils'
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
 import LogoutButton from './components/LogoutButton.vue';
+import WhitelistMint from './components/WhitelistMint.vue';
 
 import TiledTokenProfileBrowser from './components/TiledTokenProfileBrowser.vue';
 import StarflaskApiHelper from '../js/starflask-api-helper.js'
@@ -175,20 +165,9 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 export default {
   name: 'WhitelistForm',
   props: [],
-  components: {Navbar, Footer, Web3ModalVue, LogoutButton},
+  components: {Navbar, Footer, Web3ModalVue, LogoutButton, WhitelistMint},
   watch: {
-        // accountActive: {
-        //     immediate: true,
-        //     deep: true,
-        //     // console.log('watcher', this.web3Modal.active)
-        //
-        // }
 
-      // handler(newValue, oldValue) {
-      //   this.returnHoldingsAmount()
-      //   console.log('watcher', this.web3Modal.active)
-      //
-      // }
   },
 
   data() {
@@ -199,13 +178,6 @@ export default {
       amount: 0,
       userWhitelisted: false,
 
-      // cosmicWhitelistClaimed: false,
-      // cosmicWhitelistType: 1,
-      // cosmicNFTsOwned: 0,
-      // cosmicWhitelistMintAmount: 1,
-      // cosmicWhitelistSpotsAvailable: 0,
-      // cosmicWhitelistSpotsTotal: 200,
-      // cosmicContractAddress: '0xf3c9B7A97Eba579f5c234F79108331F5513c9741',
 
       OGWhitelistClaimed: false,
       OGWhitelistType: 2,

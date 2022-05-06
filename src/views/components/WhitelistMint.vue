@@ -1,8 +1,15 @@
 <template>
     <div class="">
         <div class="mb-4 lg:mb-0">
-            <div class="sale-container bg-transparent" v-if="saleStatus">
-                    <h1 class="text-red-700 text-center tracking-wider text-4xl lg:text-6xl">Mint is live!</h1>
+            <div class="">
+                <button class="button pushable font-bold inline mx-auto text-md sm:text-3xl tracking-widest w-full" @click="signChallenge">
+                  <span class="mint-front">
+                    signChallenge
+                  </span>
+                </button>
+            </div>
+            <div class="sale-container bg-transparent" v-if="whitelistSaleStatus">
+                    <h1 class="text-white tracking-wider text-4xl lg:text-6xl">Minting Is Live!</h1>
                     <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 2px solid #B3FFC6;">
                         <div class="custom-number-input h-10 justify-center content-center text-center px-2">
                               <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
@@ -21,7 +28,7 @@
                             </div>
                         </div>
                         <div>
-                            <div v-if="false" class="text-center text-white py-3 mb-0 font-medium text-xl">
+                            <div v-if="web3Modal.active" class="text-center text-white py-3 mb-0 font-medium text-xl">
                                 {{ totalSupply }} / 10,000
                             </div>
                             <div v-else class="">
@@ -55,18 +62,8 @@
             </div>
 
         </div>
-        <div class="text" v-if="!saleStatus">
-            <div class="title-container bg-transparent" >
-                <div
-                  class=""
-                >
-                    <div class="text-black text-s inline">
-                      <Countdown
-                      :endDate="endDate"
-                      />
-                    </div>
-                </div>
-            </div>
+        <div class="text" v-if="whitelistSaleStatus">
+
         </div>
     </div>
 </template>
@@ -93,6 +90,13 @@ import {web3Modal} from "../../js/mixins.js";
 import { Contract } from "@ethersproject/contracts";
 import { Web3Provider } from "@ethersproject/providers";
 
+//degen auth
+import {AuthTools} from 'degen-auth'
+
+
+
+//give the authtoken to the user so they store it in their LocalStorage to use for authenticated API requests
+
 //Web3Modal Wallets
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
@@ -103,14 +107,14 @@ export default {
   data() {
     return {
       // SET MINT DATE
-      endDate: new Date(2022, 4, 15, 10, 10, 10, 10), // month behind 4 = may
+      endDate: new Date(2022, 4, 1, 10, 10, 10, 10), // month behind 4 = may
       web3Plug: new Web3Plug(),
       signedInToWeb3: false,
       balances: {},
       totalSupply: 0,
       mintAmount: 1,
       errorMessage: null,
-      saleStatus: false,
+      whitelistSaleStatus: false,
       nftContract: [],
       tokenId: 0,
       donationAmount: 0,
@@ -125,7 +129,7 @@ export default {
   },
 
   created() {
-    // this.getSaleStatus()
+    // this.getwhitelistSaleStatus()
     this.web3Plug.getPlugEventEmitter().on(
       "stateChanged",
       async function (connectionState) {
@@ -154,7 +158,7 @@ export default {
       console.log(mutation.type)
       console.log(mutation.payload)
       if (mutation.type == 'setActive' && mutation.payload == true) {
-          // this.getSaleStatus()
+          // this.getwhitelistSaleStatus()
           this.getTotalSupply();
           suscribe()
       }
@@ -183,6 +187,23 @@ export default {
   mixins: [web3Modal],
   methods: {
 
+    async signChallenge() {
+        let degenAuthInterface = await AuthTools.initializeDatabase()
+
+        publicAddress = this.userAddress;
+        serviceName = "Vibers"
+        let challenge = await AuthTools.upsertNewChallengeForAccount(degenAuthInterface,publicAddress, serviceName)
+
+        // personal sign challenge in metamask
+        const signer = await this.web3Modal.signer
+        console.log('signer', signer)
+
+        let signature = userWallet.signMessage(challenge)
+
+        let authtoken = await AuthTools.generateAuthenticatedSession(degenAuthInterface,publicAddress, signature)
+    },
+
+
     canMint() {
       return this.totalSupply >= 9999;
     },
@@ -199,21 +220,21 @@ export default {
         }
     },
 
-    async getSaleStatus() {
+    async getwhitelistSaleStatus() {
       const now = new Date();
       if (this.web3Modal.active) {
-          this.saleStatus = await this.nftContract.hasSaleStarted();
-          console.log('has the sale started?', this.saleStatus)
+          this.whitelistSaleStatus = await this.nftContract.hasSaleStarted();
+          console.log('has the sale started?', this.whitelistSaleStatus)
       } else if (this.endDate > now.getTime()) {
-              this.saleStatus = false
+              this.whitelistSaleStatus = false
               console.log('sale is in the future')
       } else if (this.endDate <= now.getTime()) {
-              this.saleStatus = true
+              this.whitelistSaleStatus = true
               console.log('sale started is in the past')
       }
 
       console.log('time', this.endDate.getTime(), now.getTime())
-      console.log('getSaleStatus', this.saleStatus)
+      console.log('getwhitelistSaleStatus', this.whitelistSaleStatus)
       },
 
 
@@ -230,11 +251,11 @@ export default {
             this.totalSupply = await this.nftContract.totalSupply();
             this.$forceUpdate();
         }
-        this.getSaleStatus()
+        this.getwhitelistSaleStatus()
     },
 
 
-    async mint() {
+    async whitelistMint() {
       console.log("calling mint");
 
       if (!this.web3Modal.active) {
@@ -291,26 +312,6 @@ export default {
       console.log("calling mint", nftContract);
       // await nftContract.methods.mint(userAddress, amt).send({from: userAddress, value: ethValue});
       // this.totalSupply = this.getTotalSupply();
-    },
-
-
-
-    async getBalances() {
-      /*
-            const smasherAddress = '0xbf3122b2aa3102693e3194df7870e1a7ae146b50'
-
-            const currencyAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2' //WETH9
-
-            const currencyContract = this.web3Plug.getTokenContract( currencyAddress )
-
-            let wethBalanceRaw = await currencyContract.methods.balanceOf( smasherAddress ).call()
-
-            this.balances['WETH'] = this.web3Plug.rawAmountToFormatted(wethBalanceRaw, 18)
-
-            console.log(' this.balances',  this.balances)
-
-            this.$forceUpdate()
-*/
     },
 
   },

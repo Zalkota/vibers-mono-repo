@@ -12,8 +12,6 @@
     </div>
 
 
-
-
     <!-- Welcome  -->
     <div class=" section  bg-six relative">
         <div class="spike-three-top">
@@ -26,14 +24,12 @@
                 <div class="lg:flex">
                         <div class="lg:flex-1">
                                 <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider">Welcome to Vibers</h1>
-
                                 <p>Vibers is 10k NFT collection that encompasses the ethos of web3 by taking inspiration from a wide range of iconic NFT collections to create an entirely new and original CC0 project. </p>
                                 <br>
                                 <p>The end result is a fun collection where you can spot aspects from many projects including CrypToadz, DystoPunks, CryptoSkulls, Doodles, Nouns, CryptoPunks. Basically the dopest art rolled into one.</p>
                                 <br>
                                 <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
                                 <br>
-
                         </div>
                         <div class="lg:flex-1">
                                 <img
