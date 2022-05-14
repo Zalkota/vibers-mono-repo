@@ -30,7 +30,6 @@
 
 <script>
 import UpperNav from './UpperNav.vue';
-import AccordionNav from './AccordionNav.vue';
 export default {
   name: 'Navbar',
   props: [],

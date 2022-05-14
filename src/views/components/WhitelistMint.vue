@@ -188,19 +188,33 @@ export default {
   methods: {
 
     async signChallenge() {
-        let degenAuthInterface = await AuthTools.initializeDatabase()
 
-        publicAddress = this.userAddress;
-        serviceName = "Vibers"
-        let challenge = await AuthTools.upsertNewChallengeForAccount(degenAuthInterface,publicAddress, serviceName)
+        let config = {
+            dbName: "AuthTools"
+        }
 
-        // personal sign challenge in metamask
-        const signer = await this.web3Modal.signer
-        console.log('signer', signer)
+        console.log("config", config.dbName)
+        
+        mongoInterface = new extensible_mongoose_1.default();
+        yield mongoInterface.init('auth_test_db');
+        let degenAuthExtension = new degen_auth_database_extension_1.default(mongoInterface);
+        degenAuthExtension.bindModelsToDatabase();
+        yield mongoInterface.dropDatabase();
+        user = ethers_1.Wallet.createRandom();
+        otherUser = ethers_1.Wallet.createRandom();
 
-        let signature = userWallet.signMessage(challenge)
 
-        let authtoken = await AuthTools.generateAuthenticatedSession(degenAuthInterface,publicAddress, signature)
+        // publicAddress = this.userAddress;
+        // serviceName = "Vibers"
+        // let challenge = await AuthTools.upsertNewChallengeForAccount(degenAuthInterface,publicAddress, serviceName)
+        //
+        // // personal sign challenge in metamask
+        // const signer = await this.web3Modal.signer
+        // console.log('signer', signer)
+        //
+        // let signature = userWallet.signMessage(challenge)
+        //
+        // let authtoken = await AuthTools.generateAuthenticatedSession(degenAuthInterface,publicAddress, signature)
     },
 
 

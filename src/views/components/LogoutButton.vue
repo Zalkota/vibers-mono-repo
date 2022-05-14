@@ -18,7 +18,6 @@
 
 
 <script>
-import Web3NetButton from './Web3NetButton.vue'
 import LoginModal from './LoginModal.vue';
 
 // Web3Modal-Vue
@@ -34,7 +33,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 export default {
   name: 'LogoutButton',
   props: [],
-  components:{Web3NetButton, LoginModal, Web3ModalVue},
+  components:{LoginModal, Web3ModalVue},
   data() {
     return {
       activeAccountAddress:null,

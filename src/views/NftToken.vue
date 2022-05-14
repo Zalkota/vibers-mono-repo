@@ -158,10 +158,7 @@ import Navbar from './components/Navbar.vue';
 
 import Footer from './components/Footer.vue';
 
-import OffersList from './components/OffersList.vue'
 
-import BuyOrderForm from './components/BuyOrderForm.vue'
-import SellOrderForm from './components/SellOrderForm.vue';
 
 import StarflaskAPIHelper from '../js/starflask-api-helper'
 import AssetDataHelper from '../js/asset-data-helper'

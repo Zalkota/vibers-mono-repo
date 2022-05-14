@@ -108,7 +108,6 @@
 
 
 <script>
-import Web3NetButton from './Web3NetButton.vue'
 import Config from '../config/UpperNav.js'
 import LoginModal from './LoginModal.vue';
 
@@ -125,7 +124,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 export default {
   name: 'UpperNav',
   props: [],
-  components:{Web3NetButton, LoginModal, Web3ModalVue},
+  components:{LoginModal, Web3ModalVue},
   data() {
     return {
       activeAccountAddress:null,
