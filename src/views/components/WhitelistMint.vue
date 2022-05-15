@@ -187,21 +187,6 @@ export default {
   mixins: [web3Modal],
   methods: {
 
-    async signChallenge() {
-        let degenAuthInterface = await AuthTools.initializeDatabase()
-
-        publicAddress = this.userAddress;
-        serviceName = "Vibers"
-        let challenge = await AuthTools.upsertNewChallengeForAccount(degenAuthInterface,publicAddress, serviceName)
-
-        // personal sign challenge in metamask
-        const signer = await this.web3Modal.signer
-        console.log('signer', signer)
-
-        let signature = userWallet.signMessage(challenge)
-
-        let authtoken = await AuthTools.generateAuthenticatedSession(degenAuthInterface,publicAddress, signature)
-    },
 
 
     canMint() {
