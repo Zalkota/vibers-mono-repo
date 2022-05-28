@@ -1,15 +1,9 @@
 <template>
     <div class="">
         <div class="mb-4 lg:mb-0">
-            <div class="">
-                <button class="button pushable font-bold inline mx-auto text-md sm:text-3xl tracking-widest w-full" @click="signChallenge">
-                  <span class="mint-front">
-                    signChallenge
-                  </span>
-                </button>
-            </div>
-            <div class="sale-container bg-transparent" v-if="whitelistSaleStatus">
-                    <h1 class="text-white tracking-wider text-4xl lg:text-6xl">Minting Is Live!</h1>
+
+            <div v-if="web3Modal.active == true && whitelistSaleStatus == false && authToken != null" class="sale-container bg-transparent">
+                    <h1 class="text-white tracking-wider text-4xl lg:text-6xl text-center font-bold"  style="font-family: Prompt;">Allowlist Minting Is Now Live!</h1>
                     <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 2px solid #B3FFC6;">
                         <div class="custom-number-input h-10 justify-center content-center text-center px-2">
                               <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
@@ -62,9 +56,7 @@
             </div>
 
         </div>
-        <div class="text" v-if="whitelistSaleStatus">
 
-        </div>
     </div>
 </template>
 
@@ -74,8 +66,9 @@
 // Import Components
 import Countdown from "./Countdown.vue";
 
-import FrontendHelper from "../../js/frontend-helper.js";
-const ERC721ABI = require("../../contracts/ERC721ABI.json");
+
+
+
 
 // Web3 Module
 import Web3Plug from "../../js/web3-plug.js";
@@ -92,7 +85,7 @@ import { Web3Provider } from "@ethersproject/providers";
 
 //degen auth
 import {AuthTools} from 'degen-auth'
-
+import {resolveRoutedApiQuery} from '../../js/rest-api-helper.ts'
 
 
 //give the authtoken to the user so they store it in their LocalStorage to use for authenticated API requests
@@ -102,25 +95,26 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 
 export default {
   name: "Mint",
-  props: [],
+  props: ["authToken", "whitelistSaleStatus"],
   components: {Countdown},
   data() {
     return {
       // SET MINT DATE
-      endDate: new Date(2022, 4, 1, 10, 10, 10, 10), // month behind 4 = may
+       // month behind 4 = may
       web3Plug: new Web3Plug(),
       signedInToWeb3: false,
       balances: {},
       totalSupply: 0,
       mintAmount: 1,
       errorMessage: null,
-      whitelistSaleStatus: false,
-      nftContract: [],
+
+
       tokenId: 0,
       donationAmount: 0,
       userAddress: null,
+      signature: null,
 
-      contractAddress: null,
+
       activeNetwork: null,
       encodedMetadata:
         "data:application/json;base64,eyJuYW1lIjogIjB4QlRDIFN0YXRzICMwIiwgImRlc2NyaXB0aW9uIjogIk1pbmVhYmxlIHRva2VuIHN0YXRpc3RpY3MuIiwgImltYWdlIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIQnlaWE5sY25abFFYTndaV04wVW1GMGFXODlJbmhOYVc1WlRXbHVJRzFsWlhRaUlIWnBaWGRDYjNnOUlqQWdNQ0F6TlRBZ016VXdJajQ4YzNSNWJHVStMbUpoYzJVZ2V5Qm1hV3hzT2lCM2FHbDBaVHNnWm05dWRDMW1ZVzFwYkhrNklITmxjbWxtT3lCbWIyNTBMWE5wZW1VNklERTJjSGc3SUgwOEwzTjBlV3hsUGp4eVpXTjBJSGRwWkhSb1BTSXhNREFsSWlCb1pXbG5hSFE5SWpFd01DVWlJR1pwYkd3OUltSnNZV05ySWlBdlBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeU1DSWdZMnhoYzNNOUltSmhjMlVpUGkwdExTQXdlRUpVUXlCVGRHRjBjeUF0TFMwOEwzUmxlSFErUEhSbGVIUWdlRDBpTVRBaUlIazlJalF3SWlCamJHRnpjejBpWW1GelpTSStUV2x1WldRZ1UzVndjR3g1T2lBMU1EQXdQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJMk1DSWdZMnhoYzNNOUltSmhjMlVpUGsxcGJtbHVaeUJFYVdabWFXTjFiSFI1T2lBeFBDOTBaWGgwUGp4MFpYaDBJSGc5SWpFd0lpQjVQU0k0TUNJZ1kyeGhjM005SW1KaGMyVWlQazFwYm1sdVp5QlNaWGRoY21RNklEVXdQQzkwWlhoMFBqd3ZjM1puUGc9PSJ9",
@@ -154,18 +148,22 @@ export default {
 
   },
   mounted: function () {
-      let suscribe = this.$store.subscribe((mutation, state) => {
-      console.log(mutation.type)
-      console.log(mutation.payload)
-      if (mutation.type == 'setActive' && mutation.payload == true) {
-          // this.getwhitelistSaleStatus()
-          this.getTotalSupply();
-          suscribe()
-      }
-    })
-    this.getTotalSupply();
+
+        let subscribe = this.$store.subscribe((mutation, state) => {
+            console.log(mutation.type)
+            console.log(mutation.payload)
+            if (mutation.type == 'setActive' && mutation.payload == true) {
+              // this.getwhitelistSaleStatus()
+              // this.getTotalSupply();
+              subscribe()
+            }
+
+
+        })
+
+    // this.getTotalSupply();
     //
-    setInterval(this.getTotalSupply.bind(this), 5000);
+    // setInterval(this.getTotalSupply.bind(this), 5000);
   },
 
   computed: {
@@ -187,35 +185,6 @@ export default {
   mixins: [web3Modal],
   methods: {
 
-    async signChallenge() {
-
-        let config = {
-            dbName: "AuthTools"
-        }
-
-        console.log("config", config.dbName)
-        
-        mongoInterface = new extensible_mongoose_1.default();
-        yield mongoInterface.init('auth_test_db');
-        let degenAuthExtension = new degen_auth_database_extension_1.default(mongoInterface);
-        degenAuthExtension.bindModelsToDatabase();
-        yield mongoInterface.dropDatabase();
-        user = ethers_1.Wallet.createRandom();
-        otherUser = ethers_1.Wallet.createRandom();
-
-
-        // publicAddress = this.userAddress;
-        // serviceName = "Vibers"
-        // let challenge = await AuthTools.upsertNewChallengeForAccount(degenAuthInterface,publicAddress, serviceName)
-        //
-        // // personal sign challenge in metamask
-        // const signer = await this.web3Modal.signer
-        // console.log('signer', signer)
-        //
-        // let signature = userWallet.signMessage(challenge)
-        //
-        // let authtoken = await AuthTools.generateAuthenticatedSession(degenAuthInterface,publicAddress, signature)
-    },
 
 
     canMint() {
@@ -234,39 +203,10 @@ export default {
         }
     },
 
-    async getwhitelistSaleStatus() {
-      const now = new Date();
-      if (this.web3Modal.active) {
-          this.whitelistSaleStatus = await this.nftContract.hasSaleStarted();
-          console.log('has the sale started?', this.whitelistSaleStatus)
-      } else if (this.endDate > now.getTime()) {
-              this.whitelistSaleStatus = false
-              console.log('sale is in the future')
-      } else if (this.endDate <= now.getTime()) {
-              this.whitelistSaleStatus = true
-              console.log('sale started is in the past')
-      }
-
-      console.log('time', this.endDate.getTime(), now.getTime())
-      console.log('getwhitelistSaleStatus', this.whitelistSaleStatus)
-      },
 
 
-    async getTotalSupply() {
-        if (this.web3Modal.active) {
-            const contractData = await this.web3Plug.getContractDataForActiveNetwork();
-            this.activeNetwork = contractData
-            this.contractAddress = contractData.vibers.address
-            let contractAddress = this.contractAddress
-            const abi = ERC721ABI
-            this.$store.commit('setContract', {abi, contractAddress})
-            this.nftContract = await this.web3Modal.contract
-            console.log('nftContract call', this.nftContract)
-            this.totalSupply = await this.nftContract.totalSupply();
-            this.$forceUpdate();
-        }
-        this.getwhitelistSaleStatus()
-    },
+
+
 
 
     async whitelistMint() {

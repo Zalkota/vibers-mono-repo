@@ -18,6 +18,7 @@ const web3ModalStore = {
         abi: null,
         balance: 0,
         signer: null,
+        authToken: null,
     },
     mutations: {
         setWeb3Modal(state, web3Modal) {
@@ -46,21 +47,11 @@ const web3ModalStore = {
             state.signer = signer
         },
 
-        // callandSetSigner(state, signer) {
-        //
-        // },
-
-        // setEthBalance(state, address) {
-        //
-        //     const provider = await state.web3Modal.connect();
-        //     // const library = new ethers.providers.Web3Provider(provider)
-        //
-        //     state.balance = await provider.getBalance(address);
-        // },
+        setAuthToken(state, authToken) {
+            state.authToken = authToken
+        },
 
         async setContract(state, {abi, contractAddress}) {
-            // const provider = ethers.getDefaultProvider();
-            // const library = new ethers.providers.Web3Provider(provider)
             const signer = state.signer;
             const contract = new ethers.Contract(contractAddress, abi, signer);
             state.contract = contract
@@ -68,25 +59,7 @@ const web3ModalStore = {
     },
     actions: {
 
-        // getCustomContract(   contractABI, contractAddress)
-        // {
-        //   var contract = new web3Instance.eth.Contract(contractABI,contractAddress)
-        //
-        //   return contract;
-        // }
 
-
-
-        // async getCustomContract({state, commit, dispatch}) {
-        //     const contract = new ethers.Contract(address, abi, provider);
-        //     commit('setContract', contract)
-        // },
-        // async callSigner({state, commit, dispatch}) {
-        //     const provider = ethers.getDefaultProvider();
-        //     const library = new ethers.providers.Web3Provider(provider)
-        //     const signer = library.getSigner()
-        //     commit('setSigner', signer)
-        // },
 
         async connect({state, commit, dispatch}) {
             const provider = await state.web3Modal.connect();

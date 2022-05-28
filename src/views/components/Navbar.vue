@@ -33,7 +33,7 @@ import UpperNav from './UpperNav.vue';
 export default {
   name: 'Navbar',
   props: [],
-  components: {UpperNav,AccordionNav},
+  components: {UpperNav},
   data() {
     return {
       showResponsiveMenu: false,

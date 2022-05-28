@@ -3,7 +3,7 @@ import VueTailwind from 'vue-tailwind'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import VueCookies from 'vue-cookies'
 
 //import "tailwindcss/tailwind.css"
 
@@ -44,7 +44,7 @@ const settings = {
     }
   }
 }
-Vue.use(VueTailwind, settings)
+Vue.use(VueTailwind, settings, VueCookies)
 
 new Vue({
   router,

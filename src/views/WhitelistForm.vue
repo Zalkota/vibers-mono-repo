@@ -11,12 +11,23 @@
        </div>
 
        <section>
-           <WhitelistMint />
+           <ConnectWalletButton v-if="web3Modal.active != true" />
        </section>
 
        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6 ">
 
-           <div v-show="web3Modal.active == true && userWhitelisted" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
+           <SignInButton v-if="web3Modal.active == true && authToken == null"
+           :userAddress = "userAddress"
+           @authTokenEvent = "readAuthTokenEvent"
+           />
+
+           <WhitelistMint
+           v-if="web3Modal.active == true && authToken != null && whitelistSaleStatus == true"
+           :authToken = "authToken"
+           :whitelistSaleStatus = "whitelistSaleStatus"
+           />
+
+           <div v-show="web3Modal.active == true && userWhitelisted && authToken != null && whitelistSaleStatus == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-3xl font-heading color-six p-6 py-8 sm:px-6 lg:px-10 rounded-lg rounded-b-none">
                 <h2 class="tracking-widest uppercase">Account Whitelisted</h2>
              </div>
@@ -29,7 +40,7 @@
              </div>
            </div>
 
-           <div v-show=" userWhitelisted == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
+           <div v-show="userWhitelisted == false && authToken != null" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
                 <h2 class="tracking-widest uppercase text-3xl color-six">Whitelist Signup</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
@@ -49,7 +60,7 @@
                          <br>
                          <br>
                          <div v-if="web3Modal.active == true" class="text-center ">
-                            <button v-if="NFTsOwned > 0" @click="sendWhitelistData(OGWhitelistType)" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
+                            <button v-if="userQualified" @click="sendWhitelistData()" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline">REDEEM SPOT</button>
                             <button v-else-if="OGWhitelistSpotsAvailable == OGWhitelistSpotsTotal" class="button bg-gray-400  lg:text-3xl text-xl text-gray-800 font-bold my-2 py-3  px-6 xl:px-8 rounded-sm shadow-md w-56 text-center no-underline">FULL</button>
                             <button v-else class="button bg-gray-800 lg:text-xl text-xl text-gray-600 font-bold my-2 py-5 px-6 xl:px-8 rounded-lg w-full text-center no-underline">Requirement Not Met</button>
                          </div>
@@ -85,7 +96,7 @@
 
            <!-- === QUESTION  SECTION === -->
 
-            <div v-show="web3Modal.active == true && userWhitelisted == false && showSpinner == false && networkError == false" class="container text-left my-6  py-0   rounded-sm shadow-sm" style="max-width: 1022px">
+            <div v-show="web3Modal.active == true && userWhitelisted == false" class="container text-left my-6  py-0   rounded-sm shadow-sm" style="max-width: 1022px">
                 <div class="lg:flex shrink-0 bg-gray-900 px-10 pt-16 pb-20 lg:py-10 border-b border-gray-800">
                     <div class="flex-1">
                         <span class="text-sm text-blue-500 font-bold">Commonly Asked</span>
@@ -139,16 +150,16 @@
 
 <script>
 
-
+import ConnectWalletButton from "./components/ConnectWalletButton.vue";
+import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
+import WhitelistMint from './components/WhitelistMint.vue';
+import TiledTokenProfileBrowser from './components/TiledTokenProfileBrowser.vue';
+import SignInButton from "./components/SignInButton.vue";
 
 import Web3Plug from '../js/web3-plug.js'
 import web3utils from 'web3-utils'
-import Navbar from './components/Navbar.vue';
-import Footer from './components/Footer.vue';
-import LogoutButton from './components/LogoutButton.vue';
-import WhitelistMint from './components/WhitelistMint.vue';
 
-import TiledTokenProfileBrowser from './components/TiledTokenProfileBrowser.vue';
 import StarflaskApiHelper from '../js/starflask-api-helper.js'
 const FrontendConfig = require('../config/FrontendConfig.json')
 
@@ -159,24 +170,33 @@ import web3ModalStore from "../store/modules/web3Modal.js";
 import {web3Modal} from "../js/mixins.js";
 //Wallets
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import {resolveRoutedApiQuery} from '../js/rest-api-helper.ts'
 
+import FrontendHelper from "../js/frontend-helper.js";
+const ERC721ABI = require("../contracts/ERC721ABI.json");
 
 
 export default {
   name: 'WhitelistForm',
   props: [],
-  components: {Navbar, Footer, Web3ModalVue, LogoutButton, WhitelistMint},
+  components: {Navbar, Footer, Web3ModalVue, SignInButton, WhitelistMint, ConnectWalletButton},
   watch: {
 
   },
 
   data() {
     return {
+      endDate: new Date(2022, 4, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,
       amount: 0,
       userWhitelisted: false,
+      authToken: null,
+      userQualified: false,
+      whitelistSaleStatus: false,
+      nftContract: [],
+      contractAddress: null,
 
 
       OGWhitelistClaimed: false,
@@ -209,18 +229,28 @@ export default {
   },
 
   created() {
-
+      this.authToken = window.$cookies.get("authToken", this.authToken)
+      console.log("authtoken from cookies", this.authToken)
   },
 
   mounted: function () {
-      let suscribe = this.$store.subscribe((mutation, state) => {
+      this.getwhitelistSaleStatus()
+      let subscribe = this.$store.subscribe((mutation, state) => {
       console.log(mutation.type)
       console.log(mutation.payload)
       if (mutation.type == 'setActive' && mutation.payload == true) {
-          this.fetchNFTbyContract(this.cryptoadzContractAddress)
-          this.fetchNFTbyContract(this.dystopunksContractAddress)
+          this.userAddress = this.web3Modal.account
+          this.getERC721Balance()
+          // this.fetchNFTbyContract(this.dystopunksContractAddress)
           this.checkWhitelistForAddress()
-          suscribe()
+          this.getTotalSupply();
+          subscribe()
+      }
+
+      if (mutation.type == 'setAuthToken' && mutation.payload != null) {
+            this.authToken = this.$store.authToken
+            console.log('Auth Token Updated')
+            subscribe()
       }
     })
   },
@@ -234,6 +264,10 @@ export default {
 
   methods: {
 
+    readAuthTokenEvent(payload) {
+        this.authToken = payload.authToken
+    },
+
 
     connect() {
         this.$store.dispatch('connect')
@@ -243,33 +277,60 @@ export default {
         this.$store.dispatch('resetApp')
     },
 
+    async getTotalSupply() {
+        if (this.web3Modal.active) {
+            const contractData = await this.web3Plug.getContractDataForActiveNetwork();
+            this.activeNetwork = contractData
+            this.contractAddress = contractData.vibers.address
+            let contractAddress = this.contractAddress
+            const abi = ERC721ABI
+            this.$store.commit('setContract', {abi, contractAddress})
+            this.nftContract = await this.web3Modal.contract
+            console.log('nftContract call', this.nftContract)
+            this.totalSupply = await this.nftContract.totalSupply();
+            this.$forceUpdate();
+        }
+        this.getwhitelistSaleStatus()
+    },
+
+    async getwhitelistSaleStatus() {
+        const now = new Date();
+        if (this.web3Modal.active) {
+            this.whitelistSaleStatus = await this.nftContract.hasSaleStarted();
+            console.log('has the sale started?', this.whitelistSaleStatus)
+        } else if (this.endDate > now.getTime()) {
+                this.whitelistSaleStatus = false
+                console.log('sale is in the future')
+        } else if (this.endDate <= now.getTime()) {
+                this.whitelistSaleStatus = true
+                console.log('sale started is in the past')
+        }
+
+        console.log('time', this.endDate.getTime(), now.getTime())
+        console.log('getwhitelistSaleStatus', this.whitelistSaleStatus)
+    },
 
 
-    async sendWhitelistData(type) {
-        console.log('Whitelist')
-         let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
-             let inputQuery = Object.assign( { "publicAddress": this.userAddress, "whitelistAmount": this.whitelistAmount, "whitelistType": type })
-             console.log('input', this.userAddress, type)
-             let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "save_whitelist_address", "input": inputQuery})
-             let output = result
-             console.log('sendWhitelistData', type, result)
-             if(output.success){
-                  this.userWhitelisted = true
-              } else {
-                  this.userWhitelisted = false
-              }
+    async sendWhitelistData() {
+        let publicAddress = this.userAddress
+        let authToken = this.authToken
+        let allowlistAmount = 1
+        let allowlistType = 1
+
+        let sendWhitelistData = await resolveRoutedApiQuery('saveAllowListAddress', {publicAddress: publicAddress, authToken: authToken, allowlistAmount:allowlistAmount, allowlistType: allowlistType } )
+
+        if(sendWhitelistData.success){
+          this.userWhitelisted = true
+          return result
+        } else {
+            this.userWhitelisted = false
+        }
     },
 
     async checkWhitelistForAddress() {
-      console.log('Checking Whitelist..')
-       let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
-           let inputQuery = Object.assign( { "publicAddress": this.userAddress})
-           console.log('input', this.userAddress)
-           let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "check_all_whitelists", "input": inputQuery})
-           let output = result
+           let result = await resolveRoutedApiQuery('checkAllAllowLists', {publicAddress: this.userAddress} )
            console.log('checkWhitelistForAddress', result)
-
-           if(output.success){
+           if(result.success){
                 this.userWhitelisted = true
             } else {
                 this.userWhitelisted = false
@@ -278,29 +339,19 @@ export default {
 
 
 
-    async fetchNFTbyContract(contractAddress) {
-      console.log('fetching NFTs held by account for', contractAddress)
-      // Obtain API Endpoint
-       let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
-
-       console.log('this.web3Modal.account', this.web3Modal.account)
+    async getERC721Balance() {
        this.userAddress = this.web3Modal.account
+       console.log('fetching NFTs held by ', this.web3Modal.account)
 
-       let inputQuery = Object.assign( { "publicAddress": this.userAddress, "filterNFTcontracts": contractAddress})
-       console.log('input', this.userAddress, contractAddress)
+       let result = await resolveRoutedApiQuery('ERC721BalanceByOwner', { "publicAddress": this.userAddress })
+       console.log('fetchNFTbyContract', result.data, )
 
-       // Search of OG NFTs
-
-           let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "ERC721_balance_by_owner", "input": inputQuery})
-           let output = result.output[0]
-           console.log('result.output', output, )
-
-           if(output && output.tokenIds){
-                this.NFTsOwned = output.tokenIds.length
-                console.log('this.NFTsOwned', this.NFTsOwned)
-           } else {
-               console.log("No NFTs located for ", contractAddress)
-           }
+       if(result.data.success && result.data.data.length > 0){
+            this.userQualified = true
+            console.log('user qualified for allowlist', this.userQualified)
+       } else {
+           console.log("user NOT qualified for allowlist",  this.userQualified)
+       }
 
    },
 

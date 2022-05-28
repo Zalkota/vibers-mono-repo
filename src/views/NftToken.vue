@@ -175,7 +175,7 @@ const StoreContractABI = require( '../contracts/BlockStoreABI.json'  )
 export default {
   name: 'Home',
   props: [],
-  components: {Navbar, Footer, SellOrderForm, BuyOrderForm, OffersList},
+  components: {Navbar, Footer},
   data() {
     return {
       web3Plug: new Web3Plug() ,

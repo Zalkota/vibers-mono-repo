@@ -72,25 +72,9 @@
     </div>
 
 
-<section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6">
-<!-- If user is not logged in, prompt connect button -->
-    <div v-show="web3Modal.active == false" class="text-center shadow-md  rounded-sm mx-auto border-2 border-gray-900 mt-12 mb-64">
-      <div class="bg-four font-bold text-lg md:text-xl lg:text-2xl  text-white p-6 py-8 sm:px-6 lg:px-10">
-         <h2 class="tracking-widest">Connect your wallet</h2>
-         <p class=" text-gray-500 text-sm font-thin pt-2">Connect your wallet with the available wallet providers.</p>
-      </div>
-      <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800">
-          <div class="text-center mx-auto m-6 ">
-              <button class="pushable my-6 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg max-w-xs tracking-widest" v-on:click="connect()">
-                <span class="front" style="font-family: Luckiest Guy">
-                  Connect Wallet
-                </span>
-              </button>
-          </div>
-      </div>
-    </div>
-</section>
-<!-- <div class="" v-if="signedInToWeb3 == true">
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6">
+        <ConnectWalletButton v-if="web3Modal.active != true" />
+    </section>
 
   <!-- <Footer/> -->
 
@@ -100,6 +84,7 @@
 
 <script>
 
+import ConnectWalletButton from "./components/ConnectWalletButton.vue";
 
 
 import Web3Plug from '../js/web3-plug.js'
@@ -123,7 +108,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 export default {
   name: 'Profile',
   props: [],
-  components: {Navbar, Footer, TiledTokenProfileBrowser, Web3ModalVue},
+  components: {Navbar, Footer, TiledTokenProfileBrowser, ConnectWalletButton, Web3ModalVue},
 
   data() {
     return {
