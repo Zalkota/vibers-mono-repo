@@ -10,24 +10,43 @@
          </div>
        </div>
 
+
        <section>
-           <ConnectWalletButton v-if="web3Modal.active != true" />
+           <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false" />
        </section>
 
+       <Loading
+       v-show="showSpinner == true"
+       />
+
+       <NetworkError
+       v-show="networkError == true"
+       />
+       
        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6 ">
 
-           <SignInButton v-if="web3Modal.active == true && authToken == null"
+
+
+           <SignInButton v-if="web3Modal.active == true && authToken == null && showSpinner == false"
            :userAddress = "userAddress"
            @authTokenEvent = "readAuthTokenEvent"
            />
 
            <WhitelistMint
-           v-if="web3Modal.active == true && authToken != null && whitelistSaleStatus == true"
+           v-if="web3Modal.active == true && authToken != null && userWhitelisted == true && whitelistSaleStatus == true && showSpinner == false"
            :authToken = "authToken"
            :whitelistSaleStatus = "whitelistSaleStatus"
            />
 
-           <div v-show="web3Modal.active == true && userWhitelisted && authToken != null && whitelistSaleStatus == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
+           <!-- === LOADING SECTION === -->
+
+
+
+           <!-- === NETWORK ERROR SECTION === -->
+
+
+
+           <div v-show="web3Modal.active == true && userWhitelisted && authToken != null && whitelistSaleStatus == false && showSpinner == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-3xl font-heading color-six p-6 py-8 sm:px-6 lg:px-10 rounded-lg rounded-b-none">
                 <h2 class="tracking-widest uppercase">Account Whitelisted</h2>
              </div>
@@ -40,7 +59,22 @@
              </div>
            </div>
 
-           <div v-show="userWhitelisted == false && authToken != null" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
+           <div v-show="web3Modal.active == true && userWhitelisted == false && authToken != null && whitelistSaleStatus == true && showSpinner == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
+             <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-3xl font-heading color-six p-6 py-8 sm:px-6 lg:px-10 rounded-lg rounded-b-none">
+                <h2 class="tracking-widest uppercase">Account Not Allowlisted</h2>
+             </div>
+             <div class="text-center container shadow-md bg-gray-900 text-gray-500 text-md rounded-lg rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800">
+                 <p class="text-xl text-gray-400 "><span class="font-thin text-lg">Sorry, <span class="color-three font-medium">{{ userAddressSliceMiddle() }}</span> is not on the allowlist. Either switch to an allowlisted account or particpate in the
+                     public mint. !vibe<br></span>
+                 </p><br><br>
+                 <div class=" mb-6">
+                     <a href="https://vibers.io" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline uppercase" >Public Mint</a>
+                 </div>
+                 <br>
+             </div>
+           </div>
+
+           <div v-show="userWhitelisted == false && authToken != null && whitelistSaleStatus == false && showSpinner == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
                 <h2 class="tracking-widest uppercase text-3xl color-six">Whitelist Signup</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
@@ -51,11 +85,10 @@
                  <div class="text-left flex lg:flex-row flex-col my-0 border-t lg:border-gray-800 border-gray-600 py-0  bg-gray-900 shadow-sm">
 
                      <div class="flex-1 lg:border-r lg:border-gray-800 border-gray-600 border-b px-10 py-8 lg:pt-10 lg:pb-4">
-                         <span class="text-gray-600 font-thin">Whitelist Available for holders of:</span>
+                         <span class="text-gray-600 font-thin">Allowlist Available for holders of:</span>
                          <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Prompt;">CryptoToadz, DystoPunks, Doodles, CryptoSkulls, CryptoRayRays, Bonies, CryptoVans.</h3>
 
                          <br>
-                         <!-- <span class="text-gray-600 font-thin">Mint price:</span><span style="font-family: Russo One;"> 0.04 <span  style="font-family: sans-serif;">Ξ</span></span> <br><br> -->
                          <span class="text-gray-600 font-thin">Total Spots:</span> <span style="font-family: Russo One;"> {{ OGWhitelistSpotsTotal }}</span>
                          <br>
                          <br>
@@ -68,7 +101,7 @@
 
                  </div>
                  <div class="p-4 bg-gray-900 border-t lg:border-gray-800 border-gray-600 rounded-xl rounded-t-none">
-                     <span class="text-gray-600 text-sm">We are allowing only 1 whitelist spot per account.</span>
+                     <span class="text-gray-600 text-sm">We are allowing only 1 allowlist spot per account.</span>
                  </div>
 
              </div>
@@ -96,39 +129,32 @@
 
            <!-- === QUESTION  SECTION === -->
 
-            <div v-show="web3Modal.active == true && userWhitelisted == false" class="container text-left my-6  py-0   rounded-sm shadow-sm" style="max-width: 1022px">
-                <div class="lg:flex shrink-0 bg-gray-900 px-10 pt-16 pb-20 lg:py-10 border-b border-gray-800">
+            <div v-show="web3Modal.active == true && userWhitelisted == false" class="container text-left my-10 py-0 rounded-lg shadow-sm" style="max-width: 1022px">
+                <div class="lg:flex shrink-0 bg-gray-900 px-10 pt-16 pb-20 lg:py-10 border-b border-gray-800 rounded-t-lg">
                     <div class="flex-1">
-                        <span class="text-sm text-blue-500 font-bold">Commonly Asked</span>
-                        <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Russo One;">Questions</h3>
+                        <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Prompt;">Questions</h3>
                         <p class="text-xs text-gray-600">
                             Here is a list of commonly asked questions related to the BlockForge Battle Pass NFT Mint.
                         </p>
                     </div>
-                    <div class="lg:text-right flex-initial mt-6 lg:mt-0">
-                        <button  class="button inline-block text-md text-blue-500 font-bold py-2 px-4 hover:bg-blue-500 hover:text-white border-2 border-blue-500 rounded-sm  text-center no-underline cursor-pointer tracking-wider uppercase max-w-lg">
-                            WhitePaper <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="hide w-6 inline-block icon-book-open"><path class="fill-blue-500" d="M13.41 20.41a2 2 0 0 1-2.82 0l-.83-.82A2 2 0 0 0 8.34 19H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4a5 5 0 0 1 4 2 5 5 0 0 1 4-2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4.34a2 2 0 0 0-1.42.59l-.83.82z"/><path class="fill-blue-400" d="M12 21V5a5 5 0 0 1 4-2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4.34a2 2 0 0 0-1.42.59l-.83.82A2 2 0 0 1 12 21z"/></svg>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="unhide w-6 inline-block  icon-external-window"><path class="fill-blue-500" d="M12 8a1 1 0 0 1-1 1H5v10h10v-6a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9c0-1.1.9-2 2-2h6a1 1 0 0 1 1 1z"/><path class="fill-blue-400" d="M19 6.41L8.7 16.71a1 1 0 1 1-1.4-1.42L17.58 5H14a1 1 0 0 1 0-2h6a1 1 0 0 1 1 1v6a1 1 0 0 1-2 0V6.41z"/></svg>
-                        </button>
-                    </div>
                 </div>
                 <div class=" shrink-0 bg-gray-900 px-10 pt-10 pb-8 lg:py-10 ">
-                    <h4 class="text-md text-gray-300 mb-2 font-bold">Is it is safe to register to this Whitelist?</h4>
+                    <h4 class="text-md text-gray-300 mb-2 font-bold" style="font-family: Prompt;">Is it is safe to register to this Allowlist?</h4>
                     <p class="text-sm font-thin text-gray-200 bg-gray-800 p-4">
                         We do not record any personal information and do not require any signatures from your web3 wallet.
                     </p>
                 </div>
 
                 <div class=" shrink-0 bg-gray-900 px-10 pt-2 pb-8 lg:pt-2 lg:pb-10">
-                    <h4 class="text-md text-gray-300 mb-2 font-bold">When will the mint occur?</h4>
+                    <h4 class="text-md text-gray-300 mb-2 font-bold" style="font-family: Prompt;">When will the mint occur?</h4>
                     <p class="text-sm font-thin text-gray-200 bg-gray-800 p-4">
                         The release date of the Battle Pass NFT has not yet been announced. Follow us on twitter and join the Discord to stay up to date.
                     </p>
                 </div>
 
-                <div class=" shrink-0 bg-gray-900 px-10 pt-2 pb-8 lg:pt-2 lg:pb-10">
-                    <h4 class="text-md text-gray-300 mb-2 font-bold">Is it is safe to register to this Whitelist?</h4>
+                <div class=" shrink-0 bg-gray-900 px-10 pt-2 pb-8 lg:pt-2 lg:pb-10 rounded-b-lg">
+                    <h4 class="text-md text-gray-300 mb-2 font-bold" style="font-family: Prompt;">Is it is safe to register to this Allowlist?</h4>
                     <p class="text-sm font-thin text-gray-200 bg-gray-800 p-4">
                         The BlockForge Battle Pass NFT is an ERC721 Token that will be distributed via a public mint. Each Battle Pass NFT is unique, in that it will have a unique number on the front and a unique Minecraft skin on the back.
                     </p>
@@ -150,6 +176,9 @@
 
 <script>
 
+
+import NetworkError from './components/NetworkError.vue';
+import Loading from './components/Loading.vue';
 import ConnectWalletButton from "./components/ConnectWalletButton.vue";
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
@@ -179,14 +208,14 @@ const ERC721ABI = require("../contracts/ERC721ABI.json");
 export default {
   name: 'WhitelistForm',
   props: [],
-  components: {Navbar, Footer, Web3ModalVue, SignInButton, WhitelistMint, ConnectWalletButton},
+  components: {Navbar, Footer, Web3ModalVue, SignInButton, WhitelistMint, ConnectWalletButton, NetworkError, Loading},
   watch: {
 
   },
 
   data() {
     return {
-      endDate: new Date(2022, 4, 1, 10, 10, 10, 10),
+      endDate: new Date(2022, 6, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,
@@ -215,6 +244,10 @@ export default {
       publicWhitelistSpotsAvailable: 0,
       publicWhitelistMintAmount: 1,
       publicWhitelistSpotsTotal: 4000,
+
+      showSpinner: false,
+      networkError: false,
+
 
       providerOptions: {
         walletconnect: {
@@ -316,44 +349,74 @@ export default {
         let authToken = this.authToken
         let allowlistAmount = 1
         let allowlistType = 1
+        try {
+            this.showSpinner = true
 
-        let sendWhitelistData = await resolveRoutedApiQuery('saveAllowListAddress', {publicAddress: publicAddress, authToken: authToken, allowlistAmount:allowlistAmount, allowlistType: allowlistType } )
+            let sendWhitelistData = await resolveRoutedApiQuery('saveAllowListAddress', {publicAddress: publicAddress, authToken: authToken, allowlistAmount:allowlistAmount, allowlistType: allowlistType } )
 
-        if(sendWhitelistData.success){
-          this.userWhitelisted = true
-          return result
-        } else {
-            this.userWhitelisted = false
+            if(sendWhitelistData.success){
+              this.userWhitelisted = true
+            } else {
+              this.userWhitelisted = false
+            }
+        } catch (err) {
+            console.error(err);
+            // show error message
+            this.networkError = true
+        } finally {
+            // hide spinner
+            this.showSpinner = false
         }
     },
 
     async checkWhitelistForAddress() {
-           let result = await resolveRoutedApiQuery('checkAllAllowLists', {publicAddress: this.userAddress} )
-           console.log('checkWhitelistForAddress', result)
-           if(result.success){
-                this.userWhitelisted = true
-            } else {
-                this.userWhitelisted = false
-            }
-    },
 
+        try {
+            this.showSpinner = true
+            let result = await resolveRoutedApiQuery('checkAllAllowLists', {publicAddress: this.userAddress} )
+            console.log('checkWhitelistForAddress', result)
+            if(result.success){
+                 this.userWhitelisted = true
+             } else {
+                 this.userWhitelisted = false
+             }
+        } catch (err) {
+            console.error(err);
+            // show error message
+            this.networkError = true
+        } finally {
+            // hide spinner
+            this.showSpinner = false
+        }
+    },
 
 
     async getERC721Balance() {
        this.userAddress = this.web3Modal.account
        console.log('fetching NFTs held by ', this.web3Modal.account)
 
-       let result = await resolveRoutedApiQuery('ERC721BalanceByOwner', { "publicAddress": this.userAddress })
-       console.log('fetchNFTbyContract', result.data, )
+       try {
+           this.showSpinner = true
+           let result = await resolveRoutedApiQuery('ERC721BalanceByOwner', { "publicAddress": this.userAddress })
+           console.log('fetchNFTbyContract', result.data, )
 
-       if(result.data.success && result.data.data.length > 0){
-            this.userQualified = true
-            console.log('user qualified for allowlist', this.userQualified)
-       } else {
-           console.log("user NOT qualified for allowlist",  this.userQualified)
+           if(result.data.success && result.data.data.length > 0){
+                this.userQualified = true
+                console.log('user qualified for allowlist', this.userQualified)
+           } else {
+               console.log("user NOT qualified for allowlist",  this.userQualified)
+           }
+
+       } catch (err) {
+           console.error(err);
+           // show error message
+           this.networkError = true
+       } finally {
+           // hide spinner
+           this.showSpinner = false
        }
 
-   },
+    },
 
       userAddressSliceMiddle(){
           if (this.userAddress !== null) {

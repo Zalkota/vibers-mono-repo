@@ -42,10 +42,10 @@
                         </div> -->
 
                         <div class="hide grow flex-auto px-2 mt-1 lg:mt-0 text-center">
-                            <router-link class="no-underline" to="/whitelist">
+                            <router-link class="no-underline" to="/allowlist">
                                 <button class="pushable my-6 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg max-w-xs tracking-widest hide" v-on:click="connect()">
                                   <span class="front">
-                                    Join Whitelist
+                                    Join Allowlist
                                   </span>
                                 </button>
                             </router-link>

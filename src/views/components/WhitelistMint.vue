@@ -1,11 +1,10 @@
 <template>
     <div class="">
         <div class="mb-4 lg:mb-0">
-
-            <div v-if="web3Modal.active == true && whitelistSaleStatus == false && authToken != null" class="sale-container bg-transparent">
+            <div class="sale-container bg-transparent">
                     <h1 class="text-white tracking-wider text-4xl lg:text-6xl text-center font-bold"  style="font-family: Prompt;">Allowlist Minting Is Now Live!</h1>
                     <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 2px solid #B3FFC6;">
-                        <div class="custom-number-input h-10 justify-center content-center text-center px-2">
+                        <div class="custom-number-input h-10 justify-center content-center text-center px-2 ">
                               <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
                                 <button v-on:click="decrementMint" class=" bg-transparent text-white text-3xl h-full w-20 rounded-l cursor-pointer outline-none">
                                     <span class="text-3xl font-bold">-</span>
@@ -22,12 +21,12 @@
                             </div>
                         </div>
                         <div>
-                            <div v-if="web3Modal.active" class="text-center text-white py-3 mb-0 font-medium text-xl">
+                            <!-- <div v-if="web3Modal.active" class="text-center text-white py-3 mb-0 font-medium text-xl">
                                 {{ totalSupply }} / 10,000
                             </div>
                             <div v-else class="">
                                 <br>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="text-center mx-auto whitespace-nowrap text-3xl lg:text-5xl pr-2 px-4 w-full" style="border-color: #A9ECE3;">
@@ -65,9 +64,6 @@
 
 // Import Components
 import Countdown from "./Countdown.vue";
-
-
-
 
 
 // Web3 Module
@@ -202,10 +198,6 @@ export default {
             this.mintAmount--;
         }
     },
-
-
-
-
 
 
 
