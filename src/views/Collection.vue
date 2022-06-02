@@ -58,7 +58,6 @@ import web3utils from 'web3-utils'
 import Navbar from './components/Navbar.vue';
 
 import Footer from './components/Footer.vue';
-import TreeList from './components/TreeList.vue';
 import FilterDropdown from './components/FilterDropdown.vue';
 import TiledTokenBrowser from './components/TiledTokenBrowser.vue';
 
@@ -69,7 +68,7 @@ const FrontendConfig = require('../config/FrontendConfig.json')
 export default {
   name: 'Collection',
   props: [],
-  components: {Navbar, Footer,TreeList,TiledTokenBrowser, FilterDropdown},
+  components: {Navbar, Footer, TiledTokenBrowser, FilterDropdown},
   data() {
     return {
       web3Plug: new Web3Plug() ,

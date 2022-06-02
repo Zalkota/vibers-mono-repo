@@ -38,7 +38,7 @@ export default new Router({
       component: Profile,
     },
     {
-      path: '/whitelist',
+      path: '/allowlist',
       name: 'whitelistform',
       component: WhitelistForm,
     },

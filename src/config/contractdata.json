@@ -19,7 +19,7 @@
 
     "rinkeby":{
       "contracts":{
-        "vibers":{"name":"VIBE","address":"0x3CbB2C0F87D72942C2C0C8771cd0c976f3c8Dbe6"},
+        "vibers":{"name":"VIBE","address":"0x489Bd604F639Ee8Eb937f6401Fa8De3A9A3F4a9e"},
         "cosmiccaps_dev":{"name":"COSMIC","address":"0x008B5B80625Dc92848D57720eb3D1190c32ED580" }
       }
     }

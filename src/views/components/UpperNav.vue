@@ -41,11 +41,15 @@
                             </a>
                         </div> -->
 
-                        <!-- <div class="hide grow flex-auto px-2 mt-1 lg:mt-0 text-center">
-                            <router-link class="no-underline" to="/whitelist">
-                                <div class="bg-six text-2xl color-four font-bold my-2 lg:py-3 lg:px-6 py-2 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-xl max-w-xs no-underline">Join Whitelist</div>
+                        <div class="hide grow flex-auto px-2 mt-1 lg:mt-0 text-center">
+                            <router-link class="no-underline" to="/allowlist">
+                                <button class="pushable my-6 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg max-w-xs tracking-widest hide" v-on:click="connect()">
+                                  <span class="front">
+                                    Join Allowlist
+                                  </span>
+                                </button>
                             </router-link>
-                        </div> -->
+                        </div>
 
                         <div v-if="web3Modal.active == false" class="flex-auto px-2 mt-1 lg:mt-0 text-center ">
                             <!-- <button class="button bg-six sm:text-xl lg:text-2xl text-lg color-four font-bold custom-buttom-shadow my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 rounded-sm cursor-pointer  max-w-xs tracking-widest" type="button" v-on:click="connect()">
@@ -108,7 +112,6 @@
 
 
 <script>
-import Web3NetButton from './Web3NetButton.vue'
 import Config from '../config/UpperNav.js'
 import LoginModal from './LoginModal.vue';
 
@@ -125,7 +128,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 export default {
   name: 'UpperNav',
   props: [],
-  components:{Web3NetButton, LoginModal, Web3ModalVue},
+  components:{LoginModal, Web3ModalVue},
   data() {
     return {
       activeAccountAddress:null,

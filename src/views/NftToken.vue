@@ -158,10 +158,7 @@ import Navbar from './components/Navbar.vue';
 
 import Footer from './components/Footer.vue';
 
-import OffersList from './components/OffersList.vue'
 
-import BuyOrderForm from './components/BuyOrderForm.vue'
-import SellOrderForm from './components/SellOrderForm.vue';
 
 import StarflaskAPIHelper from '../js/starflask-api-helper'
 import AssetDataHelper from '../js/asset-data-helper'
@@ -178,7 +175,7 @@ const StoreContractABI = require( '../contracts/BlockStoreABI.json'  )
 export default {
   name: 'Home',
   props: [],
-  components: {Navbar, Footer, SellOrderForm, BuyOrderForm, OffersList},
+  components: {Navbar, Footer},
   data() {
     return {
       web3Plug: new Web3Plug() ,

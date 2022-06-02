@@ -30,11 +30,10 @@
 
 <script>
 import UpperNav from './UpperNav.vue';
-import AccordionNav from './AccordionNav.vue';
 export default {
   name: 'Navbar',
   props: [],
-  components: {UpperNav,AccordionNav},
+  components: {UpperNav},
   data() {
     return {
       showResponsiveMenu: false,
