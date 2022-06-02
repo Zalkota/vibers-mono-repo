@@ -1,4 +1,4 @@
 {
-    "tokenDataApiRoot":"http://localhost:3000",
-    "marketApiRoot":"http://localhost:3000"
+    "tokenDataApiRoot":"https://api.vibers.io",
+    "marketApiRoot":"http://api.vibers.io"
 }
