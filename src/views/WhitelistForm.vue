@@ -129,7 +129,7 @@
 
            <!-- === QUESTION  SECTION === -->
 
-            <div v-show="web3Modal.active == true && userWhitelisted == false" class="container text-left my-10 py-0 rounded-lg shadow-sm" style="max-width: 1022px">
+            <!-- <div v-show="web3Modal.active == true && userWhitelisted == false" class="container text-left my-10 py-0 rounded-lg shadow-sm" style="max-width: 1022px">
                 <div class="lg:flex shrink-0 bg-gray-900 px-10 pt-16 pb-20 lg:py-10 border-b border-gray-800 rounded-t-lg">
                     <div class="flex-1">
                         <h3 class="text-xl text-gray-300 font-bold tracking-widest uppercase" style="font-family: Prompt;">Questions</h3>
@@ -159,8 +159,7 @@
                         The BlockForge Battle Pass NFT is an ERC721 Token that will be distributed via a public mint. Each Battle Pass NFT is unique, in that it will have a unique number on the front and a unique Minecraft skin on the back.
                     </p>
                 </div>
-
-            </div>
+            </div> -->
 
 <!--
            <LogoutButton
