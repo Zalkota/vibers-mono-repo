@@ -2,16 +2,13 @@
 
     "production":{
 
-        "externalRoutes": {"docs":"https://docs.starflask.com",
-                        "api":"https://api.starflask.com"}
-
-
-
+        "externalRoutes": {"docs":"https://docs.vibers.io",
+                        "api":"https://api.vibers.io"}
 
     },
     "staging":{
-      "externalRoutes": {"docs":"https://docs.starflask.com",
-        "api":"https://api.starflask.com"}
+      "externalRoutes": {"docs":"https://docs.vibers.io",
+        "api":"https://api.vibers.io"}
 
 
     },
@@ -24,9 +21,5 @@
           "docs":"http://localhost:3000",
           "api":"http://localhost:3000"
       }
-
-
     }
-
-
 }
