@@ -213,7 +213,7 @@ export default {
 
   data() {
     return {
-      endDate: new Date(2022, 5, 1, 10, 10, 10, 10),
+      endDate: new Date(2022, 4, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,

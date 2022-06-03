@@ -103,7 +103,7 @@ export default {
   data() {
     return {
       // SET MINT DATE
-      endDate: new Date(2022, 5, 15, 10, 10, 10, 10), // month behind 4 = may
+      endDate: new Date(2022, 4, 1, 10, 10, 10, 10), // month behind 4 = may
       web3Plug: new Web3Plug(),
       signedInToWeb3: false,
       balances: {},
