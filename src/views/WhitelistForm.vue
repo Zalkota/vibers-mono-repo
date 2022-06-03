@@ -10,7 +10,6 @@
          </div>
        </div>
 
-
        <section>
            <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false && whitelistSaleStatus == true" />
        </section>
@@ -214,7 +213,7 @@ export default {
 
   data() {
     return {
-      endDate: new Date(2022, 6, 1, 10, 10, 10, 10),
+      endDate: new Date(2022, 7, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,
@@ -329,17 +328,14 @@ export default {
         const now = new Date();
         if (this.web3Modal.active) {
             this.whitelistSaleStatus = await this.nftContract.hasSaleStarted();
-            console.log('has the sale started?', this.whitelistSaleStatus)
+            console.log('getwhitelistSaleStatus:', this.whitelistSaleStatus)
         } else if (this.endDate > now.getTime()) {
                 this.whitelistSaleStatus = false
-                console.log('sale is in the future')
+                console.log('getwhitelistSaleStatus: sale is in the future')
         } else if (this.endDate <= now.getTime()) {
                 this.whitelistSaleStatus = true
-                console.log('sale started is in the past')
+                console.log('getwhitelistSaleStatus: Sale started in the past')
         }
-
-        console.log('time', this.endDate.getTime(), now.getTime())
-        console.log('getwhitelistSaleStatus', this.whitelistSaleStatus)
     },
 
 
