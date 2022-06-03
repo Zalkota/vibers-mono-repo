@@ -169,7 +169,6 @@ import web3utils from 'web3-utils'
 
 const BN = web3utils.BN
 
-const FrontendConfig = require('../config/FrontendConfig.json')
 const StoreContractABI = require( '../contracts/BlockStoreABI.json'  )
 
 export default {

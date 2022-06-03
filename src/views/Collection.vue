@@ -63,7 +63,6 @@ import TiledTokenBrowser from './components/TiledTokenBrowser.vue';
 
 import StarflaskApiHelper from '../js/starflask-api-helper.js'
 
-const FrontendConfig = require('../config/FrontendConfig.json')
 
 export default {
   name: 'Collection',
@@ -120,7 +119,6 @@ export default {
 
           async fetchTraits( ){
 
-              let uri = FrontendConfig.marketApiRoot+'/api/v1/apikey'
 
               let result = await StarflaskApiHelper.resolveStarflaskQuery(uri,{"requestType": "all_collection_traits", "input": {collectionName:'cosmiccaps_dev'}})
 

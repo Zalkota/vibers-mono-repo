@@ -12,7 +12,7 @@
 
 
        <section>
-           <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false" />
+           <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false && whitelistSaleStatus == true" />
        </section>
 
        <Loading
@@ -73,6 +73,7 @@
                  <br>
              </div>
            </div>
+
 
            <div v-show="userWhitelisted == false && authToken != null && whitelistSaleStatus == false && showSpinner == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
@@ -189,7 +190,6 @@ import Web3Plug from '../js/web3-plug.js'
 import web3utils from 'web3-utils'
 
 import StarflaskApiHelper from '../js/starflask-api-helper.js'
-const FrontendConfig = require('../config/FrontendConfig.json')
 
 // Web3Modal-Vue
 const INFURA_ID = process.env.INFURA_ID

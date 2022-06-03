@@ -47,7 +47,6 @@ import Web3Plug from '../../js/web3-plug.js'
 import StarflaskApiHelper from '../../js/starflask-api-helper.js'
 import NftTile from './NftTile.vue';
 import PaginationBar from './PaginationBar.vue';
-const FrontendConfig = require('../../config/FrontendConfig.json')
 
 export default {
   name: 'TiledTokenProfileBrowser',
@@ -90,7 +89,6 @@ export default {
 
       async fetchFilteredTokensArray(){
         console.log('fetching results  - fetchFilteredTokensArray ')
-         let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
 
 
          if (this.userAddress !== null) {

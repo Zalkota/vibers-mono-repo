@@ -94,7 +94,6 @@ import Footer from './components/Footer.vue';
 import TiledTokenProfileBrowser from './components/TiledTokenProfileBrowser.vue';
 import StarflaskApiHelper from '../js/starflask-api-helper.js'
 
-const FrontendConfig = require('../config/FrontendConfig.json')
 
 // Web3Modal-Vue
 const INFURA_ID = process.env.INFURA_ID

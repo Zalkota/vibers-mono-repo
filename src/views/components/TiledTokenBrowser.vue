@@ -73,7 +73,6 @@ import StarflaskApiHelper from '../../js/starflask-api-helper.js'
 import mushroomJson from "../../mushrooms.json";
 import NftTile from './NftTile.vue';
 import PaginationBar from './PaginationBar.vue';
-const FrontendConfig = require('../../config/FrontendConfig.json')
 
 export default {
   name: 'TiledTokenBrowser',
@@ -148,7 +147,6 @@ export default {
       async fetchFilteredTokensArray(){
         console.log('fetching results  - fetchFilteredTokensArray ')
 
-         let uri = FrontendConfig.marketApiRoot +'/api/v1/apikey'
 
          let inputQuery = Object.assign( {collectionName:'cosmiccaps_dev'}, this.currentFilter)
 
