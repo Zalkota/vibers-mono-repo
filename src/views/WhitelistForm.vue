@@ -11,7 +11,7 @@
        </div>
 
        <section>
-           <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false && whitelistSaleStatus == true" />
+           <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false" />
        </section>
 
        <Loading
@@ -213,7 +213,7 @@ export default {
 
   data() {
     return {
-      endDate: new Date(2022, 7, 1, 10, 10, 10, 10),
+      endDate: new Date(2022, 5, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,
