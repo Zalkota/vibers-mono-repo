@@ -54,7 +54,7 @@
             </div>
 
             <div class="text-center mx-auto whitespace-nowrap text-3xl lg:text-5xl px-4  " style="border-color: #A9ECE3;">
-                <router-link to="/" class='no-underline unhide' >
+                <router-link to="/allowlist" class='no-underline unhide' >
                     <button class="pushable my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg tracking-widest">
                       <span class="front">
                         !allowlist
