@@ -81,7 +81,7 @@
 
                             <router-link class="no-underline unhide" to="/profile">
                                 <button class="pushable my-2 lg:my-6 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-sm max-w-xs tracking-widest"  v-on:click="connect()">
-                                  <span class="front" style="padding: 12px 16px;">
+                                  <span class="front" style="padding: 8px 16px;">
                                     {{ userAddressSlice() }}
                                   </span>
                                 </button>

@@ -2,7 +2,7 @@
     <div class="">
         <div class="mb-4 lg:mb-0">
             <div class="sale-container bg-transparent" v-if="saleStatus">
-                    <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl">Rinkeby Mint is live!</h1>
+                    <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl">Rinkeby <br>  Mint is live!</h1>
                     <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 2px solid #B3FFC6;">
                         <div class="custom-number-input h-10 justify-center content-center text-center px-2">
                               <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">

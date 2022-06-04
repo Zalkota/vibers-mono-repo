@@ -6,8 +6,8 @@
              <p class=" text-gray-500 text-lg font-thin pt-2">Sign the string to verify you are the owner of your wallet. <br> <a class="color-six" href="https://docs.metamask.io/guide/signing-data.html">Learn more</a> about signing data with MetaMask.     </p>
         </div>
         <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800 rounded-b-2xl">
-            <div class="text-center max-w-sm mx-auto m-6 ">
-                <button class="button pushable font-bold inline mx-auto text-md sm:text-3xl tracking-widest w-full" @click="signChallenge()">
+            <div class="text-center max-w-sm mx-auto lg:m-6 ">
+                <button class="button pushable font-bold inline mx-auto text-lg sm:text-3xl tracking-widest w-full" @click="signChallenge()">
                     <span class="mint-front">
                       Sign Message
                     </span>
