@@ -24,7 +24,7 @@
 
        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6 ">
 
-
+           <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false" />
 
            <SignInButton v-if="web3Modal.active == true && authToken == null && showSpinner == false"
            :userAddress = "userAddress"

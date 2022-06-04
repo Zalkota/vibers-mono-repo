@@ -1,7 +1,7 @@
 <template>
 
-    <div class=" max-w-3xl mx-auto text-center shadow-md  rounded-sm mx-auto mt-12 mb-64 rounded-2xl">
-        <div class="bg-four font-bold text-lg md:text-xl lg:text-4xl  text-white p-6 py-8 sm:px-6 lg:px-10 rounded-t-2xl">
+    <div class=" max-w-3xl mx-auto text-center shadow-md rounded-sm mx-auto mt-12 mb-64 rounded-2xl">
+        <div class="bg-four font-bold text-2xl lg:text-4xl  text-white p-6 py-8 sm:px-6 lg:px-10 rounded-t-2xl">
              <h2 class="" style="font-family: Prompt;">Sign In Required</h2>
              <p class=" text-gray-500 text-lg font-thin pt-2">Sign the string to verify you are the owner of your wallet. <br> <a class="color-six" href="https://docs.metamask.io/guide/signing-data.html">Learn more</a> about signing data with MetaMask.     </p>
         </div>
