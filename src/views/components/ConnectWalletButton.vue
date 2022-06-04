@@ -4,9 +4,9 @@
          <h2 class="" style="font-family: Prompt;">Connect Your Wallet</h2>
          <p class="text-gray-500 text-lg font-thin pt-2">Connect your wallet with the available wallet providers.</p>
       </div>
-      <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm p-4 sm:px-8 py-8 mx-auto border-t border-gray-800 rounded-b-2xl">
-          <div class="text-center max-w-sm mx-auto lg:m-6 ">
-              <button class="button pushable font-bold inline mx-auto text-lg sm:text-3xl tracking-widest w-full" @click="connect()">
+      <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm p-4 sm:px-8 py-10 border-t border-gray-800 rounded-b-2xl">
+          <div class="text-center max-w-sm mx-auto">
+              <button class="button pushable font-bold inline text-lg sm:text-3xl tracking-widest w-full " @click="connect()">
                   <span class="mint-front">
                     Connect
                   </span>
@@ -58,19 +58,14 @@ export default {
   },
 
   mounted: function () {
-      let suscribe = this.$store.subscribe((mutation, state) => {
-      console.log(mutation.type)
-      console.log(mutation.payload)
-      if (mutation.type == 'setActive' && mutation.payload == true) {
-          suscribe()
-      }
-    })
+
   },
   methods: {
 
     connect() {
         this.$store.dispatch('connect')
     },
+
 
   }
 }

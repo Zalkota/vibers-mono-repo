@@ -10,10 +10,6 @@
          </div>
        </div>
 
-       <section>
-           <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false" />
-       </section>
-
        <Loading
        v-show="showSpinner == true"
        />
@@ -22,19 +18,23 @@
        v-show="networkError == true"
        />
 
-       <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6 ">
 
-           <ConnectWalletButton v-if="web3Modal.active != true && showSpinner == false" />
+       <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-10 py-6 " v-show="showSpinner == false && networkError == false">
 
-           <SignInButton v-if="web3Modal.active == true && authToken == null && showSpinner == false"
+           <ConnectWalletButton v-if="web3Modal.active != true && whitelistSaleStatus == true"
+           />
+
+
+           <SignInButton v-if="web3Modal.active == true && authToken == null"
            :userAddress = "userAddress"
            @authTokenEvent = "readAuthTokenEvent"
            />
 
            <WhitelistMint
-           v-if="web3Modal.active == true && authToken != null && userWhitelisted == true && whitelistSaleStatus == true && showSpinner == false"
+           v-if="web3Modal.active == true && authToken != null && userWhitelisted == true && whitelistSaleStatus == true"
            :authToken = "authToken"
            :whitelistSaleStatus = "whitelistSaleStatus"
+
            />
 
            <!-- === LOADING SECTION === -->
@@ -45,7 +45,7 @@
 
 
 
-           <div v-show="web3Modal.active == true && userWhitelisted && authToken != null && whitelistSaleStatus == false && showSpinner == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
+           <div v-show="web3Modal.active == true && userWhitelisted && authToken != null && whitelistSaleStatus == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-3xl font-heading color-six p-6 py-8 sm:px-6 lg:px-10 rounded-lg rounded-b-none">
                 <h2 class="tracking-widest uppercase">Account Whitelisted</h2>
              </div>
@@ -58,7 +58,7 @@
              </div>
            </div>
 
-           <div v-show="web3Modal.active == true && userWhitelisted == false && authToken != null && whitelistSaleStatus == true && showSpinner == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
+           <div v-show="web3Modal.active == true && userWhitelisted == false && authToken != null && whitelistSaleStatus == true" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 max-w-3xl">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-3xl font-heading color-six p-6 py-8 sm:px-6 lg:px-10 rounded-lg rounded-b-none">
                 <h2 class="tracking-widest uppercase">Account Not Allowlisted</h2>
              </div>
@@ -67,7 +67,7 @@
                      public mint. !vibe<br></span>
                  </p><br><br>
                  <div class=" mb-6">
-                     <a href="https://vibers.io" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline uppercase" >Public Mint</a>
+                     <a href="https://vibers.io" class="bg-six text-2xl color-four font-bold my-2 lg:py-4 lg:px-6 py-4 px-4 rounded cursor-pointer shadow-sm hover:shadow-md rounded-md w-full no-underline uppercase">Return to Public Mint</a>
                  </div>
                  <br>
              </div>
@@ -94,7 +94,7 @@
            </div>
 
 
-           <div v-show="userWhitelisted == false && authToken != null && whitelistSaleStatus == false && showSpinner == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
+           <div v-show="userWhitelisted == false && authToken != null && whitelistSaleStatus == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
                 <h2 class="tracking-widest uppercase text-3xl color-six">Whitelist Signup</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
@@ -233,7 +233,7 @@ export default {
 
   data() {
     return {
-      endDate: new Date(2022, 4, 1, 10, 10, 10, 10),
+      endDate: new Date(2022, 7, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,
@@ -281,27 +281,20 @@ export default {
 
   created() {
       this.authToken = window.$cookies.get("authToken", this.authToken)
-      console.log("authtoken from cookies", this.authToken)
+      console.log("created: authtoken from cookies", this.authToken)
   },
 
   mounted: function () {
       this.getwhitelistSaleStatus()
       let subscribe = this.$store.subscribe((mutation, state) => {
-      console.log(mutation.type)
-      console.log(mutation.payload)
+      console.log("$store subscribe", mutation.type, mutation.payload)
       if (mutation.type == 'setActive' && mutation.payload == true) {
           this.userAddress = this.web3Modal.account
+          console.log("this.web3Modal.account", this.web3Modal.account)
           this.getERC721Balance()
-          // this.fetchNFTbyContract(this.dystopunksContractAddress)
           this.checkWhitelistForAddress()
           this.getTotalSupply();
           subscribe()
-      }
-
-      if (mutation.type == 'setAuthToken' && mutation.payload != null) {
-            this.authToken = this.$store.authToken
-            console.log('Auth Token Updated')
-            subscribe()
       }
     })
   },
@@ -318,7 +311,6 @@ export default {
     readAuthTokenEvent(payload) {
         this.authToken = payload.authToken
     },
-
 
     connect() {
         this.$store.dispatch('connect')
@@ -360,6 +352,7 @@ export default {
 
 
     async sendWhitelistData() {
+
         let publicAddress = this.userAddress
         let authToken = this.authToken
         let allowlistAmount = 1
@@ -367,12 +360,13 @@ export default {
         try {
             this.showSpinner = true
 
-            let sendWhitelistData = await resolveRoutedApiQuery('saveAllowListAddress', {publicAddress: publicAddress, authToken: authToken, allowlistAmount:allowlistAmount, allowlistType: allowlistType } )
+            let result = await resolveRoutedApiQuery('saveAllowListAddress', {publicAddress: publicAddress, authToken: authToken, allowlistAmount:allowlistAmount, allowlistType: allowlistType } )
 
-            if(sendWhitelistData.success){
+            if(result.success){
               this.userWhitelisted = true
             } else {
-              this.userWhitelisted = false
+                this.clearAuthenticationTokenLocally()
+                this.userWhitelisted = false
             }
         } catch (err) {
             console.error(err);
@@ -384,8 +378,15 @@ export default {
         }
     },
 
-    async checkWhitelistForAddress() {
 
+    async clearAuthenticationTokenLocally(userAddress) {
+        window.$cookies.remove("authToken")
+        this.authToken = null
+    },
+
+
+
+    async checkWhitelistForAddress() {
         try {
             this.showSpinner = true
             let result = await resolveRoutedApiQuery('checkAllAllowLists', {publicAddress: this.userAddress} )

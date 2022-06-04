@@ -159,8 +159,6 @@ export default {
   },
   mounted: function () {
       let suscribe = this.$store.subscribe((mutation, state) => {
-      console.log(mutation.type)
-      console.log(mutation.payload)
       if (mutation.type == 'setActive' && mutation.payload == true) {
           // this.getSaleStatus()
           this.getTotalSupply();
@@ -168,7 +166,6 @@ export default {
       }
     })
     this.getTotalSupply();
-    //
     setInterval(this.getTotalSupply.bind(this), 5000);
   },
 

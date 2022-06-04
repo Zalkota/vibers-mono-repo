@@ -5,9 +5,9 @@
              <h2 class="" style="font-family: Prompt;">Sign In Required</h2>
              <p class=" text-gray-500 text-lg font-thin pt-2">Sign the string to verify you are the owner of your wallet. <br> <a class="color-six" href="https://docs.metamask.io/guide/signing-data.html">Learn more</a> about signing data with MetaMask.     </p>
         </div>
-        <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800 rounded-b-2xl">
-            <div class="text-center max-w-sm mx-auto lg:m-6 ">
-                <button class="button pushable font-bold inline mx-auto text-lg sm:text-3xl tracking-widest w-full" @click="signChallenge()">
+        <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm rounded-t-nonep-4 sm:px-8 py-10 mx-auto border-t border-gray-800 rounded-b-2xl">
+            <div class="text-center max-w-sm mx-auto">
+                <button class="button pushable font-bold inline text-lg sm:text-3xl tracking-widest w-full" @click="signChallenge()">
                     <span class="mint-front">
                       Sign Message
                     </span>
@@ -23,6 +23,7 @@
 
 // Web3Modal-Vue
 const INFURA_ID = process.env.INFURA_ID
+import web3utils from 'web3-utils'
 import Web3ModalVue from "web3modal-vue";
 import web3ModalStore from "../../store/modules/web3Modal.js";
 import {web3Modal} from "../../js/mixins.js";
@@ -60,23 +61,10 @@ export default {
   },
 
   mounted: function () {
-      let subscribe = this.$store.subscribe((mutation, state) => {
-          console.log(mutation.type)
-          console.log(mutation.payload)
-          if (mutation.type == 'setActive' && mutation.payload == true) {
-            // this.getwhitelistSaleStatus()
-            // this.getTotalSupply();
-            subscribe()
-          }
-
-          if (mutation.type == 'setAuthToken' && mutation.payload != null) {
-                this.authToken = this.$store.authToken
-                subscribe()
-          }
-
-      })
   },
   methods: {
+
+
 
       emitAuthTokenEvent() {
           this.$emit('authTokenEvent', { authToken: this.authToken })
@@ -154,6 +142,8 @@ export default {
           this.emitAuthTokenEvent()
 
       },
+
+
 
 
 
