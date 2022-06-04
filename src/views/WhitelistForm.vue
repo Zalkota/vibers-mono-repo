@@ -71,6 +71,26 @@
                  </div>
                  <br>
              </div>
+             <div v-if="web3Modal.active == true" class="bg-gray-800 p-6 text-gray-500 font-thin flex">
+                     <div class="flex-initial">
+                         {{ userAddressSliceMiddle() }} Connected
+                     </div>
+                     <div class="flex-1 text-right">
+                         <button v-on:click="disconnect()" class="no-underline font-bold text-red-500 font-medium ml-4 uppercase tracking-wider"> Disconnect Wallet </button>
+                     </div>
+             </div>
+
+             <div v-if="web3Modal.active == false" class="bg-gray-800 p-4 text-gray-500 font-thin flex ">
+                     <div class="flex-initial pt-3 lg:pt-2 ml-2 hide">
+                         No Wallet Detected
+                     </div>
+                     <div class="lg:flex-1 text-right md:w-36 hide">
+                         <button v-on:click="connect()" class="no-underline w-36 font-bold text-yellow-500 font-medium lg:ml-4  px-4 py-2 uppercase tracking-wider"> Connect Wallet </button>
+                     </div>
+                     <div class="lg:flex-1 text-right w-full unhide">
+                         <button v-on:click="connect()" class="no-underline w-full font-bold  text-yellow-500 font-medium lg:ml-4  px-4 py-2 uppercase tracking-wider"> Connect Wallet </button>
+                     </div>
+             </div>
            </div>
 
 

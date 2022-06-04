@@ -62,7 +62,7 @@
                             </button>
 
                             <button class="pushable my-2 lg:py-3 lg:px-6 sm:py-3 py-2 sm:px-6 px-3 mx-2 lg:mr-2 mr-0 sm:text-xl lg:text-2xl text-lg max-w-xs tracking-widest unhide" v-on:click="connect()">
-                              <span class="front" style="padding: 12px 16px;">
+                              <span class="front" style="padding: 8px 16px;">
                                 Connect
                               </span>
                             </button>

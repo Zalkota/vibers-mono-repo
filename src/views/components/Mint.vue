@@ -2,7 +2,7 @@
     <div class="">
         <div class="mb-4 lg:mb-0">
             <div class="sale-container bg-transparent" v-if="saleStatus">
-                    <h1 class="text-red-700 text-center tracking-wider text-4xl lg:text-6xl">Mint is live!</h1>
+                    <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl">Rinkeby Mint is live!</h1>
                     <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 2px solid #B3FFC6;">
                         <div class="custom-number-input h-10 justify-center content-center text-center px-2">
                               <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
@@ -37,8 +37,16 @@
                             </button>
                         </div>
                     </div>
-                    <div class="mx-auto text-center">
-                        <p class="text-gray-200 text-md font-thin mt-2">View the <a v-bind:href="'https://etherscan.io/address/' + contractAddress" target="_blank" class="color-six font-medium">Vibers contract</a>.</p>
+                    <div class="mx-auto text-center my-6">
+                        <p class="text-gray-200 text-md font-thin mt-2">View the <a v-bind:href="'https://etherscan.io/address/' + contractAddress" target="_blank" class="color-six font-medium no-underline">Vibers contract</a>.</p>
+
+
+
+                        <div class="my-6">
+                            <router-link to="/allowlist" class='no-underline' >
+                                <p class="text-gray-200 text-md font-thin mt-2">Mint via the <span class="color-six font-medium">Allowlist</span>.</p>
+                            </router-link>
+                        </div>
                     </div>
 
                     <div class="w-full lg:w-1/2 text-center p-8" v-if="!canMint">
