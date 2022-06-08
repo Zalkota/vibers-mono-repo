@@ -179,7 +179,7 @@ export default {
             let cost = answers[position];
             return cost;
         } else {
-            let cost = this.mintAmount * 0.03;
+            let cost = this.mintAmount * 0.01;
             return cost;
         }
 
