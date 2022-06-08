@@ -269,7 +269,7 @@ export default {
       const overrides = {
         value: (price * Math.pow(10, 18) * amt).toString(),
         gasLimit: Math.floor(
-          200000 * amt - ((200000 * amt) / 100) * (amt - amt * 0.25)
+          200000 * amt - ((200000 * amt) / 100) * (amt - amt * 0.20)
         ).toString(),
       };
       // let ethBalance = await this.web3Plug.getETHBalance(this.userAddress);
