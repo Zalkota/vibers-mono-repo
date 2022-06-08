@@ -23,7 +23,7 @@
         <div class="container px-12 pt-12 pb-24 md:pt-24 lg:py-64 sm:px-4 mx-auto text-black">
                 <div class="lg:flex">
                         <div class="lg:flex-1">
-                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider">Welcome to Vibers</h1>
+                                <h1 class=" text-3xl md:text-4xl font-bold text-black mb-3 color-four tracking-wider" style="text-shadow: 2px 2px #99D9A9;">Welcome to Vibers</h1>
                                 <p>Vibers is 10k NFT collection that encompasses the ethos of web3 by taking inspiration from a wide range of iconic NFT collections to create an entirely new and original CC0 project. </p>
                                 <br>
                                 <p>The end result is a fun collection where you can spot aspects from many projects including CrypToadz, DystoPunks, CryptoSkulls, Doodles, Nouns, CryptoPunks. Basically the dopest art rolled into one.</p>

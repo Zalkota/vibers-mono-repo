@@ -2,8 +2,8 @@
     <div class="">
         <div class="mb-4 lg:mb-0">
             <div class="sale-container bg-transparent">
-                    <h1 class="text-white tracking-wider text-4xl lg:text-6xl text-center font-bold"  style="font-family: Prompt;">Allowlist Minting Is Now Live!</h1>
-                    <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 2px solid #B3FFC6;">
+                    <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl " style="text-shadow: 2px 2px #8789ED;">Rinkeby Allowlist<br> Mint is live!</h1>
+                    <div class="border-4 rounded-xl shadow-lg p-4 mx-2 max-w-md mx-auto" style="border: 4px solid #B3FFC6; background-color: #8789ED;">
                         <div class="custom-number-input h-10 justify-center content-center text-center px-2 ">
                               <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
                                 <button v-on:click="decrementMint" class=" bg-transparent text-white text-3xl h-full w-20 rounded-l cursor-pointer outline-none">
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="text-center mx-auto whitespace-nowrap text-3xl lg:text-5xl pr-2 px-4 w-full" style="border-color: #A9ECE3;">
-                            <button class="button pushable font-bold inline mx-auto text-md sm:text-3xl tracking-widest w-full" @click="mint">
+                            <button class="button pushable font-bold inline mx-auto text-md sm:text-3xl tracking-widest w-full" @click="allowListMint()">
                               <span class="mint-front">
                                 Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
                               </span>
@@ -38,7 +38,9 @@
                         </div>
                     </div>
                     <div class="mx-auto text-center">
-                        <p class="text-gray-200 text-md font-thin mt-2">View the <a v-bind:href="'https://etherscan.io/address/' + contractAddress" target="_blank" class="color-six font-medium">Vibers contract</a>.</p>
+                        <p class="text-gray-200 text-md font-medium my-8" style="text-shadow: 2px 2px #8789ED;">
+                            <a v-bind:href="'https://etherscan.io/address/' + contractAddress" target="_blank" class="text-gray-200 text-md font-medium mt-2 no-underline"> View the <span class="color-six font-bold ">Vibers contract</span>.</a>
+                        </p>
                     </div>
 
                     <div class="w-full lg:w-1/2 text-center p-8" v-if="!canMint">
@@ -64,7 +66,8 @@
 
 // Import Components
 import Countdown from "./Countdown.vue";
-
+import NetworkError from './NetworkError.vue';
+import Loading from './Loading.vue';
 
 // Web3 Module
 import Web3Plug from "../../js/web3-plug.js";
@@ -83,6 +86,15 @@ import { Web3Provider } from "@ethersproject/providers";
 import {AuthTools} from 'degen-auth'
 import {resolveRoutedApiQuery} from '../../js/rest-api-helper.ts'
 
+//merkle tree mint
+// const addressList = require( '../../config/AllowList.json'  )
+import addressList from '../../config/AllowList.json';
+// import {keccak256} from "keccak256";
+const keccak256 = require('keccak256')
+// import {MerkleTree} from "merkletreejs";
+const { MerkleTree } = require('merkletreejs')
+
+const ERC721ABI = require("../../contracts/ERC721ABI.json");
 
 //give the authtoken to the user so they store it in their LocalStorage to use for authenticated API requests
 
@@ -91,19 +103,20 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 
 export default {
   name: "Mint",
-  props: ["authToken", "whitelistSaleStatus"],
+  props: ["authToken", "whitelistSaleStatus", "Loading", "NetworkError"],
   components: {Countdown},
   data() {
     return {
-      // SET MINT DATE
-       // month behind 4 = may
       web3Plug: new Web3Plug(),
       signedInToWeb3: false,
       balances: {},
       totalSupply: 0,
       mintAmount: 1,
       errorMessage: null,
+      contractAddress: null,
 
+      showSpinner: false,
+      networkError: false,
 
       tokenId: 0,
       donationAmount: 0,
@@ -168,6 +181,7 @@ export default {
 
 
 
+
     canMint() {
       return this.totalSupply >= 9999;
     },
@@ -185,8 +199,40 @@ export default {
     },
 
 
+    async calculateMerkleTreeProof(userAddress) {
+        let leaves = addressList.map((x) => keccak256(x))
+        let tree = new MerkleTree(leaves, keccak256, {sortPairs: true})
+        let root = tree.getRoot().toString('hex')
+        let hexRoot = tree.getHexRoot()
 
-    async whitelistMint() {
+        console.log('hexRoot root is ', hexRoot)
+
+        let leaf = keccak256(userAddress)
+        let proof = tree.getProof(leaf)
+        let hexproof = tree.getHexProof(leaf)
+
+        console.log("tree verify", tree.verify(proof, leaf, root)) // true
+        return hexproof
+
+
+    },
+
+
+    async getContract() {
+        let contractData = await this.web3Plug.getContractDataForActiveNetwork();
+        this.contractAddress = contractData.vibers.address
+        let contractAddress = this.contractAddress
+
+        let abi = ERC721ABI
+
+        this.$store.commit('setContract', {abi, contractAddress})
+        let nftContract = await this.web3Modal.contract
+
+        return nftContract
+    },
+
+
+    async allowListMint() {
       console.log("calling mint");
 
       if (!this.web3Modal.active) {
@@ -196,7 +242,6 @@ export default {
 
       this.userAddress = this.web3Modal.account;
       console.log("Mint: userAddress:" + this.web3Modal.account);
-      // this.userAddress = web3utils.toChecksumAddress(this.userAddress)
 
       let amt = this.mintAmount.toString();
       console.log("mintAmount:" + this.mintAmount);
@@ -207,42 +252,41 @@ export default {
       }
       this.errorMessage = null;
 
-      // let ethValue = parseInt(amt) * 6 * 10000002000000000;
-      // console.log("ethvalue:" + ethValue);
-      // request contract address
-      // let contractData = await this.web3Plug.getContractDataForActiveNetwork();
-
       const price = 0.01;
       const overrides = {
         value: (price * Math.pow(10, 18) * amt).toString(),
         gasLimit: Math.floor(
-          200000 * amt - ((200000 * amt) / 100) * (amt - amt * 0.21)
+          200000 * amt - ((200000 * amt) / 100) * (amt - amt * 0.5)
         ).toString(),
       };
-      // let ethBalance = await this.web3Plug.getETHBalance(this.userAddress);
-      // console.log("ethBalance: " + ethBalance);
 
       let ethBalance = this.web3Modal.balance
       console.log('this.web3Modal.balance', this.web3Modal.balance)
 
-      const contractData = await this.web3Plug.getContractDataForActiveNetwork();
-      this.contractAddress = contractData.vibers.address
-      let contractAddress = this.contractAddress
-      const abi = ERC721ABI
-      // const provider = ethers.getDefaultProvider();
-      // console.log('provider', provider)
-      // let signer = new Web3Provider(provider).getSigner()
-      // request contract methods using ERC721ABI file and contract address
 
-      this.$store.commit('setContract', {abi, contractAddress})
-      const nftContract = await this.web3Modal.contract
+      try {
+          this.showSpinner = true
 
-      // let nftContract = nftContract.connect(this.web3Modal.signer)
+          let nftContract = await this.getContract()
 
-      await nftContract.mint(this.userAddress, amt, overrides)
-      console.log("calling mint", nftContract);
-      // await nftContract.methods.mint(userAddress, amt).send({from: userAddress, value: ethValue});
-      // this.totalSupply = this.getTotalSupply();
+          let hexProof = await this.calculateMerkleTreeProof(this.userAddress)
+
+          await nftContract.whitelistMint(this.userAddress, amt, hexProof, overrides)
+
+          // await airdropTokenContract.connect(user).mintWithProof( hexproof );
+          // let tokenBalance = await airdropTokenContract.connect(user).balanceOf(  userAddress  )
+
+          console.log("executing allowlist mint method on", nftContract);
+
+      } catch (err) {
+            console.error(err);
+            // show error message
+            this.networkError = true
+        } finally {
+            // hide spinner
+            this.showSpinner = false
+        }
+
     },
 
   },

@@ -151,7 +151,6 @@
 
 
 import Web3Plug from '../js/web3-plug.js'
-import mushroomJson from "../mushrooms.json";
 
 
 import Navbar from './components/Navbar.vue';

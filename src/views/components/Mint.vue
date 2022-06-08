@@ -2,12 +2,12 @@
     <div class="">
         <div class="mb-4 lg:mb-0">
             <div class="sale-container bg-transparent" v-if="saleStatus">
-                    <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl">Rinkeby <br>  Mint is live!</h1>
-                    <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 2px solid #B3FFC6;">
+                    <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl" style="text-shadow: 2px 2px #8789ED;">Rinkeby <br>  Mint is live!</h1>
+                    <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 4px solid #B3FFC6; background-color: #8789ED;">
                         <div class="custom-number-input h-10 justify-center content-center text-center px-2">
                               <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
                                 <button v-on:click="decrementMint" class=" bg-transparent text-white text-3xl h-full w-20 rounded-l cursor-pointer outline-none">
-                                    <span class="text-3xl font-bold">-</span>
+                                    <span class="text-3xl font-bold" style="font-family: sans-serif;">-</span>
                                 </button>
                                 <input
                                   type="number"
@@ -16,7 +16,7 @@
                                   v-model="mintAmount"
                                   class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-lg sm:text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
                                 <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-white h-full w-20 rounded-r cursor-pointer">
-                                    <span class="text-3xl font-bold">+</span>
+                                    <span class="text-3xl font-bold" style="font-family: sans-serif;">+</span>
                               </button>
                             </div>
                         </div>
@@ -38,13 +38,13 @@
                         </div>
                     </div>
                     <div class="mx-auto text-center my-6">
-                        <p class="text-gray-200 text-md font-thin mt-2">View the <a v-bind:href="'https://etherscan.io/address/' + contractAddress" target="_blank" class="color-six font-medium no-underline">Vibers contract</a>.</p>
-
-
+                        <p class="text-gray-200 text-md font-medium mt-2" style="text-shadow: 2px 2px #8789ED;">
+                            <a v-bind:href="'https://etherscan.io/address/' + contractAddress" target="_blank" class="text-gray-200 text-md font-medium mt-2 no-underline"> View the <span class="color-six font-bold ">Vibers contract</span>.</a>
+                        </p>
 
                         <div class="my-6">
                             <router-link to="/allowlist" class='no-underline' >
-                                <p class="text-gray-200 text-md font-thin mt-2">Mint via the <span class="color-six font-medium">Allowlist</span>.</p>
+                                <p class="text-gray-200 text-md font-medium mt-2" style="text-shadow: 2px 2px #8789ED;">Mint via the <span class="color-six font-bold">Allowlist</span></p>
                             </router-link>
                         </div>
                     </div>

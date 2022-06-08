@@ -70,7 +70,6 @@
 
 <script>
 import StarflaskApiHelper from '../../js/starflask-api-helper.js'
-import mushroomJson from "../../mushrooms.json";
 import NftTile from './NftTile.vue';
 import PaginationBar from './PaginationBar.vue';
 

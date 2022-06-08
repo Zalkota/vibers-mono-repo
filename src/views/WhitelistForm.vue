@@ -47,7 +47,7 @@
 
            <div v-show="web3Modal.active == true && userWhitelisted && authToken != null && whitelistSaleStatus == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-3xl font-heading color-six p-6 py-8 sm:px-6 lg:px-10 rounded-lg rounded-b-none">
-                <h2 class="tracking-widest uppercase">Account Whitelisted</h2>
+                <h2 class="tracking-widest uppercase">Account Allowlisted</h2>
              </div>
              <div class="text-center container shadow-md bg-gray-900 text-gray-500 text-md rounded-lg rounded-t-none p-4 sm:px-8 py-8 mx-auto border-t border-gray-800">
                  <p class="text-xl text-gray-400 "><span class="font-thin text-lg">The release date of <span class="font-bold">Vibers</span> has not yet been released. <br><br>Join the vibe on Discord and enable notifications on our <a class="color-six no-underline" target="_blank" href="https://twitter.com/VibersNFT">twitter</a>!  <br> <br>   </span></p><br>
@@ -94,9 +94,9 @@
            </div>
 
 
-           <div v-show="userWhitelisted == false && authToken != null && whitelistSaleStatus == false" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
+           <div v-show="userWhitelisted == false && authToken != null && whitelistSaleStatus == false || web3Modal.active != true && whitelistSaleStatus == false && authToken == null" class="text-center container shadow-md bg-gray-800 rounded-lg max-w-2xl mx-auto lg:mt-12">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-2xl font-heading text-white p-6 py-8 sm:px-6 lg:px-10 rounded-xl rounded-b-none">
-                <h2 class="tracking-widest uppercase text-3xl color-six">Whitelist Signup</h2>
+                <h2 class="tracking-widest uppercase text-3xl color-six">Allowlist Signup</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
              </div>
              <div class="shadow-md bg-gray-800 text-gray-300 text-xl mx-auto border-2 border-gray-900  rounded-xl">
@@ -233,7 +233,7 @@ export default {
 
   data() {
     return {
-      endDate: new Date(2022, 7, 1, 10, 10, 10, 10),
+      endDate: new Date(2022, 5, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,
@@ -243,7 +243,7 @@ export default {
       userQualified: false,
       whitelistSaleStatus: false,
       nftContract: [],
-      contractAddress: null,
+
 
 
       OGWhitelistClaimed: false,
