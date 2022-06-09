@@ -1,7 +1,16 @@
 <template>
     <div class="">
-        <div class="mb-4 lg:mb-0">
-            <div class="sale-container bg-transparent" v-if="saleStatus">
+
+        <Loading
+        v-show="showSpinner == true"
+        />
+
+        <NetworkError
+        v-show="networkError == true"
+        />
+
+        <div class="mb-4 lg:mb-0" v-if="saleStatus && showSpinner == false && networkError == false">
+            <div class="sale-container bg-transparent">
                     <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl" style="text-shadow: 2px 2px #8789ED;">Rinkeby <br>  Mint is live!</h1>
                     <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 4px solid #B3FFC6; background-color: #8789ED;">
                         <div class="custom-number-input h-10 justify-center content-center text-center px-2">
@@ -63,7 +72,7 @@
             </div>
 
         </div>
-        <div class="text" v-if="!saleStatus">
+        <div class="text" v-if="!saleStatus && showSpinner == false && networkError == false">
             <div class="title-container bg-transparent" >
                 <div
                   class=""
@@ -84,7 +93,8 @@
 
 // Import Components
 import Countdown from "./Countdown.vue";
-
+import NetworkError from './NetworkError.vue';
+import Loading from './Loading.vue';
 import FrontendHelper from "../../js/frontend-helper.js";
 const ERC721ABI = require("../../contracts/ERC721ABI.json");
 
@@ -107,7 +117,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 export default {
   name: "Mint",
   props: [],
-  components: {Countdown},
+  components: {Countdown, NetworkError, Loading},
   data() {
     return {
       // SET MINT DATE
@@ -123,6 +133,9 @@ export default {
       tokenId: 0,
       donationAmount: 0,
       userAddress: null,
+
+      showSpinner: true,
+      networkError: false,
 
       contractAddress: null,
       activeNetwork: null,
@@ -188,6 +201,10 @@ export default {
   mixins: [web3Modal],
   methods: {
 
+
+
+
+
     canMint() {
       return this.totalSupply >= 9999;
     },
@@ -207,14 +224,21 @@ export default {
     async getSaleStatus() {
       const now = new Date();
       if (this.web3Modal.active) {
-          this.saleStatus = await this.nftContract.hasSaleStarted();
+          try {
+              this.saleStatus = await this.nftContract.hasSaleStarted();
+          } catch (err) {
+              console.error(err);
+              this.networkError = true
+          } finally {
+              this.showSpinner = false
+          }
           console.log('has the sale started?', this.saleStatus)
       } else if (this.endDate > now.getTime()) {
               this.saleStatus = false
               console.log('sale is in the future')
       } else if (this.endDate <= now.getTime()) {
               this.saleStatus = true
-              console.log('sale started is in the past')
+              console.log('sale started in the past')
       }
 
       console.log('time', this.endDate.getTime(), now.getTime())

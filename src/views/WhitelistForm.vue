@@ -34,7 +34,6 @@
            v-if="web3Modal.active == true && authToken != null && userWhitelisted == true && whitelistSaleStatus == true"
            :authToken = "authToken"
            :whitelistSaleStatus = "whitelistSaleStatus"
-
            />
 
            <!-- === LOADING SECTION === -->
@@ -307,6 +306,7 @@ export default {
   mixins: [web3Modal],
 
   methods: {
+
 
     readAuthTokenEvent(payload) {
         this.authToken = payload.authToken
