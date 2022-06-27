@@ -19,6 +19,10 @@ const web3ModalStore = {
         balance: 0,
         signer: null,
         authToken: null,
+        totalSupply: 0,
+    },
+    getters: {
+        getNFTContract: state => state.contract,
     },
     mutations: {
         setWeb3Modal(state, web3Modal) {
@@ -51,15 +55,28 @@ const web3ModalStore = {
             state.authToken = authToken
         },
 
-        async setContract(state, {abi, contractAddress}) {
-            const signer = state.signer;
-            const contract = new ethers.Contract(contractAddress, abi, signer);
+        setTotalSupply(state, totalSupply) {
+            state.totalSupply = totalSupply
+        },
+
+        setContract(state, contract) {
             state.contract = contract
         },
+
+
     },
     actions: {
 
+        async setContract({state, commit, dispatch}, {abi, contractAddress}) {
+            const signer = state.signer;
+            const contract = new ethers.Contract(contractAddress, abi, signer);
+            commit('setContract', contract)
+        },
 
+        async setTotalSupply({state, commit, dispatch}) {
+            let totalSupply = await state.contract.totalSupply();
+            commit('setTotalSupply', totalSupply)
+        },
 
         async connect({state, commit, dispatch}) {
             const provider = await state.web3Modal.connect();

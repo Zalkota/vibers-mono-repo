@@ -208,6 +208,25 @@ export default {
   },
 
   created() {
+      this.web3Plug.getPlugEventEmitter().on(
+        "stateChanged",
+        async function (connectionState) {
+          console.log("stateChanged", connectionState);
+          this.activeAccountAddress = connectionState.activeAccountAddress;
+          this.activeNetworkId = connectionState.activeNetworkId;
+          this.signedInToWeb3 = this.activeAccountAddress != null;
+
+
+        }.bind(this)
+      );
+      this.web3Plug.getPlugEventEmitter().on(
+        "error",
+        function (errormessage) {
+          console.error("error", errormessage);
+          this.web3error = errormessage;
+        }.bind(this)
+      );
+      this.web3Plug.reconnectWeb();
 
   },
   mounted: function () {

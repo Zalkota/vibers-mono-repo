@@ -48,7 +48,7 @@
                     </div>
                     <div class="mx-auto text-center my-6">
                         <p class="text-gray-200 text-md font-medium mt-2" style="text-shadow: 2px 2px #8789ED;">
-                            <a v-bind:href="'https://etherscan.io/address/' + contractAddress" target="_blank" class="text-gray-200 text-md font-medium mt-2 no-underline"> View the <span class="color-six font-bold ">Vibers contract</span>.</a>
+                            <a v-bind:href="'https://rinkeby.etherscan.io/address/' + contractAddress" target="_blank" class="text-gray-200 text-md font-medium mt-2 no-underline"> View the <span class="color-six font-bold ">Vibers contract</span>.</a>
                         </p>
 
                         <div class="my-6">
@@ -121,32 +121,22 @@ export default {
   data() {
     return {
       // SET MINT DATE
-      endDate: new Date(2022, 4, 1, 10, 10, 10, 10), // month behind 4 = may
       web3Plug: new Web3Plug(),
       signedInToWeb3: false,
       balances: {},
-      totalSupply: 0,
       mintAmount: 1,
       errorMessage: null,
       saleStatus: false,
       nftContract: [],
       tokenId: 0,
-      donationAmount: 0,
       userAddress: null,
-
       showSpinner: true,
       networkError: false,
-
       contractAddress: null,
-      activeNetwork: null,
-      encodedMetadata:
-        "data:application/json;base64,eyJuYW1lIjogIjB4QlRDIFN0YXRzICMwIiwgImRlc2NyaXB0aW9uIjogIk1pbmVhYmxlIHRva2VuIHN0YXRpc3RpY3MuIiwgImltYWdlIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIQnlaWE5sY25abFFYTndaV04wVW1GMGFXODlJbmhOYVc1WlRXbHVJRzFsWlhRaUlIWnBaWGRDYjNnOUlqQWdNQ0F6TlRBZ016VXdJajQ4YzNSNWJHVStMbUpoYzJVZ2V5Qm1hV3hzT2lCM2FHbDBaVHNnWm05dWRDMW1ZVzFwYkhrNklITmxjbWxtT3lCbWIyNTBMWE5wZW1VNklERTJjSGc3SUgwOEwzTjBlV3hsUGp4eVpXTjBJSGRwWkhSb1BTSXhNREFsSWlCb1pXbG5hSFE5SWpFd01DVWlJR1pwYkd3OUltSnNZV05ySWlBdlBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeU1DSWdZMnhoYzNNOUltSmhjMlVpUGkwdExTQXdlRUpVUXlCVGRHRjBjeUF0TFMwOEwzUmxlSFErUEhSbGVIUWdlRDBpTVRBaUlIazlJalF3SWlCamJHRnpjejBpWW1GelpTSStUV2x1WldRZ1UzVndjR3g1T2lBMU1EQXdQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJMk1DSWdZMnhoYzNNOUltSmhjMlVpUGsxcGJtbHVaeUJFYVdabWFXTjFiSFI1T2lBeFBDOTBaWGgwUGp4MFpYaDBJSGc5SWpFd0lpQjVQU0k0TUNJZ1kyeGhjM005SW1KaGMyVWlQazFwYm1sdVp5QlNaWGRoY21RNklEVXdQQzkwWlhoMFBqd3ZjM1puUGc9PSJ9",
-      encodedImageSVG: null,
     };
   },
 
   created() {
-    // this.getSaleStatus()
     this.web3Plug.getPlugEventEmitter().on(
       "stateChanged",
       async function (connectionState) {
@@ -166,20 +156,22 @@ export default {
         this.web3error = errormessage;
       }.bind(this)
     );
-
     this.web3Plug.reconnectWeb();
-
   },
   mounted: function () {
-      let suscribe = this.$store.subscribe((mutation, state) => {
+      let subscribe = this.$store.subscribe((mutation, state) => {
       if (mutation.type == 'setActive' && mutation.payload == true) {
-          // this.getSaleStatus()
-          this.getTotalSupply();
-          suscribe()
+          this.setActiveContract()
+          subscribe()
+      }
+      if (mutation.type == 'setContract' && mutation.payload == true) {
+          this.getSaleStatus()
+          subscribe()
       }
     })
-    this.getTotalSupply();
-    setInterval(this.getTotalSupply.bind(this), 5000);
+
+    this.getSaleStatus()
+    setInterval(this.getSaleStatus.bind(this), 5000);
   },
 
   computed: {
@@ -196,17 +188,27 @@ export default {
             return cost;
         }
 
-      }
+    },
+
+    getNFTContract() {
+        console.log("this.$store.getters.getNFTContract", this.$store.getters.getNFTContract)
+        return this.$store.getters.getNFTContract
+    },
+
+    getSaleReleaseDate() {
+        return this.$store.getters.getSaleReleaseDate
+    },
+
+    getTotalSupply() {
+        return this.$store.getters.getTotalSupply
+    },
   },
   mixins: [web3Modal],
   methods: {
 
 
-
-
-
     canMint() {
-      return this.totalSupply >= 9999;
+      return this.getTotalSupply >= 9999;
     },
 
     async incrementMint() {
@@ -221,11 +223,21 @@ export default {
         }
     },
 
+    async setActiveContract() {
+        const contractData = await this.web3Plug.getContractDataForActiveNetwork();
+        this.activeNetwork = contractData
+        this.contractAddress = contractData.vibers.address
+        let contractAddress = this.contractAddress
+        let abi = ERC721ABI
+        this.$store.dispatch("setContract", {abi, contractAddress});
+    },
+
     async getSaleStatus() {
       const now = new Date();
       if (this.web3Modal.active) {
+          let nftContract = this.getNFTContract
           try {
-              this.saleStatus = await this.nftContract.hasSaleStarted();
+              this.saleStatus = await nftContract.hasSaleStarted();
           } catch (err) {
               console.error(err);
               this.networkError = true
@@ -233,34 +245,14 @@ export default {
               this.showSpinner = false
           }
           console.log('has the sale started?', this.saleStatus)
-      } else if (this.endDate > now.getTime()) {
+      } else if (this.getSaleReleaseDate > now.getTime()) {
               this.saleStatus = false
               console.log('sale is in the future')
-      } else if (this.endDate <= now.getTime()) {
+      } else if (this.getSaleReleaseDate <= now.getTime()) {
               this.saleStatus = true
               console.log('sale started in the past')
       }
-
-      console.log('time', this.endDate.getTime(), now.getTime())
-      console.log('getSaleStatus', this.saleStatus)
       },
-
-
-    async getTotalSupply() {
-        if (this.web3Modal.active) {
-            const contractData = await this.web3Plug.getContractDataForActiveNetwork();
-            this.activeNetwork = contractData
-            this.contractAddress = contractData.vibers.address
-            let contractAddress = this.contractAddress
-            const abi = ERC721ABI
-            this.$store.commit('setContract', {abi, contractAddress})
-            this.nftContract = await this.web3Modal.contract
-            console.log('nftContract call', this.nftContract)
-            this.totalSupply = await this.nftContract.totalSupply();
-            this.$forceUpdate();
-        }
-        this.getSaleStatus()
-    },
 
 
     async mint() {
@@ -284,11 +276,6 @@ export default {
       }
       this.errorMessage = null;
 
-      // let ethValue = parseInt(amt) * 6 * 10000002000000000;
-      // console.log("ethvalue:" + ethValue);
-      // request contract address
-      // let contractData = await this.web3Plug.getContractDataForActiveNetwork();
-
       const price = 0.01;
       const overrides = {
         value: (price * Math.pow(10, 18) * amt).toString(),
@@ -296,30 +283,16 @@ export default {
           200000 * amt - ((200000 * amt) / 100) * (amt - amt * 0.20)
         ).toString(),
       };
-      // let ethBalance = await this.web3Plug.getETHBalance(this.userAddress);
-      // console.log("ethBalance: " + ethBalance);
-
-      let ethBalance = this.web3Modal.balance
-      console.log('this.web3Modal.balance', this.web3Modal.balance)
 
       const contractData = await this.web3Plug.getContractDataForActiveNetwork();
       this.contractAddress = contractData.vibers.address
       let contractAddress = this.contractAddress
       const abi = ERC721ABI
-      // const provider = ethers.getDefaultProvider();
-      // console.log('provider', provider)
-      // let signer = new Web3Provider(provider).getSigner()
-      // request contract methods using ERC721ABI file and contract address
 
       this.$store.commit('setContract', {abi, contractAddress})
       const nftContract = await this.web3Modal.contract
 
-      // let nftContract = nftContract.connect(this.web3Modal.signer)
-
-      await nftContract.mint(this.userAddress, amt, overrides)
-      console.log("calling mint", nftContract);
-      // await nftContract.methods.mint(userAddress, amt).send({from: userAddress, value: ethValue});
-      // this.totalSupply = this.getTotalSupply();
+      await nftContract.mint(amt, overrides)
     },
 
 

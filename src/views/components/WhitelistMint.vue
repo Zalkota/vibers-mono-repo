@@ -39,7 +39,7 @@
                     </div>
                     <div class="mx-auto text-center">
                         <p class="text-gray-200 text-md font-medium my-8" style="text-shadow: 2px 2px #8789ED;">
-                            <a v-bind:href="'https://etherscan.io/address/' + contractAddress" target="_blank" class="text-gray-200 text-md font-medium mt-2 no-underline"> View the <span class="color-six font-bold ">Vibers contract</span>.</a>
+                            <a v-bind:href="'https://rinkeby.etherscan.io/address/' + contractAddress" target="_blank" class="text-gray-200 text-md font-medium mt-2 no-underline"> View the <span class="color-six font-bold ">Vibers contract</span>.</a>
                         </p>
                     </div>
 
@@ -69,9 +69,6 @@ import Countdown from "./Countdown.vue";
 import NetworkError from './NetworkError.vue';
 import Loading from './Loading.vue';
 
-// Web3 Module
-import Web3Plug from "../../js/web3-plug.js";
-import web3utils from 'web3-utils'
 // Web3Modal-Vue
 import {getLibrary} from "../../js/web3";
 import {ethers} from "ethers";
@@ -107,58 +104,16 @@ export default {
   components: {Countdown},
   data() {
     return {
-      web3Plug: new Web3Plug(),
-      signedInToWeb3: false,
-      balances: {},
       totalSupply: 0,
       mintAmount: 1,
       errorMessage: null,
       contractAddress: null,
-
       showSpinner: false,
       networkError: false,
-
-      tokenId: 0,
-      donationAmount: 0,
       userAddress: null,
-      signature: null,
-
-
-      activeNetwork: null,
-      encodedMetadata:
-        "data:application/json;base64,eyJuYW1lIjogIjB4QlRDIFN0YXRzICMwIiwgImRlc2NyaXB0aW9uIjogIk1pbmVhYmxlIHRva2VuIHN0YXRpc3RpY3MuIiwgImltYWdlIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIQnlaWE5sY25abFFYTndaV04wVW1GMGFXODlJbmhOYVc1WlRXbHVJRzFsWlhRaUlIWnBaWGRDYjNnOUlqQWdNQ0F6TlRBZ016VXdJajQ4YzNSNWJHVStMbUpoYzJVZ2V5Qm1hV3hzT2lCM2FHbDBaVHNnWm05dWRDMW1ZVzFwYkhrNklITmxjbWxtT3lCbWIyNTBMWE5wZW1VNklERTJjSGc3SUgwOEwzTjBlV3hsUGp4eVpXTjBJSGRwWkhSb1BTSXhNREFsSWlCb1pXbG5hSFE5SWpFd01DVWlJR1pwYkd3OUltSnNZV05ySWlBdlBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJeU1DSWdZMnhoYzNNOUltSmhjMlVpUGkwdExTQXdlRUpVUXlCVGRHRjBjeUF0TFMwOEwzUmxlSFErUEhSbGVIUWdlRDBpTVRBaUlIazlJalF3SWlCamJHRnpjejBpWW1GelpTSStUV2x1WldRZ1UzVndjR3g1T2lBMU1EQXdQQzkwWlhoMFBqeDBaWGgwSUhnOUlqRXdJaUI1UFNJMk1DSWdZMnhoYzNNOUltSmhjMlVpUGsxcGJtbHVaeUJFYVdabWFXTjFiSFI1T2lBeFBDOTBaWGgwUGp4MFpYaDBJSGc5SWpFd0lpQjVQU0k0TUNJZ1kyeGhjM005SW1KaGMyVWlQazFwYm1sdVp5QlNaWGRoY21RNklEVXdQQzkwWlhoMFBqd3ZjM1puUGc9PSJ9",
-      encodedImageSVG: null,
     };
   },
-
-  created() {
-    // this.getwhitelistSaleStatus()
-    this.web3Plug.getPlugEventEmitter().on(
-      "stateChanged",
-      async function (connectionState) {
-        console.log("stateChanged", connectionState);
-        this.activeAccountAddress = connectionState.activeAccountAddress;
-        this.activeNetworkId = connectionState.activeNetworkId;
-        this.signedInToWeb3 = this.activeAccountAddress != null;
-
-        // this.getTotalSupply();
-      }.bind(this)
-    );
-    this.web3Plug.getPlugEventEmitter().on(
-      "error",
-      function (errormessage) {
-        console.error("error", errormessage);
-
-        this.web3error = errormessage;
-      }.bind(this)
-    );
-
-    this.web3Plug.reconnectWeb();
-
-  },
-  mounted: function () {
-
-  },
+  
 
   computed: {
       mintCostDisplayAmount: function(){
@@ -174,13 +129,13 @@ export default {
             return cost;
         }
 
-      }
+    },
+    getNFTContract() {
+        return this.$store.getters.getNFTContract
+    },
   },
   mixins: [web3Modal],
   methods: {
-
-
-
 
     canMint() {
       return this.totalSupply >= 9999;
@@ -205,46 +160,28 @@ export default {
         let root = tree.getRoot().toString('hex')
         let hexRoot = tree.getHexRoot()
 
-        console.log('hexRoot root is ', hexRoot)
-
         let leaf = keccak256(userAddress)
         let proof = tree.getProof(leaf)
         let hexproof = tree.getHexProof(leaf)
 
         console.log("tree verify", tree.verify(proof, leaf, root)) // true
-        return hexproof
-
-
-    },
-
-
-    async getContract() {
-        let contractData = await this.web3Plug.getContractDataForActiveNetwork();
-        this.contractAddress = contractData.vibers.address
-        let contractAddress = this.contractAddress
-
-        let abi = ERC721ABI
-
-        this.$store.commit('setContract', {abi, contractAddress})
-        let nftContract = await this.web3Modal.contract
-
-        return nftContract
+        if (tree.verify(proof, leaf, root)) {
+            return hexproof
+        } return false
     },
 
 
     async allowListMint() {
-      console.log("calling mint");
+      console.log("Calling allowListmint");
 
       if (!this.web3Modal.active) {
         this.$store.dispatch('connect')
         return;
       }
 
-      this.userAddress = this.web3Modal.account;
-      console.log("Mint: userAddress:" + this.web3Modal.account);
+      let userAddress = this.web3Modal.account;
 
       let amt = this.mintAmount.toString();
-      console.log("mintAmount:" + this.mintAmount);
 
       if (parseInt(amt) > 16) {
         this.errorMessage = "You may only mint up to 16 at once. ";
@@ -252,43 +189,31 @@ export default {
       }
       this.errorMessage = null;
 
-      const price = 0.01;
+      let price = 0.01;
       const overrides = {
         value: (price * Math.pow(10, 18) * amt).toString(),
         gasLimit: Math.floor(
-          200000 * amt - ((200000 * amt) / 100) * (amt - amt * 0.5)
+          200000 * amt - ((200000 * amt) / 100) * (amt - amt * 0.20)
         ).toString(),
       };
 
-      let ethBalance = this.web3Modal.balance
-      console.log('this.web3Modal.balance', this.web3Modal.balance)
+      let hexProof = await this.calculateMerkleTreeProof(userAddress)
 
-
-      try {
+      if(hexProof != false){
           this.showSpinner = true
 
-          let nftContract = await this.getContract()
+          let nftContract = this.getNFTContract
 
-          let hexProof = await this.calculateMerkleTreeProof(this.userAddress)
+          let hexProof = await this.calculateMerkleTreeProof(userAddress)
 
-          await nftContract.whitelistMint(this.userAddress, amt, hexProof, overrides)
+          await nftContract.whitelistMint(amt, hexProof, overrides);
 
-          // await airdropTokenContract.connect(user).mintWithProof( hexproof );
-          // let tokenBalance = await airdropTokenContract.connect(user).balanceOf(  userAddress  )
-
-          console.log("executing allowlist mint method on", nftContract);
-
-      } catch (err) {
-            console.error(err);
-            // show error message
-            this.networkError = true
-        } finally {
-            // hide spinner
-            this.showSpinner = false
-        }
-
+          console.log("executing allowlist mint method on", nftContract, 'with hexProof equal to: ', hexProof);
+      } else {
+          let message = 'Failed to verify MerkleTree proof!'
+          new Error(message)
+      }
     },
-
   },
 };
 </script>

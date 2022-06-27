@@ -4,3 +4,20 @@
 
   </div>
 </template>
+<script>
+
+
+    export default {
+
+        mounted() {
+
+            let date = new Date(2022, 4, 1, 10, 10, 10, 10)
+            this.$store.commit('setSaleReleaseDate', date)
+            console.log("setSaleReleaseDate")
+
+            window.setInterval(() => {
+            }, 30000)
+
+        }
+    }
+</script>

@@ -36,14 +36,6 @@
            :whitelistSaleStatus = "whitelistSaleStatus"
            />
 
-           <!-- === LOADING SECTION === -->
-
-
-
-           <!-- === NETWORK ERROR SECTION === -->
-
-
-
            <div v-show="web3Modal.active == true && userWhitelisted && authToken != null && whitelistSaleStatus == false" class="text-center container shadow-md bg-gray-800 rounded-lg mx-auto lg:mt-12 border-4 max-w-3xl" style="border-color: #A9ECE3;">
              <div class="bg-gray-900 font-bold text-lg md:text-xl lg:text-3xl font-heading color-six p-6 py-8 sm:px-6 lg:px-10 rounded-lg rounded-b-none">
                 <h2 class="tracking-widest uppercase">Account Allowlisted</h2>
@@ -98,7 +90,7 @@
                 <h2 class="tracking-widest uppercase text-3xl color-six">Allowlist Signup</h2>
                 <span class="text-gray-500 text-md">Mint Date: TBD</span>
              </div>
-             <div class="shadow-md bg-gray-800 text-gray-300 text-xl mx-auto border-2 border-gray-900  rounded-xl">
+             <div class="shadow-md bg-gray-800 text-gray-300 text-xl mx-auto border-2 border-gray-900  rounded-t-xl">
                  <!-- <p>We are allowing only <span class="font-bold">1 whitelist spot per account</span> at this time.<br><br>
                  Thank you - BlockForge Team</p> -->
                  <div class="text-left flex lg:flex-row flex-col my-0 border-t lg:border-gray-800 border-gray-600 py-0  bg-gray-900 shadow-sm">
@@ -119,7 +111,7 @@
                      </div>
 
                  </div>
-                 <div class="p-4 bg-gray-900 border-t lg:border-gray-800 border-gray-600 rounded-xl rounded-t-none">
+                 <div class="p-4 bg-gray-900 ">
                      <span class="text-gray-600 text-sm">We are allowing only 1 allowlist spot per account.</span>
                  </div>
 
@@ -232,7 +224,6 @@ export default {
 
   data() {
     return {
-      endDate: new Date(2022, 5, 1, 10, 10, 10, 10),
       web3Plug: new Web3Plug(),
       userAddress: null,
       whitelistAmount: 1,
@@ -242,6 +233,7 @@ export default {
       userQualified: false,
       whitelistSaleStatus: false,
       nftContract: [],
+      totalSupply: 0,
 
 
 
@@ -262,7 +254,7 @@ export default {
       publicWhitelistMintAmount: 1,
       publicWhitelistSpotsTotal: 4000,
 
-      showSpinner: false,
+      showSpinner: true,
       networkError: false,
 
 
@@ -284,7 +276,7 @@ export default {
   },
 
   mounted: function () {
-      this.getwhitelistSaleStatus()
+
       let subscribe = this.$store.subscribe((mutation, state) => {
       console.log("$store subscribe", mutation.type, mutation.payload)
       if (mutation.type == 'setActive' && mutation.payload == true) {
@@ -292,14 +284,32 @@ export default {
           console.log("this.web3Modal.account", this.web3Modal.account)
           this.getERC721Balance()
           this.checkWhitelistForAddress()
-          this.getTotalSupply();
+          this.setActiveContract()
           subscribe()
       }
+      if (mutation.type == 'setContract' && mutation.payload == true) {
+          this.getSaleStatus()
+          subscribe()
+      }
+
+      this.getwhitelistSaleStatus()
     })
+    // setInterval(this.setActiveContract.bind(this), 5000);
   },
 
   computed: {
 
+      getNFTContract() {
+          return this.$store.getters.getNFTContract
+      },
+
+      getSaleReleaseDate() {
+          return this.$store.getters.getSaleReleaseDate
+      },
+
+      getTotalSupply() {
+          return this.$store.getters.getTotalSupply
+      },
 
   },
 
@@ -320,31 +330,39 @@ export default {
         this.$store.dispatch('resetApp')
     },
 
-    async getTotalSupply() {
-        if (this.web3Modal.active) {
-            const contractData = await this.web3Plug.getContractDataForActiveNetwork();
-            this.activeNetwork = contractData
-            this.contractAddress = contractData.vibers.address
-            let contractAddress = this.contractAddress
-            const abi = ERC721ABI
-            this.$store.commit('setContract', {abi, contractAddress})
-            this.nftContract = await this.web3Modal.contract
-            console.log('nftContract call', this.nftContract)
-            this.totalSupply = await this.nftContract.totalSupply();
-            this.$forceUpdate();
-        }
-        this.getwhitelistSaleStatus()
+    async setActiveContract() {
+        const contractData = await this.web3Plug.getContractDataForActiveNetwork();
+        this.activeNetwork = contractData
+        this.contractAddress = contractData.vibers.address
+        let contractAddress = this.contractAddress
+        let abi = ERC721ABI
+        this.$store.dispatch("setContract", {abi, contractAddress});
     },
+
 
     async getwhitelistSaleStatus() {
         const now = new Date();
         if (this.web3Modal.active) {
-            this.whitelistSaleStatus = await this.nftContract.hasSaleStarted();
             console.log('getwhitelistSaleStatus:', this.whitelistSaleStatus)
-        } else if (this.endDate > now.getTime()) {
+            try {
+                this.showSpinner = true
+                let nftContract = await this.web3Modal.contract
+                if (nftContract != null) {
+                    this.whitelistSaleStatus = await nftContract.hasSaleStarted();
+                }
+
+            } catch (err) {
+                console.error(err);
+                // show error message
+                this.networkError = true
+            } finally {
+                // hide spinner
+                this.showSpinner = false
+            }
+        } else if (this.getSaleReleaseDate > now.getTime()) {
                 this.whitelistSaleStatus = false
                 console.log('getwhitelistSaleStatus: sale is in the future')
-        } else if (this.endDate <= now.getTime()) {
+        } else if (this.getSaleReleaseDate <= now.getTime()) {
                 this.whitelistSaleStatus = true
                 console.log('getwhitelistSaleStatus: Sale started in the past')
         }
@@ -352,7 +370,6 @@ export default {
 
 
     async sendWhitelistData() {
-
         let publicAddress = this.userAddress
         let authToken = this.authToken
         let allowlistAmount = 1
