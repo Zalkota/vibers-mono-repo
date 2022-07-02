@@ -4,37 +4,38 @@
             <div class="sale-container bg-transparent">
                     <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl " style="text-shadow: 2px 2px #8789ED;">Rinkeby Allowlist<br> Mint is live!</h1>
                     <div class="border-4 rounded-xl shadow-lg p-4 mx-2 max-w-md mx-auto" style="border: 4px solid #B3FFC6; background-color: #8789ED;">
-                        <div class="custom-number-input h-10 justify-center content-center text-center px-2 ">
-                              <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
-                                <button v-on:click="decrementMint" class=" bg-transparent text-white text-3xl h-full w-20 rounded-l cursor-pointer outline-none">
-                                    <span class="text-3xl font-bold">-</span>
+                        <div v-if="!approvalPending">
+                            <div class="custom-number-input h-10 justify-center content-center text-center px-2 ">
+                                  <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-2">
+                                    <button v-on:click="decrementMint" class=" bg-transparent text-white text-3xl h-full w-20 rounded-l cursor-pointer outline-none">
+                                        <span class="text-3xl font-bold">-</span>
+                                    </button>
+                                    <input
+                                      type="number"
+                                      min="1"
+                                      max="16"
+                                      v-model="mintAmount"
+                                      class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-lg sm:text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
+                                    <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-white h-full w-20 rounded-r cursor-pointer">
+                                        <span class="text-3xl font-bold">+</span>
+                                  </button>
+                                </div>
+                            </div>
+                            <div class="text-center mx-auto whitespace-nowrap text-3xl lg:text-5xl pr-2 px-4 w-full" style="border-color: #A9ECE3;">
+                                <button class="button pushable font-bold inline mx-auto text-md sm:text-3xl tracking-widest w-full" @click="allowListMint()">
+                                  <span class="mint-front">
+                                    Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
+                                  </span>
                                 </button>
-                                <input
-                                  type="number"
-                                  min="1"
-                                  max="16"
-                                  v-model="mintAmount"
-                                  class="outline-none focus:outline-none text-center w-full bg-transparent font-bold text-lg sm:text-3xl hover:text-gray-300 focus:text-gray-300  md:text-basecursor-default flex items-center text-white outline-none "></input>
-                                <button v-on:click="incrementMint" data-action="increment" class="bg-transparent text-white h-full w-20 rounded-r cursor-pointer">
-                                    <span class="text-3xl font-bold">+</span>
-                              </button>
                             </div>
-                        </div>
-                        <div>
-                            <!-- <div v-if="web3Modal.active" class="text-center text-white py-3 mb-0 font-medium text-xl">
-                                {{ totalSupply }} / 10,000
-                            </div>
-                            <div v-else class="">
-                                <br>
-                            </div> -->
                         </div>
 
-                        <div class="text-center mx-auto whitespace-nowrap text-3xl lg:text-5xl pr-2 px-4 w-full" style="border-color: #A9ECE3;">
-                            <button class="button pushable font-bold inline mx-auto text-md sm:text-3xl tracking-widest w-full" @click="allowListMint()">
-                              <span class="mint-front">
-                                Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
-                              </span>
-                            </button>
+                        <div>
+                            <img
+                            v-if="approvalPending"
+                            src="@/assets/gifs/ripple.gif"
+                            alt="waiting for transaction"
+                            class="mx-auto w-20 my-6 mx-20"/>
                         </div>
                     </div>
                     <div class="mx-auto text-center">
@@ -55,9 +56,7 @@
                       {{ errorMessage }}
                     </div>
             </div>
-
         </div>
-
     </div>
 </template>
 
@@ -111,9 +110,10 @@ export default {
       showSpinner: false,
       networkError: false,
       userAddress: null,
+      approvalPending: false,
     };
   },
-  
+
 
   computed: {
       mintCostDisplayAmount: function(){
@@ -164,7 +164,7 @@ export default {
         let proof = tree.getProof(leaf)
         let hexproof = tree.getHexProof(leaf)
 
-        console.log("tree verify", tree.verify(proof, leaf, root)) // true
+        console.log("tree verify", tree.verify(proof, leaf, root))
         if (tree.verify(proof, leaf, root)) {
             return hexproof
         } return false
@@ -206,12 +206,19 @@ export default {
 
           let hexProof = await this.calculateMerkleTreeProof(userAddress)
 
-          await nftContract.whitelistMint(amt, hexProof, overrides);
+          try {
+              this.approvalPending = true
+              await nftContract.whitelistMint(amt, hexProof, overrides);
+          } catch (e) {
+              this.approvalPending = false
+              console.log(e)
+          }
 
           console.log("executing allowlist mint method on", nftContract, 'with hexProof equal to: ', hexProof);
       } else {
           let message = 'Failed to verify MerkleTree proof!'
           new Error(message)
+          console.error(message)
       }
     },
   },

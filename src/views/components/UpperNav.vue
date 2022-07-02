@@ -112,7 +112,6 @@
 
 
 <script>
-import Config from '../config/UpperNav.js'
 import LoginModal from './LoginModal.vue';
 
 // Web3Modal-Vue
@@ -146,16 +145,6 @@ export default {
     }
   },
   mixins: [web3Modal],
-  created(){
-
-    // this.navConfig = Config;
-    // this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
-    //       console.log('stateChanged',connectionState);
-    //       this.activeAccountAddress = connectionState.activeAccountAddress
-    //       this.activeNetworkId = connectionState.activeNetworkId
-    //        this.$forceUpdate();
-    //     }.bind(this));
-  },
 
   mounted: function () {
       this.$nextTick(async () => {
@@ -174,7 +163,6 @@ export default {
 
     userAddressSlice(){
         if (this.userAddress !== null) {
-            console.log("uppernav userAddress:" + this.web3Modal.account);
             let slice = this.web3Modal.account.slice(0, 6)
             let result = slice + ".."
             return result

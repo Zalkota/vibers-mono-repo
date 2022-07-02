@@ -13,7 +13,6 @@
             <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-black-800 mt-0 pt-0 mb-6">
             Page not Found!
             </h1>
-            <!-- <p class="text-gray-600 text-sm">Whitelist spots are available for holders of the following NFTs:<br> CrypToadz, DystoPunks, Vibers, and CryptoSkulls.</p> -->
             <div class="text-center m-6 mt-12 no-underline">
                 <router-link class="text-center mx-auto m-6 mt-12 no-underline" to="/">
                    <a class="button bg-four hover:shadow-md lg:text-3xl text-xl text-white font-bold my-2 py-3 px-8 rounded-xl shadow-sm w-56 text-center no-underline cursor-pointer mx-2">Go Home</a>

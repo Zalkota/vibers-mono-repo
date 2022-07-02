@@ -235,8 +235,6 @@ export default {
       nftContract: [],
       totalSupply: 0,
 
-
-
       OGWhitelistClaimed: false,
       OGWhitelistType: 2,
       OGTokensOwned: 0,
@@ -256,7 +254,6 @@ export default {
 
       showSpinner: true,
       networkError: false,
-
 
       providerOptions: {
         walletconnect: {
@@ -278,23 +275,20 @@ export default {
   mounted: function () {
 
       let subscribe = this.$store.subscribe((mutation, state) => {
-      console.log("$store subscribe", mutation.type, mutation.payload)
       if (mutation.type == 'setActive' && mutation.payload == true) {
           this.userAddress = this.web3Modal.account
-          console.log("this.web3Modal.account", this.web3Modal.account)
           this.getERC721Balance()
           this.checkWhitelistForAddress()
-          this.setActiveContract()
           subscribe()
       }
-      if (mutation.type == 'setContract' && mutation.payload == true) {
-          this.getSaleStatus()
+      if (mutation.type == 'setContract') {
+          this.getAllowlistSaleStatus()
+          console.log("mutation.type setContract")
           subscribe()
       }
+      this.getAllowlistSaleStatus()
 
-      this.getwhitelistSaleStatus()
     })
-    // setInterval(this.setActiveContract.bind(this), 5000);
   },
 
   computed: {
@@ -330,20 +324,10 @@ export default {
         this.$store.dispatch('resetApp')
     },
 
-    async setActiveContract() {
-        const contractData = await this.web3Plug.getContractDataForActiveNetwork();
-        this.activeNetwork = contractData
-        this.contractAddress = contractData.vibers.address
-        let contractAddress = this.contractAddress
-        let abi = ERC721ABI
-        this.$store.dispatch("setContract", {abi, contractAddress});
-    },
 
-
-    async getwhitelistSaleStatus() {
+    async getAllowlistSaleStatus() {
         const now = new Date();
         if (this.web3Modal.active) {
-            console.log('getwhitelistSaleStatus:', this.whitelistSaleStatus)
             try {
                 this.showSpinner = true
                 let nftContract = await this.web3Modal.contract
@@ -361,10 +345,10 @@ export default {
             }
         } else if (this.getSaleReleaseDate > now.getTime()) {
                 this.whitelistSaleStatus = false
-                console.log('getwhitelistSaleStatus: sale is in the future')
+                console.log('getAllowlistSaleStatus: sale is in the future')
         } else if (this.getSaleReleaseDate <= now.getTime()) {
                 this.whitelistSaleStatus = true
-                console.log('getwhitelistSaleStatus: Sale started in the past')
+                console.log('getAllowlistSaleStatus: Sale started in the past')
         }
     },
 
@@ -426,8 +410,6 @@ export default {
 
     async getERC721Balance() {
        this.userAddress = this.web3Modal.account
-       console.log('fetching NFTs held by ', this.web3Modal.account)
-
        try {
            this.showSpinner = true
            let result = await resolveRoutedApiQuery('ERC721BalanceByOwner', { "publicAddress": this.userAddress })
@@ -467,25 +449,10 @@ export default {
           }
       },
 
-
       copy() {
         this.$refs.clone.focus();
         document.execCommand('copy');
       },
-
-
-      async CallProfileDetails(){
-        console.log("CallProfileDetails");
-        try {
-            this.userAddress = this.web3Plug.getActiveAccountAddress();
-            this.userAddress = web3utils.toChecksumAddress(this.userAddress)
-        }
-        catch(err) {
-          console.log('error: CallProfileDetails')
-        }
-        console.log("userAddress:" + this.userAddress);
-      },
-
 
   }
 }

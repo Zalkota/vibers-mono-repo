@@ -1,7 +1,7 @@
 <template>
 <div>
     <!-- Navbar -->
-     <div class=" ">
+     <div>
         <Navbar
        />
      </div>
@@ -48,7 +48,6 @@
             alt="Three Cosmic Cap Mushrooms"
             class="unhide"/>
         </div>
-
     </div>
 
     <div class="section py-8 bg-three mx-auto ">
@@ -109,142 +108,29 @@
                 </div>
         </div>
     </div>
-
-
-
-
-
-    <!-- Donating to Science -->
-    <div class=" section bg-three relative">
-        <div class="">
-            <!-- <img
-            src="@/assets/images/waves/spike_two_top.svg"
-            alt="Three Cosmic Cap Mushrooms"
-            class="unhide"/> -->
-        </div>
-        <!-- <div class="container md:py-24 py-12 lg:py-24 mx-auto flex">
-                <div class="flex-initial ">
-                        <img
-                        src="@/assets/images/vibers/skull_12.png"
-                        alt="Multidisciplinary Association For Psychedelic Studies (MAPS) Logo"
-                        class="mx-auto lg:max-w-sm p-2 lg:p-4"/>
-                </div>
-                <div class="md:flex-4/6 flex-1 flex-1 px-6">
-                        <h2 class="text-3xl font-bold color-four mb-6 tracking-wider">Donating to Science and Medicine!</h2>
-                        <p class="color-four">We’re always looking at new ways to bring more value to our community. Once all of the Vibers have been minted, we plan to donate a portion of the proceeds to the.</p>
-                </div>
-        </div> -->
-    </div>
-
-
-    <!-- <div class="section  pt-12 pb-40 bg-three relative">
-        <div class="spike-two-bottom">
-            <img
-            src="@/assets/images/waves/spike_two_bottom.svg"
-            alt="Three Cosmic Cap Mushrooms"
-            class="unhide"/>
-        </div>
-        <div class="container px-12 sm:px-4 lg:pt-24 mx-auto text-black">
-                <div class="lg:flex">
-                        <div class="flex-initial ">
-                                <img
-                                src="@/assets/images/vibers/skull_10.png"
-                                alt="Three Cosmic Cap Mushrooms"
-                                class="mx-auto lg:max-w-sm p-2 lg:p-4"/>
-                        </div>
-                        <div class="lg:flex-1 lg:px-6">
-                                <h1 class=" text-3xl md:text-4xl font-bold color-four mb-3 tracking-wider">Welcome to Vibers</h1>
-
-                                <p>Vibers is 10k NFT collection that encompasses the ethos of web3 by taking inspiration from a wide range of iconic NFT collections and fusing them into a single project. </p>
-                                <br>
-                                <p>The end result is a fun collection where you can spot aspects from many projects including CryptoSkulls, CryptToadz, DystoPunks, Doodles, Nouns, CryptoPunks, and more. Basically the dopest art rolled into one. CC0.</p>
-                                <br>
-                                <p>Vibers are stored as <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/">ERC721 tokens</a> on the Ethereum blockchain. </p>
-                                <br>
-                        </div>
-                </div>
-        </div>
-    </div> -->
-
     <Footer/>
-
-
 </div>
 </template>
 
 <script>
-import Web3Plug from "../js/web3-plug.js";
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
 import Mint from "./components/Mint.vue";
 import FrontendHelper from "../js/frontend-helper.js";
-const ERC721ABI = require("../contracts/ERC721ABI.json");
-import web3utils from 'web3-utils'
 
-
-// Web3Modal-Vue
-import Web3ModalVue from "web3modal-vue";
-import web3ModalStore from "../store/modules/web3Modal.js";
-import {web3Modal} from "../js/mixins.js";
-//Wallets
-import WalletConnectProvider from "@walletconnect/web3-provider";
 
 export default {
   name: "Home",
   props: [],
   components: { Navbar, Footer, Mint},
-  data() {
-    return {
-      web3Plug: new Web3Plug(),
-      signedInToWeb3: false,
-      balances: {},
-      tokenId: 0,
-      donationAmount: 0,
-      totalSupply: 0,
-      mintAmount: 1,
-      errorMessage: null,
-      userAddress: null,
-    };
-  },
 
-  created() {
-      this.web3Plug.getPlugEventEmitter().on(
-        "stateChanged",
-        async function (connectionState) {
-          console.log("stateChanged", connectionState);
-          this.activeAccountAddress = connectionState.activeAccountAddress;
-          this.activeNetworkId = connectionState.activeNetworkId;
-          this.signedInToWeb3 = this.activeAccountAddress != null;
-
-
-        }.bind(this)
-      );
-      this.web3Plug.getPlugEventEmitter().on(
-        "error",
-        function (errormessage) {
-          console.error("error", errormessage);
-          this.web3error = errormessage;
-        }.bind(this)
-      );
-      this.web3Plug.reconnectWeb();
-
-  },
-  mounted: function () {
-
-    // this.getBalances();
-    // this.getTotalSupply();
-    // setInterval(this.getBalances.bind(this), 5000);
-
-  },
-  mixins: [web3Modal],
-
-
-
-  methods: {
-
-
-  },
-
-
+  mounted: function() {
+      let subscribe = this.$store.subscribe((mutation, state) => {
+      if (mutation.type == 'setContract') {
+          console.log("mutation.type setContract")
+          subscribe()
+      }
+    })
+  }
 };
 </script>

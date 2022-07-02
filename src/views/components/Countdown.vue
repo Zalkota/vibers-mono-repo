@@ -77,7 +77,7 @@
 
 export default {
   name: 'Countdown',
-  props: ['endDate'],
+  props: [],
   data() {
 
 
@@ -92,6 +92,10 @@ export default {
 
   },
   computed: {
+      getSaleReleaseDate() {
+          return this.$store.getters.getSaleReleaseDate
+      },
+
       _seconds: () => 1000,
       _minutes(){
           return this._seconds * 60;
@@ -112,9 +116,10 @@ export default {
 
       showRemaining() {
           const timer = setInterval(() => {
-              const now = new Date();
-              const end = this.endDate;
-              const distance = end.getTime() - now.getTime();
+              let now = new Date();
+              let end = this.getSaleReleaseDate;
+              const distance = end - now;
+              // const distance = end.getTime() - now.getTime(); removed because of error
 
               if(distance < 0){
                   clearInterval(timer); // End Timer

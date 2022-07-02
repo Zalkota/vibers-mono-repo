@@ -5,11 +5,16 @@
              <h2 class="" style="font-family: Prompt;">Sign In Required</h2>
              <p class=" text-gray-500 text-lg font-thin pt-2">Sign the string to verify you are the owner of your wallet. <br> <a class="color-six" href="https://docs.metamask.io/guide/signing-data.html">Learn more</a> about signing data with MetaMask.     </p>
         </div>
-        <div class="text-center container shadow-md bg-four text-gray-500 text-sm rounded-sm rounded-t-nonep-4 sm:px-8 py-10 mx-auto border-t border-gray-800 rounded-b-2xl">
+        <div class="text-center container shadow-md bg-four  text-sm rounded-sm rounded-t-nonep-4 sm:px-8 py-10 mx-auto border-t border-gray-800 rounded-b-2xl">
             <div class="text-center max-w-sm mx-auto">
-                <button class="button pushable font-bold inline text-lg sm:text-3xl tracking-widest w-full" @click="signChallenge()">
+                <button v-if="approvalPending == false" class="button pushable font-bold inline text-lg text-gray-500 sm:text-3xl tracking-widest w-full" @click="signChallenge()">
                     <span class="mint-front">
                       Sign Message
+                    </span>
+                </button>
+                <button v-if="approvalPending == true" class="px-12 bg-gray-500 cursor-default py-4 rounded-xl font-bold inline text-md text-gray-900 sm:text-2xl tracking-widest w-full">
+                    <span class="">
+                      Awaiting Approval..
                     </span>
                 </button>
             </div>
@@ -44,6 +49,7 @@ export default {
     return {
       authToken: null,
       signature: null,
+      approvalPending: false,
       // route: this.$route,
       providerOptions: {
         walletconnect: {
@@ -126,16 +132,29 @@ export default {
       },
 
       async signChallenge() {
-
+          this.approvalPending = true
+          // let logger = new ethers.utils.Logger()
           let challenge = await this.handleAction('generateChallenge')
+
 
           // personal sign challenge in metamask
           const signer = await this.web3Modal.signer
 
-          this.signature = await signer.signMessage(challenge)
+          // await signer.signMessage(challenge)
+          //   .catch(e => this.approvalPending = false)
+          //   .then((x) => if(x != null) {this.approvalPending = false})
+
+          try {
+              this.signature = await signer.signMessage(challenge)
+          } catch (e) {
+              this.approvalPending = false
+              console.log(e)
+          }
+          if (this.signature != null) {
+               this.approvalPending = false
+          }
 
           this.authToken = await this.handleAction('generateUserSession')
-
           // this.$store.commit('setAuthToken', this.authToken)
           window.$cookies.config('1d')
           window.$cookies.set("authToken", this.authToken)

@@ -12,16 +12,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        saleReleaseDate: null,
 
     },
     getters: {
-        getSaleReleaseDate: state => state.saleReleaseDate,
+
     },
     mutations: {
-        setSaleReleaseDate(state, payload) {
-            state.saleReleaseDate = payload;
-        },
+
     },
     actions: {
 

@@ -15,7 +15,6 @@ import './css/video.css'
 import './css/hero.css'
 import './css/waves.css'
 import './css/button.css'
-import '@themesberg/flowbite';
 
 
 Vue.config.productionTip = false
