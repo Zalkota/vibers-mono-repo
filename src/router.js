@@ -8,6 +8,7 @@ import Collection from './views/Collection.vue'
 import NftToken from './views/NftToken.vue'
 import Profile from './views/Profile.vue'
 import WhitelistForm from './views/WhitelistForm.vue'
+import Transactions from './views/Transactions.vue'
 
 Vue.use(Router)
 
@@ -20,18 +21,12 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
-    } ,
-    // {
-    //   path: '/collection/:contractAddress',
-    //   name: 'collection',
-    //   component: Collection
-    // },
-
-    // {
-    //   path: '/collection/:contractAddress/:tokenId',
-    //   name: 'nftToken',
-    //   component: NftToken
-    // },
+    },
+    {
+      path: '/transactions/:contractAddress',
+      name: 'transactions',
+      component: Transactions,
+    },
     {
       path: '/profile',
       name: 'profile',
@@ -50,3 +45,16 @@ export default new Router({
 
   ]
 })
+
+// EXAMPLES ---------
+// {
+//   path: '/collection/:contractAddress',
+//   name: 'collection',
+//   component: Collection
+// },
+
+// {
+//   path: '/collection/:contractAddress/:tokenId',
+//   name: 'nftToken',
+//   component: NftToken
+// },

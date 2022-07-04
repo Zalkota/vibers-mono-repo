@@ -430,7 +430,6 @@ export default {
            // hide spinner
            this.showSpinner = false
        }
-
     },
 
       userAddressSliceMiddle(){
