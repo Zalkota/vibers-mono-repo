@@ -1,7 +1,4 @@
-
-
-
-
+import {resolveRoutedApiQuery} from '../js/rest-api-helper.ts'
 import axios from "axios";
 
 const env = process.env.NODE_ENV
@@ -93,6 +90,11 @@ export default class FrontendHelper {
 
 
     }
+
+
+    
+
+
 
 
 }

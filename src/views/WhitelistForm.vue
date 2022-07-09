@@ -24,7 +24,6 @@
            <ConnectWalletButton v-if="web3Modal.active != true && whitelistSaleStatus == true"
            />
 
-
            <SignInButton v-if="web3Modal.active == true && authToken == null"
            :userAddress = "userAddress"
            @authTokenEvent = "readAuthTokenEvent"
@@ -189,6 +188,7 @@
 
 import NetworkError from './components/NetworkError.vue';
 import Loading from './components/Loading.vue';
+import TransactionPending from './components/TransactionPending.vue';
 import ConnectWalletButton from "./components/ConnectWalletButton.vue";
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
@@ -217,7 +217,7 @@ const ERC721ABI = require("../contracts/ERC721ABI.json");
 export default {
   name: 'WhitelistForm',
   props: [],
-  components: {Navbar, Footer, Web3ModalVue, SignInButton, WhitelistMint, ConnectWalletButton, NetworkError, Loading},
+  components: {Navbar, Footer, Web3ModalVue, SignInButton, WhitelistMint, ConnectWalletButton, NetworkError, Loading, TransactionPending},
   watch: {
 
   },
@@ -252,7 +252,7 @@ export default {
       publicWhitelistMintAmount: 1,
       publicWhitelistSpotsTotal: 4000,
 
-      showSpinner: true,
+      showSpinner: false,
       networkError: false,
 
       providerOptions: {
@@ -431,6 +431,7 @@ export default {
            this.showSpinner = false
        }
     },
+
 
       userAddressSliceMiddle(){
           if (this.userAddress !== null) {

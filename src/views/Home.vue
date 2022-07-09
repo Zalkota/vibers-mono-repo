@@ -108,7 +108,12 @@
                 </div>
         </div>
     </div>
+
+    <TransactionPending
+    v-if="getTransactionPending"/>
+
     <Footer/>
+
 </div>
 </template>
 
@@ -116,21 +121,24 @@
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
 import Mint from "./components/Mint.vue";
-import FrontendHelper from "../js/frontend-helper.js";
+import TransactionPending from './components/TransactionPending.vue';
 
+import FrontendHelper from "../js/frontend-helper.js";
+import {messages} from "../js/mixins.js";
+import messageStore from "../store/modules/messages.js";
 
 export default {
   name: "Home",
   props: [],
-  components: { Navbar, Footer, Mint},
+  components: { Navbar, Footer, Mint, TransactionPending},
 
-  mounted: function() {
-      let subscribe = this.$store.subscribe((mutation, state) => {
-      if (mutation.type == 'setContract') {
-          console.log("mutation.type setContract")
-          subscribe()
-      }
-    })
+  computed: {
+      getTransactionPending() {
+          return this.$store.getters.getTransactionPending
+      },
   }
+
 };
+
+
 </script>

@@ -21,7 +21,7 @@
                                   </button>
                                 </div>
                             </div>
-                            <div class="text-center mx-auto whitespace-nowrap text-3xl lg:text-5xl pr-2 px-4 w-full" style="border-color: #A9ECE3;">
+                            <div class="text-center mx-auto whitespace-nowrap text-3xl lg:text-5xl pr-2 px-4 mt-4 w-full" style="border-color: #A9ECE3;">
                                 <button class="button pushable font-bold inline mx-auto text-md sm:text-3xl tracking-widest w-full" @click="allowListMint()">
                                   <span class="mint-front">
                                     Mint {{ mintCostDisplayAmount }} <span  style="font-family: sans-serif;">Ξ</span>
@@ -33,7 +33,7 @@
                         <div>
                             <img
                             v-if="approvalPending"
-                            src="@/assets/gifs/ripple.gif"
+                            src="@/assets/gifs/rolling.gif"
                             alt="waiting for transaction"
                             class="mx-auto w-20 my-6 mx-20"/>
                         </div>

@@ -9,6 +9,7 @@
     {"type":"post","uri":"/api/allowlist/check_all_allowlists","method":"checkAllAllowLists","controller":"allowlist"},
     {"type":"post","uri":"/api/allowlist/ERC721_balance_by_owner","method":"ERC721BalanceByOwner","controller":"allowlist"},
 
-    {"type":"post","uri":"/api/ERC721/public_mint_event","method":"getPublicMintEvent","controller":"contractevent"},
-    {"type":"post","uri":"/api/ERC721/token_transfers","method":"ERC721TransfersByToken","controller":"contractevent"}
+    {"type":"post","uri":"/api/ERC721/public_mint_event","method":"getPublicMintEvent","controller":"erc721"},
+    {"type":"post","uri":"/api/ERC721/token_transfers_by_tokenId","method":"ERC721TransfersByToken","controller":"erc721"},
+    {"type":"post","uri":"/api/ERC721/token_transfers_by_address","method":"ERC721TransfersByAddress","controller":"erc721"}
 ]
