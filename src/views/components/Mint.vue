@@ -12,7 +12,7 @@
 
         <div class="mb-4 lg:mb-0" v-if="getPublicSale == true && getLoading == false && networkError == false">
             <div class="sale-container bg-transparent">
-                    <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl" style="text-shadow: 2px 2px #8789ED;">Rinkeby <br>  Mint is live!</h1>
+                    <h1 class="color-six text-center tracking-wider text-4xl lg:text-6xl" style="text-shadow: 2px 2px #8789ED;">Rinkeby Public<br>  Mint is live!</h1>
                     <div class="border-4 rounded-xl shadow-lg p-4 mx-2" style="border: 4px solid #B3FFC6; background-color: #8789ED;">
                         <div v-if="!getTransactionPending">
                             <div class="custom-number-input h-10 justify-center content-center text-center px-2">
@@ -157,16 +157,7 @@ export default {
 
   },
   mounted: function () {
-      let subscribe = this.$store.subscribe((mutation, state) => {
-      if (mutation.type == 'setActive' && mutation.payload == true) {
-          // this.setActiveContract()
-          subscribe()
-      }
-      if (mutation.type == 'setContract') {
-          subscribe()
-      }
-    })
-    // setInterval(this.getSaleStatus.bind(this), 5000);
+
   },
 
   computed: {

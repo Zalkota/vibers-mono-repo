@@ -7,7 +7,7 @@
         </div>
         <div class="text-center container shadow-md bg-four  text-sm rounded-sm rounded-t-nonep-4 sm:px-8 py-10 mx-auto border-t border-gray-800 rounded-b-2xl">
             <div class="text-center max-w-sm mx-auto">
-                <button v-if="approvalPending == false" class="button pushable font-bold inline text-lg text-gray-500 sm:text-3xl tracking-widest w-full" @click="signChallenge()">
+                <button v-if="approvalPending == false" class="button pushable font-bold inline text-lg text-gray-500 sm:text-3xl tracking-widest" @click="signChallenge()">
                     <span class="mint-front">
                       Sign Message
                     </span>

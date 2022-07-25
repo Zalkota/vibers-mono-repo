@@ -1,16 +1,7 @@
 # Vibers NFT 10,000 Collection
 
-Stack:
-Vue.JS
-npm
-Web3.JS
-Ethers.JS
-DigitalOcean
-
 Live website:
-
-Solidity Smart contract can be found here:
-
+https://Vibers.io
 
 Created Febuary 02-21-2022
 Created by Jukabo.eth

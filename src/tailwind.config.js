@@ -9,7 +9,7 @@ module.exports = {
     cursor: ['disabled'],
   },
   plugins: [
-    // eslint-disable-next-line import/no-extraneous-dependencies, global-require
+
 import '@tailwindcss/custom-forms'
   ],
 };

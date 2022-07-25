@@ -168,7 +168,6 @@ import web3utils from 'web3-utils'
 
 const BN = web3utils.BN
 
-const StoreContractABI = require( '../contracts/BlockStoreABI.json'  )
 
 export default {
   name: 'Home',

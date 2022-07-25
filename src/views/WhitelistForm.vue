@@ -1,7 +1,7 @@
 <template>
 
-<div class="">
-    <div class="bg-triangle-2">
+<div>
+    <div>
 
        <div class="section">
          <div class=" ">
