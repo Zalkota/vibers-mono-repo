@@ -1,0 +1,6 @@
+types/typechain
+deployments/*
+.env
+node_modules
+mnemonic.txt
+mnemonic.json

@@ -1,0 +1,34 @@
+{
+  "name": "vibegraph",
+  "version": "0.28.2",
+  "description": "Vibers data collection bot that saves events to MongoDB by synchonizing relevant chaindata",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/**",
+    "testrun": "node tasks.js",
+    "transactions": "node tasks/transactionCollector.js",
+    "cryptoadz": "node tasks/allowlist/CryptoadzRunner.js",
+    "dystopunks": "node tasks/allowlist/DystoPunksRunner.js",
+    "doodles": "node tasks/allowlist/DoodlesRunner.js",
+    "cryptoskulls": "node tasks/allowlist/CryptoSkullsRunner.js",
+    "cryptorayrays": "node tasks/allowlist/CryptoRayRaysRunner.js",
+    "deleteIndexedData": "node tasks/delete_tools/deleteIndexedData.js"
+  },
+  "keywords": [
+    "ethereum"
+  ],
+  "repository": {
+    "type": "git"
+  },
+  "author": "Jukabo.eth",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^3.6.5",
+    "web3": "^1.3.4"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "ethers": "^5.5.1",
+    "mocha": "^8.3.2"
+  }
+}

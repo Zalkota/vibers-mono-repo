@@ -1,0 +1,15 @@
+[
+    {"type":"get","uri":"/api/ping","method":"ping","controller":"auth"},
+
+    {"type":"post","uri":"/api/auth/generate_challenge","method":"generateChallenge","controller":"auth"},
+    {"type":"post","uri":"/api/auth/generate_session","method":"generateUserSession","controller":"auth"},
+
+    {"type":"post","uri":"/api/allowlist/save_allowlist_address","method":"saveAllowListAddress","controller":"allowlist"},
+    {"type":"post","uri":"/api/allowlist/verifyExistingAuthToken","method":"verifyExistingAuthToken","controller":"allowlist"},
+    {"type":"post","uri":"/api/allowlist/check_all_allowlists","method":"checkAllAllowLists","controller":"allowlist"},
+    {"type":"post","uri":"/api/allowlist/ERC721_balance_by_owner","method":"ERC721BalanceByOwner","controller":"allowlist"},
+
+    {"type":"post","uri":"/api/ERC721/public_mint_event","method":"getPublicMintEvent","controller":"erc721"},
+    {"type":"post","uri":"/api/ERC721/token_transfers_by_tokenId","method":"ERC721TransfersByToken","controller":"erc721"},
+    {"type":"post","uri":"/api/ERC721/token_transfers_by_address","method":"ERC721TransfersByAddress","controller":"erc721"}
+]
