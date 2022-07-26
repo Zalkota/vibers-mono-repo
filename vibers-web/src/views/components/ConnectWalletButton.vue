@@ -37,11 +37,6 @@ export default {
   components:{Web3ModalVue},
   data() {
     return {
-      activeAccountAddress:null,
-      activeNetworkId: null,
-      navConfig: null,
-      theme: 'light',
-      // route: this.$route,
       providerOptions: {
         walletconnect: {
           package: WalletConnectProvider,
