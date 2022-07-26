@@ -51,7 +51,7 @@ if (TESTING === '1') {
 
 const networkUrls: { [network: string]: string } = {
   kovan: `https://kovan.infura.io/v3/${INFURA_KEY}`,
-  rinkeby: `https://eth-rinkeby.alchemyapi.io/v2/-DTO-KQsqpEkxewj6fEUJAPY2J9YCzaL`,
+  rinkeby: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_RINKEBY_KEY}`,
   ropsten: `https://ropsten.infura.io/v3/${INFURA_KEY}`,
   goerli: `https://goerli.infura.io/v3/${INFURA_KEY}`,
   mainnet: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
