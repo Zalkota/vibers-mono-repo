@@ -40,27 +40,27 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
     // Constant Variables
     uint256 internal constant MAX_SUPPLY = 1000; //CHANGE TO 10,000 TODO
     uint256 internal constant MAX_MINTS_PER_TRANSACTION = 4;
-    uint256 internal constant WHITELIST_MAX_MINT_PER_WALLET = 2;
+    uint256 internal constant ALLOWLIST_MAX_MINT_PER_WALLET = 2;
 
     // Variables
     uint[MAX_SUPPLY] private indices;
     uint private nonce = 0;
     uint private numTokens = 0;
 
-    // Minting Whitelist & Public list
-    bool internal whitelistMintOpen = false;
+    // Minting Allowlist & Public list
+    bool internal allowlistMintOpen = false;
     bool internal publicMintOpen = false;
 
-    mapping(address => uint256) public whitelistMintedCounts;
+    mapping(address => uint256) public allowlistMintedCounts;
     mapping(address => uint256) public publicMintedCounts;
 
-    event whitelistMintOpened();
+    event allowlistMintOpened();
     event publicMintOpened();
 
     // Metadata Variables
-    bytes32 internal _whitelistMerkleRoot;
+    bytes32 internal _allowlistMerkleRoot;
     string internal _baseTokenURI;
-    bool internal metadataFrozen = false;
+    bool internal metadataLocked = false;
     uint internal devSupplyAwarded = 0;
 
 
@@ -74,9 +74,9 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
      * See {ERC721-tokenURI}.
      */
 
-    constructor(string memory baseTokenURI, bytes32 whitelistMerkleRoot) ERC721A("Vibers", "VIBE") {
+    constructor(string memory baseTokenURI, bytes32 allowlistMerkleRoot) ERC721A("Vibers", "VIBE") {
         _baseTokenURI = baseTokenURI;
-        _whitelistMerkleRoot = whitelistMerkleRoot;
+        _allowlistMerkleRoot = allowlistMerkleRoot;
         //dont call awardDevs() here, initial supply here, too much gas for one transaction
     }
 
@@ -85,7 +85,7 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
     }
 
     /**
-    * Can only be called twice. Gives 64 total Shrooms to devs for giveaways, marketing purposes and team members.
+    * Can only be called twice. Gives 64 total Vibers to developers for marketing purposes.
     * 28 of these will go to Treasure Chests holders.
     */
 
@@ -165,16 +165,16 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
     }
 
     // #TODO Does this function need a minthelper?
-    function whitelistMint(
+    function allowlistMint(
       uint256 quantity,
-      bytes32[] calldata whitelistProof
-    ) external payable noContract onlyWhitelist(whitelistProof) {
+      bytes32[] calldata allowlistProof
+    ) external payable noContract onlyAllowlist(allowlistProof) {
 
         //Reentrancy vulnerablility? TODO
-      uint256 whitelistMintedCount = whitelistMintedCounts[msg.sender];
-      uint256 newWhitelistMintedCount = whitelistMintedCount + quantity;
+      uint256 allowlistMintedCount = allowlistMintedCounts[msg.sender];
+      uint256 newAllowlistMintedCount = allowlistMintedCount + quantity;
       //check sale start
-      require(whitelistMintOpen, "Whitelist minting closed");
+      require(allowlistMintOpen, "Allowlist minting closed");
 
       //Maximum of 10000 Vibers
       require(numTokens < MAX_SUPPLY, "Mint request exceeds total supply!");
@@ -183,7 +183,7 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
       require(quantity > 0, "Must mint at least one.");
 
       //check max per transaction
-      require(newWhitelistMintedCount <= WHITELIST_MAX_MINT_PER_WALLET, "Mint exceeds limit per call.");
+      require(newAllowlistMintedCount <= ALLOWLIST_MAX_MINT_PER_WALLET, "Mint exceeds limit per call.");
 
       //check for overmint
       require(quantity <= MAX_SUPPLY-numTokens,"Mint request exceeds current supply!");
@@ -191,18 +191,18 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
       //check payment
       require(msg.value == PRICE * quantity, "Vibers price mismatch");
 
-      whitelistMintedCounts[msg.sender] = newWhitelistMintedCount;
+      allowlistMintedCounts[msg.sender] = newAllowlistMintedCount;
 
       _safeMint(msg.sender, quantity);
     }
 
-    function availableWhitelistMint(bytes32[] memory whitelistProof)
+    function availableAllowlistMint(bytes32[] memory allowlistProof)
       external
       view
       returns (uint256)
     {
-      if (_inWhitelist(whitelistProof)) {
-        return WHITELIST_MAX_MINT_PER_WALLET - whitelistMintedCounts[msg.sender];
+      if (_inAllowlist(allowlistProof)) {
+        return ALLOWLIST_MAX_MINT_PER_WALLET - allowlistMintedCounts[msg.sender];
       } else {
         return 0;
       }
@@ -217,8 +217,8 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
         MerkleProof.verify(proof, root, keccak256(abi.encodePacked(_address)));
     }
 
-    function _inWhitelist(bytes32[] memory proof) internal view returns (bool) {
-      return _verify(proof, _whitelistMerkleRoot, msg.sender);
+    function _inAllowlist(bytes32[] memory proof) internal view returns (bool) {
+      return _verify(proof, _allowlistMerkleRoot, msg.sender);
     }
 
 
@@ -240,7 +240,7 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
     */
 
     function setBaseURI(string memory baseTokenURI) external onlyOwner {
-        require(metadataFrozen == false,"Cannot change metadata after the metadata freeze");
+        require(metadataLocked == false,"Cannot change metadata after the metadata is locked");
         _baseTokenURI = baseTokenURI;
     }
 
@@ -250,31 +250,31 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
 
     function setPublicMintOpen(uint256 _PRICE) external virtual onlyOwner {
       require(publicMintOpen == false, "Public mint has already started");
-      require(whitelistMintOpen, "Whitelist mint must be started first");
+      require(allowlistMintOpen, "Allowlist mint must be started first");
       PRICE = _PRICE;
       publicMintOpen = true;
       emit publicMintOpened();
     }
 
     /**
-    * Start whitelist sale (can't be stopped after called)
+    * Start allowlist sale (can't be stopped after called)
     */
 
-    function setWhitelistMintOpen(uint256 _PRICE) external virtual onlyOwner {
-      require(whitelistMintOpen == false, "Whitelist mint has already started");
+    function setAllowlistMintOpen(uint256 _PRICE) external virtual onlyOwner {
+      require(allowlistMintOpen == false, "Allowlist mint has already started");
       PRICE = _PRICE;
-      whitelistMintOpen = true;
-      emit whitelistMintOpened();
+      allowlistMintOpen = true;
+      emit allowlistMintOpened();
     }
-
 
     /**
     * Freeze the metaData
     */
 
-    function freezeMetadata() external virtual onlyOwner {
-        require(publicMintOpen, "public mint must be started first");
-        metadataFrozen = true;
+    function lockMetadata() external virtual onlyOwner {
+        require(publicMintOpen, "Public mint must be started first");
+        require(metadataLocked == false, "Metadata is already locked");
+        metadataLocked = true;
     }
 
     function getQuantityMinted() external view returns (uint256) {
@@ -290,7 +290,7 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
     }
 
     function hasSaleStarted() external view returns (bool) {
-        return whitelistMintOpen;
+        return allowlistMintOpen;
     }
 
     function hasPublicSaleStarted() external view returns (bool) {
@@ -298,22 +298,22 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
     }
 
     function hasMetadataFroze() external view returns (bool) {
-        return metadataFrozen;
+        return metadataLocked;
     }
 
     function setMintPrice(uint256 _PRICE)
       external
       onlyOwner
     {
-      require(whitelistMintOpen == true, "The sale must be started to change the existing price.");
+      require(allowlistMintOpen == true, "The sale must be started to change the existing price.");
       PRICE = _PRICE;
     }
 
-    function setWhitelistMerkleRoot(bytes32 whitelistMerkleRoot)
+    function setAllowlistMerkleRoot(bytes32 allowlistMerkleRoot)
       external
       onlyOwner
     {
-      _whitelistMerkleRoot = whitelistMerkleRoot;
+      _allowlistMerkleRoot = allowlistMerkleRoot;
     }
 
     /*
@@ -331,8 +331,8 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
       _;
     }
 
-    modifier onlyWhitelist(bytes32[] memory whitelistProof) {
-      require(_inWhitelist(whitelistProof), "Caller is not whitelisted");
+    modifier onlyAllowlist(bytes32[] memory allowlistProof) {
+      require(_inAllowlist(allowlistProof), "Caller is not allowlisted");
       _;
     }
 

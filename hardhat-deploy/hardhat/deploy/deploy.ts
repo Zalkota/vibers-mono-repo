@@ -31,7 +31,7 @@ const deployOptions: DeployFunction = async (hre) => {
 
   const contractOutput = await deploy({
     contract: 'Vibers',
-    name: 'Vibers_2',
+    name: 'Vibers',
     args: ['ipfs://QmfYC58HWnG61nzdnZ2NZmd5Yv3QrU6XM9JWW1gXHRPT67/', hexRoot],
     hre,
   })

@@ -23,19 +23,19 @@ describe('MerkleAirdrop', function () {
 
   beforeEach(async () => {
       // call setup function
+
     console.log("running setup")
     const results = await setup()
     console.log("setup complete")
+
     // assign variables with results from setup function
     contract = results.vibersToken
     user = results.user
     deployer = results.deployer
 
-
     // assign parameters and then call send transaction function
     // let params ={to: await user.getAddress(), value: web3.utils.numberToHex( web3.utils.toWei('1') ) }
     // await deployer.sendTransaction(params)
-
 
   })
 
@@ -57,15 +57,14 @@ describe('MerkleAirdrop', function () {
             ).toString(),
         };
 
-
-        await contract.connect(deployer).setWhitelistMintOpen(mintPrice);
+        await contract.connect(deployer).setAllowlistMintOpen(mintPrice);
         await contract.connect(deployer).setPublicMintOpen(mintPrice);
 
         const userAddress = await user.getAddress()
         console.log('user address',userAddress)
 
         await contract.connect(user).mint(amt, overrides);
-        let tokenBalance = await contract.connect(user).balanceOf(  userAddress  )
+        let tokenBalance = await contract.connect(user).balanceOf(userAddress)
 
         tokenBalance.should.equal(1)
 
@@ -83,9 +82,7 @@ describe('MerkleAirdrop', function () {
       const proof = tree.getProof(leaf)
       console.log(tree.verify(proof, leaf, root)) // true
 
-
       expect(tree.verify(proof, leaf, root)).to.equal(true)
-
 
       const badLeaves = ['a', 'x', 'c'].map((x:any) => keccak256(x))
       const badTree = new MerkleTree(badLeaves, keccak256, {sortPairs: true})
@@ -103,9 +100,9 @@ describe('MerkleAirdrop', function () {
 
 
   describe('token contract ', () => {
-    it('should be able to mint', async () => {
+    it('should be able to allowlist mint', async () => {
 
-        console.log("setWhitelistMintOpen")
+        console.log("setAllowlistMintOpen")
         const mintPrice = web3.utils.toWei('0.01')
         console.log('mintPrice', mintPrice)
 
@@ -119,7 +116,7 @@ describe('MerkleAirdrop', function () {
         };
 
 
-        await contract.connect(deployer).setWhitelistMintOpen(mintPrice);
+        await contract.connect(deployer).setAllowlistMintOpen(mintPrice);
 
         const leaves = addressList.map((x:any) => keccak256(x))
         const tree = new MerkleTree(leaves, keccak256, {sortPairs: true})
@@ -127,7 +124,7 @@ describe('MerkleAirdrop', function () {
 
         const hexRoot = tree.getHexRoot()
 
-        console.log('whitelist root is ', hexRoot)
+        console.log('allowlist root is ', hexRoot)
 
         const userAddress = await user.getAddress()
         console.log('user address',userAddress)
@@ -142,7 +139,7 @@ describe('MerkleAirdrop', function () {
         console.log(tree.verify(proof, leaf, root)) // true
         expect(tree.verify(proof, leaf, root)).to.equal(true)
 
-        await contract.connect(user).whitelistMint(amt, hexproof, overrides);
+        await contract.connect(user).allowlistMint(amt, hexproof, overrides);
         let tokenBalance = await contract.connect(user).balanceOf(  userAddress  )
 
         tokenBalance.should.equal(2)
