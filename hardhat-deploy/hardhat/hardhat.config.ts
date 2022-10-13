@@ -21,9 +21,7 @@ import * as path from 'path'
 config()
 
 const {
-  ALCHEMY_KOVAN_KEY,
-  ALCHEMY_RINKEBY_KEY,
-  ALCHEMY_ROPSTEN_KEY,
+  ALCHEMY_GOERLI_KEY,
   ALCHEMY_MAINNET_KEY,
   COMPILING,
   CMC_KEY,
@@ -50,10 +48,7 @@ if (TESTING === '1') {
 }
 
 const networkUrls: { [network: string]: string } = {
-  kovan: `https://kovan.infura.io/v3/${INFURA_KEY}`,
-  rinkeby: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_RINKEBY_KEY}`,
-  ropsten: `https://ropsten.infura.io/v3/${INFURA_KEY}`,
-  goerli: `https://goerli.infura.io/v3/${INFURA_KEY}`,
+  goerli: `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_GOERLI_KEY}`,
   mainnet: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
   polygon: `https://polygon-mainnet.infura.io/v3/${INFURA_KEY}`,
   polygon_mumbai: `https://polygon-mumbai.infura.io/v3/${INFURA_KEY}`,
@@ -212,27 +207,10 @@ export default <HardhatUserConfig>{
     },
   },
   networks: {
-    kovan: networkConfig({
-      url: networkUrls.kovan,
-      chainId: 42,
-      live: true,
-    }),
-    // rinkeby: {
-    //       url: networkUrls.rinkeby,
-    //       accounts: accounts,
-    //   },
-    rinkeby: networkConfig({
-      url: networkUrls.rinkeby,
-      chainId: 4,
-      live: true,
-    }),
-    ropsten: networkConfig({
-      url: networkUrls.ropsten,
-      chainId: 3,
-      live: true,
-    }),
+
     goerli: networkConfig({
       url: networkUrls.goerli,
+      accounts: accounts,
       chainId: 5,
       live: true,
     }),

@@ -28,7 +28,7 @@ import { tokens } from './tokens'
  * @return boolean
  */
 export const isEtheremNetwork = (network: Network): boolean =>
-  ['mainnet', 'kovan', 'rinkeby', 'ropsten'].some(
+  ['mainnet', 'goerli'].some(
     (n) => n === getNetworkName(network)
   )
 
