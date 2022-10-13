@@ -33,7 +33,6 @@ credit to DerpyBirbs, Cosmic Caps, and Critterz for their input on this contract
 */
 
 contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
-     /* ERC721Enumerable, ERC721Burnable,  */
 
     uint256 internal PRICE = 0;
 

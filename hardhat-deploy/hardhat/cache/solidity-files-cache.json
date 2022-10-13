@@ -875,8 +875,8 @@
       ]
     },
     "G:\\dapps\\vibers-mono-repo\\hardhat-deploy\\hardhat\\contracts\\Vibers.sol": {
-      "lastModificationDate": 1665504322942,
-      "contentHash": "cc8d6bc392a52e65a3daaf64005961b1",
+      "lastModificationDate": 1665620270636,
+      "contentHash": "65efc10701b8f76760fce378644d67e1",
       "sourceName": "contracts/Vibers.sol",
       "solcConfig": {
         "version": "0.8.4",
