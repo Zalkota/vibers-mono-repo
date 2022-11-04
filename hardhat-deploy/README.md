@@ -7,8 +7,8 @@
 npm install
 npx hardhat compile
 npx hardhat test
-npx hardhat deploy --network rinkeby
-npx hardhat verify --network rinkeby 0x489bd604f639ee8eb937f6401fa8de3a9a3f4a9e "ipfs://QmfYC58HWnG61nzdnZ2NZmd5Yv3QrU6XM9JWW1gXHRPT67/"
+npx hardhat deploy --network goerli
+npx hardhat verify --network goerli 0x489bd604f639ee8eb937f6401fa8de3a9a3f4a9e "ipfs://QmfYC58HWnG61nzdnZ2NZmd5Yv3QrU6XM9JWW1gXHRPT67/"
 ```
 
 https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html

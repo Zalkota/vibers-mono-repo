@@ -88,19 +88,13 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
     * 28 of these will go to Treasure Chests holders.
     */
 
-    function give32TokensToDevs() external onlyOwner {
+    function mint64Tokens() external onlyOwner {
         require(publicMintOpen == false,"Sale has already started");
         require(devSupplyAwarded < 64,"Dev supply has already been awarded");
-        uint i;
-        uint id;
 
-        for(i = 0; i < 32; i++){
-            id = randomIndex();
-            _mint(developers, id);
-            numTokens = numTokens + 1;
-        }
+        _safeMint(developers, 64);
 
-        devSupplyAwarded = devSupplyAwarded+1;
+        devSupplyAwarded = devSupplyAwarded+32;
     }
 
     /**
@@ -271,7 +265,6 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
     */
 
     function lockMetadata() external virtual onlyOwner {
-        require(publicMintOpen, "Public mint must be started first");
         require(metadataLocked == false, "Metadata is already locked");
         metadataLocked = true;
     }
@@ -296,7 +289,7 @@ contract Vibers is Ownable, ERC721A, ReentrancyGuardUpgradeable {
         return publicMintOpen;
     }
 
-    function hasMetadataFroze() external view returns (bool) {
+    function hasMetadataLocked() external view returns (bool) {
         return metadataLocked;
     }
 
